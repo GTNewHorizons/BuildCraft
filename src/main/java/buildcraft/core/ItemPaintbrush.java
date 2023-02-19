@@ -151,6 +151,9 @@ public class ItemPaintbrush extends ItemBuildCraft {
                     return !world.isRemote;
                 }
                 block = world.getBlock(x, y, z);
+                if( block == null){
+                    return !world.isRemote;
+                }
             }
 
         } else {
