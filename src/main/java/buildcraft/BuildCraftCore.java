@@ -203,6 +203,7 @@ public class BuildCraftCore extends BuildCraftMod {
     public static boolean canEnginesExplode = false;
     public static boolean useServerDataOnClient = true;
     public static boolean alphaPassBugPresent = true;
+    public static int maxPaintedBlocks = -1;
     public static int itemLifespan = 1200;
     public static int updateFactor = 10;
     public static int builderMaxPerItemFactor = 1024;
@@ -401,6 +402,12 @@ public class BuildCraftCore extends BuildCraftMod {
                 "worldgen.generateWaterSprings",
                 true,
                 "Should BuildCraft generate water springs?",
+                ConfigManager.RestartRequirement.GAME);
+
+        mainConfigManager.register(
+                "general.maxPaintedBlocks",
+                -1,
+                "How many blocks can paintbrush paint at max(-1) for unlimited",
                 ConfigManager.RestartRequirement.GAME);
 
         reloadConfig(ConfigManager.RestartRequirement.GAME);
@@ -779,6 +786,7 @@ public class BuildCraftCore extends BuildCraftMod {
             hidePowerNumbers = mainConfigManager.get("display.hidePowerValues").getBoolean();
             itemLifespan = mainConfigManager.get("general.itemLifespan").getInt();
             canEnginesExplode = mainConfigManager.get("general.canEnginesExplode").getBoolean();
+            maxPaintedBlocks = mainConfigManager.get("general.maxPaintedBlocks").getInt();
             consumeWaterSources = mainConfigManager.get("general.pumpsConsumeWater").getBoolean();
             miningMultiplier = (float) mainConfigManager.get("power.miningUsageMultiplier").getDouble();
             miningAllowPlayerProtectedBlocks = mainConfigManager.get("general.miningBreaksPlayerProtectedBlocks")

@@ -21,6 +21,7 @@ import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
+import buildcraft.BuildCraftCore;
 import buildcraft.api.blocks.IColorRemovable;
 import buildcraft.api.core.EnumColor;
 import buildcraft.core.lib.items.ItemBuildCraft;
@@ -98,6 +99,7 @@ public class ItemPaintbrush extends ItemBuildCraft {
     public boolean onItemUseFirst(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side,
             float hitX, float hitY, float hitZ) {
         int dye = getColor(stack);
+
         Block block = world.getBlock(x, y, z);
 
         if (block == null) {
@@ -105,7 +107,8 @@ public class ItemPaintbrush extends ItemBuildCraft {
         }
 
         if (dye >= 0) {
-
+            int painted = 0;
+            int maxPainted = BuildCraftCore.maxPaintedBlocks;
             // Direction player is looking at
             ForgeDirection lookSide;
             Vec3 look = player.getLookVec();
@@ -125,6 +128,10 @@ public class ItemPaintbrush extends ItemBuildCraft {
                 player.swingItem();
                 setDamage(stack, getDamage(stack) + 1);
                 dye = getColor(stack);
+
+                painted++;
+                if (painted >= maxPainted && maxPainted != -1) return !world.isRemote;
+
                 if (!player.isSneaking() || dye <= 0) return !world.isRemote;
                 switch (lookSide) {
                     case UP:
