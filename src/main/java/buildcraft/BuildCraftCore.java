@@ -810,6 +810,29 @@ public class BuildCraftCore extends BuildCraftMod {
     }
 
     public void loadRecipes() {
+
+        BCRegistry.INSTANCE.addCraftingRecipe(
+                new ItemStack(paintbrushItem),
+                " iw",
+                " gi",
+                "s  ",
+                's',
+                "stickWood",
+                'g',
+                "gearWood",
+                'w',
+                new ItemStack(Blocks.wool, 1, 0),
+                'i',
+                Items.string);
+
+        ItemStack anyPaintbrush = new ItemStack(paintbrushItem, 1, OreDictionary.WILDCARD_VALUE);
+
+        for (int i = 0; i < 16; i++) {
+            ItemStack outputStack = new ItemStack(paintbrushItem);
+            NBTUtils.getItemData(outputStack).setByte("color", (byte) i);
+            BCRegistry.INSTANCE.addShapelessRecipe(outputStack, anyPaintbrush, EnumColor.fromId(i).getDye());
+        }
+
         if (GTNH) return;
 
         BCRegistry.INSTANCE
@@ -885,28 +908,6 @@ public class BuildCraftCore extends BuildCraftMod {
                 "dyeGreen",
                 'r',
                 Blocks.redstone_torch);
-
-        BCRegistry.INSTANCE.addCraftingRecipe(
-                new ItemStack(paintbrushItem),
-                " iw",
-                " gi",
-                "s  ",
-                's',
-                "stickWood",
-                'g',
-                "gearWood",
-                'w',
-                new ItemStack(Blocks.wool, 1, 0),
-                'i',
-                Items.string);
-
-        ItemStack anyPaintbrush = new ItemStack(paintbrushItem, 1, OreDictionary.WILDCARD_VALUE);
-
-        for (int i = 0; i < 16; i++) {
-            ItemStack outputStack = new ItemStack(paintbrushItem);
-            NBTUtils.getItemData(outputStack).setByte("color", (byte) i);
-            BCRegistry.INSTANCE.addShapelessRecipe(outputStack, anyPaintbrush, EnumColor.fromId(i).getDye());
-        }
 
         // Convert old lists to new lists
         BCRegistry.INSTANCE.addShapelessRecipe(new ItemStack(listItem, 1, 1), new ItemStack(listItem, 1, 0));
