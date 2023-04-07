@@ -163,6 +163,7 @@ public class BuildCraftMod {
 
     static {
         senderThread.setDaemon(true);
+        senderThread.setName("BuildCraft packet sender thread");
         senderThread.start();
     }
 
