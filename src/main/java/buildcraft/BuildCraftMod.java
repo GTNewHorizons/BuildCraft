@@ -8,8 +8,8 @@ package buildcraft;
 
 import java.util.EnumMap;
 import java.util.List;
-import java.util.Queue;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -122,44 +122,36 @@ public class BuildCraftMod {
 
     static class PacketSender implements Runnable {
 
-        private Queue<SendRequest> packets = new ConcurrentLinkedQueue<SendRequest>();
+        private BlockingQueue<SendRequest> packets = new LinkedBlockingQueue<>();
 
         @Override
         public void run() {
             while (true) {
                 try {
-                    Thread.sleep(10);
-                } catch (Exception e) {
-
-                }
-
-                while (!packets.isEmpty()) {
-                    try {
-                        SendRequest r = packets.remove();
-                        net.minecraft.network.Packet p = ThreadSafeUtils
-                                .generatePacketFrom(r.packet, r.source.channels.get(Side.SERVER));
-                        List<EntityPlayerMP> playerList = MinecraftServer.getServer()
-                                .getConfigurationManager().playerEntityList;
-                        for (EntityPlayerMP player : playerList.toArray(new EntityPlayerMP[playerList.size()])) {
-                            if (r.isValid(player)) {
-                                NetHandlerPlayServer handler = player.playerNetServerHandler;
-                                if (handler == null) {
-                                    continue;
-                                }
-
-                                NetworkManager manager = handler.netManager;
-                                if (manager == null || !manager.isChannelOpen()) {
-                                    continue;
-                                }
-
-                                manager.scheduleOutboundPacket(p);
+                    SendRequest r = packets.take();
+                    net.minecraft.network.Packet p = ThreadSafeUtils
+                            .generatePacketFrom(r.packet, r.source.channels.get(Side.SERVER));
+                    List<EntityPlayerMP> playerList = MinecraftServer.getServer()
+                            .getConfigurationManager().playerEntityList;
+                    for (EntityPlayerMP player : playerList.toArray(new EntityPlayerMP[playerList.size()])) {
+                        if (r.isValid(player)) {
+                            NetHandlerPlayServer handler = player.playerNetServerHandler;
+                            if (handler == null) {
+                                continue;
                             }
+
+                            NetworkManager manager = handler.netManager;
+                            if (manager == null || !manager.isChannelOpen()) {
+                                continue;
+                            }
+
+                            manager.scheduleOutboundPacket(p);
                         }
-                    } catch (Exception e) {
-                        BCLog.logger.error(
-                                "The BuildCraft packet sender thread raised an exception! Please report to GitHub.");
-                        e.printStackTrace();
                     }
+                } catch (Exception e) {
+                    BCLog.logger
+                            .error("The BuildCraft packet sender thread raised an exception! Please report to GitHub.");
+                    e.printStackTrace();
                 }
             }
         }
