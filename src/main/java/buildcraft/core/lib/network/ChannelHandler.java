@@ -9,12 +9,23 @@ package buildcraft.core.lib.network;
 import java.lang.ref.WeakReference;
 import java.util.List;
 
-import org.apache.logging.log4j.Level;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.network.INetHandler;
 
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.Marker;
+import org.apache.logging.log4j.MarkerManager;
+
+import buildcraft.api.core.BCLog;
 import buildcraft.core.lib.network.command.PacketCommand;
+import buildcraft.core.proxy.CoreProxy;
 import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.internal.FMLProxyPacket;
+import cpw.mods.fml.relauncher.Side;
+import gnu.trove.map.TByteIntMap;
+import gnu.trove.map.hash.TByteIntHashMap;
 import gnu.trove.map.hash.TByteObjectHashMap;
 import gnu.trove.map.hash.TObjectByteHashMap;
 import io.netty.buffer.ByteBuf;
@@ -29,24 +40,40 @@ import io.netty.util.AttributeKey;
 @io.netty.channel.ChannelHandler.Sharable
 public final class ChannelHandler extends MessageToMessageCodec<FMLProxyPacket, Packet> {
 
+    public static final int CLIENT_ONLY = 1;
+    public static final int SERVER_ONLY = 2;
+    public static final int BOTH_SIDES = SERVER_ONLY | CLIENT_ONLY;
+
+    public static final Marker SUSPICIOUS_PACKETS = MarkerManager.getMarker("SuspiciousPackets");
     public static final AttributeKey<ThreadLocal<WeakReference<FMLProxyPacket>>> INBOUNDPACKETTRACKER = new AttributeKey<ThreadLocal<WeakReference<FMLProxyPacket>>>(
             "bc:inboundpacket");
     private TByteObjectHashMap<Class<? extends Packet>> discriminators = new TByteObjectHashMap<Class<? extends Packet>>();
     private TObjectByteHashMap<Class<? extends Packet>> types = new TObjectByteHashMap<Class<? extends Packet>>();
+    private TByteIntMap sides = new TByteIntHashMap();
     private int maxDiscriminator;
 
     public ChannelHandler() {
         // Packets common to buildcraft.core.network
-        addDiscriminator(0, PacketTileUpdate.class);
-        addDiscriminator(1, PacketTileState.class);
+        addDiscriminator(0, PacketTileUpdate.class, CLIENT_ONLY);
+        addDiscriminator(1, PacketTileState.class, CLIENT_ONLY);
         addDiscriminator(2, PacketNBT.class);
         addDiscriminator(3, PacketSlotChange.class);
         addDiscriminator(4, PacketGuiReturn.class);
         addDiscriminator(5, PacketGuiWidget.class);
-        addDiscriminator(6, PacketUpdate.class);
+        // this won't work whatsoever. this is a freaking abstract class
+        // addDiscriminator(6, PacketUpdate.class);
         addDiscriminator(7, PacketCommand.class);
-        addDiscriminator(8, PacketEntityUpdate.class);
+        addDiscriminator(8, PacketEntityUpdate.class, CLIENT_ONLY);
         maxDiscriminator = 9;
+    }
+
+    protected void logForgedPackets(EntityPlayer player, String packetType, ByteBuf rawPacket) {
+        BCLog.logger.info(
+                SUSPICIOUS_PACKETS,
+                "Player {} tried to send packet of type {} to invalid side {}. This could be a false warning due to custom mods/addon, or it could be an legit attempt at hacking!",
+                player.getGameProfile(),
+                player instanceof EntityPlayerMP ? Side.SERVER : Side.CLIENT,
+                packetType);
     }
 
     public byte getDiscriminator(Class<? extends Packet> clazz) {
@@ -60,8 +87,13 @@ public final class ChannelHandler extends MessageToMessageCodec<FMLProxyPacket, 
     }
 
     public ChannelHandler addDiscriminator(int discriminator, Class<? extends Packet> type) {
+        return addDiscriminator(discriminator, type, BOTH_SIDES);
+    }
+
+    public ChannelHandler addDiscriminator(int discriminator, Class<? extends Packet> type, int handlingSide) {
         discriminators.put((byte) discriminator, type);
         types.put(type, (byte) discriminator);
+        sides.put((byte) discriminator, handlingSide);
         return this;
     }
 
@@ -91,10 +123,18 @@ public final class ChannelHandler extends MessageToMessageCodec<FMLProxyPacket, 
             throw new NullPointerException(
                     "Undefined message for discriminator " + discriminator + " in channel " + msg.channel());
         }
-        Packet newMsg = clazz.newInstance();
-        ctx.attr(INBOUNDPACKETTRACKER).get().set(new WeakReference<FMLProxyPacket>(msg));
-        newMsg.readData(payload.slice());
-        out.add(newMsg);
+        int expectedSide = ctx.channel().attr(NetworkRegistry.CHANNEL_SOURCE).get() == Side.CLIENT ? CLIENT_ONLY
+                : SERVER_ONLY;
+        if ((expectedSide & sides.get(discriminator)) != expectedSide) {
+            INetHandler handler = ctx.channel().attr(NetworkRegistry.NET_HANDLER).get();
+            EntityPlayer player = CoreProxy.proxy.getPlayerFromNetHandler(handler);
+            logForgedPackets(player, clazz.getSimpleName(), payload.slice());
+        } else {
+            Packet newMsg = clazz.newInstance();
+            ctx.attr(INBOUNDPACKETTRACKER).get().set(new WeakReference<>(msg));
+            newMsg.readData(payload.slice());
+            out.add(newMsg);
+        }
     }
 
     /**
@@ -112,6 +152,10 @@ public final class ChannelHandler extends MessageToMessageCodec<FMLProxyPacket, 
     }
 
     public void registerPacketType(Class<? extends Packet> packetType) {
+        addDiscriminator(maxDiscriminator++, packetType);
+    }
+
+    public void registerPacketType(Class<? extends Packet> packetType, int handlingSide) {
         addDiscriminator(maxDiscriminator++, packetType);
     }
 }

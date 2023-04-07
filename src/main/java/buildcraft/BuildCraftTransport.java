@@ -7,6 +7,8 @@
 package buildcraft;
 
 import static buildcraft.BuildCraftCore.GTNH;
+import static buildcraft.core.lib.network.ChannelHandler.CLIENT_ONLY;
+import static buildcraft.core.lib.network.ChannelHandler.SERVER_ONLY;
 
 import java.io.PrintWriter;
 import java.util.LinkedList;
@@ -514,11 +516,11 @@ public class BuildCraftTransport extends BuildCraftMod {
         transportChannelHandler = new ChannelHandler();
         MinecraftForge.EVENT_BUS.register(this);
 
-        transportChannelHandler.registerPacketType(PacketFluidUpdate.class);
-        transportChannelHandler.registerPacketType(PacketPipeTransportItemStack.class);
-        transportChannelHandler.registerPacketType(PacketPipeTransportItemStackRequest.class);
-        transportChannelHandler.registerPacketType(PacketPipeTransportTraveler.class);
-        transportChannelHandler.registerPacketType(PacketPowerUpdate.class);
+        transportChannelHandler.registerPacketType(PacketFluidUpdate.class, CLIENT_ONLY);
+        transportChannelHandler.registerPacketType(PacketPipeTransportItemStack.class, CLIENT_ONLY);
+        transportChannelHandler.registerPacketType(PacketPipeTransportItemStackRequest.class, SERVER_ONLY);
+        transportChannelHandler.registerPacketType(PacketPipeTransportTraveler.class, CLIENT_ONLY);
+        transportChannelHandler.registerPacketType(PacketPowerUpdate.class, CLIENT_ONLY);
 
         channels = NetworkRegistry.INSTANCE.newChannel(
                 DefaultProps.NET_CHANNEL_NAME + "-TRANSPORT",
