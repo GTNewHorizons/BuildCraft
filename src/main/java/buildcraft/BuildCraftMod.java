@@ -170,6 +170,7 @@ public class BuildCraftMod {
     }
 
     static {
+        senderThread.setDaemon(true);
         senderThread.start();
     }
 
