@@ -13,10 +13,9 @@ import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.event.world.ChunkEvent;
 import net.minecraftforge.event.world.WorldEvent;
 
-import buildcraft.core.lib.utils.Utils;
-
 import com.google.common.collect.HashBiMap;
 
+import buildcraft.core.lib.utils.Utils;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent;
 import cpw.mods.fml.relauncher.Side;

@@ -17,13 +17,12 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MathHelper;
 import net.minecraftforge.common.util.ForgeDirection;
 
+import com.google.common.collect.MapMaker;
+
 import buildcraft.BuildCraftCore;
 import buildcraft.api.core.EnumColor;
 import buildcraft.api.core.Position;
 import buildcraft.core.lib.inventory.StackHelper;
-
-import com.google.common.collect.MapMaker;
-
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.relauncher.Side;
 

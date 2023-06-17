@@ -17,6 +17,9 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
 
+import com.google.common.collect.EnumMultiset;
+import com.google.common.collect.Multiset;
+
 import buildcraft.BuildCraftCore;
 import buildcraft.BuildCraftTransport;
 import buildcraft.api.core.SafeTimeTracker;
@@ -38,9 +41,6 @@ import buildcraft.transport.pipes.PipeFluidsVoid;
 import buildcraft.transport.pipes.PipeFluidsWood;
 import buildcraft.transport.pipes.events.PipeEventFluid;
 import buildcraft.transport.utils.FluidRenderData;
-
-import com.google.common.collect.EnumMultiset;
-import com.google.common.collect.Multiset;
 
 public class PipeTransportFluids extends PipeTransport implements IFluidHandler, IDebuggable {
 

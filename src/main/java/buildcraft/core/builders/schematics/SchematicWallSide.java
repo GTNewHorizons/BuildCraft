@@ -10,11 +10,11 @@ import java.util.Set;
 
 import net.minecraftforge.common.util.ForgeDirection;
 
+import com.google.common.collect.Sets;
+
 import buildcraft.api.blueprints.IBuilderContext;
 import buildcraft.api.blueprints.SchematicBlock;
 import buildcraft.api.core.BlockIndex;
-
-import com.google.common.collect.Sets;
 
 public class SchematicWallSide extends SchematicBlock {
 

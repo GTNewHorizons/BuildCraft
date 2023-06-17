@@ -34,6 +34,8 @@ import net.minecraftforge.common.util.Constants.NBT;
 
 import org.lwjgl.opengl.GL11;
 
+import com.mojang.authlib.GameProfile;
+
 import buildcraft.BuildCraftRobotics;
 import buildcraft.api.robots.IRobotOverlayItem;
 import buildcraft.core.DefaultProps;
@@ -42,8 +44,6 @@ import buildcraft.core.lib.render.RenderUtils;
 import buildcraft.core.render.RenderLaser;
 import buildcraft.robotics.EntityRobot;
 import buildcraft.robotics.ItemRobot;
-
-import com.mojang.authlib.GameProfile;
 
 public class RenderRobot extends Render implements IItemRenderer {
 

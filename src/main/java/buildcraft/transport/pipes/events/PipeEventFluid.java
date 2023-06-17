@@ -3,9 +3,9 @@ package buildcraft.transport.pipes.events;
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.FluidStack;
 
-import buildcraft.transport.Pipe;
-
 import com.google.common.collect.Multiset;
+
+import buildcraft.transport.Pipe;
 
 public abstract class PipeEventFluid extends PipeEvent {
 

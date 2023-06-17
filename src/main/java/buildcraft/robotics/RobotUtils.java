@@ -7,15 +7,15 @@ import java.util.List;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.util.ForgeDirection;
 
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
+
 import buildcraft.api.boards.RedstoneBoardNBT;
 import buildcraft.api.boards.RedstoneBoardRegistry;
 import buildcraft.api.boards.RedstoneBoardRobotNBT;
 import buildcraft.api.robots.DockingStation;
 import buildcraft.api.robots.IDockingStationProvider;
 import buildcraft.api.transport.IPipeTile;
-
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 public final class RobotUtils {
 

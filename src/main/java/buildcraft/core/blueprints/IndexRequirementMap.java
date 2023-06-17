@@ -2,14 +2,14 @@ package buildcraft.core.blueprints;
 
 import java.util.Set;
 
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.Multimap;
+
 import buildcraft.api.blueprints.IBuilderContext;
 import buildcraft.api.blueprints.SchematicBlock;
 import buildcraft.api.core.BlockIndex;
 import buildcraft.api.core.Position;
 import buildcraft.core.builders.BuildingSlotBlock;
-
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.Multimap;
 
 public class IndexRequirementMap {
 

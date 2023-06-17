@@ -21,11 +21,10 @@ import net.minecraftforge.common.util.Constants;
 
 import org.apache.logging.log4j.Level;
 
-import buildcraft.api.core.BCLog;
-
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.ListMultimap;
 
+import buildcraft.api.core.BCLog;
 import cpw.mods.fml.common.FMLModContainer;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.ModContainer;
