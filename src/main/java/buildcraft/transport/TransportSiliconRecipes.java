@@ -26,7 +26,8 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public final class TransportSiliconRecipes {
 
-    private TransportSiliconRecipes() {}
+    private TransportSiliconRecipes() {
+    }
 
     @Optional.Method(modid = "BuildCraft|Silicon")
     public static void loadSiliconRecipes() {
@@ -67,7 +68,7 @@ public final class TransportSiliconRecipes {
         }
 
         // PIPE WIRE
-        if (Utils.isRegistered(PipeWire.item)) {
+        if (Utils.isRegistered(PipeWire.item) && !BuildCraftCore.GTNH) {
             BuildcraftRecipeRegistry.assemblyTable.addRecipe(
                     "buildcraft:redWire",
                     5000,
@@ -167,7 +168,7 @@ public final class TransportSiliconRecipes {
 
     @Optional.Method(modid = "BuildCraft|Silicon")
     private static void addGateRecipe(String materialName, int energyCost, GateDefinition.GateMaterial material,
-            ItemRedstoneChipset.Chipset chipset, PipeWire... pipeWire) {
+                                      ItemRedstoneChipset.Chipset chipset, PipeWire... pipeWire) {
         List<ItemStack> temp = new ArrayList<ItemStack>();
         temp.add(chipset.getStack());
         for (PipeWire wire : pipeWire) {
