@@ -720,66 +720,69 @@ public class BuildCraftTransport extends BuildCraftMod {
     }
 
     public void loadRecipes() {
-        if (GTNH) return;
+        if (!GTNH) {
 
-        // Add base recipe for pipe waterproof.
-        GameRegistry.addShapelessRecipe(new ItemStack(pipeWaterproof, 1), new ItemStack(Items.dye, 1, 2));
-        if (additionalWaterproofingRecipe) {
-            GameRegistry.addShapelessRecipe(new ItemStack(pipeWaterproof, 1), new ItemStack(Items.slime_ball));
-        }
-
-        // Add pipe recipes
-        for (PipeRecipe pipe : pipeRecipes) {
-            if (pipe.isShapeless) {
-                BCRegistry.INSTANCE.addShapelessRecipe(pipe.result, pipe.input);
-            } else {
-                BCRegistry.INSTANCE.addCraftingRecipe(pipe.result, pipe.input);
+            // Add base recipe for pipe waterproof.
+            GameRegistry.addShapelessRecipe(new ItemStack(pipeWaterproof, 1), new ItemStack(Items.dye, 1, 2));
+            if (additionalWaterproofingRecipe) {
+                GameRegistry.addShapelessRecipe(new ItemStack(pipeWaterproof, 1), new ItemStack(Items.slime_ball));
             }
+
+            // Add pipe recipes
+            for (PipeRecipe pipe : pipeRecipes) {
+                if (pipe.isShapeless) {
+                    BCRegistry.INSTANCE.addShapelessRecipe(pipe.result, pipe.input);
+                } else {
+                    BCRegistry.INSTANCE.addCraftingRecipe(pipe.result, pipe.input);
+                }
+            }
+
+            GameRegistry.addRecipe(new PipeColoringRecipe());
+            RecipeSorter.register(
+                    "buildcraft:pipecoloring",
+                    PipeColoringRecipe.class,
+                    RecipeSorter.Category.SHAPELESS,
+                    "after:minecraft:shapeless");
+
+            BCRegistry.INSTANCE.addCraftingRecipe(
+                    new ItemStack(filteredBufferBlock, 1),
+                    "wdw",
+                    "wcw",
+                    "wpw",
+                    'w',
+                    "plankWood",
+                    'd',
+                    BuildCraftTransport.pipeItemsDiamond,
+                    'c',
+                    "chestWood",
+                    'p',
+                    Blocks.piston);
+
+            // Facade turning helper
+            GameRegistry.addRecipe(facadeItem.new FacadeRecipe());
+            RecipeSorter.register(
+                    "facadeTurningHelper",
+                    ItemFacade.FacadeRecipe.class,
+                    RecipeSorter.Category.SHAPELESS,
+                    "");
+
+            // Pipe Plug
+            GameRegistry.addShapelessRecipe(new ItemStack(plugItem, 4), new ItemStack(pipeStructureCobblestone));
+            GameRegistry.addRecipe(
+                    new ShapedOreRecipe(
+                            new ItemStack(powerAdapterItem, 4),
+                            "scs",
+                            "sbs",
+                            "sas",
+                            's',
+                            pipeStructureCobblestone,
+                            'a',
+                            Items.redstone,
+                            'b',
+                            "gearStone",
+                            'c',
+                            "ingotGold"));
         }
-
-        GameRegistry.addRecipe(new PipeColoringRecipe());
-        RecipeSorter.register(
-                "buildcraft:pipecoloring",
-                PipeColoringRecipe.class,
-                RecipeSorter.Category.SHAPELESS,
-                "after:minecraft:shapeless");
-
-        BCRegistry.INSTANCE.addCraftingRecipe(
-                new ItemStack(filteredBufferBlock, 1),
-                "wdw",
-                "wcw",
-                "wpw",
-                'w',
-                "plankWood",
-                'd',
-                BuildCraftTransport.pipeItemsDiamond,
-                'c',
-                "chestWood",
-                'p',
-                Blocks.piston);
-
-        // Facade turning helper
-        GameRegistry.addRecipe(facadeItem.new FacadeRecipe());
-        RecipeSorter
-                .register("facadeTurningHelper", ItemFacade.FacadeRecipe.class, RecipeSorter.Category.SHAPELESS, "");
-
-        // Pipe Plug
-        GameRegistry.addShapelessRecipe(new ItemStack(plugItem, 4), new ItemStack(pipeStructureCobblestone));
-        GameRegistry.addRecipe(
-                new ShapedOreRecipe(
-                        new ItemStack(powerAdapterItem, 4),
-                        "scs",
-                        "sbs",
-                        "sas",
-                        's',
-                        pipeStructureCobblestone,
-                        'a',
-                        Items.redstone,
-                        'b',
-                        "gearStone",
-                        'c',
-                        "ingotGold"));
-
         if (Loader.isModLoaded("BuildCraft|Silicon")) {
             TransportSiliconRecipes.loadSiliconRecipes();
         } else {
