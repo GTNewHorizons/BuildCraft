@@ -35,6 +35,9 @@ public class MapManager implements Runnable {
     public void stop() {
         stop = true;
         saveAllWorlds();
+        synchronized (worldMap) {
+            worldMap.clear();
+        }
     }
 
     public MapWorld getWorld(World world) {
@@ -159,7 +162,7 @@ public class MapManager implements Runnable {
             IChunkProvider provider = ws.getChunkProvider();
             if (provider instanceof ChunkProviderServer) {
                 for (Object o : ((ChunkProviderServer) provider).func_152380_a()) {
-                    if (o != null && o instanceof Chunk) {
+                    if (o instanceof Chunk) {
                         Chunk c = (Chunk) o;
                         if (!mw.hasChunk(c.xPosition, c.zPosition)) {
                             mw.updateChunkDelayed(c, (byte) (40 + Utils.RANDOM.nextInt(20)));
