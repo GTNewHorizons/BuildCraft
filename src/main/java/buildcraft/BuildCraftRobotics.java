@@ -144,7 +144,7 @@ import cpw.mods.fml.common.event.FMLInterModComms;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartedEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
-import cpw.mods.fml.common.event.FMLServerStoppingEvent;
+import cpw.mods.fml.common.event.FMLServerStoppedEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.EntityRegistry;
@@ -609,7 +609,7 @@ public class BuildCraftRobotics extends BuildCraftMod {
     }
 
     @Mod.EventHandler
-    public void serverUnload(FMLServerStoppingEvent event) {
+    public void onServerStopped(FMLServerStoppedEvent event) {
         stopMapManager();
     }
 
