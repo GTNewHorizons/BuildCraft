@@ -11,7 +11,7 @@ import static buildcraft.core.lib.network.ChannelHandler.CLIENT_ONLY;
 import static buildcraft.core.lib.network.ChannelHandler.SERVER_ONLY;
 
 import java.io.PrintWriter;
-import java.util.LinkedList;
+import java.util.ArrayList;
 
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
@@ -284,7 +284,7 @@ public class BuildCraftTransport extends BuildCraftMod {
 
     public static PipeExtensionListener pipeExtensionListener;
 
-    private static LinkedList<PipeRecipe> pipeRecipes = new LinkedList<PipeRecipe>();
+    private static ArrayList<PipeRecipe> pipeRecipes = new ArrayList<>(500);
     private static ChannelHandler transportChannelHandler;
 
     public IIconProvider pipeIconProvider = new PipeIconProvider();
@@ -603,6 +603,7 @@ public class BuildCraftTransport extends BuildCraftMod {
 
         if (BuildCraftCore.loadDefaultRecipes) {
             loadRecipes();
+            pipeRecipes = null;
         }
 
         TransportProxy.proxy.registerRenderers();
@@ -868,7 +869,7 @@ public class BuildCraftTransport extends BuildCraftMod {
                 recipe.result = new ItemStack(res, 8, i);
                 recipe.input = new Object[] { "ABC", 'A', ingredients[0], 'B', glass, 'C', ingredients[2] };
 
-                pipeRecipes.add(recipe);
+                if (pipeRecipes != null) pipeRecipes.add(recipe);
             }
         } else if (ingredients.length == 2) {
             for (int i = 0; i < 17; i++) {
@@ -885,14 +886,14 @@ public class BuildCraftTransport extends BuildCraftMod {
                 recipe.result = new ItemStack(res, 1, i);
                 recipe.input = new Object[] { left, right };
 
-                pipeRecipes.add(recipe);
+                if (pipeRecipes != null) pipeRecipes.add(recipe);
 
                 if (ingredients[1] instanceof ItemPipe && clas != PipeStructureCobblestone.class) {
                     PipeRecipe uncraft = new PipeRecipe();
                     uncraft.isShapeless = true;
                     uncraft.input = new Object[] { recipe.result };
                     uncraft.result = (ItemStack) right;
-                    pipeRecipes.add(uncraft);
+                    if (pipeRecipes != null) pipeRecipes.add(uncraft);
                 }
             }
         }
