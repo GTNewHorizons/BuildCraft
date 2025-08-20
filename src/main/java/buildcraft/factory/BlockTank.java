@@ -12,6 +12,7 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -29,7 +30,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockTank extends BlockBuildCraft {
 
-    private static final boolean DEBUG_MODE = false;
+    private static final boolean DEBUG_MODE = false; // Change to true for readouts
     private IIcon textureStackedSide;
 
     public BlockTank() {
@@ -92,7 +93,15 @@ public class BlockTank extends BlockBuildCraft {
         if (super.onBlockActivated(world, x, y, z, player, side, hitX, hitY, hitZ)) return true;
 
         ItemStack held = player.inventory.getCurrentItem();
-        if (held == null) return false;
+
+        // Debug: empty hand → print stack summary (opt-in)
+        if (held == null) {
+            if (DEBUG_MODE) {
+                debugTankStack(world, x, y, z, player);
+                return true;
+            }
+            return false;
+        }
 
         TileEntity te = world.getTileEntity(x, y, z);
         if (!(te instanceof TileTank)) return false;
@@ -188,7 +197,7 @@ public class BlockTank extends BlockBuildCraft {
             }
         }
 
-        // Pull from cells -) tank (stack friendly)
+        // Pull from tank -) cell (stack friendly)
         if (sneaking) {
             FluidStack inCell = cont.getFluid(work);
             FluidStack stackFluid = bottom.getTankInfo(ForgeDirection.UNKNOWN)[0].fluid;
@@ -270,6 +279,41 @@ public class BlockTank extends BlockBuildCraft {
             world.markBlockForUpdate(tt.xCoord, tt.yCoord, tt.zCoord);
         }
         world.markBlockForUpdate(x, y, z);
+    }
+
+    private static void debugTankStack(World world, int x, int y, int z, EntityPlayer player) {
+        if (world.isRemote) return;
+
+        TileTank bottom = getBottomTank(world, x, y, z);
+        if (bottom == null) return;
+
+        int totalAmt = 0, totalCap = 0, tanks = 0;
+        String fluidName = "empty";
+
+        // for tank stacks
+        for (int yy = bottom.yCoord;; yy++) {
+            TileEntity te = world.getTileEntity(x, yy, z);
+            if (!(te instanceof TileTank)) break;
+            TileTank t = (TileTank) te;
+            net.minecraftforge.fluids.FluidTankInfo info = t.getTankInfo(ForgeDirection.UNKNOWN)[0];
+            if (info.fluid != null && info.fluid.amount > 0) {
+                fluidName = info.fluid.getLocalizedName();
+                totalAmt += info.fluid.amount;
+            }
+            totalCap += info.capacity;
+            tanks++;
+        }
+
+        player.addChatComponentMessage(
+                new ChatComponentText(
+                        "BC Tank stack: " + tanks
+                                + " tanks | Fluid: "
+                                + fluidName
+                                + " | Total: "
+                                + totalAmt
+                                + " / "
+                                + totalCap
+                                + " mB"));
     }
 
     @Override
