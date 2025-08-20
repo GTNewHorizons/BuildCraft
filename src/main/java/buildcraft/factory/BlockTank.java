@@ -12,7 +12,6 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -88,123 +87,189 @@ public class BlockTank extends BlockBuildCraft {
     }
 
     @Override
-    public boolean onBlockActivated(World world, int i, int j, int k, EntityPlayer entityplayer, int par6, float par7,
-            float par8, float par9) {
-        if (super.onBlockActivated(world, i, j, k, entityplayer, par6, par7, par8, par9)) {
-            return true;
-        }
+    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX,
+            float hitY, float hitZ) {
+        if (super.onBlockActivated(world, x, y, z, player, side, hitX, hitY, hitZ)) return true;
 
-        ItemStack current = entityplayer.inventory.getCurrentItem();
+        ItemStack held = player.inventory.getCurrentItem();
+        if (held == null) return false;
 
-        if (current != null) {
-            TileEntity tile = world.getTileEntity(i, j, k);
+        TileEntity te = world.getTileEntity(x, y, z);
+        if (!(te instanceof TileTank)) return false;
+        TileTank clicked = (TileTank) te;
 
-            if (tile instanceof TileTank) {
-                TileTank tank = (TileTank) tile;
-                // Handle FluidContainerRegistry
-                if (FluidContainerRegistry.isContainer(current)) {
-                    FluidStack liquid = FluidContainerRegistry.getFluidForFilledItem(current);
-                    // Handle filled containers
-                    if (liquid != null) {
-                        int qty = tank.fill(ForgeDirection.UNKNOWN, liquid, true);
+        final boolean creative = player.capabilities.isCreativeMode;
 
-                        if (qty != 0 && !BuildCraftCore.debugWorldgen && !entityplayer.capabilities.isCreativeMode) {
-                            if (current.stackSize > 1) {
-                                if (!entityplayer.inventory
-                                        .addItemStackToInventory(FluidContainerRegistry.drainFluidContainer(current))) {
-                                    entityplayer.dropPlayerItemWithRandomChoice(
-                                            FluidContainerRegistry.drainFluidContainer(current),
-                                            false);
-                                }
+        // Regular Fluid Container (FC) Contingencies (IC2 / GT / Flask / Bucket)
+        if (FluidContainerRegistry.isContainer(held)) {
+            FluidStack fromItem = FluidContainerRegistry.getFluidForFilledItem(held);
 
-                                entityplayer.inventory.setInventorySlotContents(
-                                        entityplayer.inventory.currentItem,
-                                        InvUtils.consumeItem(current));
-                            } else {
-                                entityplayer.inventory.setInventorySlotContents(
-                                        entityplayer.inventory.currentItem,
-                                        FluidContainerRegistry.drainFluidContainer(current));
-                            }
-                        }
+            // container -) tank logic
+            if (fromItem != null) {
+                int moved = clicked.fill(ForgeDirection.UNKNOWN, fromItem, true);
 
-                        return true;
-
-                        // Handle empty containers
+                if (moved > 0 && !BuildCraftCore.debugWorldgen && !creative) {
+                    if (held.stackSize > 1) {
+                        ItemStack emptied = FluidContainerRegistry.drainFluidContainer(held);
+                        addOrDrop(player, emptied);
+                        player.inventory
+                                .setInventorySlotContents(player.inventory.currentItem, InvUtils.consumeItem(held));
                     } else {
-                        FluidStack available = tank.getTankInfo(ForgeDirection.UNKNOWN)[0].fluid;
+                        player.inventory.setInventorySlotContents(
+                                player.inventory.currentItem,
+                                FluidContainerRegistry.drainFluidContainer(held));
+                    }
+                }
+                syncPlayerAndTanks(world, x, y, z, player, clicked);
+                return true;
+            }
 
-                        if (available != null) {
-                            ItemStack filled = FluidContainerRegistry.fillFluidContainer(available, current);
-
-                            liquid = FluidContainerRegistry.getFluidForFilledItem(filled);
-
-                            if (liquid != null) {
-                                if (!BuildCraftCore.debugWorldgen && !entityplayer.capabilities.isCreativeMode) {
-                                    if (current.stackSize > 1) {
-                                        if (!entityplayer.inventory.addItemStackToInventory(filled)) {
-                                            return false;
-                                        } else {
-                                            entityplayer.inventory.setInventorySlotContents(
-                                                    entityplayer.inventory.currentItem,
-                                                    InvUtils.consumeItem(current));
-                                        }
-                                    } else {
-                                        entityplayer.inventory.setInventorySlotContents(
-                                                entityplayer.inventory.currentItem,
-                                                InvUtils.consumeItem(current));
-                                        entityplayer.inventory
-                                                .setInventorySlotContents(entityplayer.inventory.currentItem, filled);
-                                    }
-                                }
-
-                                tank.drain(ForgeDirection.UNKNOWN, liquid.amount, true);
-
-                                return true;
-                            }
+            // tank -) container logic
+            FluidStack available = clicked.getTankInfo(ForgeDirection.UNKNOWN)[0].fluid;
+            if (available != null) {
+                ItemStack preview = FluidContainerRegistry.fillFluidContainer(available, held);
+                FluidStack willContain = FluidContainerRegistry.getFluidForFilledItem(preview);
+                if (willContain != null) {
+                    if (!BuildCraftCore.debugWorldgen && !creative) {
+                        if (held.stackSize > 1) {
+                            if (!player.inventory.addItemStackToInventory(preview)) return false;
+                            player.inventory
+                                    .setInventorySlotContents(player.inventory.currentItem, InvUtils.consumeItem(held));
+                        } else {
+                            player.inventory
+                                    .setInventorySlotContents(player.inventory.currentItem, InvUtils.consumeItem(held));
+                            player.inventory.setInventorySlotContents(player.inventory.currentItem, preview);
                         }
                     }
-                } else if (current.getItem() instanceof IFluidContainerItem) {
-                    if (current.stackSize != 1) {
-                        return false;
-                    }
-
-                    if (!world.isRemote) {
-                        IFluidContainerItem container = (IFluidContainerItem) current.getItem();
-                        FluidStack liquid = container.getFluid(current);
-                        FluidStack tankLiquid = tank.getTankInfo(ForgeDirection.UNKNOWN)[0].fluid;
-                        boolean mustDrain = liquid == null || liquid.amount == 0;
-                        boolean mustFill = tankLiquid == null || tankLiquid.amount == 0;
-                        if (mustDrain && mustFill) {
-                            // Both are empty, do nothing
-                        } else if (mustDrain || !entityplayer.isSneaking()) {
-                            liquid = tank.drain(ForgeDirection.UNKNOWN, 1000, false);
-                            int qtyToFill = container.fill(current, liquid, true);
-                            tank.drain(ForgeDirection.UNKNOWN, qtyToFill, true);
-                        } else if (mustFill || entityplayer.isSneaking()) {
-                            if (liquid.amount > 0) {
-                                int qty = tank.fill(ForgeDirection.UNKNOWN, liquid, false);
-                                tank.fill(ForgeDirection.UNKNOWN, container.drain(current, qty, true), true);
-                            }
-                        }
-                    }
-
+                    clicked.drain(ForgeDirection.UNKNOWN, willContain.amount, true);
+                    syncPlayerAndTanks(world, x, y, z, player, clicked);
                     return true;
                 }
             }
-        } else if (DEBUG_MODE) {
-            TileEntity tile = world.getTileEntity(i, j, k);
+            return false;
+        }
 
-            if (tile instanceof TileTank) {
-                TileTank tank = (TileTank) tile;
-                if (tank.getTankInfo(ForgeDirection.UNKNOWN)[0].fluid != null) {
-                    entityplayer.addChatComponentMessage(
-                            new ChatComponentText(
-                                    "Amount: " + tank.getTankInfo(ForgeDirection.UNKNOWN)[0].fluid.amount + " mB"));
+        // IFluidContainerItem (IFCI) Logic (Large Fluid Cells)
+        if (!(held.getItem() instanceof IFluidContainerItem)) return false;
+        if (world.isRemote) return true; // server does transfers
+
+        final IFluidContainerItem cont = (IFluidContainerItem) held.getItem();
+        final boolean sneaking = player.isSneaking();
+        final int INF_MB = Integer.MAX_VALUE / 4;
+
+        // Support for stacked cells
+        ItemStack work = held.copy();
+        work.stackSize = 1;
+
+        // prioritizes the bottom for tank stacks
+        TileTank bottom = getBottomTank(world, x, y, z);
+        if (bottom == null) return true;
+
+        int moved = 0;
+
+        // Push from cell -) tank
+        if (!sneaking) {
+            FluidStack inCell = cont.getFluid(work);
+            if (inCell != null && inCell.amount > 0) {
+                int canInto = bottom.fill(ForgeDirection.UNKNOWN, inCell, false);
+                if (canInto > 0) {
+                    FluidStack simDrain = cont.drain(work, canInto, false);
+                    if (simDrain != null && simDrain.amount > 0) {
+                        if (creative) {
+                            moved = bottom.fill(ForgeDirection.UNKNOWN, simDrain, true); // tank changes, item stays
+                        } else {
+                            FluidStack drained = cont.drain(work, simDrain.amount, true);
+                            if (drained != null && drained.amount > 0) {
+                                moved = bottom.fill(ForgeDirection.UNKNOWN, drained, true);
+                            }
+                        }
+                    }
                 }
             }
         }
 
-        return false;
+        // Pull from cells -) tank (stack friendly)
+        if (sneaking) {
+            FluidStack inCell = cont.getFluid(work);
+            FluidStack stackFluid = bottom.getTankInfo(ForgeDirection.UNKNOWN)[0].fluid;
+            net.minecraftforge.fluids.Fluid target = (inCell != null && inCell.amount > 0) ? inCell.getFluid()
+                    : (stackFluid != null ? stackFluid.getFluid() : null);
+
+            if (target != null) {
+                int accept = cont.fill(work, new FluidStack(target, INF_MB), false);
+                if (accept > 0) {
+                    // tank stack protection consistency
+                    FluidStack drained = bottom.drain(ForgeDirection.UNKNOWN, new FluidStack(target, accept), true);
+                    if (drained != null && drained.amount > 0) {
+                        if (creative) {
+                            moved = drained.amount; // tank changed, item remains
+                        } else {
+                            int filled = cont.fill(work, drained, true);
+                            moved = filled;
+
+                            // remainder logic
+                            if (filled < drained.amount) {
+                                FluidStack rem = drained.copy();
+                                rem.amount = drained.amount - filled;
+                                bottom.fill(ForgeDirection.UNKNOWN, rem, true);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        if (moved > 0) {
+            final int slot = player.inventory.currentItem;
+
+            if (creative) {
+                player.inventory.setInventorySlotContents(slot, held);
+                syncPlayerAndTanks(world, x, y, z, player, clicked, bottom);
+                return true;
+            }
+
+            if (held.stackSize > 1) {
+                held.stackSize -= 1;
+                player.inventory.setInventorySlotContents(slot, held);
+                addOrDrop(player, work);
+            } else {
+                player.inventory.setInventorySlotContents(slot, work);
+            }
+
+            syncPlayerAndTanks(world, x, y, z, player, clicked, bottom);
+            return true;
+        }
+        return true;
+    }
+
+    private static TileTank getBottomTank(World world, int x, int y, int z) {
+        int boty = y;
+        while (true) {
+            TileEntity below = world.getTileEntity(x, boty - 1, z);
+            if (below instanceof TileTank) boty--;
+            else break;
+        }
+        TileEntity te = world.getTileEntity(x, boty, z);
+        return (te instanceof TileTank) ? (TileTank) te : null;
+    }
+
+    private static void addOrDrop(EntityPlayer player, ItemStack stack) {
+        if (stack == null) return;
+        if (!player.inventory.addItemStackToInventory(stack)) {
+            player.dropPlayerItemWithRandomChoice(stack, false);
+        }
+    }
+
+    private static void syncPlayerAndTanks(World world, int x, int y, int z, EntityPlayer player, TileTank... tanks) {
+        player.inventory.markDirty();
+        if (player.openContainer != null) player.openContainer.detectAndSendChanges();
+        if (player.inventoryContainer != null) player.inventoryContainer.detectAndSendChanges();
+        for (TileTank tt : tanks) {
+            if (tt == null) continue;
+            tt.markDirty();
+            world.markBlockForUpdate(tt.xCoord, tt.yCoord, tt.zCoord);
+        }
+        world.markBlockForUpdate(x, y, z);
     }
 
     @Override
