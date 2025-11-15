@@ -113,27 +113,24 @@ public class BlockTank extends BlockBuildCraft {
         if (FluidContainerRegistry.isContainer(held)) {
             FluidStack fromItem = FluidContainerRegistry.getFluidForFilledItem(held);
 
-            // container -) tank logic
+            // container -> tank logic
             if (fromItem != null) {
                 int moved = clicked.fill(ForgeDirection.UNKNOWN, fromItem, true);
 
                 if (moved > 0 && !BuildCraftCore.debugWorldgen && !creative) {
+                    ItemStack emptied = FluidContainerRegistry.drainFluidContainer(held);
                     if (held.stackSize > 1) {
-                        ItemStack emptied = FluidContainerRegistry.drainFluidContainer(held);
                         addOrDrop(player, emptied);
-                        player.inventory
-                                .setInventorySlotContents(player.inventory.currentItem, InvUtils.consumeItem(held));
+                        held.splitStack(1);
                     } else {
-                        player.inventory.setInventorySlotContents(
-                                player.inventory.currentItem,
-                                FluidContainerRegistry.drainFluidContainer(held));
+                        player.inventory.setInventorySlotContents(player.inventory.currentItem, emptied);
                     }
                 }
                 syncPlayerAndTanks(world, x, y, z, player, clicked);
                 return true;
             }
 
-            // tank -) container logic
+            // tank -> container logic
             FluidStack available = clicked.getTankInfo(ForgeDirection.UNKNOWN)[0].fluid;
             if (available != null) {
                 ItemStack preview = FluidContainerRegistry.fillFluidContainer(available, held);
@@ -162,7 +159,7 @@ public class BlockTank extends BlockBuildCraft {
         if (!(held.getItem() instanceof IFluidContainerItem)) return false;
         if (world.isRemote) return true; // server does transfers
 
-        final IFluidContainerItem cont = (IFluidContainerItem) held.getItem();
+        final IFluidContainerItem fluidContainer = (IFluidContainerItem) held.getItem();
         final boolean sneaking = player.isSneaking();
         final int INF_MB = Integer.MAX_VALUE / 4;
 
@@ -171,41 +168,34 @@ public class BlockTank extends BlockBuildCraft {
         work.stackSize = 1;
 
         // prioritizes the bottom for tank stacks
-        TileTank bottom = getBottomTank(world, x, y, z);
+        TileTank bottom = clicked.getBottomTank();
         if (bottom == null) return true;
 
         int moved = 0;
 
-        // Push from cell -) tank
+        // Push from cell -> tank
         if (!sneaking) {
-            FluidStack inCell = cont.getFluid(work);
-            if (inCell != null && inCell.amount > 0) {
-                int canInto = bottom.fill(ForgeDirection.UNKNOWN, inCell, false);
-                if (canInto > 0) {
-                    FluidStack simDrain = cont.drain(work, canInto, false);
-                    if (simDrain != null && simDrain.amount > 0) {
-                        if (creative) {
-                            moved = bottom.fill(ForgeDirection.UNKNOWN, simDrain, true); // tank changes, item stays
-                        } else {
-                            FluidStack drained = cont.drain(work, simDrain.amount, true);
-                            if (drained != null && drained.amount > 0) {
-                                moved = bottom.fill(ForgeDirection.UNKNOWN, drained, true);
-                            }
-                        }
-                    }
+            FluidStack containerFluid = fluidContainer.getFluid(work);
+            if (containerFluid != null && containerFluid.amount > 0) {
+                // fill the tank; this returns how much it actually accepted
+                moved = bottom.fill(ForgeDirection.UNKNOWN, containerFluid, true);
+
+                // in creative mode we do NOT drain the cell; it stays full
+                if (moved > 0 && !creative) {
+                    fluidContainer.drain(work, moved, true);
                 }
             }
         }
 
-        // Pull from tank -) cell (stack friendly)
+        // Pull from tank -> cell (stack friendly)
         if (sneaking) {
-            FluidStack inCell = cont.getFluid(work);
+            FluidStack inCell = fluidContainer.getFluid(work);
             FluidStack stackFluid = bottom.getTankInfo(ForgeDirection.UNKNOWN)[0].fluid;
             net.minecraftforge.fluids.Fluid target = (inCell != null && inCell.amount > 0) ? inCell.getFluid()
                     : (stackFluid != null ? stackFluid.getFluid() : null);
 
             if (target != null) {
-                int accept = cont.fill(work, new FluidStack(target, INF_MB), false);
+                int accept = fluidContainer.fill(work, new FluidStack(target, INF_MB), false);
                 if (accept > 0) {
                     // tank stack protection consistency
                     FluidStack drained = bottom.drain(ForgeDirection.UNKNOWN, new FluidStack(target, accept), true);
@@ -213,7 +203,7 @@ public class BlockTank extends BlockBuildCraft {
                         if (creative) {
                             moved = drained.amount; // tank changed, item remains
                         } else {
-                            int filled = cont.fill(work, drained, true);
+                            int filled = fluidContainer.fill(work, drained, true);
                             moved = filled;
 
                             // remainder logic
@@ -232,14 +222,12 @@ public class BlockTank extends BlockBuildCraft {
             final int slot = player.inventory.currentItem;
 
             if (creative) {
-                player.inventory.setInventorySlotContents(slot, held);
                 syncPlayerAndTanks(world, x, y, z, player, clicked, bottom);
                 return true;
             }
 
             if (held.stackSize > 1) {
                 held.stackSize -= 1;
-                player.inventory.setInventorySlotContents(slot, held);
                 addOrDrop(player, work);
             } else {
                 player.inventory.setInventorySlotContents(slot, work);
@@ -249,17 +237,6 @@ public class BlockTank extends BlockBuildCraft {
             return true;
         }
         return true;
-    }
-
-    private static TileTank getBottomTank(World world, int x, int y, int z) {
-        int boty = y;
-        while (true) {
-            TileEntity below = world.getTileEntity(x, boty - 1, z);
-            if (below instanceof TileTank) boty--;
-            else break;
-        }
-        TileEntity te = world.getTileEntity(x, boty, z);
-        return (te instanceof TileTank) ? (TileTank) te : null;
     }
 
     private static void addOrDrop(EntityPlayer player, ItemStack stack) {
@@ -284,7 +261,8 @@ public class BlockTank extends BlockBuildCraft {
     private static void debugTankStack(World world, int x, int y, int z, EntityPlayer player) {
         if (world.isRemote) return;
 
-        TileTank bottom = getBottomTank(world, x, y, z);
+        TileTank clicked = (TileTank) world.getTileEntity(x, y, z);
+        TileTank bottom = clicked.getBottomTank();
         if (bottom == null) return;
 
         int totalAmt = 0, totalCap = 0, tanks = 0;
