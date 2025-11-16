@@ -121,7 +121,7 @@ public class BlockTank extends BlockBuildCraft {
                     ItemStack emptied = FluidContainerRegistry.drainFluidContainer(held);
                     if (held.stackSize > 1) {
                         addOrDrop(player, emptied);
-                        held.splitStack(1);
+                        held.stackSize -= 1;
                     } else {
                         player.inventory.setInventorySlotContents(player.inventory.currentItem, emptied);
                     }
@@ -142,8 +142,6 @@ public class BlockTank extends BlockBuildCraft {
                             player.inventory
                                     .setInventorySlotContents(player.inventory.currentItem, InvUtils.consumeItem(held));
                         } else {
-                            player.inventory
-                                    .setInventorySlotContents(player.inventory.currentItem, InvUtils.consumeItem(held));
                             player.inventory.setInventorySlotContents(player.inventory.currentItem, preview);
                         }
                     }
@@ -161,7 +159,6 @@ public class BlockTank extends BlockBuildCraft {
 
         final IFluidContainerItem fluidContainer = (IFluidContainerItem) held.getItem();
         final boolean sneaking = player.isSneaking();
-        final int INF_MB = Integer.MAX_VALUE / 4;
 
         // Support for stacked cells
         ItemStack work = held.copy();
@@ -191,27 +188,20 @@ public class BlockTank extends BlockBuildCraft {
         if (sneaking) {
             FluidStack inCell = fluidContainer.getFluid(work);
             FluidStack stackFluid = bottom.getTankInfo(ForgeDirection.UNKNOWN)[0].fluid;
-            net.minecraftforge.fluids.Fluid target = (inCell != null && inCell.amount > 0) ? inCell.getFluid()
-                    : (stackFluid != null ? stackFluid.getFluid() : null);
+            FluidStack target = (inCell != null && inCell.amount > 0) ? inCell : stackFluid;
 
-            if (target != null) {
-                int accept = fluidContainer.fill(work, new FluidStack(target, INF_MB), false);
+            if (target != null && target.getFluid() != null) {
+                int accept = fluidContainer
+                        .fill(work, new FluidStack(target.getFluid(), fluidContainer.getCapacity(work)), false);
                 if (accept > 0) {
                     // tank stack protection consistency
-                    FluidStack drained = bottom.drain(ForgeDirection.UNKNOWN, new FluidStack(target, accept), true);
+                    FluidStack drained = bottom
+                            .drain(ForgeDirection.UNKNOWN, new FluidStack(target.getFluid(), accept), true);
                     if (drained != null && drained.amount > 0) {
                         if (creative) {
                             moved = drained.amount; // tank changed, item remains
                         } else {
-                            int filled = fluidContainer.fill(work, drained, true);
-                            moved = filled;
-
-                            // remainder logic
-                            if (filled < drained.amount) {
-                                FluidStack rem = drained.copy();
-                                rem.amount = drained.amount - filled;
-                                bottom.fill(ForgeDirection.UNKNOWN, rem, true);
-                            }
+                            moved = fluidContainer.fill(work, drained, true);
                         }
                     }
                 }
@@ -219,7 +209,6 @@ public class BlockTank extends BlockBuildCraft {
         }
 
         if (moved > 0) {
-            final int slot = player.inventory.currentItem;
 
             if (creative) {
                 syncPlayerAndTanks(world, x, y, z, player, clicked, bottom);
@@ -230,11 +219,11 @@ public class BlockTank extends BlockBuildCraft {
                 held.stackSize -= 1;
                 addOrDrop(player, work);
             } else {
+                int slot = player.inventory.currentItem;
                 player.inventory.setInventorySlotContents(slot, work);
             }
 
             syncPlayerAndTanks(world, x, y, z, player, clicked, bottom);
-            return true;
         }
         return true;
     }
