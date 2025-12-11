@@ -687,7 +687,6 @@ public class BuildCraftCore extends BuildCraftMod {
             }
         }
 
-        MinecraftForge.EVENT_BUS.register(ListOreDictionaryCache.INSTANCE);
         for (String s : OreDictionary.getOreNames()) {
             ListOreDictionaryCache.INSTANCE.registerName(s);
         }
