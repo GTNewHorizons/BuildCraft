@@ -28,7 +28,7 @@ public class GuiFilteredBuffer extends GuiContainer {
 
         this.playerInventory = playerInventory;
         this.filteredBuffer = filteredBuffer;
-        xSize = 175;
+        xSize = 176;
         ySize = 169;
     }
 

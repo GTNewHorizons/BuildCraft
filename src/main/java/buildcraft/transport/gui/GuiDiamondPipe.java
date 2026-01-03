@@ -34,15 +34,16 @@ public class GuiDiamondPipe extends GuiBuildCraft {
         super(new ContainerDiamondPipe(playerInventory, pipe), pipe.getFilters(), TEXTURE);
         this.playerInventory = playerInventory;
         this.filterInventory = pipe.getFilters();
-        xSize = 175;
+        xSize = 176;
         ySize = 225;
     }
 
     @Override
     protected void drawGuiContainerForegroundLayer(int par1, int par2) {
+        String title = StringUtils.localize(filterInventory.getInventoryName());
         fontRendererObj.drawString(
-                filterInventory.getInventoryName(),
-                getCenteredOffset(filterInventory.getInventoryName()),
+                title,
+                getCenteredOffset(title),
                 6,
                 0x404040);
         fontRendererObj.drawString(StringUtils.localize("gui.inventory"), 8, ySize - 97, 0x404040);
