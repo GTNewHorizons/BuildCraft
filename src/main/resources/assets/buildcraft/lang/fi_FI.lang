@@ -88,3 +88,4 @@ tile.refineryBlock.name=Jalostamo
 tile.spring.oil.name=Öljylähde
 tile.spring.water.name=Vesilähde
 tile.tankBlock.name=Tankki
+gui.tile.blockHopper.name.title=Kouru

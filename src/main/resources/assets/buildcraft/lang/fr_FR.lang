@@ -448,6 +448,7 @@ gui.tile.programmingTableBlock.name.title=Table de programmation
 gui.tile.stampingTableBlock.name.title=Table d'étiquetage
 gui.tile.filteredBufferBlock.name.title=Tampon filtreur
 gui.tile.refineryBlock.name.title=Raffinerie
+gui.tile.blockHopper.name.title=Trémie
 
 tile.architect.rotate=Rotate: Activé
 tile.architect.norotate=Rotate: Desactivé

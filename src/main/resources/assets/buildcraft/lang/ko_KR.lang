@@ -481,6 +481,7 @@ gui.tile.programmingTableBlock.name.title=프로그레밍 테이블
 gui.tile.stampingTableBlock.name.title=Stamping Table
 gui.tile.filteredBufferBlock.name.title=필터 버퍼
 gui.tile.refineryBlock.name.title=정제기
+gui.tile.blockHopper.name.title=깔때기
 
 tile.architect.rotate=회전: On
 tile.architect.norotate=회전: Off

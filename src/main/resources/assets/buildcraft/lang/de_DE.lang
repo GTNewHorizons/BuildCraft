@@ -454,6 +454,7 @@ gui.tile.programmingTableBlock.name.title=Programmiertisch
 gui.tile.stampingTableBlock.name.title=Stanztisch
 gui.tile.filteredBufferBlock.name.title=Gefilterter Puffer
 gui.tile.refineryBlock.name.title=Raffinerie
+gui.tile.blockHopper.name.title=Schütte
 
 tile.architect.rotate=Rotieren: An
 tile.architect.norotate=Rotieren: Aus

@@ -302,6 +302,7 @@ tile.zonePlan.name=Délimiteur de zone
 
 gui.tile.filteredBufferBlock.name.title=Tampon filtreur
 gui.tile.refineryBlock.name.title=Raffinerie
+gui.tile.blockHopper.name.title=Trémie
 gui.tile.autoWorkbenchBlock.name.title=Établi automatique
 gui.tile.engineIron.name.title=Moteur à combustion
 gui.tile.engineStone.name.title=Moteur Stirling

@@ -450,6 +450,7 @@ gui.tile.programmingTableBlock.name.title=Proglama Masası
 gui.tile.stampingTableBlock.name.title=Stamping Masası
 gui.tile.filteredBufferBlock.name.title=Filtreli Tampon
 gui.tile.refineryBlock.name.title=Rafineri
+gui.tile.blockHopper.name.title=Huni
 
 tile.architect.rotate=Döndür: Açık
 tile.architect.norotate=Döndür: Kapalı

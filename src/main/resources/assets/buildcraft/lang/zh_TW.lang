@@ -293,6 +293,7 @@ tile.zonePlan.name=區域規劃機
 
 gui.tile.filteredBufferBlock.name.title=過濾緩衝機
 gui.tile.refineryBlock.name.title=煉油機
+gui.tile.blockHopper.name.title=BuildCraft漏斗
 gui.tile.autoWorkbenchBlock.name.title=自動工作檯
 gui.tile.engineIron.name.title=內燃式引擎
 gui.tile.engineStone.name.title=史特林引擎

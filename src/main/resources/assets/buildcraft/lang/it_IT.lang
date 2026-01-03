@@ -403,6 +403,7 @@ gui.tile.programmingTableBlock.name.title=Tavolo di programmazione
 gui.tile.stampingTableBlock.name.title=Tavolo di timbratura
 gui.tile.filteredBufferBlock.name.title=Buffer filtrante
 gui.tile.refineryBlock.name.title=Raffinatore
+gui.tile.blockHopper.name.title=Scivolo
 
 tile.architect.rotate=Rotazione: Si
 tile.architect.norotate=Rotazione: No

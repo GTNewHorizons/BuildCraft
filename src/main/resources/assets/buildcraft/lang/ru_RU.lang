@@ -450,6 +450,7 @@ gui.tile.programmingTableBlock.name.title=Стол программирован�
 gui.tile.stampingTableBlock.name.title=Стол штамповки
 gui.tile.filteredBufferBlock.name.title=Фильтр
 gui.tile.refineryBlock.name.title=Нефтеперегонная вышка
+gui.tile.blockHopper.name.title=Воронка
 
 tile.architect.rotate=Вращение: Вкл.
 tile.architect.norotate=Вращение: Откл.

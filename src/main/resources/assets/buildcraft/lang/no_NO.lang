@@ -403,6 +403,7 @@ gui.tile.programmingTableBlock.name.title=Programming Table
 gui.tile.stampingTableBlock.name.title=Stamping Table
 gui.tile.filteredBufferBlock.name.title=Filtered Buffer
 gui.tile.refineryBlock.name.title=Raffineri
+gui.tile.blockHopper.name.title=Trakt
 
 tile.architect.rotate=Rotate: On
 tile.architect.norotate=Rotate: Off

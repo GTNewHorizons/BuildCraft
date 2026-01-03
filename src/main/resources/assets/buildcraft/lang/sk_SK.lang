@@ -446,6 +446,7 @@ gui.tile.programmingTableBlock.name.title=Programming Table
 gui.tile.stampingTableBlock.name.title=Pečiatkovací stôl
 gui.tile.filteredBufferBlock.name.title=Zosilňovač
 gui.tile.refineryBlock.name.title=Rafinéria
+gui.tile.blockHopper.name.title=Násypník
 
 tile.architect.rotate=Otočiť: ZAP
 tile.architect.norotate=Otočiť: VYP

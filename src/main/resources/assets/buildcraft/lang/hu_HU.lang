@@ -403,6 +403,7 @@ gui.tile.programmingTableBlock.name.title=Programozó asztal
 gui.tile.stampingTableBlock.name.title=Bélyegző asztal
 gui.tile.filteredBufferBlock.name.title=Szűrt buffer
 gui.tile.refineryBlock.name.title=Olajfinomító
+gui.tile.blockHopper.name.title=Adagoló
 
 tile.architect.rotate=Forgatás: bekapcsolva
 tile.architect.norotate=Forgatás: kikapcsolva
