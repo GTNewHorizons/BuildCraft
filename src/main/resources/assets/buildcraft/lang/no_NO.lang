@@ -401,6 +401,7 @@ gui.tile.integrationTableBlock.name.title=Integration Table
 gui.tile.chargingTableBlock.name.title=Charging Table
 gui.tile.programmingTableBlock.name.title=Programming Table
 gui.tile.stampingTableBlock.name.title=Stamping Table
+gui.tile.filteredBufferBlock.name.title=Filtered Buffer
 
 tile.architect.rotate=Rotate: On
 tile.architect.norotate=Rotate: Off

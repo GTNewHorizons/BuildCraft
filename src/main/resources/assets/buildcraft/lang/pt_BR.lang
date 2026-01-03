@@ -283,6 +283,7 @@ tile.spring.water.name=Fonte de Água
 tile.tankBlock.name=Tanque
 tile.zonePlan.name=Planejador de Setores
 
+gui.tile.filteredBufferBlock.name.title=Filtro de Buffer
 gui.tile.autoWorkbenchBlock.name.title=Mesa de Trabalho Automática
 gui.tile.engineIron.name.title=Motor de Combustão
 gui.tile.engineStone.name.title=Motor a Vapor

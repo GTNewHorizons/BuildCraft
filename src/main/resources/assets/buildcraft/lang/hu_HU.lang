@@ -401,6 +401,7 @@ gui.tile.integrationTableBlock.name.title=Integráló asztal
 gui.tile.chargingTableBlock.name.title=Töltő asztal
 gui.tile.programmingTableBlock.name.title=Programozó asztal
 gui.tile.stampingTableBlock.name.title=Bélyegző asztal
+gui.tile.filteredBufferBlock.name.title=Szűrt buffer
 
 tile.architect.rotate=Forgatás: bekapcsolva
 tile.architect.norotate=Forgatás: kikapcsolva

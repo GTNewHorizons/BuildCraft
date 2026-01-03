@@ -303,6 +303,7 @@ tile.spring.water.name=湧き水の源
 tile.tankBlock.name=タンク
 tile.zonePlan.name=範囲指定機
 
+gui.tile.filteredBufferBlock.name.title=選別緩衝器
 gui.tile.autoWorkbenchBlock.name.title=自動作業台
 gui.tile.engineIron.name.title=内燃エンジン
 gui.tile.engineStone.name.title=スターリングエンジン

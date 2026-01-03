@@ -242,6 +242,7 @@ tile.spring.oil.name=Żródło ropy
 tile.tankBlock.name=Zbiornik
 tile.zonePlan.name=Planer strefy
 
+gui.tile.filteredBufferBlock.name.title=Filtrowany bufor
 gui.tile.autoWorkbenchBlock.name.title=Automatyczny stół rzemieślniczy
 gui.tile.engineIron.name.title=Silnik spalinowy
 gui.tile.engineStone.name.title=Silnik Stirlinga

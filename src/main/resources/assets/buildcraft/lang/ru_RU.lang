@@ -448,6 +448,7 @@ gui.tile.integrationTableBlock.name.title=Стол интеграции
 gui.tile.chargingTableBlock.name.title=Стол подзарядки
 gui.tile.programmingTableBlock.name.title=Стол программирования
 gui.tile.stampingTableBlock.name.title=Стол штамповки
+gui.tile.filteredBufferBlock.name.title=Фильтр
 
 tile.architect.rotate=Вращение: Вкл.
 tile.architect.norotate=Вращение: Откл.

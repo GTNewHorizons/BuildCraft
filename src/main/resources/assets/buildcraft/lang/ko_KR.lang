@@ -479,6 +479,7 @@ gui.tile.integrationTableBlock.name.title=Integration Table
 gui.tile.chargingTableBlock.name.title=Charging Table
 gui.tile.programmingTableBlock.name.title=프로그레밍 테이블
 gui.tile.stampingTableBlock.name.title=Stamping Table
+gui.tile.filteredBufferBlock.name.title=필터 버퍼
 
 tile.architect.rotate=회전: On
 tile.architect.norotate=회전: Off

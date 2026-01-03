@@ -452,6 +452,7 @@ gui.tile.integrationTableBlock.name.title=Integrationstisch
 gui.tile.chargingTableBlock.name.title=Ladetisch
 gui.tile.programmingTableBlock.name.title=Programmiertisch
 gui.tile.stampingTableBlock.name.title=Stanztisch
+gui.tile.filteredBufferBlock.name.title=Gefilterter Puffer
 
 tile.architect.rotate=Rotieren: An
 tile.architect.norotate=Rotieren: Aus

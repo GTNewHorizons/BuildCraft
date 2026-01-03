@@ -444,6 +444,7 @@ gui.tile.integrationTableBlock.name.title=Kombinovací stôl
 gui.tile.chargingTableBlock.name.title=Nabíjací stôl
 gui.tile.programmingTableBlock.name.title=Programming Table
 gui.tile.stampingTableBlock.name.title=Pečiatkovací stôl
+gui.tile.filteredBufferBlock.name.title=Zosilňovač
 
 tile.architect.rotate=Otočiť: ZAP
 tile.architect.norotate=Otočiť: VYP

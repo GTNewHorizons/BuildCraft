@@ -291,6 +291,7 @@ tile.spring.water.name=水泉源
 tile.tankBlock.name=流體容器
 tile.zonePlan.name=區域規劃機
 
+gui.tile.filteredBufferBlock.name.title=過濾緩衝機
 gui.tile.autoWorkbenchBlock.name.title=自動工作檯
 gui.tile.engineIron.name.title=內燃式引擎
 gui.tile.engineStone.name.title=史特林引擎

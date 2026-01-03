@@ -300,6 +300,7 @@ tile.spring.water.name=Source d'eau
 tile.tankBlock.name=Tank
 tile.zonePlan.name=Délimiteur de zone
 
+gui.tile.filteredBufferBlock.name.title=Tampon filtreur
 gui.tile.autoWorkbenchBlock.name.title=Établi automatique
 gui.tile.engineIron.name.title=Moteur à combustion
 gui.tile.engineStone.name.title=Moteur Stirling
@@ -312,7 +313,6 @@ gui.tile.assemblyTableBlock.name.title=Table d'assemblage
 gui.tile.assemblyWorkbenchBlock.name.title=Établi avancé
 gui.tile.integrationTableBlock.name.title=Table d'intégration
 gui.tile.chargingTableBlock.name.title=Table de rechargement
-
 tile.blockRedPlasma.name=Plasma rouge
 tile.buildToolBlock.name=Bloc destructeur
 tile.pipeBlock.name=Tuyau
