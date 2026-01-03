@@ -430,6 +430,22 @@ tile.stampingTableBlock.name=Pečiatkovací stôl
 tile.tankBlock.name=Nádrž
 tile.zonePlan.name=Plánovač povrchu
 
+gui.tile.autoWorkbenchBlock.name.title=Auto-vyrábací stôl
+gui.tile.engineIron.name.title=Spaľovací motor
+gui.tile.engineStone.name.title=Parný motor
+gui.tile.fillerBlock.name.title=Vyplňovač
+gui.tile.libraryBlock.name.title=Knižnica schém
+gui.tile.zonePlan.name.title=Plánovač povrchu
+gui.tile.builderBlock.name.title=Stavač
+
+gui.tile.assemblyTableBlock.name.title=Skladací stôl
+gui.tile.assemblyWorkbenchBlock.name.title=Pokročilá výrobňa
+gui.tile.integrationTableBlock.name.title=Kombinovací stôl
+gui.tile.chargingTableBlock.name.title=Nabíjací stôl
+gui.tile.programmingTableBlock.name.title=Programming Table
+gui.tile.stampingTableBlock.name.title=Pečiatkovací stôl
+
+
 tile.architect.rotate=Otočiť: ZAP
 tile.architect.norotate=Otočiť: VYP
 tile.architect.allblocks=Kocky: Všetky

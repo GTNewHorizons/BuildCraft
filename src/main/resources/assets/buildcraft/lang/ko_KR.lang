@@ -465,6 +465,22 @@ tile.stampingTableBlock.name=Stamping Table
 tile.tankBlock.name=탱크
 tile.zonePlan.name=지역 플래너
 
+gui.tile.autoWorkbenchBlock.name.title=자동 작업대
+gui.tile.engineIron.name.title=연소 엔진
+gui.tile.engineStone.name.title=스털링 엔진
+gui.tile.fillerBlock.name.title=필러
+gui.tile.libraryBlock.name.title=설계도 저장기
+gui.tile.zonePlan.name.title=지역 플래너
+gui.tile.builderBlock.name.title=건설기
+
+gui.tile.assemblyTableBlock.name.title=조립 테이블
+gui.tile.assemblyWorkbenchBlock.name.title=고급 조립 테이블
+gui.tile.integrationTableBlock.name.title=Integration Table
+gui.tile.chargingTableBlock.name.title=Charging Table
+gui.tile.programmingTableBlock.name.title=프로그레밍 테이블
+gui.tile.stampingTableBlock.name.title=Stamping Table
+
+
 tile.architect.rotate=회전: On
 tile.architect.norotate=회전: Off
 tile.architect.allowCreative=Mode: Creative
