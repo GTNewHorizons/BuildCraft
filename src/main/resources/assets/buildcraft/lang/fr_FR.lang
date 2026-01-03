@@ -447,6 +447,7 @@ gui.tile.chargingTableBlock.name.title=Table de rechargement
 gui.tile.programmingTableBlock.name.title=Table de programmation
 gui.tile.stampingTableBlock.name.title=Table d'étiquetage
 gui.tile.filteredBufferBlock.name.title=Tampon filtreur
+gui.tile.refineryBlock.name.title=Raffinerie
 
 tile.architect.rotate=Rotate: Activé
 tile.architect.norotate=Rotate: Desactivé

@@ -304,6 +304,7 @@ tile.tankBlock.name=タンク
 tile.zonePlan.name=範囲指定機
 
 gui.tile.filteredBufferBlock.name.title=選別緩衝器
+gui.tile.refineryBlock.name.title=精製機
 gui.tile.autoWorkbenchBlock.name.title=自動作業台
 gui.tile.engineIron.name.title=内燃エンジン
 gui.tile.engineStone.name.title=スターリングエンジン
@@ -311,7 +312,6 @@ gui.tile.fillerBlock.name.title=簡易建築機
 gui.tile.libraryBlock.name.title=青写真ライブラリ
 gui.tile.zonePlan.name.title=範囲指定機
 gui.tile.builderBlock.name.title=建築機
-
 gui.tile.assemblyTableBlock.name.title=レーザー加工台
 gui.tile.assemblyWorkbenchBlock.name.title=レーザー作業台
 gui.tile.integrationTableBlock.name.title=レーザー合成台

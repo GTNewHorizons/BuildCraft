@@ -301,6 +301,7 @@ tile.tankBlock.name=Tank
 tile.zonePlan.name=Délimiteur de zone
 
 gui.tile.filteredBufferBlock.name.title=Tampon filtreur
+gui.tile.refineryBlock.name.title=Raffinerie
 gui.tile.autoWorkbenchBlock.name.title=Établi automatique
 gui.tile.engineIron.name.title=Moteur à combustion
 gui.tile.engineStone.name.title=Moteur Stirling
@@ -308,7 +309,6 @@ gui.tile.fillerBlock.name.title=Remplisseur
 gui.tile.libraryBlock.name.title=Bibliothèque à blueprints
 gui.tile.zonePlan.name.title=Délimiteur de zone
 gui.tile.builderBlock.name.title=Constructeur
-
 gui.tile.assemblyTableBlock.name.title=Table d'assemblage
 gui.tile.assemblyWorkbenchBlock.name.title=Établi avancé
 gui.tile.integrationTableBlock.name.title=Table d'intégration

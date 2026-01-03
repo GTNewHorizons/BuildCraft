@@ -29,7 +29,7 @@ public class GuiRefinery extends GuiAdvancedInterface {
     public GuiRefinery(InventoryPlayer inventory, TileRefinery refinery) {
         super(new ContainerRefinery(inventory, refinery), null, TEXTURE);
 
-        xSize = 175;
+        xSize = 176;
         ySize = 207;
 
         this.container = (ContainerRefinery) this.inventorySlots;
@@ -41,7 +41,7 @@ public class GuiRefinery extends GuiAdvancedInterface {
 
     @Override
     protected void drawGuiContainerForegroundLayer(int par1, int par2) {
-        String title = StringUtils.localize("tile.refineryBlock.name");
+        String title = StringUtils.localize("gui.tile.refineryBlock.name.title");
         fontRendererObj.drawString(title, getCenteredOffset(title), 6, 0x404040);
         fontRendererObj.drawString("->", 63, 59, 0x404040);
         fontRendererObj.drawString("<-", 106, 59, 0x404040);

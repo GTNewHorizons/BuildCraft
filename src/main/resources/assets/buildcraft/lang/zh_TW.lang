@@ -292,6 +292,7 @@ tile.tankBlock.name=流體容器
 tile.zonePlan.name=區域規劃機
 
 gui.tile.filteredBufferBlock.name.title=過濾緩衝機
+gui.tile.refineryBlock.name.title=煉油機
 gui.tile.autoWorkbenchBlock.name.title=自動工作檯
 gui.tile.engineIron.name.title=內燃式引擎
 gui.tile.engineStone.name.title=史特林引擎
@@ -299,7 +300,6 @@ gui.tile.fillerBlock.name.title=填充機
 gui.tile.libraryBlock.name.title=藍圖資料庫
 gui.tile.zonePlan.name.title=區域規劃機
 gui.tile.builderBlock.name.title=建築機
-
 gui.tile.assemblyTableBlock.name.title=晶片工作檯
 gui.tile.assemblyWorkbenchBlock.name.title=高階自動工作檯
 gui.tile.integrationTableBlock.name.title=整合工作檯

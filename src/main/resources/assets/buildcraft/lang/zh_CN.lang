@@ -584,6 +584,7 @@ gui.tile.chargingTableBlock.name.title=充能台
 gui.tile.programmingTableBlock.name.title=编程台
 gui.tile.stampingTableBlock.name.title=压印台
 gui.tile.filteredBufferBlock.name.title=过滤缓存器
+gui.tile.refineryBlock.name.title=精炼厂
 tile.zonePlannerBlock.tip=BC1.12.2暂不支持机器人
 tile.distiller.name=蒸馏器
 tile.heat_exchange.name=热交换器

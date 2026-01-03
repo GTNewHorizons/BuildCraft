@@ -243,6 +243,7 @@ tile.tankBlock.name=Zbiornik
 tile.zonePlan.name=Planer strefy
 
 gui.tile.filteredBufferBlock.name.title=Filtrowany bufor
+gui.tile.refineryBlock.name.title=Rafineria
 gui.tile.autoWorkbenchBlock.name.title=Automatyczny stół rzemieślniczy
 gui.tile.engineIron.name.title=Silnik spalinowy
 gui.tile.engineStone.name.title=Silnik Stirlinga
@@ -250,7 +251,6 @@ gui.tile.fillerBlock.name.title=Wypełniacz
 gui.tile.libraryBlock.name.title=Biblioteczka planów
 gui.tile.zonePlan.name.title=Planer strefy
 gui.tile.builderBlock.name.title=Budowniczy
-
 gui.tile.assemblyTableBlock.name.title=Stół montażowy
 gui.tile.assemblyWorkbenchBlock.name.title=Zaawansowany stół rzemieślniczy
 gui.tile.integrationTableBlock.name.title=Stół integracyjny
