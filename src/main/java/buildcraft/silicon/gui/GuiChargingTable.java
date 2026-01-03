@@ -9,6 +9,7 @@ package buildcraft.silicon.gui;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
 
+import buildcraft.core.lib.utils.StringUtils;
 import buildcraft.silicon.TileChargingTable;
 
 public class GuiChargingTable extends GuiLaserTable {
@@ -20,5 +21,13 @@ public class GuiChargingTable extends GuiLaserTable {
         super(playerInventory, new ContainerChargingTable(playerInventory, chargingTable), chargingTable, TEXTURE);
         xSize = 176;
         ySize = 132;
+    }
+
+    @Override
+    protected void drawGuiContainerForegroundLayer(int par1, int par2) {
+        drawLedgers(par1, par2);
+        String title = StringUtils.localize("gui.tile.chargingTableBlock.name.title");
+        fontRendererObj.drawString(title, getCenteredOffset(title), 6, 0x404040);
+        fontRendererObj.drawString(StringUtils.localize("gui.inventory"), 8, ySize - 93, 0x404040);
     }
 }
