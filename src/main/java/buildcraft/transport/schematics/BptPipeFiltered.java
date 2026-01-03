@@ -21,8 +21,8 @@ public class BptPipeFiltered extends BptPipeExtension {
 
     @Override
     public void rotateLeft(SchematicTile slot, IBuilderContext context) {
-        SimpleInventory inv = new SimpleInventory(54, "Filters", 1);
-        SimpleInventory newInv = new SimpleInventory(54, "Filters", 1);
+        SimpleInventory inv = new SimpleInventory(54, "gui.pipes.emerald.title", 1);
+        SimpleInventory newInv = new SimpleInventory(54, "gui.pipes.emerald.title", 1);
         inv.readFromNBT(slot.tileNBT);
 
         for (int dir = 0; dir <= 5; ++dir) {

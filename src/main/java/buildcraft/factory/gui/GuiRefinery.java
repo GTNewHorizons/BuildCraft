@@ -42,9 +42,15 @@ public class GuiRefinery extends GuiAdvancedInterface {
     @Override
     protected void drawGuiContainerForegroundLayer(int par1, int par2) {
         String title = StringUtils.localize("gui.tile.refineryBlock.name.title");
+        String rightArrow = StringUtils.canLocalize("gui.refinery.arrow.right")
+                ? StringUtils.localize("gui.refinery.arrow.right")
+                : "->";
+        String leftArrow = StringUtils.canLocalize("gui.refinery.arrow.left")
+                ? StringUtils.localize("gui.refinery.arrow.left")
+                : "<-";
         fontRendererObj.drawString(title, getCenteredOffset(title), 6, 0x404040);
-        fontRendererObj.drawString("->", 63, 59, 0x404040);
-        fontRendererObj.drawString("<-", 106, 59, 0x404040);
+        fontRendererObj.drawString(rightArrow, 63, 59, 0x404040);
+        fontRendererObj.drawString(leftArrow, 106, 59, 0x404040);
         fontRendererObj.drawString(StringUtils.localize("gui.inventory"), 8, (ySize - 96) + 2, 0x404040);
 
         drawTooltipForSlotAt(par1, par2);

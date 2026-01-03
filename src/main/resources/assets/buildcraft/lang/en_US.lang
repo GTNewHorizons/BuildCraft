@@ -462,6 +462,7 @@ gui.tile.stampingTableBlock.name.title=Stamping Table
 gui.tile.filteredBufferBlock.name.title=Filtered Buffer
 
 gui.tile.refineryBlock.name.title=Refinery
+gui.tile.blockHopper.name.title=Chute
 
 tile.architect.rotate=Rotate: On
 tile.architect.norotate=Rotate: Off
