@@ -316,7 +316,6 @@ gui.tile.assemblyWorkbenchBlock.name.title=レーザー作業台
 gui.tile.integrationTableBlock.name.title=レーザー合成台
 gui.tile.chargingTableBlock.name.title=レーザー充電台
 
-
 tile.architect.rotate=方向保持: Off
 tile.architect.norotate=方向保持: On
 tile.architect.allowCreative=クリエイティブ

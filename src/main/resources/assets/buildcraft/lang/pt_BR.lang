@@ -296,7 +296,6 @@ gui.tile.assemblyWorkbenchBlock.name.title=Mesa de Trabalho Avançado
 gui.tile.integrationTableBlock.name.title=Mesa de Integração
 gui.tile.chargingTableBlock.name.title=Tabela de Carga
 
-
 tile.architect.rotate=Girar: Sim
 tile.architect.norotate=Girar: Não
 tile.architect.allowCreative=Modo: Creativo

@@ -453,7 +453,6 @@ gui.tile.chargingTableBlock.name.title=Ladetisch
 gui.tile.programmingTableBlock.name.title=Programmiertisch
 gui.tile.stampingTableBlock.name.title=Stanztisch
 
-
 tile.architect.rotate=Rotieren: An
 tile.architect.norotate=Rotieren: Aus
 tile.architect.allowCreative=Modus: Kreativ

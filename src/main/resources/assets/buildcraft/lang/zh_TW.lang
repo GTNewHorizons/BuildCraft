@@ -304,7 +304,6 @@ gui.tile.assemblyWorkbenchBlock.name.title=高階自動工作檯
 gui.tile.integrationTableBlock.name.title=整合工作檯
 gui.tile.chargingTableBlock.name.title=充能工作檯
 
-
 tile.architect.rotate=旋轉: 開啟
 tile.architect.norotate=旋轉: 關閉
 tile.architect.allowCreative=模式: 創造

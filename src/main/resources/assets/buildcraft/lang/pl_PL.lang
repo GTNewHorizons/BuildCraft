@@ -254,7 +254,6 @@ gui.tile.assemblyTableBlock.name.title=Stół montażowy
 gui.tile.assemblyWorkbenchBlock.name.title=Zaawansowany stół rzemieślniczy
 gui.tile.integrationTableBlock.name.title=Stół integracyjny
 
-
 tile.architect.rotate=Obrót: Tak
 tile.architect.norotate=Obrót: Nie
 tile.architect.allblocks=Bloki: Wszystkie

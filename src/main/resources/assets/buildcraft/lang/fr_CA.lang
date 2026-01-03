@@ -313,7 +313,6 @@ gui.tile.assemblyWorkbenchBlock.name.title=Établi avancé
 gui.tile.integrationTableBlock.name.title=Table d'intégration
 gui.tile.chargingTableBlock.name.title=Table de rechargement
 
-
 tile.blockRedPlasma.name=Plasma rouge
 tile.buildToolBlock.name=Bloc destructeur
 tile.pipeBlock.name=Tuyau

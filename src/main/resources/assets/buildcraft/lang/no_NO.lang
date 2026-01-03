@@ -402,7 +402,6 @@ gui.tile.chargingTableBlock.name.title=Charging Table
 gui.tile.programmingTableBlock.name.title=Programming Table
 gui.tile.stampingTableBlock.name.title=Stamping Table
 
-
 tile.architect.rotate=Rotate: On
 tile.architect.norotate=Rotate: Off
 tile.architect.allowCreative=Mode: Creative

@@ -480,7 +480,6 @@ gui.tile.chargingTableBlock.name.title=Charging Table
 gui.tile.programmingTableBlock.name.title=프로그레밍 테이블
 gui.tile.stampingTableBlock.name.title=Stamping Table
 
-
 tile.architect.rotate=회전: On
 tile.architect.norotate=회전: Off
 tile.architect.allowCreative=Mode: Creative

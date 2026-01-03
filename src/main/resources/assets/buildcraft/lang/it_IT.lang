@@ -402,7 +402,6 @@ gui.tile.chargingTableBlock.name.title=Tavolo caricatore
 gui.tile.programmingTableBlock.name.title=Tavolo di programmazione
 gui.tile.stampingTableBlock.name.title=Tavolo di timbratura
 
-
 tile.architect.rotate=Rotazione: Si
 tile.architect.norotate=Rotazione: No
 tile.architect.allowCreative=Modalità: Creativa

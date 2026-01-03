@@ -402,7 +402,6 @@ gui.tile.chargingTableBlock.name.title=Töltő asztal
 gui.tile.programmingTableBlock.name.title=Programozó asztal
 gui.tile.stampingTableBlock.name.title=Bélyegző asztal
 
-
 tile.architect.rotate=Forgatás: bekapcsolva
 tile.architect.norotate=Forgatás: kikapcsolva
 tile.architect.allowCreative=Játékmód: Kreatív
