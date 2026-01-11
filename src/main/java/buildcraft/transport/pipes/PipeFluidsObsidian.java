@@ -53,11 +53,6 @@ public class PipeFluidsObsidian extends Pipe<PipeTransportFluids> implements IEn
 
                 fluidCache.amount = (int) (fluidCache.amount * (0.25 * efficiency));
                 battery.useEnergy(0, (pumpCost * efficiency), false);
-                System.out.println(
-                        "Sucked " + fluidCache.getFluid().getUnlocalizedName()
-                                + " | "
-                                + fluidCache.amount
-                                + " Efficiency =");
             }
         } else {
             // We intentionally do ".getOpposite()" for a slower slurpier transfer.
