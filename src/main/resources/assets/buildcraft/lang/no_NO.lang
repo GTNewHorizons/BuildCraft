@@ -413,6 +413,7 @@ tip.PipeFluidsSandstone=Only connects to other pipes
 tip.PipeFluidsStone=Won't connect to Cobblestone
 tip.PipeFluidsVoid=Destroys fluids
 tip.PipeFluidsWood=Extraction pipe
+tip.PipeFluidsObsidian=Sucks up fluids
 tip.PipeItemsClay=Insertion pipe
 tip.PipeItemsCobblestone=Basic pipe, high drag\nWon't connect to Stone or Quartz
 tip.PipeItemsDaizuli=Routes painted items
