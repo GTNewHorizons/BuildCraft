@@ -66,7 +66,7 @@ public class PipeFluidsDiamond extends Pipe<PipeTransportFluids> implements IDia
         }
     }
 
-    private FilterInventory filters = new FilterInventory(54, "Filters", 1);
+    private FilterInventory filters = new FilterInventory(54, "gui.pipes.emerald.title", 1);
 
     public PipeFluidsDiamond(Item item) {
         super(new PipeTransportFluids(), item);

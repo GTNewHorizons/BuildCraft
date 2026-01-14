@@ -81,3 +81,4 @@ tile.plainPipeBlock.name=Kasimo Vamzdis
 tile.pumpBlock.name=Pompa
 tile.refineryBlock.name=Naftos Perdirbėjas
 tile.tankBlock.name=Saugykla (Skysčio)
+gui.tile.blockHopper.name.title=Piltuvas

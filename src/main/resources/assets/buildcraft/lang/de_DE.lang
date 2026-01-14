@@ -438,6 +438,24 @@ tile.stampingTableBlock.name=Stanztisch
 tile.tankBlock.name=Tank
 tile.zonePlan.name=Zonenplaner
 
+gui.tile.autoWorkbenchBlock.name.title=Automatische Werkbank
+gui.tile.engineIron.name.title=Verbrennungsmotor
+gui.tile.engineStone.name.title=Stirlingmotor
+gui.tile.fillerBlock.name.title=Füller
+gui.tile.libraryBlock.name.title=Elektronische Bibliothek
+gui.tile.zonePlan.name.title=Zonenplaner
+gui.tile.builderBlock.name.title=Konstrukteur
+
+gui.tile.assemblyTableBlock.name.title=Montagebank
+gui.tile.assemblyWorkbenchBlock.name.title=Montagewerkbank
+gui.tile.integrationTableBlock.name.title=Integrationstisch
+gui.tile.chargingTableBlock.name.title=Ladetisch
+gui.tile.programmingTableBlock.name.title=Programmiertisch
+gui.tile.stampingTableBlock.name.title=Stanztisch
+gui.tile.filteredBufferBlock.name.title=Gefilterter Puffer
+gui.tile.refineryBlock.name.title=Raffinerie
+gui.tile.blockHopper.name.title=Schütte
+
 tile.architect.rotate=Rotieren: An
 tile.architect.norotate=Rotieren: Aus
 tile.architect.allowCreative=Modus: Kreativ

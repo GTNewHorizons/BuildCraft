@@ -283,6 +283,21 @@ tile.spring.water.name=Fonte de Água
 tile.tankBlock.name=Tanque
 tile.zonePlan.name=Planejador de Setores
 
+gui.tile.filteredBufferBlock.name.title=Filtro de Buffer
+gui.tile.refineryBlock.name.title=Refinaria
+gui.tile.blockHopper.name.title=Funil
+gui.tile.autoWorkbenchBlock.name.title=Mesa de Trabalho Automática
+gui.tile.engineIron.name.title=Motor de Combustão
+gui.tile.engineStone.name.title=Motor a Vapor
+gui.tile.fillerBlock.name.title=Preenchedor
+gui.tile.libraryBlock.name.title=Biblioteca de Diagramas
+gui.tile.zonePlan.name.title=Planejador de Setores
+gui.tile.builderBlock.name.title=Construtor
+gui.tile.assemblyTableBlock.name.title=Mesa de Montagem
+gui.tile.assemblyWorkbenchBlock.name.title=Mesa de Trabalho Avançado
+gui.tile.integrationTableBlock.name.title=Mesa de Integração
+gui.tile.chargingTableBlock.name.title=Tabela de Carga
+
 tile.architect.rotate=Girar: Sim
 tile.architect.norotate=Girar: Não
 tile.architect.allowCreative=Modo: Creativo

@@ -104,7 +104,7 @@ public class GuiProgrammingTable extends GuiAdvancedInterface {
 
         this.table = programmingTable;
         xSize = 176;
-        ySize = 207;
+        ySize = 205;
 
         for (int j = 0; j < TileProgrammingTable.HEIGHT; ++j) {
             for (int i = 0; i < TileProgrammingTable.WIDTH; ++i) {
@@ -136,9 +136,9 @@ public class GuiProgrammingTable extends GuiAdvancedInterface {
     @Override
     protected void drawGuiContainerForegroundLayer(int par1, int par2) {
         super.drawGuiContainerForegroundLayer(par1, par2);
-        String title = StringUtils.localize("tile.programmingTableBlock.name");
+        String title = StringUtils.localize("gui.tile.programmingTableBlock.name.title");
         fontRendererObj.drawString(title, getCenteredOffset(title), 15, 0x404040);
-        fontRendererObj.drawString(StringUtils.localize("gui.inventory"), 8, ySize - 97, 0x404040);
+        fontRendererObj.drawString(StringUtils.localize("gui.inventory"), 8, ySize - 93, 0x404040);
         drawTooltipForSlotAt(par1, par2);
     }
 

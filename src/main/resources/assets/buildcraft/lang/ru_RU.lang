@@ -434,6 +434,24 @@ tile.stampingTableBlock.name=Стол штамповки
 tile.tankBlock.name=Цистерна
 tile.zonePlan.name=Планировщик зон
 
+gui.tile.autoWorkbenchBlock.name.title=Автоматический верстак
+gui.tile.engineIron.name.title=Двигатель внутреннего сгорания
+gui.tile.engineStone.name.title=Двигатель Стирлинга
+gui.tile.fillerBlock.name.title=Заполнитель
+gui.tile.libraryBlock.name.title=Библиотека проектов
+gui.tile.zonePlan.name.title=Планировщик зон
+gui.tile.builderBlock.name.title=Строитель
+
+gui.tile.assemblyTableBlock.name.title=Сборочный стол
+gui.tile.assemblyWorkbenchBlock.name.title=Сборочный верстак
+gui.tile.integrationTableBlock.name.title=Стол интеграции
+gui.tile.chargingTableBlock.name.title=Стол подзарядки
+gui.tile.programmingTableBlock.name.title=Стол программирования
+gui.tile.stampingTableBlock.name.title=Стол штамповки
+gui.tile.filteredBufferBlock.name.title=Фильтр
+gui.tile.refineryBlock.name.title=Нефтеперегонная вышка
+gui.tile.blockHopper.name.title=Воронка
+
 tile.architect.rotate=Вращение: Вкл.
 tile.architect.norotate=Вращение: Откл.
 tile.architect.allowCreative=Режим: Творческий

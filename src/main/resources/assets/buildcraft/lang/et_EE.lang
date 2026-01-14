@@ -320,3 +320,4 @@ bc_update.new_version=§cUus Buildcrafti versioon on saadaval: %s Minecraft %s-l
 bc_update.download=§cLae alla siit: http://www.mod-buildcraft.com/download
 bc_update.once=See sõnum kuvab ainult korra
 bc_update.again=Kirjuta '/buildcraft version' kui tahad seda uuesti näha
+gui.tile.blockHopper.name.title=Lehter

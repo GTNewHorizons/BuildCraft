@@ -37,7 +37,7 @@ import io.netty.buffer.ByteBuf;
 public class PipeItemsEmzuli extends PipeItemsWood implements IGuiReturnHandler {
 
     public final byte[] slotColors = new byte[4];
-    private final SimpleInventory filters = new SimpleInventory(4, "Filters", 1);
+    private final SimpleInventory filters = new SimpleInventory(4, "gui.pipes.emerald.title", 1);
     private final BitSet activeFlags = new BitSet(4);
     private final int filterCount = filters.getSizeInventory();
     private int currentFilter = 0;

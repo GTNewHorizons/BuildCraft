@@ -77,3 +77,4 @@ tile.plainPipeBlock.name=Minerør
 tile.pumpBlock.name=Pumpe
 tile.refineryBlock.name=Raffenaderi
 tile.tankBlock.name=Tank
+gui.tile.blockHopper.name.title=Tragt

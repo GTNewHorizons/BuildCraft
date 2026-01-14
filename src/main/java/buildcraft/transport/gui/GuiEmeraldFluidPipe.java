@@ -32,12 +32,9 @@ public class GuiEmeraldFluidPipe extends GuiBuildCraft {
 
     @Override
     protected void drawGuiContainerForegroundLayer(int par1, int par2) {
-        fontRendererObj.drawString(
-                filterInventory.getInventoryName(),
-                getCenteredOffset(filterInventory.getInventoryName()),
-                6,
-                0x404040);
-        fontRendererObj.drawString(StringUtils.localize("gui.inventory"), 8, ySize - 97, 0x404040);
+        String title = StringUtils.localize(filterInventory.getInventoryName());
+        fontRendererObj.drawString(title, getCenteredOffset(title), 6, 0x404040);
+        fontRendererObj.drawString(StringUtils.localize("gui.inventory"), 8, ySize - 93, 0x404040);
     }
 
     @Override
