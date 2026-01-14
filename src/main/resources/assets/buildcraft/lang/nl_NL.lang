@@ -212,6 +212,7 @@ tip.PipeFluidsSandstone=Verbindt alleen met andere pijpen
 tip.PipeFluidsStone=Basale pijp\nVerbindt niet met Keistenen
 tip.PipeFluidsVoid=Vernietigt vloeistoffen
 tip.PipeFluidsWood=Extractiepijp
+tip.PipeFluidsObsidian=Zuigt vloeistoffen op
 tip.PipeItemsCobblestone=Basale pijp, veel wrijving\nVerbindt niet met Stenen of Kwartsen
 tip.PipeItemsDaizuli=Stuurt geverfde voorwerpen
 tip.PipeItemsDiamond=Sorteert voorwerpen

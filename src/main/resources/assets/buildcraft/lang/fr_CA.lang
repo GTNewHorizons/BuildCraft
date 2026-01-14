@@ -345,6 +345,7 @@ tip.PipeFluidsSandstone=Se connecte uniquement aux autres tuyaux
 tip.PipeFluidsStone=Ne se connecte pas à celui de cobble
 tip.PipeFluidsVoid=Détruit les fluides
 tip.PipeFluidsWood=Tuyau d'extraction
+tip.PipeFluidsObsidian=Aspire les fluides
 tip.PipeItemsClay=Tuyau d'insertion
 tip.PipeItemsCobblestone=Tuyau de base, haute traînée\nNe se connecte pas à celui de\npierre ou de quartz
 tip.PipeItemsDaizuli=Dirige les objets peinturés

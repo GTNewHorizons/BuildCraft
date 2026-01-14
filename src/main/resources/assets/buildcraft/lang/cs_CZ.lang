@@ -207,6 +207,7 @@ tip.PipeFluidsSandstone=Připojuje se jen na jiné trubky (ne na stroje)
 tip.PipeFluidsStone=Základní trubka\nNepřipojí se k dlaždicové
 tip.PipeFluidsVoid=Odstraňuje tekutiny
 tip.PipeFluidsWood=Extrahující trubka
+tip.PipeFluidsObsidian=Nasává tekutiny
 tip.PipeItemsCobblestone=Základní trubka, vysoký tah\nNepřipojí se ke kamenné nebo křemenné
 tip.PipeItemsDaizuli=Třídí nabarvené předměty
 tip.PipeItemsDiamond=Třídí předměty
