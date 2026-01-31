@@ -74,8 +74,7 @@ public class GuiZonePlan extends GuiAdvancedInterface {
 
     private GuiBetterButton tool, fsButton;
 
-    @SuppressWarnings("rawtypes")
-    private List savedButtonList;
+    private List<GuiButton> savedButtonList;
 
     private GuiTextField textField;
 
