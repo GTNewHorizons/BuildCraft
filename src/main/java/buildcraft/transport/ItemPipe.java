@@ -7,6 +7,7 @@
 package buildcraft.transport;
 
 import java.util.List;
+import java.util.Map;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -21,6 +22,8 @@ import net.minecraftforge.common.util.ForgeDirection;
 
 import org.apache.logging.log4j.Level;
 
+import com.google.common.collect.ImmutableMap;
+
 import buildcraft.BuildCraftTransport;
 import buildcraft.api.core.BCLog;
 import buildcraft.api.core.IIconProvider;
@@ -29,6 +32,15 @@ import buildcraft.core.BCCreativeTab;
 import buildcraft.core.lib.items.ItemBuildCraft;
 import buildcraft.core.lib.utils.ColorUtils;
 import buildcraft.core.lib.utils.StringUtils;
+import buildcraft.transport.pipes.PipePowerCobblestone;
+import buildcraft.transport.pipes.PipePowerDiamond;
+import buildcraft.transport.pipes.PipePowerEmerald;
+import buildcraft.transport.pipes.PipePowerGold;
+import buildcraft.transport.pipes.PipePowerIron;
+import buildcraft.transport.pipes.PipePowerQuartz;
+import buildcraft.transport.pipes.PipePowerSandstone;
+import buildcraft.transport.pipes.PipePowerStone;
+import buildcraft.transport.pipes.PipePowerWood;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -154,17 +166,37 @@ public class ItemPipe extends ItemBuildCraft implements IItemPipe {
     }
 
     @Override
-    @SideOnly(Side.CLIENT)
-    public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean advanced) {
-        super.addInformation(stack, player, list, advanced);
+    public void addInformation(ItemStack stack, EntityPlayer player, List<String> tooltip, boolean advanced) {
+        super.addInformation(stack, player, tooltip, advanced);
         if (stack.getItemDamage() >= 1) {
             int color = (stack.getItemDamage() - 1) & 15;
-            list.add(
+            tooltip.add(
                     ColorUtils.getFormattingTooltip(color) + EnumChatFormatting.ITALIC
                             + StringUtils.localize("color." + ColorUtils.getName(color)));
         }
         Class<? extends Pipe<?>> pipe = BlockGenericPipe.pipes.get(this);
         List<String> toolTip = PipeToolTipManager.getToolTip(pipe, advanced);
-        list.addAll(toolTip);
+        if (!toolTip.isEmpty()) {
+            for (int i = 0; i < toolTip.size() - 1; i++) {
+                tooltip.add(toolTip.get(i));
+            }
+            EnumChatFormatting pipeColor = getPipeColor(pipe);
+            tooltip.add(pipeColor + toolTip.get(toolTip.size() - 1));
+        }
+    }
+
+    private static final Map<Class<? extends Pipe<?>>, EnumChatFormatting> PIPE_COLORS = ImmutableMap
+            .<Class<? extends Pipe<?>>, EnumChatFormatting>builder()
+            .put(PipePowerDiamond.class, EnumChatFormatting.DARK_AQUA)
+            .put(PipePowerEmerald.class, EnumChatFormatting.DARK_GREEN)
+            .put(PipePowerGold.class, EnumChatFormatting.GOLD).put(PipePowerIron.class, EnumChatFormatting.BLUE)
+            .put(PipePowerQuartz.class, EnumChatFormatting.DARK_GRAY)
+            .put(PipePowerWood.class, EnumChatFormatting.DARK_GREEN)
+            .put(PipePowerSandstone.class, EnumChatFormatting.DARK_PURPLE)
+            .put(PipePowerStone.class, EnumChatFormatting.AQUA)
+            .put(PipePowerCobblestone.class, EnumChatFormatting.DARK_RED).build();
+
+    private EnumChatFormatting getPipeColor(Class<? extends Pipe<?>> pipe) {
+        return PIPE_COLORS.getOrDefault(pipe, EnumChatFormatting.GRAY);
     }
 }
