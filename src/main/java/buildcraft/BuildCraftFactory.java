@@ -41,6 +41,7 @@ import buildcraft.factory.BlockTank;
 import buildcraft.factory.FactoryGuiHandler;
 import buildcraft.factory.FactoryProxy;
 import buildcraft.factory.FactoryProxyClient;
+import buildcraft.factory.ItemBlockTank;
 import buildcraft.factory.PumpDimensionList;
 import buildcraft.factory.TileAutoWorkbench;
 import buildcraft.factory.TileFloodGate;
@@ -190,7 +191,7 @@ public class BuildCraftFactory extends BuildCraftMod {
         BCRegistry.INSTANCE.registerBlock(autoWorkbenchBlock.setBlockName("autoWorkbenchBlock"), false);
 
         tankBlock = (BlockTank) CompatHooks.INSTANCE.getBlock(BlockTank.class);
-        BCRegistry.INSTANCE.registerBlock(tankBlock.setBlockName("tankBlock"), false);
+        BCRegistry.INSTANCE.registerBlock(tankBlock.setBlockName("tankBlock"), ItemBlockTank.class, false);
 
         pumpBlock = (BlockPump) CompatHooks.INSTANCE.getBlock(BlockPump.class);
         BCRegistry.INSTANCE.registerBlock(pumpBlock.setBlockName("pumpBlock"), false);
