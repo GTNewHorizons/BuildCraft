@@ -187,8 +187,7 @@ public class TileZonePlan extends TileBuildCraft implements IInventory {
             if (zone != null && zone instanceof ZonePlan) {
                 selectedAreas[currentSelectedArea] = (ZonePlan) zone;
 
-                for (Object playerObj : MinecraftServer.getServer().getConfigurationManager().playerEntityList) {
-                    EntityPlayer e = (EntityPlayer) playerObj;
+                for (EntityPlayer e : MinecraftServer.getServer().getConfigurationManager().playerEntityList) {
                     if (e.openContainer != null && e.openContainer instanceof ContainerZonePlan
                             && ((ContainerZonePlan) e.openContainer).getTile() == this) {
                         Packet p = new PacketCommand(e.openContainer, "areaLoaded", new CommandWriter() {
