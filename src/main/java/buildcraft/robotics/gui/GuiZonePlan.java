@@ -74,7 +74,8 @@ public class GuiZonePlan extends GuiAdvancedInterface {
 
     private GuiBetterButton tool, fsButton;
 
-    private List<GuiBetterButton> savedButtonList;
+    @SuppressWarnings("rawtypes")
+    private List savedButtonList;
 
     private GuiTextField textField;
 
@@ -350,7 +351,7 @@ public class GuiZonePlan extends GuiAdvancedInterface {
         uploadMap();
         refreshSelectedArea();
 
-        buttonList = new LinkedList<GuiBetterButton>();
+        buttonList = new LinkedList<>();
     }
 
     private void toWindowed() {
