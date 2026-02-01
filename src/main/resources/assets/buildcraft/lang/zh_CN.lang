@@ -364,6 +364,7 @@ item.PipeFluidsGold.name=金质流体管道
 item.PipeFluidsEmerald.name=Emerald Fluid Pipe
 item.PipeFluidsDiamond.name=钻石流体管道
 item.PipeFluidsClay.name=粘土流体管道
+item.PipeFluidsObsidian.name=黑曜石流体管道
 item.PipePowerWood.name=木质能量管道
 item.PipePowerCobblestone.name=圆石能量管道
 item.PipePowerStone.name=石头能量管道

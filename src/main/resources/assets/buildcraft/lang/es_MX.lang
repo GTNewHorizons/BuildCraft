@@ -473,6 +473,7 @@ tip.PipeFluidsSandstone=Solo conecta con otras tuberías
 tip.PipeFluidsStone=Tubería Básica\nNo conecta con Adoquín
 tip.PipeFluidsVoid=Destruye Líquidos
 tip.PipeFluidsWood=Tubería para Exctracción
+tip.PipeFluidsObsidian=Succiona Líquidos
 tip.PipeItemsClay=Insertion pipe
 tip.PipeItemsCobblestone=Tubería Básica, alta resistencia\nNo conecta con Piedra o Cuarzo
 tip.PipeItemsDaizuli=Redirige ojetos pintados
