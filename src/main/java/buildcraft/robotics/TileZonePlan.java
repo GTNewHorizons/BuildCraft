@@ -7,7 +7,6 @@
 package buildcraft.robotics;
 
 import java.util.Arrays;
-import java.util.List;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
@@ -188,8 +187,7 @@ public class TileZonePlan extends TileBuildCraft implements IInventory {
             if (zone != null && zone instanceof ZonePlan) {
                 selectedAreas[currentSelectedArea] = (ZonePlan) zone;
 
-                for (EntityPlayer e : (List<EntityPlayer>) MinecraftServer.getServer()
-                        .getConfigurationManager().playerEntityList) {
+                for (EntityPlayer e : MinecraftServer.getServer().getConfigurationManager().playerEntityList) {
                     if (e.openContainer != null && e.openContainer instanceof ContainerZonePlan
                             && ((ContainerZonePlan) e.openContainer).getTile() == this) {
                         Packet p = new PacketCommand(e.openContainer, "areaLoaded", new CommandWriter() {

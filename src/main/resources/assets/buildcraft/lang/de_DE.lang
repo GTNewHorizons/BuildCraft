@@ -1,6 +1,5 @@
 # German lang file, tanslated by SirSengir, Keksynator, Vexatos, FGpisces, leSamo and Nerdyyy
 
-buildcraft.boardRobotClean=Reiniger
 buildcraft.boardRobotPicker=Sammler
 buildcraft.boardRobotLumberjack=Holzfäller
 buildcraft.boardRobotPlanter=Gärtner
@@ -171,7 +170,6 @@ fillerpattern.stairs=Treppe
 fillerpattern.box=Box
 fillerpattern.cylinder=Zylinder
 fillerpattern.frame=Rahmen
-fillerpattern.none=Nichts
 fillerpattern.parameter.hollow=Hohl
 fillerpattern.parameter.filled=Gefüllt
 
@@ -224,6 +222,7 @@ gate.material.diamond=Diamanten
 gate.material.emerald=Smaragden
 gate.material.quartz=Quarzig
 
+item.pipeGate.name=Gate
 gate.name=%ses %s-Gatter
 gate.name.basic=Basisgatter
 
@@ -251,7 +250,7 @@ gate.trigger.redstone.input.inactive=Redstone-Signal Aus
 gate.trigger.redstone.input.level=Redstone Level %d
 gate.trigger.pipe.empty=Rohr leer
 gate.trigger.pipe.containsItems=Items hindurchlaufend
-gate.trigger.pipe.containsLiquids=Flüssigkeit hindurchfließend
+gate.trigger.pipe.containsFluids=Fluid Traversing
 gate.trigger.pipe.containsEnergy=Energie hindurchfließend
 gate.trigger.pipe.requestsEnergy=Energie angefordert
 gate.trigger.pipe.tooMuchEnergy=Energieleitung überlastet
@@ -315,11 +314,13 @@ item.templateItem.name=Schablone
 item.wrenchItem.name=Schraubenschlüssel
 item.paintbrush.name=Pinsel
 item.pipeWaterproof.name=Dichtung
+item.pipeWire.name=Pipe Wire
 item.redPipeWire.name=Rotes Rohrkabel
 item.bluePipeWire.name=Blaues Rohrkabel
 item.greenPipeWire.name=Grünes Rohrkabel
 item.yellowPipeWire.name=Gelbes Rohrkabel
 item.redstoneCrystal.name=Redstone-Kristall
+item.redstoneChipset.name=Chipset
 item.redstone_red_chipset.name=Redstone-Schaltkreis
 item.redstone_iron_chipset.name=Eiserner Schaltkreis
 item.redstone_gold_chipset.name=Goldener Schaltkreis
@@ -379,7 +380,9 @@ item.PipeFluidsVoid.name=Löschendes Flüssigkeitsrohr
 item.PipeItemsSandstone.name=Sandstein-Transportrohr
 item.PipeFluidsSandstone.name=Sandstein-Flüssigkeitsrohr
 item.PipePowerSandstone.name=Sandstein-Energieleitung
+item.robotStation.name=Docking Station
 item.PipeRobotStation.name=Dockingstation
+item.pipeFacade.name=Facade
 item.Facade.name=Fassade
 item.Facade.state_hollow=Hohl
 item.FacadePhased.name=Phasenfassade
@@ -387,14 +390,14 @@ item.FacadePhased.state=%s: %s
 item.FacadePhased.state_default=Standard: %s
 item.FacadePhased.state_transparent=Transparent
 item.PipePlug.name=Rohrstöpsel
+item.pipeLens.name=Lens
 item.Lens.name=Linse
 item.Filter.name=Filter
+item.pipePowerAdapter.name=Power Adapter
 item.PipePowerAdapter.name=Energieadapter
 item.debugger.name=Debugger
 item.debugger.warning=Nur zum Testen verwenden! Verrät Geheimnisse.
 item.package.name=Paket
-item.guideBook.name=Anleitung
-item.robot_goggles.name=Roboterbrille
 
 itemGroup.buildcraft.boards=BuildCraft: Roboter
 itemGroup.buildcraft.main=BuildCraft
@@ -403,6 +406,7 @@ itemGroup.buildcraft.facades=BuildCraft: Fassaden
 itemGroup.buildcraft.gates=BuildCraft: Gatter
 
 tile.architectBlock.name=Architekturtisch
+tile.laserTableBlock.name=Table
 tile.assemblyTableBlock.name=Montagebank
 tile.assemblyWorkbenchBlock.name=Montagewerkbank
 tile.autoWorkbenchBlock.name=Automatische Werkbank
@@ -412,6 +416,7 @@ tile.blockOil.name=Öl
 tile.builderBlock.name=Konstrukteur
 tile.chargingTableBlock.name=Ladetisch
 tile.constructionMarkerBlock.name=Konstruktionsmarker
+tile.engineBlock.name=Engine
 tile.engineCreative.name=Kreativmotor
 tile.engineIron.name=Verbrennungsmotor
 tile.engineStone.name=Stirlingmotor
@@ -433,10 +438,12 @@ tile.programmingTableBlock.name=Programmiertisch
 tile.pumpBlock.name=Pumpe
 tile.refineryBlock.name=Raffinerie
 tile.requester.name=Bestellblock
+tile.eternalSpring.name=Spring
 tile.spring.oil.name=Ölquelle
 tile.spring.water.name=Wasserquelle
 tile.stampingTableBlock.name=Stanztisch
 tile.tankBlock.name=Tank
+tile.tankBlock.tooltip=Stores up to 16 Buckets of one Liquid\n§4Not portable, use a dolly
 tile.zonePlan.name=Zonenplaner
 
 tile.architect.rotate=Rotieren: An
@@ -483,10 +490,10 @@ tip.PipeItemsSandstone=Verbindet sich nur mit anderen Rohren
 tip.PipeItemsStone=Basisrohr, mäßiger Widerstand\nWird sich nicht mit Pflasterstein oder Quarz verbinden
 tip.PipeItemsVoid=Zerstört Items
 tip.PipeItemsWood=Extraktionsrohr
-tip.PipePowerWood=Energie-Eingangsrohr
+tip.PipePowerEmerald=Energie-Eingangsrohr
 tip.PipePowerIron=Rohr mit auswählbarem Energielimit
 tip.PipePowerSandstone=Verbindet sich nur mit anderen Rohren
-tip.PipePowerEmerald=Energie-Eingangsrohr
+tip.PipePowerWood=Energie-Eingangsrohr
 tip.PipeStructureCobblestone=Rohr zur Unterstützung
 tip.deprecated=Veraltet
 
@@ -564,10 +571,9 @@ bc_update.download=§cDownload auf http://www.mod-buildcraft.com/download
 bc_update.once=Diese Nachricht erscheint nur einmal
 bc_update.again=Gib '/buildcraft version' ein, solltest du sie noch einmal sehen wollen
 bc_update.changelog=Tippe '/buildcraft changelog', um das Changelog zu sehen
- 
+
 chat.buildcraft.quarry.tooSmall=[BuildCraft] Steinbruchgrenzen liegen außerhalb des Chunk-geladenen Bereiches, oder ist zu klein %d %d (%d)
 chat.buildcraft.quarry.chunkloadInfo=[BuildCraft] Der Steinbruch bei %d %d %d wird %d Chunks laden
-
 
 command.buildcraft.version=BuildCraft %s für Minecraft %s (Aktuellste: %s).
 command.buildcraft.changelog_header=Changelog für BuildCraft %s:
@@ -589,15 +595,10 @@ command.buildcraft.buildcraft.changelog.desc=- %s : Changelog
 command.buildcraft.buildcraft.changelog.help=Zeigt den aktuellsten BC-Changelog
 command.buildcraft.buildcraft.changelog.format=Format: /%s
 
-buildcraft.guide.chapter.=EMPTY CHAPTER!
-buildcraft.guide.chapter.block=Blocks
-buildcraft.guide.chapter.item=Items
-buildcraft.guide.chapter.gears=Gears
- 
 command.buildcraft.buildcraft.op.desc=- %s : Op FakePlayer
 command.buildcraft.buildcraft.op.help=Gibt OP-Rechte für den Buildcraft-FakePlayer (verantwortlich für Steinbrücher, Roboter, usw.)
 command.buildcraft.buildcraft.op.format=Format: /%s
- 
+
 command.buildcraft.buildcraft.deop.desc=- %s : Deop FakePlayer
 command.buildcraft.buildcraft.deop.help=Entfernt OP-Rechte des Buildcraft-FakePlayer (verantwortlich für Steinbrücher, Roboter, usw.)
 command.buildcraft.buildcraft.deop.format=Format: /%s
