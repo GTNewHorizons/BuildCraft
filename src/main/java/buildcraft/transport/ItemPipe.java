@@ -175,13 +175,13 @@ public class ItemPipe extends ItemBuildCraft implements IItemPipe {
                             + StringUtils.localize("color." + ColorUtils.getName(color)));
         }
         Class<? extends Pipe<?>> pipe = BlockGenericPipe.pipes.get(this);
-        List<String> toolTip = PipeToolTipManager.getToolTip(pipe, advanced);
-        if (!toolTip.isEmpty()) {
-            for (int i = 0; i < toolTip.size() - 1; i++) {
-                tooltip.add(toolTip.get(i));
+        List<String> pipeDescriptionLines = PipeToolTipManager.getToolTip(pipe, advanced);
+        if (!pipeDescriptionLines.isEmpty()) {
+            for (int i = 0; i < pipeDescriptionLines.size() - 1; i++) {
+                tooltip.add(pipeDescriptionLines.get(i));
             }
             EnumChatFormatting pipeColor = getPipeColor(pipe);
-            tooltip.add(pipeColor + toolTip.get(toolTip.size() - 1));
+            tooltip.add(pipeColor + pipeDescriptionLines.get(pipeDescriptionLines.size() - 1));
         }
     }
 
