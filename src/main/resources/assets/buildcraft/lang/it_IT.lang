@@ -18,6 +18,7 @@ buildcraft.boardRobotCrafter=Fabbricatrice
 buildcraft.boardRobotDelivery=Consegnatrice
 buildcraft.boardRobotPump=Pompa
 buildcraft.boardRobotStripes=Striato
+buildcraft.boardRobotBreaker=Breaker
 
 buildcraft.boardRobotPicker.desc=Raccoglie oggetti
 buildcraft.boardRobotLumberjack.desc=Spacca tronchi
@@ -37,6 +38,7 @@ buildcraft.boardRobotCrafter.desc=Fabbrica oggetti
 buildcraft.boardRobotDelivery.desc=Consegna oggetti su richiesta
 buildcraft.boardRobotPump.desc=Pompa fluidi fuori
 buildcraft.boardRobotStripes.desc=Uhm... striato!
+buildcraft.boardRobotBreaker.desc=Mines stone
 
 chat.gateCopier.clear=Infromazione del gate cancellate.
 chat.gateCopier.gateCopied=Copiate informazioni del gate alla copiatrice.
@@ -58,6 +60,8 @@ chat.pipe.power.iron.level.320=alto
 chat.pipe.power.iron.level.640=molto alto
 chat.pipe.power.iron.level.1280=capacità massima
 
+color.clear=Clear
+
 color.black=Nero
 color.blue=Blu
 color.brown=Marrone
@@ -78,7 +82,9 @@ color.yellow=Giallo
 config.general=Generale
 config.general.pipes=Tubi
 config.blueprints=Cianotipi
+config.builders=Builders
 config.power=Uso di energia
+config.experimental=Experimental
 config.display=Descrizione
 config.worldgen=Generazione del mondo
 config.network=Networking
@@ -88,19 +94,36 @@ config.blueprints.clientDatabaseDirectory=Directory del client
 config.blueprints.excludedMods=Mod esclusi
 config.blueprints.excludedBlocks=Blocchi esclusi
 
+config.builders.dropBrokenBlocks=Drop broken blocks
+
 config.display.colorBlindMode=Modalità daltonico
 config.display.hideFluidValues=Nascondi i numeri dei fluidi
 config.display.hidePowerValues=Nascondi i numeri dell'energia
 
+config.experimental.kinesisPowerLossOnTravel=Kinesis pipes power perdition
+
+config.general.boards.blacklist=Robot blacklist
 config.general.pumpsConsumeWater=Pompa consuma acqua
 config.general.updateCheck=Controlla per aggiornamenti for updates
+config.general.fuel.fuel.combustion=Combustion engine fuel multiplier
+config.general.fuel.oil.combustion=Combustion engine oil multiplier
+config.general.fuel.fuel.combustion.energyOutput=Combustion engine fuel output
+config.general.fuel.oil.combustion.energyOutput=Combustion engine oil output
 config.general.itemLifespan=Durata di vita degli oggetti (secondi)
 config.general.canEnginesExplode=Esplosioni motori
 config.general.oilCanBurn=Petrolio combustibile
 config.general.oilIsDense=Petrolio denso
+config.general.pipes.baseFluidRate=Base flow rate
+config.general.pipes.facadeBlacklist=Facade blacklist
+config.general.pipes.facadeBlacklistAsWhitelist=Invert facade blacklist
+config.general.pipes.facadeNoLaserRecipe=Add facade recipe without laser
+config.general.pipes.hardness=Hardness
+config.general.pipes.slimeballWaterproofRecipe=Add slimeball sealant recipe
+config.general.pumpsNeedRealPower=Pumps need real power
 config.general.quarry=Opzioni scavatrice
 config.general.quarry.oneTimeUse=Usabile una sola volta
 config.general.quarry.doChunkLoading=Caricamento chunk automatico
+config.general.markerRange=Range of markers
 config.general.miningDepth=Profondità massima di scavo
 config.general.pumpDimensionControl=Controllo dimensione della pompa
 
@@ -109,11 +132,17 @@ config.network.updateFactor=Fattore di mandare pacchetti (tick)
 
 config.power.miningUsageMultiplier=Moltiplicatore di usura di scavo
 config.power.chipsetCostMultiplier=Moltiplicatore di costo di circuiti
+config.power.gateCostMultiplier=Gate cost multiplier
 
 config.worldgen.enable=Attiva
+config.worldgen.generateWaterSprings=Spawn water springs
 config.worldgen.oilWellGenerationRate=Proporzioni generazione di pozzi petroliferi
 config.worldgen.spawnOilSprings=Genera pozzi petroliferi
-
+config.worldgen.biomes.biomeOilDesert=Oil Desert biome id
+config.worldgen.biomes.biomeOilOcean=Oil Ocean biome id
+config.worldgen.biomes.excessiveOilIDs=Biomes with excessive oil
+config.worldgen.biomes.excludeOilIDs=Biomes without oil
+config.worldgen.biomes.increasedOilIDs=Biomes with increased oil
 
 direction.north=Nord
 direction.west=Ovest
@@ -121,6 +150,16 @@ direction.east=Est
 direction.south=Sud
 direction.up=Su
 direction.down=Giù
+
+direction.center.0=North-West
+direction.center.1=North
+direction.center.2=North-East
+direction.center.3=West
+direction.center.4=Center
+direction.center.5=East
+direction.center.6=South-West
+direction.center.7=South
+direction.center.8=South-East
 
 fillerpattern.clear=Sgombrare
 fillerpattern.fill=Riempire
@@ -131,6 +170,8 @@ fillerpattern.stairs=Scale
 fillerpattern.box=Scatola
 fillerpattern.cylinder=Cilindro
 fillerpattern.frame=Impalcatura
+fillerpattern.parameter.hollow=Hollow
+fillerpattern.parameter.filled=Filled
 
 fluid.oil=Petrolio
 fluid.fuel=Carburante
@@ -157,8 +198,8 @@ gate.action.station.allow_craft=Permetti fabbricazione
 gate.action.station.provide_machine_request=Procura oggetti richiesti
 gate.action.station.accept_fluids=Accetta fluidi
 gate.action.station.povide_fluids=Procura fluidi
-gate.action.robot.load_unload_area=Carica/scarica in area
 gate.action.robot.work_in_area=Lavora in area
+gate.action.robot.load_unload_area=Carica/scarica in area
 gate.action.robot.wakeup=Svegliarsi
 gate.action.station.forbid_robot=Proibito a robot
 gate.action.station.force_robot=Forza robot
@@ -181,6 +222,7 @@ gate.material.diamond=di diamante
 gate.material.emerald=di smeraldo
 gate.material.quartz=di quarzo
 
+item.pipeGate.name=Gate
 gate.name=%2$s gate %1$s
 gate.name.basic=Gate base
 
@@ -230,6 +272,10 @@ gate.trigger.time.0=Notte
 gate.trigger.time.6=Mattina
 gate.trigger.time.12=Pomeriggio
 gate.trigger.time.18=Sera
+gate.trigger.fuelLevelBelow=Fuel level below %d%%
+gate.trigger.coolantLevelBelow=Coolant level below %d%%
+
+gui.fluidtank.empty=Empty
 
 gui.building.resources=Materiali per costruire
 gui.building.fluids=Cisterna per fluidi
@@ -237,7 +283,7 @@ gui.del=Canc
 gui.filling.resources=Materiali per riempire
 gui.inventory=Inventario
 gui.lock=Blocca
-gui.needed= Necessari
+gui.needed=Necessari
 gui.unlock=Sblocca
 gui.energy=Corrente
 gui.currentOutput=Output attuale
@@ -268,11 +314,13 @@ item.templateItem.name=Progetto
 item.wrenchItem.name=Chiave inglese
 item.paintbrush.name=Pennello
 item.pipeWaterproof.name=Sigillante impermeabile per tubi
+item.pipeWire.name=Pipe Wire
 item.redPipeWire.name=Filo rosso per tubi
 item.bluePipeWire.name=Filo blu per tubi
 item.greenPipeWire.name=Filo verde per tubi
 item.yellowPipeWire.name=Filo giallo per tubi
 item.redstoneCrystal.name=Cristallo di pietrarossa
+item.redstoneChipset.name=Chipset
 item.redstone_red_chipset.name=Circuito di pietrarossa
 item.redstone_iron_chipset.name=Circuito di ferro
 item.redstone_gold_chipset.name=Circuito d'oro
@@ -290,8 +338,8 @@ item.blueprint.unnamed=<senzanome>
 item.blueprint.author=di
 item.blueprint.blank=Vuoto
 item.blueprint.creative_only=Solo creativa
-item.blueprint.incomplete=Incompleto
 item.blueprint.no_build=Nessuna costruzione
+item.blueprint.incomplete=Incompleto
 item.mapLocation.name=Luogo su mappa
 item.gateCopier.name=Copiatrice di gate
 item.PipeItemsWood.name=Tubo di legno per trasporto
@@ -315,6 +363,7 @@ item.PipeFluidsQuartz.name=Tubo di quarzo per fluidi
 item.PipeFluidsGold.name=Tubo d'oro per fluidi
 item.PipeFluidsEmerald.name=Tubo di smeraldo per fluidi
 item.PipeFluidsDiamond.name=Tubo di diamante per fluidi
+item.PipeFluidsClay.name=Clay Fluid Pipe
 item.PipePowerWood.name=Tubo di legno per corrente
 item.PipePowerCobblestone.name=Tubo di pietrame per corrente
 item.PipePowerStone.name=Tubo di pietra per corrente
@@ -330,7 +379,9 @@ item.PipeFluidsVoid.name=Tubo del void per fluidi
 item.PipeItemsSandstone.name=Tubo d'arenaria per trasporto
 item.PipeFluidsSandstone.name=Tubo d'arenaria per fluidi
 item.PipePowerSandstone.name=Tubo d'arenaria per corrente
+item.robotStation.name=Docking Station
 item.PipeRobotStation.name=Attracco per robot
+item.pipeFacade.name=Facade
 item.Facade.name=Facciata
 item.Facade.state_hollow=Cavo
 item.FacadePhased.name=Facciata doppia
@@ -338,8 +389,11 @@ item.FacadePhased.state=%s: %s
 item.FacadePhased.state_default=Predefinito: %s
 item.FacadePhased.state_transparent=Trasparente
 item.PipePlug.name=Tappo per tubi
+item.pipeLens.name=Lens
 item.Lens.name=Lente
 item.Filter.name=Filtro
+item.pipePowerAdapter.name=Power Adapter
+item.PipePowerAdapter.name=Power Adapter
 item.debugger.name=Debugger
 item.debugger.warning=Usa solo per prova! Rivela segreti.
 item.package.name=Pacco
@@ -351,6 +405,7 @@ itemGroup.buildcraft.facades=BuildCraft facciate
 itemGroup.buildcraft.gates=BuildCraft gate
 
 tile.architectBlock.name=Tavolo dell'architetto
+tile.laserTableBlock.name=Table
 tile.assemblyTableBlock.name=Tavolo di assemblaggio
 tile.assemblyWorkbenchBlock.name=Banco da lavoro avanzato
 tile.autoWorkbenchBlock.name=Banco da lavoro automatico
@@ -360,6 +415,7 @@ tile.blockOil.name=Petrolio
 tile.builderBlock.name=Costruttore
 tile.chargingTableBlock.name=Tavolo caricatore
 tile.constructionMarkerBlock.name=Delimitatore per costruzione
+tile.engineBlock.name=Engine
 tile.engineCreative.name=Motore creativo
 tile.engineIron.name=Motore a carburante
 tile.engineStone.name=Motore a vapore
@@ -381,10 +437,12 @@ tile.programmingTableBlock.name=Tavolo di programmazione
 tile.pumpBlock.name=Pompa
 tile.refineryBlock.name=Raffinatore
 tile.requester.name=Richieditrice
+tile.eternalSpring.name=Spring
 tile.spring.oil.name=Sorgente di petrolio
 tile.spring.water.name=Sorgente d'acqua
 tile.stampingTableBlock.name=Tavolo di timbratura
 tile.tankBlock.name=Serbatoio
+tile.tankBlock.tooltip=Stores up to 16 Buckets of one Liquid\n§4Not portable, use a dolly
 tile.zonePlan.name=Pianificatore per zone
 
 gui.tile.autoWorkbenchBlock.name.title=Banco da lavoro automatico
@@ -428,6 +486,7 @@ tip.PipeFluidsCobblestone=Non si connette a pietra
 tip.PipeFluidsDiamond=Smista fluidi
 tip.PipeFluidsEmerald=Tubo di estrazione
 tip.PipeFluidsIron=Tubo valvola
+tip.PipeFluidsQuartz=Won't connect to Cobblestone or Stone
 tip.PipeFluidsSandstone=Si connette solo ad altri tubi
 tip.PipeFluidsStone=Non si connette a pietrame
 tip.PipeFluidsVoid=Distrugge fluidi
@@ -441,7 +500,7 @@ tip.PipeItemsEmzuli=Tubo di estrazione controllato da un gate
 tip.PipeItemsGold=Velocizza oggetti
 tip.PipeItemsIron=Dirige oggetti
 tip.PipeItemsLapis=Colora oggetti
-tip.PipeItemsObsidian=Aspira oggetti 
+tip.PipeItemsObsidian=Aspira oggetti
 tip.PipeItemsQuartz=Tubo basilare, bassa frizione\nNon si connette a pietrame o pietra
 tip.PipeItemsSandstone=Si connette solo ad altri tubi
 tip.PipeItemsStone=Tubo basilare, media frizione\nNon si connette a pietrame o quartzo
@@ -452,6 +511,16 @@ tip.PipePowerIron=Tubo con limite selezionabile
 tip.PipePowerSandstone=Si connette solo ad altri tubi
 tip.PipePowerWood=Tubo d'entrata per corrente
 tip.PipeStructureCobblestone=Tubo per supporto
+tip.deprecated=Deprecated
+
+tip.gate.charged=Charged
+tip.gate.fullcharge=Full Charge
+tip.gate.nocharge=No Charge
+
+tip.filler.excavate.on=Excavate
+tip.filler.excavate.off=Do Not Excavate
+
+tip.list.matches=Matches
 
 tip.shift.PipeFluidsDiamond=GUI accetta qualunque contenitore di fluidi
 tip.shift.PipeFluidsEmerald=GUI accetta qualunque contenitore di fluidi
@@ -461,6 +530,10 @@ tip.shift.PipeItemsEmzuli=Seleziona i filtri di preset di estrazione nel GUI\nUn
 tip.shift.PipeItemsLapis=Clic-Shift per cambiare colore
 tip.shift.PipeItemsObsidian=Alimenta con un motore\npiù corrente - maggiore distanza
 tip.shift.PipePowerIron=Cambia il limite con una chiave inglese o un gate
+
+tip.PipeItemsEmerald.whitelist=Whitelist
+tip.PipeItemsEmerald.blacklist=Blacklist
+tip.PipeItemsEmerald.roundrobin=Round Robin (In Order)
 
 tip.tool.add=Aggiungi
 tip.tool.fullscreen=Schermo intero
@@ -513,6 +586,10 @@ bc_update.new_version=§cÈ avviabile una nuova versione di BuildCraft: %s per M
 bc_update.download=§cScaricalo da http://www.mod-buildcraft.com/download
 bc_update.once=Questo messaggio sarà mostrato soltanto una volta
 bc_update.again=Scrivi '/buildcraft version' se lo vuoi vedere di nuovo
+bc_update.changelog=Type '/buildcraft changelog' to see the changelog
+
+chat.buildcraft.quarry.tooSmall=[BuildCraft] Quarry size is outside of chunkloading bounds or too small %d %d (%d)
+chat.buildcraft.quarry.chunkloadInfo=[BuildCraft] The quarry at %d %d %d will keep %d chunks loaded
 
 command.buildcraft.version=BuildCraft %s per Minecraft %s (ultimo: %s).
 command.buildcraft.changelog_header=Changelog per BuildCraft %s:
@@ -532,4 +609,12 @@ command.buildcraft.buildcraft.version.format=Formato: /%s
 
 command.buildcraft.buildcraft.changelog.desc=- %s : Changelog
 command.buildcraft.buildcraft.changelog.help=Mostra l'ultimo changelog di BC.
-command.buildcraft.buildcraft.changelog.format=Formato: /%s 
+command.buildcraft.buildcraft.changelog.format=Formato: /%s
+
+command.buildcraft.buildcraft.op.desc=- %s : Op FakePlayer
+command.buildcraft.buildcraft.op.help=Gives OP rights to the BC FakePlayer (acts in the name of quarries, robots, etc.)
+command.buildcraft.buildcraft.op.format=Format: /%s
+
+command.buildcraft.buildcraft.deop.desc=- %s : Deop FakePlayer
+command.buildcraft.buildcraft.deop.help=Ungives OP rights to the BC FakePlayer (acts in the name of quarries, robots, etc.)
+command.buildcraft.buildcraft.deop.format=Format: /%s

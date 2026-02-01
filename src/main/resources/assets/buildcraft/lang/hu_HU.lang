@@ -20,6 +20,7 @@ buildcraft.boardRobotCrafter=Crafter
 buildcraft.boardRobotDelivery=Szállító
 buildcraft.boardRobotPump=Pumpáló
 buildcraft.boardRobotStripes=Csíkos
+buildcraft.boardRobotBreaker=Breaker
 
 buildcraft.boardRobotPicker.desc=Tárgyakat vesz fel
 buildcraft.boardRobotLumberjack.desc=Összevágja a fát
@@ -39,6 +40,7 @@ buildcraft.boardRobotCrafter.desc=Tárgyakat gyárt le
 buildcraft.boardRobotDelivery.desc=Kérésre tárgyakat szállít
 buildcraft.boardRobotPump.desc=Folyadékot pumpál ki
 buildcraft.boardRobotStripes.desc=Uhh... Csíkos!
+buildcraft.boardRobotBreaker.desc=Mines stone
 
 chat.gateCopier.clear=A kapu információi törölve.
 chat.gateCopier.gateCopied=A kapu információi átmásolva a másolóba.
@@ -60,6 +62,8 @@ chat.pipe.power.iron.level.320=Magas
 chat.pipe.power.iron.level.640=Nagyon magas
 chat.pipe.power.iron.level.1280=Teljes kapacitás
 
+color.clear=Clear
+
 color.black=Fekete
 color.blue=Kék
 color.brown=Barna
@@ -80,7 +84,9 @@ color.yellow=Sárga
 config.general=Általánps
 config.general.pipes=Csövek
 config.blueprints=Tervrajzok
+config.builders=Builders
 config.power=Energia felhasználás
+config.experimental=Experimental
 config.display=Képernyő
 config.worldgen=Világ-generálás
 config.network=Hálózat
@@ -90,19 +96,36 @@ config.blueprints.clientDatabaseDirectory=Kliens könyvtár
 config.blueprints.excludedMods=Kizárt modok
 config.blueprints.excludedBlocks=Kizárt blokkok
 
+config.builders.dropBrokenBlocks=Drop broken blocks
+
 config.display.colorBlindMode=Színvak mód
 config.display.hideFluidValues=Folyadék számok elrejtése
 config.display.hidePowerValues=Energia számok elrejtése
 
+config.experimental.kinesisPowerLossOnTravel=Kinesis pipes power perdition
+
+config.general.boards.blacklist=Robot blacklist
 config.general.pumpsConsumeWater=A pumpa vizet fogyaszt
 config.general.updateCheck=Ellenőrizd a firssítéseket
+config.general.fuel.fuel.combustion=Combustion engine fuel multiplier
+config.general.fuel.oil.combustion=Combustion engine oil multiplier
+config.general.fuel.fuel.combustion.energyOutput=Combustion engine fuel output
+config.general.fuel.oil.combustion.energyOutput=Combustion engine oil output
 config.general.itemLifespan=Tárgyak életideje (másodperc)
 config.general.canEnginesExplode=Motorok felrobbannak
 config.general.oilCanBurn=Égő olaj
 config.general.oilIsDense=Sűrű olaj
+config.general.pipes.baseFluidRate=Base flow rate
+config.general.pipes.facadeBlacklist=Facade blacklist
+config.general.pipes.facadeBlacklistAsWhitelist=Invert facade blacklist
+config.general.pipes.facadeNoLaserRecipe=Add facade recipe without laser
+config.general.pipes.hardness=Hardness
+config.general.pipes.slimeballWaterproofRecipe=Add slimeball sealant recipe
+config.general.pumpsNeedRealPower=Pumps need real power
 config.general.quarry=Bányászgép beállításai
 config.general.quarry.oneTimeUse=Egyszer-használatos mód
 config.general.quarry.doChunkLoading=Automatikus chunk betöltés
+config.general.markerRange=Range of markers
 config.general.miningDepth=Maximum relatív bányászási mélység
 config.general.pumpDimensionControl=Pumpa dimenziós vezérlése
 
@@ -111,10 +134,17 @@ config.network.updateFactor=Csomagküldési faktor (tick-ek)
 
 config.power.miningUsageMultiplier=Bányászat használatának szorzója
 config.power.chipsetCostMultiplier=Chip költségének szorzója
+config.power.gateCostMultiplier=Gate cost multiplier
 
 config.worldgen.enable=Engedélyezve
+config.worldgen.generateWaterSprings=Spawn water springs
 config.worldgen.oilWellGenerationRate=Olaj generációs ráta
 config.worldgen.spawnOilSprings=Olajforrás idézése
+config.worldgen.biomes.biomeOilDesert=Oil Desert biome id
+config.worldgen.biomes.biomeOilOcean=Oil Ocean biome id
+config.worldgen.biomes.excessiveOilIDs=Biomes with excessive oil
+config.worldgen.biomes.excludeOilIDs=Biomes without oil
+config.worldgen.biomes.increasedOilIDs=Biomes with increased oil
 
 direction.north=Észak
 direction.west=Nyugat
@@ -122,6 +152,16 @@ direction.east=Kelet
 direction.south=Dél
 direction.up=Felül
 direction.down=Alul
+
+direction.center.0=North-West
+direction.center.1=North
+direction.center.2=North-East
+direction.center.3=West
+direction.center.4=Center
+direction.center.5=East
+direction.center.6=South-West
+direction.center.7=South
+direction.center.8=South-East
 
 fillerpattern.clear=Tisztítás
 fillerpattern.fill=Feltöltés
@@ -132,6 +172,8 @@ fillerpattern.stairs=Lépcső
 fillerpattern.box=Doboz
 fillerpattern.cylinder=Cilinder
 fillerpattern.frame=Keret
+fillerpattern.parameter.hollow=Hollow
+fillerpattern.parameter.filled=Filled
 
 fluid.oil=Olaj
 fluid.fuel=Benzin
@@ -182,16 +224,16 @@ gate.material.diamond=Gyémánt
 gate.material.emerald=Smaragd
 gate.material.quartz=Kvarc
 
+item.pipeGate.name=Gate
 gate.name=%s %s Kapu
 gate.name.basic=Egyszerű kapu
 
 gate.parameter.redstone.gateSideOnly=Csak a kapu felöli oldalra
 
-
 gate.trigger.engine.blue=A motor kék
 gate.trigger.engine.green=A motor zöld
 gate.trigger.engine.yellow=A motor sárga
-gate.trigger.engine.red= A motor piros
+gate.trigger.engine.red=A motor piros
 gate.trigger.engine.overheat=A motor túlmelegedett
 gate.trigger.fluid.empty=A tartály üres
 gate.trigger.fluid.contains=Folyadék a tartályban
@@ -221,8 +263,8 @@ gate.trigger.robot.sleep=Alvó üzemmód
 gate.trigger.robot.in.station=Robot az állomáson
 gate.trigger.robot.linked=Állomás bekötve
 gate.trigger.robot.reserved=Állomás lefoglalva
-gate.trigger.machine.energyStoredHigh=Nagyfeszültségű eneriga van tárolva
-gate.trigger.machine.energyStoredLow=Kisfeszültségű eneriga van tárolva 
+gate.trigger.machine.energyStored.high=High Energy Stored
+gate.trigger.machine.energyStored.low=Low Energy Stored
 gate.trigger.machine.energyStored.below25=Energia < 25%
 gate.trigger.machine.energyStored.below50=Energia < 50%
 gate.trigger.machine.energyStored.below75=Energia < 75%
@@ -232,6 +274,10 @@ gate.trigger.time.0=Éjjel
 gate.trigger.time.6=Reggel
 gate.trigger.time.12=Délután
 gate.trigger.time.18=Este
+gate.trigger.fuelLevelBelow=Fuel level below %d%%
+gate.trigger.coolantLevelBelow=Coolant level below %d%%
+
+gui.fluidtank.empty=Empty
 
 gui.building.resources=Építési nyersanyagok
 gui.building.fluids=Üzemanyag tartályok
@@ -270,11 +316,13 @@ item.templateItem.name=Sablon
 item.wrenchItem.name=Franciakulcs
 item.paintbrush.name=Festőecset
 item.pipeWaterproof.name=Csőtömítő
+item.pipeWire.name=Pipe Wire
 item.redPipeWire.name=Piros vezeték
 item.bluePipeWire.name=Kék vezeték
 item.greenPipeWire.name=Zöld vezeték
 item.yellowPipeWire.name=Sárga vezeték
 item.redstoneCrystal.name=Vöröskő kirstály
+item.redstoneChipset.name=Chipset
 item.redstone_red_chipset.name=Vöröskő Chip
 item.redstone_iron_chipset.name=Vas Chip
 item.redstone_gold_chipset.name=Arany Chip
@@ -285,6 +333,7 @@ item.redstone_quartz_chipset.name=Alvilági kvarc Chip
 item.redstone_comp_chipset.name=Komplikált vöröskő Chip
 item.redstone_board.name=Vöröskő mikrokontroller
 item.robot.name=Robot
+item.tablet.name=Tablet
 item.blueprintItem.name=Tervrajz
 item.list.name=Lista
 item.blueprint.unnamed=<névtelen>
@@ -316,6 +365,7 @@ item.PipeFluidsQuartz.name=Karc folyadékszállító-cső
 item.PipeFluidsGold.name=Arany folyadékszállító-cső
 item.PipeFluidsEmerald.name=Smaragd folyadékszállító-cső
 item.PipeFluidsDiamond.name=Gyémánt folyadékszállító-cső
+item.PipeFluidsClay.name=Clay Fluid Pipe
 item.PipePowerWood.name=Fa áramszállítócső
 item.PipePowerCobblestone.name=Zúzottkő áramszállítócső
 item.PipePowerStone.name=Kő áramszállítócső
@@ -331,26 +381,33 @@ item.PipeFluidsVoid.name=Folyadékmegsemmisítő-cső
 item.PipeItemsSandstone.name=Homokkő szállítócső
 item.PipeFluidsSandstone.name=Homokkő folyadékszállító-cső
 item.PipePowerSandstone.name=Homokkő áramszállítócső
+item.robotStation.name=Docking Station
 item.PipeRobotStation.name=Dokkoló állomás
+item.pipeFacade.name=Facade
 item.Facade.name=Homlokzat
+item.Facade.state_hollow=Hollow
 item.FacadePhased.name=Fázisos homlokzat
 item.FacadePhased.state=%s: %s
 item.FacadePhased.state_default=Alapértelmezett: %s
 item.FacadePhased.state_transparent=Transzparens
 item.PipePlug.name=Csődugó
+item.pipeLens.name=Lens
 item.Lens.name=Lencse
 item.Filter.name=Szűrő
+item.pipePowerAdapter.name=Power Adapter
+item.PipePowerAdapter.name=Power Adapter
 item.debugger.name=Debugger
 item.debugger.warning=Csak tesztelésre! Titkokat szivárogtat ki.
 item.package.name=Csomag
 
-itemGroup.buildcraft.blocks=Buildcraft Blokkok
 itemGroup.buildcraft.boards=Buildcraft Robotok
-itemGroup.buildcraft.items=Buildcraft Tárgyak
+itemGroup.buildcraft.main=BuildCraft
 itemGroup.buildcraft.pipes=Buildcraft Csövek
 itemGroup.buildcraft.facades=Buildcraft Homlokzatok
+itemGroup.buildcraft.gates=BuildCraft Gates
 
 tile.architectBlock.name=Tervező asztal
+tile.laserTableBlock.name=Table
 tile.assemblyTableBlock.name=Összeszerelő asztal
 tile.assemblyWorkbenchBlock.name=Fejlesztett összeszerelő asztal
 tile.autoWorkbenchBlock.name=Automatikus munkaasztal
@@ -360,10 +417,11 @@ tile.blockOil.name=Olaj
 tile.builderBlock.name=Építő
 tile.chargingTableBlock.name=Töltő asztal
 tile.constructionMarkerBlock.name=Építkezési jelölő
+tile.engineBlock.name=Engine
 tile.engineCreative.name=Motor Kreatív módhoz
 tile.engineIron.name=Belsőégésű motor
 tile.engineStone.name=Hőlégmotor
-tile.engineWood.name= Vöröskő motor
+tile.engineWood.name=Vöröskő motor
 tile.fillerBlock.name=Feltöltő
 tile.filteredBufferBlock.name=Szűrt buffer
 tile.floodGateBlock.name=Folyadék kapu
@@ -381,10 +439,12 @@ tile.programmingTableBlock.name=Programozó asztal
 tile.pumpBlock.name=Pumpa
 tile.refineryBlock.name=Olajfinomító
 tile.requester.name=Kérvényező
+tile.eternalSpring.name=Spring
 tile.spring.oil.name=Olajmező
 tile.spring.water.name=Vízforrás
 tile.stampingTableBlock.name=Bélyegző asztal
 tile.tankBlock.name=Tartály
+tile.tankBlock.tooltip=Stores up to 16 Buckets of one Liquid\n§4Not portable, use a dolly
 tile.zonePlan.name=Zóna tervező
 
 gui.tile.autoWorkbenchBlock.name.title=Automatikus munkaasztal
@@ -423,18 +483,22 @@ tip.gate.wires.diamond=Piros, Kék, Sárga, Zöld
 tip.gate.wires.emerald=Piros, Kék, Sárga, Zöld
 tip.gate.expansions=§9§oTelepített kiegészítések:
 
+tip.PipeFluidsClay=Insertion pipe
 tip.PipeFluidsCobblestone=Nem csatlakozik kőhöz
 tip.PipeFluidsDiamond=Szétválogatja a folyadékokat
 tip.PipeFluidsEmerald=Extrakciós cső, 40mB/t
 tip.PipeFluidsIron=Szelep cső
+tip.PipeFluidsQuartz=Won't connect to Cobblestone or Stone
 tip.PipeFluidsSandstone=Csak másik csőhöz csatlakozik
 tip.PipeFluidsStone=Nem csatlakozik zúzottkőhöz
 tip.PipeFluidsVoid=Elpusztítja a folyadékokat
 tip.PipeFluidsWood=Extrakciós cső
+tip.PipeItemsClay=Insertion pipe
 tip.PipeItemsCobblestone=Normális cső, nagy húzóerővel\nNem csatlakozik kőhöz vagy kvarchoz
 tip.PipeItemsDaizuli=Színezett tárgyak irányítása
 tip.PipeItemsDiamond=Válogatócső
 tip.PipeItemsEmerald=Egyenlően extraktáló cső
+tip.PipeItemsEmzuli=Kapuvezérelt extrakciós cső
 tip.PipeItemsGold=Felgyorsítja a tárgyak mozgását
 tip.PipeItemsIron=Megszabja a tárgyak útvonalát
 tip.PipeItemsLapis=Tárgyakat színez
@@ -444,13 +508,21 @@ tip.PipeItemsSandstone=Csak másik csövekhez csatlakozik
 tip.PipeItemsStone=Sima cső, közepes húzóerő\nNem csatlakozik zúzottkőhöz vagy kvarchoz
 tip.PipeItemsVoid=Elpusztítja a tárgyakat
 tip.PipeItemsWood=Extrakciós cső
-tip.PipeItemsEmzuli=Kapuvezérelt extrakciós cső
-tip.PipePowerWood=Áram beviteli cső
 tip.PipePowerEmerald=Áram beviteli cső
 tip.PipePowerIron=Választhatóan limitáló cső
 tip.PipePowerSandstone=Csak más csövekhez csatlakozik
 tip.PipePowerWood=Energia bemeneti cső
 tip.PipeStructureCobblestone=Segítőcső
+tip.deprecated=Deprecated
+
+tip.gate.charged=Charged
+tip.gate.fullcharge=Full Charge
+tip.gate.nocharge=No Charge
+
+tip.filler.excavate.on=Excavate
+tip.filler.excavate.off=Do Not Excavate
+
+tip.list.matches=Matches
 
 tip.shift.PipeFluidsDiamond=A GUI bármilyen folyadék tárolót elfogad
 tip.shift.PipeFluidsEmerald=A GUI bármilyen folyadék tárolót elfogad
@@ -460,6 +532,10 @@ tip.shift.PipeItemsEmzuli=Előzetes szűrők beállítása a kitermeléshez a GU
 tip.shift.PipeItemsLapis=Shift+klikk színváltoztatáshoz
 tip.shift.PipeItemsObsidian=Hajtsd meg egy motorral\nTöbb energia - nagyobb távolság
 tip.shift.PipePowerIron=A limit változtatható franciakulccsal vagy kapuval
+
+tip.PipeItemsEmerald.whitelist=Whitelist
+tip.PipeItemsEmerald.blacklist=Blacklist
+tip.PipeItemsEmerald.roundrobin=Round Robin (In Order)
 
 tip.tool.add=Hozzáadás
 tip.tool.fullscreen=Teljesképernyő
@@ -512,7 +588,35 @@ bc_update.new_version=§cÚj verzió érhető el Builcraft-ból: %s a következ�
 bc_update.download=§cLetölthető innen: http://www.mod-buildcraft.com/download
 bc_update.once=Ez az üzenet csak egyszer jelenik meg
 bc_update.again=Írd be, hogy '/buildcraft version' ha újra látni szeretnéd
+bc_update.changelog=Type '/buildcraft changelog' to see the changelog
+
+chat.buildcraft.quarry.tooSmall=[BuildCraft] Quarry size is outside of chunkloading bounds or too small %d %d (%d)
+chat.buildcraft.quarry.chunkloadInfo=[BuildCraft] The quarry at %d %d %d will keep %d chunks loaded
 
 command.buildcraft.version=BuildCraft %s a következő Minecraft verzióhoz %s (Latest: %s).
-command.buildcraft.versioninfo=Verzió információk.
-command.buildcraft.available=Elérhető parancsok:
+command.buildcraft.changelog_header=Changelog for BuildCraft %s:
+
+command.buildcraft.aliases=Aliases: %s
+command.buildcraft.help=Type '%s' for help.
+command.buildcraft.list=Available Commands:
+command.buildcraft.permlevel=Permission level: %s
+command.buildcraft.noperms=You do not have permission to use this command.
+
+command.buildcraft.buildcraft.help=Various BuildCraft-related commands
+command.buildcraft.buildcraft.format=Format: /%s <sub-command>
+
+command.buildcraft.buildcraft.version.desc=- %s : Version Information
+command.buildcraft.buildcraft.version.help=Displays the current and latest BC version.
+command.buildcraft.buildcraft.version.format=Format: /%s
+
+command.buildcraft.buildcraft.changelog.desc=- %s : Changelog
+command.buildcraft.buildcraft.changelog.help=Displays the latest BC changelog.
+command.buildcraft.buildcraft.changelog.format=Format: /%s
+
+command.buildcraft.buildcraft.op.desc=- %s : Op FakePlayer
+command.buildcraft.buildcraft.op.help=Gives OP rights to the BC FakePlayer (acts in the name of quarries, robots, etc.)
+command.buildcraft.buildcraft.op.format=Format: /%s
+
+command.buildcraft.buildcraft.deop.desc=- %s : Deop FakePlayer
+command.buildcraft.buildcraft.deop.help=Ungives OP rights to the BC FakePlayer (acts in the name of quarries, robots, etc.)
+command.buildcraft.buildcraft.deop.format=Format: /%s
