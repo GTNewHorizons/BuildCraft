@@ -60,8 +60,6 @@ chat.pipe.power.iron.level.320=높음
 chat.pipe.power.iron.level.640=매우 높음
 chat.pipe.power.iron.level.1280=Full Capacity
 
-color.clear=Clear
-
 color.black=검정색
 color.blue=파란색
 color.brown=갈색
@@ -174,7 +172,7 @@ fillerpattern.parameter.hollow=Hollow
 fillerpattern.parameter.filled=Filled
 
 fluid.oil=석유
-fluid.fuel=Fuel
+fluid.steam=증기
 
 gate.action.extraction=%s Extraction Preset
 gate.action.pipe.item.color=Paint Items %s
@@ -222,7 +220,6 @@ gate.material.diamond=다이아몬드
 gate.material.emerald=에메랄드
 gate.material.quartz=석영
 
-item.pipeGate.name=Gate
 gate.name=%s %s 게이트
 gate.name.basic=기본 게이트
 
@@ -314,13 +311,11 @@ item.templateItem.name=설계도
 item.wrenchItem.name=렌치
 item.paintbrush.name=페인트 브러쉬
 item.pipeWaterproof.name=파이프 실런트
-item.pipeWire.name=Pipe Wire
 item.redPipeWire.name=빨간색 파이프 전선
 item.bluePipeWire.name=파란색 파이프 전선
 item.greenPipeWire.name=초록색 파이프 전선
 item.yellowPipeWire.name=노란색 파이프 전선
 item.redstoneCrystal.name=레드스톤 수정
-item.redstoneChipset.name=Chipset
 item.redstone_red_chipset.name=레드스톤 칩셋
 item.redstone_iron_chipset.name=철 칩셋
 item.redstone_gold_chipset.name=금 칩셋
@@ -379,24 +374,13 @@ item.PipeFluidsVoid.name=공허의 액체 파이프
 item.PipeItemsSandstone.name=사암 아이템 파이프
 item.PipeFluidsSandstone.name=사암 액체 파이프
 item.PipePowerSandstone.name=사암 전력 파이프
-item.robotStation.name=Docking Station
+
 item.PipeRobotStation.name=도킹 스테이션
-item.pipeFacade.name=Facade
 item.Facade.name=덮개
 item.Facade.state_hollow=가운데가 빈
-item.FacadePhased.name=Phased Facade
-item.FacadePhased.state=%s: %s
-item.FacadePhased.state_default=Default: %s
-item.FacadePhased.state_transparent=Transparent
 item.PipePlug.name=파이프 마개
-item.pipeLens.name=Lens
 item.Lens.name=렌즈
 item.Filter.name=필터
-item.pipePowerAdapter.name=Power Adapter
-item.PipePowerAdapter.name=Power Adapter
-item.debugger.name=Debugger
-item.debugger.warning=Use only for testing! Leaks secrets.
-item.package.name=Package
 
 itemGroup.buildcraft.boards=빌드크래프트 [BuildCraft Robots]
 itemGroup.buildcraft.main=빌드크래프트 [Buildcraft]
@@ -405,7 +389,6 @@ itemGroup.buildcraft.facades=빌드크래프트 [BuildCraft Facades]
 itemGroup.buildcraft.gates=빌드크래프트 [BuildCraft Gates]
 
 tile.architectBlock.name=설계도 제작 테이블
-tile.laserTableBlock.name=Table
 tile.assemblyTableBlock.name=조립 테이블
 tile.assemblyWorkbenchBlock.name=고급 조립 테이블
 tile.autoWorkbenchBlock.name=자동 작업대
@@ -415,7 +398,6 @@ tile.blockOil.name=석유
 tile.builderBlock.name=건설기
 tile.chargingTableBlock.name=Charging Table
 tile.constructionMarkerBlock.name=Construction Mark
-tile.engineBlock.name=Engine
 tile.engineCreative.name=크리에이티브 엔진
 tile.engineIron.name=연소 엔진
 tile.engineStone.name=스털링 엔진
@@ -437,12 +419,10 @@ tile.programmingTableBlock.name=프로그레밍 테이블
 tile.pumpBlock.name=펌프
 tile.refineryBlock.name=정제기
 tile.requester.name=Requester
-tile.eternalSpring.name=Spring
 tile.spring.oil.name=석유 샘
 tile.spring.water.name=지하수 샘
 tile.stampingTableBlock.name=Stamping Table
 tile.tankBlock.name=탱크
-tile.tankBlock.tooltip=Stores up to 16 Buckets of one Liquid\n§4Not portable, use a dolly
 tile.zonePlan.name=지역 플래너
 
 gui.tile.autoWorkbenchBlock.name.title=자동 작업대
@@ -481,12 +461,10 @@ tip.gate.wires.diamond=빨강색, 파란색, 초록색, 노란색
 tip.gate.wires.emerald=빨강색, 파란색, 초록색, 노란색
 tip.gate.expansions=§9§oInstalled Expansions:
 
-tip.PipeFluidsClay=Insertion pipe
 tip.PipeFluidsCobblestone=기본관\n돌에 연결되지 않음
-tip.PipeFluidsDiamond=Sorts fluids
 tip.PipeFluidsEmerald=추출 파이프
+tip.PipeFluidsGold=기본 파이프
 tip.PipeFluidsIron=벨브 파이프
-tip.PipeFluidsQuartz=Won't connect to Cobblestone or Stone
 tip.PipeFluidsSandstone=다른 모든 파이프에 연결
 tip.PipeFluidsStone=기본 파이프\n조약돌에 연결되지 않음
 tip.PipeFluidsVoid=유체 소멸
@@ -520,8 +498,6 @@ tip.gate.nocharge=No Charge
 
 tip.filler.excavate.on=영역을 채굴 후 건축함
 tip.filler.excavate.off=영역을 채굴하지 않고 건축함
-
-tip.list.matches=Matches
 
 tip.shift.PipeFluidsDiamond=GUI accepts any fluid containers
 tip.shift.PipeFluidsEmerald=GUI accepts any fluid container
