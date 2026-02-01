@@ -493,6 +493,7 @@ tip.PipePowerIron=Trubka, která může zvolit limit energie
 tip.PipePowerSandstone=Only connects to other pipes
 tip.PipePowerWood=Extrahuje energii
 tip.PipeStructureCobblestone=Podpůrná trubka
+gui.tile.blockHopper.name.title=Násypka
 tip.deprecated=Deprecated
 
 tip.gate.charged=Charged

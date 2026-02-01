@@ -496,6 +496,7 @@ tip.PipePowerIron=Instelbare limietpijp
 tip.PipePowerSandstone=Only connects to other pipes
 tip.PipePowerWood=Energieingangpijp
 tip.PipeStructureCobblestone=Ondersteuningspijp
+gui.tile.blockHopper.name.title=Trechter
 tip.deprecated=Deprecated
 
 tip.gate.charged=Charged

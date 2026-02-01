@@ -445,6 +445,24 @@ tile.tankBlock.name=Serbatoio
 tile.tankBlock.tooltip=Stores up to 16 Buckets of one Liquid\n§4Not portable, use a dolly
 tile.zonePlan.name=Pianificatore per zone
 
+gui.tile.autoWorkbenchBlock.name.title=Banco da lavoro automatico
+gui.tile.engineIron.name.title=Motore a carburante
+gui.tile.engineStone.name.title=Motore a vapore
+gui.tile.fillerBlock.name.title=Riempitore
+gui.tile.libraryBlock.name.title=Libreria per progetti
+gui.tile.zonePlan.name.title=Pianificatore per zone
+gui.tile.builderBlock.name.title=Costruttore
+
+gui.tile.assemblyTableBlock.name.title=Tavolo di assemblaggio
+gui.tile.assemblyWorkbenchBlock.name.title=Banco da lavoro avanzato
+gui.tile.integrationTableBlock.name.title=Tavolo integratore
+gui.tile.chargingTableBlock.name.title=Tavolo caricatore
+gui.tile.programmingTableBlock.name.title=Tavolo di programmazione
+gui.tile.stampingTableBlock.name.title=Tavolo di timbratura
+gui.tile.filteredBufferBlock.name.title=Buffer filtrante
+gui.tile.refineryBlock.name.title=Raffinatore
+gui.tile.blockHopper.name.title=Scivolo
+
 tile.architect.rotate=Rotazione: Si
 tile.architect.norotate=Rotazione: No
 tile.architect.allowCreative=Modalità: Creativa

@@ -75,7 +75,7 @@ public class GuiFiller extends GuiAdvancedInterface {
                 return instance.filler.currentPattern;
             }
         };
-        xSize = 175;
+        xSize = 176;
         ySize = 240;
     }
 
@@ -172,7 +172,7 @@ public class GuiFiller extends GuiAdvancedInterface {
     protected void drawGuiContainerForegroundLayer(int mx, int my) {
         super.drawGuiContainerForegroundLayer(mx, my);
 
-        String title = StringUtils.localize("tile.fillerBlock.name");
+        String title = StringUtils.localize("gui.tile.fillerBlock.name.title");
         fontRendererObj.drawString(title, getCenteredOffset(title), 6, 0x404040);
         fontRendererObj.drawString(StringUtils.localize("gui.filling.resources"), 8, 74, 0x404040);
         fontRendererObj.drawString(StringUtils.localize("gui.inventory"), 8, 142, 0x404040);

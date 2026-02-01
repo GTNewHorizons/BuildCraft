@@ -445,6 +445,7 @@ tile.spring.oil.name=Oil Spring
 tile.spring.water.name=Water Spring
 tile.stampingTableBlock.name=Stamping Table
 tile.tankBlock.name=Saugykla (Skysčio)
+gui.tile.blockHopper.name.title=Piltuvas
 tile.tankBlock.tooltip=Stores up to 16 Buckets of one Liquid\n§4Not portable, use a dolly
 tile.zonePlan.name=Zone Planner
 

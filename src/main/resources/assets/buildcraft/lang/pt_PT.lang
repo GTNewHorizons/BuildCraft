@@ -446,6 +446,21 @@ tile.tankBlock.name=Tanque
 tile.tankBlock.tooltip=Stores up to 16 Buckets of one Liquid\n§4Not portable, use a dolly
 tile.zonePlan.name=Planejador de Áreas
 
+gui.tile.filteredBufferBlock.name.title=Amortecedor Filtrado
+gui.tile.refineryBlock.name.title=Refinaria
+gui.tile.blockHopper.name.title=Calha
+gui.tile.autoWorkbenchBlock.name.title=Mesa de Trabalho Automática
+gui.tile.engineIron.name.title=Motor de Combustão
+gui.tile.engineStone.name.title=Motor a Vapor
+gui.tile.fillerBlock.name.title=Enchedor
+gui.tile.libraryBlock.name.title=Livraria de Diagramas
+gui.tile.zonePlan.name.title=Planejador de Áreas
+gui.tile.builderBlock.name.title=Construtor
+gui.tile.assemblyTableBlock.name.title=Mesa de Montagem
+gui.tile.assemblyWorkbenchBlock.name.title=Mesa de Trabalho Avançada
+gui.tile.integrationTableBlock.name.title=Mesa de Integração
+gui.tile.chargingTableBlock.name.title=Mesa de Carregamento
+
 tile.architect.rotate=Girar: Sim
 tile.architect.norotate=Girar: Não
 tile.architect.allowCreative=Modo: Criativo

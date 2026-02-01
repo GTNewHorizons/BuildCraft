@@ -1,4 +1,4 @@
-﻿# Serbian language file
+# Serbian language file
 # this translation is very old, please update !
 # Master language file
 
@@ -279,20 +279,44 @@ gate.trigger.coolantLevelBelow=Coolant level below %d%%
 
 gui.fluidtank.empty=Empty
 
+gate.pipe.empty=Cev Prazna
+gate.pipe.containsItems=Predmeti Prolaze
+gate.pipe.containsLiquids=Tecnosti Prolaze
+gate.pipe.containsEnergy=Struja Prolazi
+gate.pipe.requestsEnergy=Struja Zatra�ena
+gate.pipe.tooMuchEnergy=Struja Prepunjena
+gui.building.resources=Gradevinski Materijali
+gui.del=Izbri�i
 gui.building.resources=Građevinski Materijali
 gui.building.fluids=Fluid Tanks
 gui.del=Izbriši
 gui.filling.resources=Materijali Za Punjenje
 gui.inventory=Inventar
-gui.lock=Zaključati
+gui.lock=Zakljucati
 gui.needed=Neophodno
-gui.unlock=Otključati
+gui.unlock=Otkljucati
 gui.energy=Energija
 gui.currentOutput=Trenutni Izlaz
-gui.stored=Skladišteno
+gui.stored=Skladi�teno
 gui.heat=Toplota
 gui.assemblyRate=Protok Energije
 gui.assemblyCurrentRequired=Neophodna Energija
+gui.clickcraft=-Klikni da Sastavi�-
+
+item.bucketFuel.name=Kanta Goriva
+item.bucketOil.name=Kanta Nafte
+item.woodenGearItem.name=Drveni Zupcanik
+item.stoneGearItem.name=Kameni Zupcanik
+item.ironGearItem.name=Gvozdeni Zupcanik
+item.goldGearItem.name=Zlatni Zupcanik
+item.diamondGearItem.name=Dijamantni Zupcanik
+item.templateItem.name=Predlo�ak
+item.wrenchItem.name=Kljuc
+item.pipeWaterproof.name=Dodatak Za Vodootpornost Cevi
+item.redPipeWire.name=Crvena Cevna �ica
+item.bluePipeWire.name=Plava Cevna �ica
+item.greenPipeWire.name=Zelena Cevna �ica
+item.yellowPipeWire.name=�uta Cevna �ica
 gui.clickcraft=-Klikni da Sastaviš-
 gui.list.metadata=Accept Variations
 gui.list.oredict=Accept Equivalents
@@ -345,7 +369,7 @@ item.blueprint.incomplete=Incomplete
 item.mapLocation.name=Map Location
 item.gateCopier.name=Gate Copier
 item.PipeItemsWood.name=Drvena Transportna Cev
-item.PipeItemsCobblestone.name=Neobrađena Kamena Transportna Cev
+item.PipeItemsCobblestone.name=Neobradena Kamena Transportna Cev
 item.PipeItemsStone.name=Kamena Transportna Cev
 item.PipeItemsQuartz.name=Kvarcna Transportna Cev
 item.PipeItemsIron.name=Gvozdena Transportna Cev
@@ -378,6 +402,14 @@ item.PipeItemsStripes.name=Prugasta Transportna Cev
 item.PipeStructureCobblestone.name=Kaldrmasta Strukturna Cev
 item.PipeItemsVoid.name=Transportna Cev Praznine
 item.PipeFluidsVoid.name=Vodootporna Cev Praznine
+item.PipeItemsSandstone.name=Transportna Cev Od Pe�canog Kamena
+item.PipeFluidsSandstone.name=Vodootporna Cev Od Pe�canog Kamena
+item.Facade.name=Fasada
+item.PipePlug.name=Cevni Cep
+
+tile.architectBlock.name=Arhitektski Stol
+tile.assemblyTableBlock.name=Monta�ni Sto
+tile.assemblyWorkbenchBlock.name=Monta�ni Radni Sto
 item.PipeItemsSandstone.name=Transportna Cev Od Peščanog Kamena
 item.PipeFluidsSandstone.name=Vodootporna Cev Od Peščanog Kamena
 item.PipePowerSandstone.name=Sandstone Kinesis Pipe
@@ -413,8 +445,9 @@ tile.assemblyWorkbenchBlock.name=Montažni Radni Sto
 tile.autoWorkbenchBlock.name=Auto-Radni Stol
 tile.blockFuel.name=Gorivo
 tile.blockHopper.name=Levak
-tile.blockOil.name=Stajeća Nafta
+tile.blockOil.name=Stajeca Nafta
 tile.builderBlock.name=Graditelj
+tile.engineIron.name=Motor S Unutra�njim Sagorevanjem
 tile.chargingTableBlock.name=Charging Table
 tile.constructionMarkerBlock.name=Construction Mark
 tile.engineBlock.name=Engine
@@ -422,7 +455,7 @@ tile.engineCreative.name=Creative Engine
 tile.engineIron.name=Motor S Unutrašnjim Sagorevanjem
 tile.engineStone.name=Stirlingov Motor
 tile.engineWood.name=Crvenokamenski Motor
-tile.fillerBlock.name=Popunjavač
+tile.fillerBlock.name=Popunjavac
 tile.filteredBufferBlock.name=Inventar sa Filterom
 tile.floodGateBlock.name=Flood Gate
 tile.frameBlock.name=Okvir
@@ -431,6 +464,7 @@ tile.laserBlock.name=Laser
 tile.libraryBlock.name=Biblioteka Nacrta
 tile.machineBlock.name=Kamenolom
 tile.markerBlock.name=Oznaka
+tile.miningWellBlock.name=Kopac
 tile.miningWellBlock.name=Kopač
 tile.packagerBlock.name=Recipe Packager
 tile.pathMarkerBlock.name=Oznaka Puta
@@ -444,6 +478,7 @@ tile.spring.oil.name=Naftni Izvor
 tile.spring.water.name=Vodeni Izvor
 tile.stampingTableBlock.name=Stamping Table
 tile.tankBlock.name=Rezervoar
+gui.tile.blockHopper.name.title=Levak
 tile.tankBlock.tooltip=Stores up to 16 Buckets of one Liquid\n§4Not portable, use a dolly
 tile.zonePlan.name=Zone Planner
 

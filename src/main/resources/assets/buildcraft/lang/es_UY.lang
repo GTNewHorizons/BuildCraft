@@ -574,6 +574,9 @@ chat.buildcraft.quarry.tooSmall=[BuildCraft] Quarry size is outside of chunkload
 chat.buildcraft.quarry.chunkloadInfo=[BuildCraft] The quarry at %d %d %d will keep %d chunks loaded
 
 command.buildcraft.version=BuildCraft %s para Minecraft %s (Ùltima versión: %s).
+command.buildcraft.versioninfo=Información de la versión.
+command.buildcraft.available=Comandos disponibles:
+gui.tile.blockHopper.name.title=Tolva
 command.buildcraft.changelog_header=Changelog for BuildCraft %s:
 
 command.buildcraft.aliases=Aliases: %s
