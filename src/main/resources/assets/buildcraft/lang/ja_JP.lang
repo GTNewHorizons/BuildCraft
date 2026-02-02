@@ -19,27 +19,6 @@ buildcraft.boardRobotCrafter=クラフト
 buildcraft.boardRobotDelivery=配達
 buildcraft.boardRobotPump=ポンプ
 buildcraft.boardRobotStripes=ストライプ
-buildcraft.boardRobotBreaker=Breaker
-
-buildcraft.boardRobotPicker.desc=Picks up items
-buildcraft.boardRobotLumberjack.desc=Breaks logs
-buildcraft.boardRobotPlanter.desc=Plants crops
-buildcraft.boardRobotLeaveCutter.desc=Cuts leaves
-buildcraft.boardRobotCarrier.desc=Moves items between inventories
-buildcraft.boardRobotFluidCarrier.desc=Moves fluids between tanks
-buildcraft.boardRobotBomber.desc=Bombs locations
-buildcraft.boardRobotKnight.desc=Fights mobs
-buildcraft.boardRobotMiner.desc=Mines ores
-buildcraft.boardRobotFarmer.desc=Hoes dirt
-buildcraft.boardRobotHarvester.desc=Harvests mature crops
-buildcraft.boardRobotShovelman.desc=Shovels area
-buildcraft.boardRobotButcher.desc=Fights animals
-buildcraft.boardRobotBuilder.desc=Builds structures
-buildcraft.boardRobotCrafter.desc=Crafts items
-buildcraft.boardRobotDelivery.desc=Delivers items upon request
-buildcraft.boardRobotPump.desc=Pumps out liquids
-buildcraft.boardRobotStripes.desc=Uhh... Stripes!
-buildcraft.boardRobotBreaker.desc=Mines stone
 
 chat.gateCopier.clear=ゲートコピー機の情報を消去しました
 chat.gateCopier.gateCopied=ゲートの情報をコピーしました
@@ -61,8 +40,6 @@ chat.pipe.power.iron.level.320=高い
 chat.pipe.power.iron.level.640=非常に高い
 chat.pipe.power.iron.level.1280=最大
 
-color.clear=Clear
-
 color.black=黒
 color.blue=青
 color.brown=茶
@@ -80,87 +57,12 @@ color.red=赤
 color.white=白
 color.yellow=黄
 
-config.general=General
-config.general.pipes=Pipes
-config.blueprints=Blueprints
-config.builders=Builders
-config.power=Power Usage
-config.experimental=Experimental
-config.display=Display
-config.worldgen=World Generation
-config.network=Networking
-config.buildcraft=BuildCraft Configuration
-
-config.blueprints.clientDatabaseDirectory=Client directory
-config.blueprints.excludedMods=Excluded mods
-config.blueprints.excludedBlocks=Excluded blocks
-
-config.builders.dropBrokenBlocks=Drop broken blocks
-
-config.display.colorBlindMode=Colorblind mode
-config.display.hideFluidValues=Hide fluid numbers
-config.display.hidePowerValues=Hide power numbers
-
-config.experimental.kinesisPowerLossOnTravel=Kinesis pipes power perdition
-
-config.general.boards.blacklist=Robot blacklist
-config.general.pumpsConsumeWater=Pumps consume water
-config.general.updateCheck=Check for updates
-config.general.fuel.fuel.combustion=Combustion engine fuel multiplier
-config.general.fuel.oil.combustion=Combustion engine oil multiplier
-config.general.fuel.fuel.combustion.energyOutput=Combustion engine fuel output
-config.general.fuel.oil.combustion.energyOutput=Combustion engine oil output
-config.general.itemLifespan=Item lifespan (seconds)
-config.general.canEnginesExplode=Engines explode
-config.general.oilCanBurn=Burning oil
-config.general.oilIsDense=Dense oil
-config.general.pipes.baseFluidRate=Base flow rate
-config.general.pipes.facadeBlacklist=Facade blacklist
-config.general.pipes.facadeBlacklistAsWhitelist=Invert facade blacklist
-config.general.pipes.facadeNoLaserRecipe=Add facade recipe without laser
-config.general.pipes.hardness=Hardness
-config.general.pipes.slimeballWaterproofRecipe=Add slimeball sealant recipe
-config.general.pumpsNeedRealPower=Pumps need real power
-config.general.quarry=Quarry Options
-config.general.quarry.oneTimeUse=One-time use
-config.general.quarry.doChunkLoading=Automatic chunk loading
-config.general.markerRange=Range of markers
-config.general.miningDepth=Maximum relative mining depth
-config.general.pumpDimensionControl=Pump dimension control
-
-config.network.longUpdateFactor=Client synchronization factor (ticks)
-config.network.updateFactor=Packet sending factor (ticks)
-
-config.power.miningUsageMultiplier=Mining usage multiplier
-config.power.chipsetCostMultiplier=Chipset cost multiplier
-config.power.gateCostMultiplier=Gate cost multiplier
-
-config.worldgen.enable=Enable
-config.worldgen.generateWaterSprings=Spawn water springs
-config.worldgen.oilWellGenerationRate=Oil well generation rate
-config.worldgen.spawnOilSprings=Spawn oil springs
-config.worldgen.biomes.biomeOilDesert=Oil Desert biome id
-config.worldgen.biomes.biomeOilOcean=Oil Ocean biome id
-config.worldgen.biomes.excessiveOilIDs=Biomes with excessive oil
-config.worldgen.biomes.excludeOilIDs=Biomes without oil
-config.worldgen.biomes.increasedOilIDs=Biomes with increased oil
-
 direction.north=北
 direction.west=西
 direction.east=東
 direction.south=南
 direction.up=上面
 direction.down=底面
-
-direction.center.0=North-West
-direction.center.1=North
-direction.center.2=North-East
-direction.center.3=West
-direction.center.4=Center
-direction.center.5=East
-direction.center.6=South-West
-direction.center.7=South
-direction.center.8=South-East
 
 fillerpattern.clear=すべて除去
 fillerpattern.fill=すべて埋める
@@ -171,8 +73,6 @@ fillerpattern.stairs=階段
 fillerpattern.box=外壁のみ
 fillerpattern.cylinder=円柱
 fillerpattern.frame=外枠のみ
-fillerpattern.parameter.hollow=Hollow
-fillerpattern.parameter.filled=Filled
 
 fluid.oil=原油
 fluid.fuel=燃料
@@ -200,19 +100,14 @@ gate.action.station.provide_machine_request=アイテムを指定個数要求す
 gate.action.station.accept_fluids=液体を受け入れる
 gate.action.station.povide_fluids=液体を供給する
 gate.action.robot.work_in_area=作業範囲
-gate.action.robot.load_unload_area=Load/Unload in Area
 gate.action.robot.wakeup=ロボットを起動する
 gate.action.station.forbid_robot=右記のロボットを禁止する
-gate.action.station.force_robot=Force Robot
 gate.action.robot.filter=フィルター
 gate.action.robot.filter_tool=フィルターツール
 
 gate.expansion.fader=レッドストーン信号の強度
 gate.expansion.pulsar=エンジン動力
 gate.expansion.timer=タイマー
-gate.expansion.light_sensor=Light Sensor
-gate.expansion.rtc=Real-Time Clock
-gate.expansion.biological_sensor=Biological Sensor
 
 gate.logic.and=AND
 gate.logic.or=OR
@@ -223,7 +118,6 @@ gate.material.diamond=ダイヤ
 gate.material.emerald=エメラルド
 gate.material.quartz=水晶
 
-item.pipeGate.name=Gate
 gate.name=%sの%sゲート
 gate.name.basic=基本ゲート
 
@@ -259,24 +153,8 @@ gate.trigger.pipe.wire.active=%sワイヤーが信号を受けている
 gate.trigger.pipe.wire.inactive=%sワイヤーが信号を受けていない
 gate.trigger.timer=%s秒タイマー
 gate.trigger.robot.sleep=ロボットが休止中
-gate.trigger.robot.in.station=Robot In Station
-gate.trigger.robot.linked=Station Linked
-gate.trigger.robot.reserved=Station Reserved
-gate.trigger.machine.energyStored.high=High Energy Stored
-gate.trigger.machine.energyStored.low=Low Energy Stored
-gate.trigger.machine.energyStored.below25=Energy < 25%
-gate.trigger.machine.energyStored.below50=Energy < 50%
-gate.trigger.machine.energyStored.below75=Energy < 75%
-gate.trigger.light.bright=Bright
-gate.trigger.light.dark=Dark
-gate.trigger.time.0=Night
-gate.trigger.time.6=Morning
-gate.trigger.time.12=Afternoon
-gate.trigger.time.18=Evening
-gate.trigger.fuelLevelBelow=Fuel level below %d%%
-gate.trigger.coolantLevelBelow=Coolant level below %d%%
-
-gui.fluidtank.empty=Empty
+gate.trigger.machine.energyStoredHigh=多くのエネルギーを保有している
+gate.trigger.machine.energyStoredLow=多くのエネルギーを保有していない
 
 gui.building.resources=建材
 gui.building.fluids=液体タンク
@@ -313,15 +191,12 @@ item.goldGearItem.name=金の歯車
 item.diamondGearItem.name=ダイヤの歯車
 item.templateItem.name=テンプレート
 item.wrenchItem.name=レンチ
-item.paintbrush.name=Paintbrush
 item.pipeWaterproof.name=パイプの防水材
-item.pipeWire.name=Pipe Wire
 item.redPipeWire.name=赤ワイヤー
 item.bluePipeWire.name=青ワイヤー
 item.greenPipeWire.name=緑ワイヤー
 item.yellowPipeWire.name=黄ワイヤー
 item.redstoneCrystal.name=レッドストーンクリスタル
-item.redstoneChipset.name=Chipset
 item.redstone_red_chipset.name=赤石チップ
 item.redstone_iron_chipset.name=鉄チップ
 item.redstone_gold_chipset.name=金チップ
@@ -332,7 +207,6 @@ item.redstone_quartz_chipset.name=水晶チップ
 item.redstone_comp_chipset.name=コンパレータチップ
 item.redstone_board.name=レッドストーンボード
 item.robot.name=ロボット
-item.tablet.name=Tablet
 item.blueprintItem.name=ブループリント
 item.list.name=リスト
 item.blueprint.unnamed=<名称未設定>
@@ -364,7 +238,6 @@ item.PipeFluidsQuartz.name=水晶の防水パイプ
 item.PipeFluidsGold.name=金の防水パイプ
 item.PipeFluidsEmerald.name=エメラルドの防水パイプ
 item.PipeFluidsDiamond.name=ダイヤの防水パイプ
-item.PipeFluidsClay.name=Clay Fluid Pipe
 item.PipePowerWood.name=木の伝導パイプ
 item.PipePowerCobblestone.name=丸石の伝導パイプ
 item.PipePowerStone.name=石の伝導パイプ
@@ -380,43 +253,32 @@ item.PipeFluidsVoid.name=虚無の防水パイプ
 item.PipeItemsSandstone.name=砂岩の輸送パイプ
 item.PipeFluidsSandstone.name=砂岩の防水パイプ
 item.PipePowerSandstone.name=砂岩の伝導パイプ
-item.robotStation.name=Docking Station
 item.PipeRobotStation.name=ドック
-item.pipeFacade.name=Facade
 item.Facade.name=外装板
-item.Facade.state_hollow=Hollow
 item.FacadePhased.name=段階的な外装板
 item.FacadePhased.state=%s: %s
 item.FacadePhased.state_default=デフォルト: %s
 item.FacadePhased.state_transparent=透明
 item.PipePlug.name=パイプ栓
-item.pipeLens.name=Lens
 item.Lens.name=カラーレンズ
 item.Filter.name=カラーフィルター
-item.pipePowerAdapter.name=Power Adapter
-item.PipePowerAdapter.name=Power Adapter
-item.debugger.name=Debugger
-item.debugger.warning=Use only for testing! Leaks secrets.
-item.package.name=Package
 
+itemGroup.buildcraft.blocks=Buildcraft ブロック
 itemGroup.buildcraft.boards=Buildcraft ロボット
-itemGroup.buildcraft.main=BuildCraft
+itemGroup.buildcraft.items=Buildcraft アイテム
 itemGroup.buildcraft.pipes=Buildcraft パイプ
 itemGroup.buildcraft.facades=Buildcraft 外装板
-itemGroup.buildcraft.gates=BuildCraft Gates
 
 tile.architectBlock.name=設計台
-tile.laserTableBlock.name=Table
 tile.assemblyTableBlock.name=レーザー加工台
 tile.assemblyWorkbenchBlock.name=レーザー作業台
 tile.autoWorkbenchBlock.name=自動作業台
+tile.chargingTableBlock.name=レーザー充電台
+tile.constructionMarkerBlock.name=建築マーカー
 tile.blockFuel.name=燃料
 tile.blockHopper.name=漏斗
 tile.blockOil.name=原油
 tile.builderBlock.name=建築機
-tile.chargingTableBlock.name=レーザー充電台
-tile.constructionMarkerBlock.name=建築マーカー
-tile.engineBlock.name=Engine
 tile.engineCreative.name=クリエイティブ専用エンジン
 tile.engineIron.name=内燃エンジン
 tile.engineStone.name=スターリングエンジン
@@ -431,19 +293,14 @@ tile.libraryBlock.name=青写真ライブラリ
 tile.machineBlock.name=露天採掘機
 tile.markerBlock.name=範囲マーカー
 tile.miningWellBlock.name=採掘機
-tile.packagerBlock.name=Recipe Packager
 tile.pathMarkerBlock.name=経路マーカー
 tile.plainPipeBlock.name=採掘パイプ
-tile.programmingTableBlock.name=Programming Table
 tile.pumpBlock.name=ポンプ
 tile.refineryBlock.name=精製機
 tile.requester.name=アイテム要求器
-tile.eternalSpring.name=Spring
 tile.spring.oil.name=原油の源
 tile.spring.water.name=湧き水の源
-tile.stampingTableBlock.name=Stamping Table
 tile.tankBlock.name=タンク
-tile.tankBlock.tooltip=Stores up to 16 Buckets of one Liquid\n§4Not portable, use a dolly
 tile.zonePlan.name=範囲指定機
 
 gui.tile.filteredBufferBlock.name.title=選別緩衝器
@@ -474,17 +331,15 @@ tip.gate.wires=§9§o使用可能なワイヤー:
 tip.gate.wires.redstone=赤
 tip.gate.wires.iron=赤, 青
 tip.gate.wires.gold=赤, 青, 緑
-tip.gate.wires.quartz=Red, Blue, Green
 tip.gate.wires.diamond=赤, 青, 緑, 黄
 tip.gate.wires.emerald=赤, 青, 緑, 黄
 tip.gate.expansions=§9§o追加機能:
 
-tip.PipeFluidsClay=Insertion pipe
 tip.PipeFluidsCobblestone=基本パイプ\n石の防水パイプとは接続しない
-tip.PipeFluidsDiamond=Sorts fluids
 tip.PipeFluidsEmerald=搬出パイプ
-tip.PipeFluidsIron=バルブパイプ
+tip.PipeFluidsGold=基本パイプ
 tip.PipeFluidsQuartz=基本パイプ
+tip.PipeFluidsIron=バルブパイプ
 tip.PipeFluidsSandstone=防水パイプのみと接続する
 tip.PipeFluidsStone=基本パイプ\n丸石の防水パイプとは接続しない
 tip.PipeFluidsVoid=液体を消去する
@@ -494,7 +349,6 @@ tip.PipeItemsCobblestone=基本パイプ, 減速率高\n石、水晶の輸送パ
 tip.PipeItemsDaizuli=色分けされたアイテムを分別する
 tip.PipeItemsDiamond=アイテムを分別する
 tip.PipeItemsEmerald=フィルター付き搬出パイプ
-tip.PipeItemsEmzuli=ゲート制御搬出パイプ
 tip.PipeItemsGold=アイテムの速度を加速させる
 tip.PipeItemsIron=アイテムを一定方向に流す
 tip.PipeItemsLapis=アイテムを色分けする
@@ -504,21 +358,12 @@ tip.PipeItemsSandstone=輸送パイプのみと接続する
 tip.PipeItemsStone=基本パイプ, 減速率中\n丸石、水晶の輸送パイプと接続しない
 tip.PipeItemsVoid=アイテムを消去する
 tip.PipeItemsWood=搬出パイプ
-tip.PipePowerEmerald=エネルギー入力パイプ
-tip.PipePowerIron=エネルギー流量調整パイプ
-tip.PipePowerSandstone=伝導パイプのみと接続する
+tip.PipeItemsEmzuli=ゲート制御搬出パイプ
 tip.PipePowerWood=エネルギー入力パイプ
+tip.PipePowerEmerald=エネルギー入力パイプ
+tip.PipePowerSandstone=伝導パイプのみと接続する
+tip.PipePowerIron=エネルギー流量調整パイプ
 tip.PipeStructureCobblestone=支持パイプ
-tip.deprecated=Deprecated
-
-tip.gate.charged=Charged
-tip.gate.fullcharge=Full Charge
-tip.gate.nocharge=No Charge
-
-tip.filler.excavate.on=Excavate
-tip.filler.excavate.off=Do Not Excavate
-
-tip.list.matches=Matches
 
 tip.shift.PipeFluidsDiamond=GUI accepts any fluid containers
 tip.shift.PipeFluidsEmerald=GUI accepts any fluid container
@@ -529,12 +374,7 @@ tip.shift.PipeItemsLapis=Shift+クリックで色を変更できます。
 tip.shift.PipeItemsObsidian=Power with an engine\nMore power - greater distance
 tip.shift.PipePowerIron=ゲートの制限をレンチで変更できます。
 
-tip.PipeItemsEmerald.whitelist=Whitelist
-tip.PipeItemsEmerald.blacklist=Blacklist
-tip.PipeItemsEmerald.roundrobin=Round Robin (In Order)
-
 tip.tool.add=追加
-tip.tool.fullscreen=Fullscreen
 tip.tool.remove=削除
 
 achievement.woodenGearAchievement=粗削りの歯車
@@ -584,35 +424,7 @@ bc_update.new_version=§cBuildCraftの新しいバージョンがリリースさ
 bc_update.download=§cダウンロードはこちら http://www.mod-buildcraft.com/download.html
 bc_update.once=このメッセージは起動時、一度だけ表示されます
 bc_update.again=このメッセージを次から表示したくない場合は'/buildcraft version'と打ち込んで下さい
-bc_update.changelog=Type '/buildcraft changelog' to see the changelog
-
-chat.buildcraft.quarry.tooSmall=[BuildCraft] Quarry size is outside of chunkloading bounds or too small %d %d (%d)
-chat.buildcraft.quarry.chunkloadInfo=[BuildCraft] The quarry at %d %d %d will keep %d chunks loaded
 
 command.buildcraft.version=BuildCraft %s for Minecraft %s (最新: %s).
-command.buildcraft.changelog_header=Changelog for BuildCraft %s:
-
-command.buildcraft.aliases=Aliases: %s
-command.buildcraft.help=Type '%s' for help.
-command.buildcraft.list=Available Commands:
-command.buildcraft.permlevel=Permission level: %s
-command.buildcraft.noperms=You do not have permission to use this command.
-
-command.buildcraft.buildcraft.help=Various BuildCraft-related commands
-command.buildcraft.buildcraft.format=Format: /%s <sub-command>
-
-command.buildcraft.buildcraft.version.desc=- %s : Version Information
-command.buildcraft.buildcraft.version.help=Displays the current and latest BC version.
-command.buildcraft.buildcraft.version.format=Format: /%s
-
-command.buildcraft.buildcraft.changelog.desc=- %s : Changelog
-command.buildcraft.buildcraft.changelog.help=Displays the latest BC changelog.
-command.buildcraft.buildcraft.changelog.format=Format: /%s
-
-command.buildcraft.buildcraft.op.desc=- %s : Op FakePlayer
-command.buildcraft.buildcraft.op.help=Gives OP rights to the BC FakePlayer (acts in the name of quarries, robots, etc.)
-command.buildcraft.buildcraft.op.format=Format: /%s
-
-command.buildcraft.buildcraft.deop.desc=- %s : Deop FakePlayer
-command.buildcraft.buildcraft.deop.help=Ungives OP rights to the BC FakePlayer (acts in the name of quarries, robots, etc.)
-command.buildcraft.buildcraft.deop.format=Format: /%s
+command.buildcraft.versioninfo=バージョン情報
+command.buildcraft.available=使用可能なコマンド
