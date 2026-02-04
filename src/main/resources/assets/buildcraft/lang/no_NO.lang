@@ -387,24 +387,6 @@ tile.stampingTableBlock.name=Stamping Table
 tile.tankBlock.name=Tank
 tile.zonePlan.name=Zone Planner
 
-gui.tile.autoWorkbenchBlock.name.title=Autoarbeidsbord
-gui.tile.engineIron.name.title=Forbrenningsmotor
-gui.tile.engineStone.name.title=Steinmotor
-gui.tile.fillerBlock.name.title=Fyller
-gui.tile.libraryBlock.name.title=Blåkopibiblotek
-gui.tile.zonePlan.name.title=Zone Planner
-gui.tile.builderBlock.name.title=Bygger
-
-gui.tile.assemblyTableBlock.name.title=Samlebord
-gui.tile.assemblyWorkbenchBlock.name.title=Advanced Crafting Table
-gui.tile.integrationTableBlock.name.title=Integration Table
-gui.tile.chargingTableBlock.name.title=Charging Table
-gui.tile.programmingTableBlock.name.title=Programming Table
-gui.tile.stampingTableBlock.name.title=Stamping Table
-gui.tile.filteredBufferBlock.name.title=Filtered Buffer
-gui.tile.refineryBlock.name.title=Raffineri
-gui.tile.blockHopper.name.title=Trakt
-
 tile.architect.rotate=Rotate: On
 tile.architect.norotate=Rotate: Off
 tile.architect.allowCreative=Mode: Creative

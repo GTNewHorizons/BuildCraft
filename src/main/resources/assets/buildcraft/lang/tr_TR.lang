@@ -434,24 +434,6 @@ tile.stampingTableBlock.name=Stamping Masası
 tile.tankBlock.name=Tank
 tile.zonePlan.name=Alan Planlıyıcısı
 
-gui.tile.autoWorkbenchBlock.name.title=Otomatik Çalışma Masası
-gui.tile.engineIron.name.title=Yakıt Motoru
-gui.tile.engineStone.name.title=Kömür Motoru
-gui.tile.fillerBlock.name.title=Doldurucu
-gui.tile.libraryBlock.name.title=Mavi Baskı Kütüphanesi
-gui.tile.zonePlan.name.title=Alan Planlıyıcısı
-gui.tile.builderBlock.name.title=İnşaatçı
-
-gui.tile.assemblyTableBlock.name.title=Lazer Birleşme Masası
-gui.tile.assemblyWorkbenchBlock.name.title=Gelişmiş Çalışma Masası
-gui.tile.integrationTableBlock.name.title=Entegrasyon Masası
-gui.tile.chargingTableBlock.name.title=Şarj Masası
-gui.tile.programmingTableBlock.name.title=Proglama Masası
-gui.tile.stampingTableBlock.name.title=Stamping Masası
-gui.tile.filteredBufferBlock.name.title=Filtreli Tampon
-gui.tile.refineryBlock.name.title=Rafineri
-gui.tile.blockHopper.name.title=Huni
-
 tile.architect.rotate=Döndür: Açık
 tile.architect.norotate=Döndür: Kapalı
 tile.architect.allowCreative=Mod: Yaratıcı
