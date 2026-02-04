@@ -30,7 +30,7 @@ public class BlockEngine extends BlockEngineBase {
     public String getTexturePrefix(int meta, boolean addPrefix) {
         if (texturePaths[meta] != null) {
             if (addPrefix) {
-                return texturePaths[meta].replaceAll(":", ":textures/blocks/");
+                return texturePaths[meta].replace(":", ":textures/blocks/");
             } else {
                 return texturePaths[meta];
             }
