@@ -78,3 +78,14 @@ tile.plainPipeBlock.name=Cijev Za Kopanje
 tile.pumpBlock.name=Pumpa
 tile.refineryBlock.name=Rafinerija
 tile.tankBlock.name=Spremnik
+
+gui.tile.autoWorkbenchBlock.name.title=Auto-Radni Stol
+gui.tile.engineIron.name.title=Motor S Unutarnjim Izgaranjem
+gui.tile.engineStone.name.title=Stirlingov Motor
+gui.tile.fillerBlock.name.title=Popunjavač
+gui.tile.libraryBlock.name.title=Knjižnjica Nacrta
+gui.tile.builderBlock.name.title=Graditelj
+gui.tile.assemblyTableBlock.name.title=Montažni Stol
+gui.tile.assemblyWorkbenchBlock.name.title=Montažni Radni Stol
+gui.tile.refineryBlock.name.title=Rafinerija
+gui.tile.blockHopper.name.title=Lijevak

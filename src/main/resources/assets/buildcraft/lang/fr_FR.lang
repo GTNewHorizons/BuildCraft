@@ -432,6 +432,23 @@ tile.stampingTableBlock.name=Table d'étiquetage
 tile.tankBlock.name=Réservoir
 tile.zonePlan.name=Planificateur de zone
 
+gui.tile.autoWorkbenchBlock.name.title=Table d'assemblage automatique
+gui.tile.engineIron.name.title=Moteur à combustion
+gui.tile.engineStone.name.title=Moteur à vapeur
+gui.tile.fillerBlock.name.title=Remplisseur
+gui.tile.libraryBlock.name.title=Bibliothèque de plans
+gui.tile.zonePlan.name.title=Planificateur de zone
+gui.tile.builderBlock.name.title=Constructeur
+gui.tile.assemblyTableBlock.name.title=Table d'assemblage
+gui.tile.assemblyWorkbenchBlock.name.title=Table d'assemblage avancé
+gui.tile.integrationTableBlock.name.title=Tableau d'intégration
+gui.tile.chargingTableBlock.name.title=Table de rechargement
+gui.tile.programmingTableBlock.name.title=Table de programmation
+gui.tile.stampingTableBlock.name.title=Table d'étiquetage
+gui.tile.filteredBufferBlock.name.title=Tampon filtreur
+gui.tile.refineryBlock.name.title=Raffinerie
+gui.tile.blockHopper.name.title=Trémie
+
 tile.architect.rotate=Rotate: Activé
 tile.architect.norotate=Rotate: Desactivé
 tile.architect.allowCreative=Mode: Créatif
