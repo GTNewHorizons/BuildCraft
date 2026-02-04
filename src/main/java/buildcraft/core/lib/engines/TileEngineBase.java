@@ -45,10 +45,17 @@ public abstract class TileEngineBase extends TileBuildCraft
     public static final ResourceLocation TRUNK_OVERHEAT_TEXTURE = new ResourceLocation(
             "buildcraftcore:textures/blocks/engine/trunk_overheat.png");
 
+    private static int textureCacheVersion = 0;
+
     private ResourceLocation cachedBaseTexture;
     private ResourceLocation cachedChamberTexture;
     private ResourceLocation cachedTrunkTexture; // null means use stage-based defaults
     private boolean texturesCached;
+    private int cachedAtVersion = -1;
+
+    public static void onTextureReload() {
+        textureCacheVersion++;
+    }
 
     public enum EnergyStage {
 
@@ -102,43 +109,39 @@ public abstract class TileEngineBase extends TileBuildCraft
     }
 
     private void cacheTextures() {
-        if (texturesCached) return;
+        if (texturesCached && cachedAtVersion == textureCacheVersion) return;
         texturesCached = true;
+        cachedAtVersion = textureCacheVersion;
 
         String prefix = getTexturePrefix();
-        if (prefix == null) return;
+        if (prefix == null) {
+            cachedBaseTexture = new ResourceLocation("missingno");
+            cachedChamberTexture = new ResourceLocation("missingno");
+            cachedTrunkTexture = TRUNK_OVERHEAT_TEXTURE;
+            return;
+        }
 
         cachedBaseTexture = new ResourceLocation(prefix + "/base.png");
         cachedChamberTexture = new ResourceLocation(prefix + "/chamber.png");
         if (ResourceUtils.resourceExists(prefix + "/trunk.png")) {
             cachedTrunkTexture = new ResourceLocation(prefix + "/trunk.png");
+        } else {
+            cachedTrunkTexture = null;
         }
     }
 
     public ResourceLocation getBaseTexture() {
         cacheTextures();
-        if (cachedBaseTexture != null) {
-            return cachedBaseTexture;
-        } else {
-            return new ResourceLocation("missingno");
-        }
+        return cachedBaseTexture;
     }
 
     public ResourceLocation getChamberTexture() {
         cacheTextures();
-        if (cachedChamberTexture != null) {
-            return cachedChamberTexture;
-        } else {
-            return new ResourceLocation("missingno");
-        }
+        return cachedChamberTexture;
     }
 
     public ResourceLocation getTrunkTexture(EnergyStage stage) {
         cacheTextures();
-        if (cachedBaseTexture == null) {
-            return TRUNK_OVERHEAT_TEXTURE;
-        }
-
         if (cachedTrunkTexture != null) {
             return cachedTrunkTexture;
         }

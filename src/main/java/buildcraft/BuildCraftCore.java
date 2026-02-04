@@ -765,6 +765,7 @@ public class BuildCraftCore extends BuildCraftMod {
     public void textureHook(TextureStitchEvent.Post event) {
         FluidRenderer.onTextureReload();
         RenderLaser.onTextureReload();
+        TileEngineBase.onTextureReload();
     }
 
     public void reloadConfig(ConfigManager.RestartRequirement restartType) {
