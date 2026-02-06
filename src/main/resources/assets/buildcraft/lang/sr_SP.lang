@@ -93,3 +93,15 @@ tile.refineryBlock.name=Rafinerija
 tile.spring.oil.name=Naftni Izvor
 tile.spring.water.name=Vodeni Izvor
 tile.tankBlock.name=Rezervoar
+
+gui.tile.autoWorkbenchBlock.name.title=Auto-Radni Stol
+gui.tile.engineIron.name.title=Motor S Unutrašnjim Sagorevanjem
+gui.tile.engineStone.name.title=Stirlingov Motor
+gui.tile.fillerBlock.name.title=Popunjavač
+gui.tile.libraryBlock.name.title=Biblioteka Nacrta
+gui.tile.builderBlock.name.title=Graditelj
+gui.tile.assemblyTableBlock.name.title=Montažni Sto
+gui.tile.assemblyWorkbenchBlock.name.title=Montažni Radni Sto
+gui.tile.filteredBufferBlock.name.title=Inventar sa Filterom
+gui.tile.refineryBlock.name.title=Rafinerija
+gui.tile.blockHopper.name.title=Levak

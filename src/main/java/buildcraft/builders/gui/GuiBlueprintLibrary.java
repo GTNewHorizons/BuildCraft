@@ -53,7 +53,7 @@ public class GuiBlueprintLibrary extends GuiBuildCraft {
 
     @Override
     protected void drawGuiContainerForegroundLayer(int par1, int par2) {
-        String title = StringUtils.localize("tile.libraryBlock.name");
+        String title = StringUtils.localize("gui.tile.libraryBlock.name.title");
         fontRendererObj.drawString(title, getCenteredOffset(title), 6, 0x404040);
 
         int off = getLibraryContainer().scrollbarWidget.getPosition();

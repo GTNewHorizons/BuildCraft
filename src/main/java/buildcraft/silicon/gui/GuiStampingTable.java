@@ -11,6 +11,7 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
+import buildcraft.core.lib.utils.StringUtils;
 import buildcraft.silicon.TileStampingTable;
 
 public class GuiStampingTable extends GuiLaserTable {
@@ -44,8 +45,9 @@ public class GuiStampingTable extends GuiLaserTable {
     protected void drawGuiContainerForegroundLayer(int par1, int par2) {
         drawLedgers(par1, par2);
 
-        String title = table.getInventoryName();
+        String title = StringUtils.localize("gui.tile.stampingTableBlock.name.title");
         fontRendererObj.drawString(title, getCenteredOffset(title), 5, 0x404040);
+        fontRendererObj.drawString(StringUtils.localize("gui.inventory"), 8, ySize - 93, 0x404040);
     }
 
     @Override

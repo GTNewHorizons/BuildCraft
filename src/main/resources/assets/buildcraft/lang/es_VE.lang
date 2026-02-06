@@ -220,6 +220,19 @@ tile.architect.noexcavate=Excavar: Off
 tile.architect.supportmods=Mods: Soportados
 tile.architect.allmods=Mods: Todos
 
+gui.tile.autoWorkbenchBlock.name.title=Mesa de Trabajo Automática
+gui.tile.engineIron.name.title=Motor de Combustión
+gui.tile.engineStone.name.title=Motor a Vapor
+gui.tile.fillerBlock.name.title=Rellenador
+gui.tile.libraryBlock.name.title=Biblioteca de Planos
+gui.tile.builderBlock.name.title=Constructor
+gui.tile.assemblyTableBlock.name.title=Mesa de Ensamblado
+gui.tile.assemblyWorkbenchBlock.name.title=Mesa de Trabajo para Ensamblaje
+gui.tile.integrationTableBlock.name.title=Tabla de  Integración
+gui.tile.filteredBufferBlock.name.title=Buffer filtrador
+gui.tile.refineryBlock.name.title=Refinería
+gui.tile.blockHopper.name.title=Tolva
+
 tip.gate.wires=§9§oCables Compatible:
 tip.gate.wires.redstone=Rojo
 tip.gate.wires.iron=Rojo, Azul

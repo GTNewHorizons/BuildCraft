@@ -81,3 +81,14 @@ tile.plainPipeBlock.name=Kasimo Vamzdis
 tile.pumpBlock.name=Pompa
 tile.refineryBlock.name=Naftos Perdirbėjas
 tile.tankBlock.name=Saugykla (Skysčio)
+
+gui.tile.autoWorkbenchBlock.name.title=Automatinis Darbastalis
+gui.tile.engineIron.name.title=Vidaus degimo Variklis
+gui.tile.engineStone.name.title=Garo Variklis
+gui.tile.fillerBlock.name.title=Pildytuvas
+gui.tile.libraryBlock.name.title=Projektų Biblioteka
+gui.tile.builderBlock.name.title=Statytojas
+gui.tile.assemblyTableBlock.name.title=Surinkimo Stalas
+gui.tile.assemblyWorkbenchBlock.name.title=Surinkimo darbastalis
+gui.tile.refineryBlock.name.title=Naftos Perdirbėjas
+gui.tile.blockHopper.name.title=Piltuvas

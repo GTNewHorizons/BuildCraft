@@ -240,6 +240,19 @@ tile.architect.noexcavate=Ekskaveeri: Väljas
 tile.architect.supportmods=Modid: Toeta
 tile.architect.allmods=Modid: Kõik
 
+gui.tile.autoWorkbenchBlock.name.title=Automaatne tööpink
+gui.tile.engineIron.name.title=Sisepõlemis mootor
+gui.tile.engineStone.name.title=Aurumootor
+gui.tile.fillerBlock.name.title=Täitja
+gui.tile.libraryBlock.name.title=Plaanide raamatukogu
+gui.tile.builderBlock.name.title=Ehitaja
+gui.tile.assemblyTableBlock.name.title=Kokkupaneku laud
+gui.tile.assemblyWorkbenchBlock.name.title=Arendatud kokkupaneku laud
+gui.tile.integrationTableBlock.name.title=Integratsiooni laud
+gui.tile.filteredBufferBlock.name.title=Filtreeritud puhver
+gui.tile.refineryBlock.name.title=Rafineerimistehas
+gui.tile.blockHopper.name.title=Lehter
+
 tip.gate.wires=Â§9Â§oÜhenduvad juhtmed:
 tip.gate.wires.redstone=Punane
 tip.gate.wires.iron=Punane, Sinine

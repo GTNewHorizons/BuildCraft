@@ -192,6 +192,19 @@ tile.spring.oil.name=Jarní olej
 tile.spring.water.name=Jarní voda
 tile.tankBlock.name=Nádrž
 
+gui.tile.autoWorkbenchBlock.name.title=Samovyrábějící stůl
+gui.tile.engineIron.name.title=Vznětový motor
+gui.tile.engineStone.name.title=Stirlingův motor
+gui.tile.fillerBlock.name.title=Plnič
+gui.tile.libraryBlock.name.title=Knihovna šablon
+gui.tile.builderBlock.name.title=Stavbař
+gui.tile.assemblyTableBlock.name.title=Montážní stůl
+gui.tile.assemblyWorkbenchBlock.name.title=Montážní lavice
+gui.tile.integrationTableBlock.name.title=Integrační stůl
+gui.tile.filteredBufferBlock.name.title=Filtrované zarážedlo
+gui.tile.refineryBlock.name.title=Rafinerie
+gui.tile.blockHopper.name.title=Násypka
+
 tip.gate.wires=§9§oKompatibilní vedení:
 tip.gate.wires.redstone=Červená
 tip.gate.wires.iron=Červená, modrá

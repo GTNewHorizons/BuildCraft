@@ -11,6 +11,7 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
+import buildcraft.core.lib.utils.StringUtils;
 import buildcraft.silicon.TileIntegrationTable;
 
 public class GuiIntegrationTable extends GuiLaserTable {
@@ -26,7 +27,7 @@ public class GuiIntegrationTable extends GuiLaserTable {
         super(playerInventory, new ContainerIntegrationTable(playerInventory, table), table, TEXTURE);
         this.integrationTable = table;
         xSize = 176;
-        ySize = 186;
+        ySize = 191;
     }
 
     @Override
@@ -45,8 +46,9 @@ public class GuiIntegrationTable extends GuiLaserTable {
     protected void drawGuiContainerForegroundLayer(int par1, int par2) {
         drawLedgers(par1, par2);
 
-        String title = table.getInventoryName();
+        String title = StringUtils.localize("gui.tile.integrationTableBlock.name.title");
         fontRendererObj.drawString(title, getCenteredOffset(title), 6, 0x404040);
+        fontRendererObj.drawString(StringUtils.localize("gui.inventory"), 8, ySize - 93, 0x404040);
     }
 
     @Override

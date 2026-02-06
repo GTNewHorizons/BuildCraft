@@ -58,7 +58,7 @@ public class PipeItemsDiamond extends Pipe<PipeTransportItems> implements IDiamo
         }
     }
 
-    private SimpleFilterInventory filters = new SimpleFilterInventory(54, "Filters", 1);
+    private SimpleFilterInventory filters = new SimpleFilterInventory(54, "gui.pipes.emerald.title", 1);
     private long usedFilters;
 
     public PipeItemsDiamond(Item item) {
