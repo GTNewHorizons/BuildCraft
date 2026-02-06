@@ -200,6 +200,7 @@ public class BuildCraftCore extends BuildCraftMod {
     public static boolean hidePowerNumbers = false;
     public static boolean hideFluidNumbers = false;
     public static boolean canEnginesExplode = false;
+    public static boolean experimentalContent = false;
     public static boolean useServerDataOnClient = true;
     public static boolean alphaPassBugPresent = true;
     public static int maxPaintedBlocks = -1;
@@ -407,6 +408,11 @@ public class BuildCraftCore extends BuildCraftMod {
                 "general.maxPaintedBlocks",
                 -1,
                 "How many blocks can paintbrush paint at max(-1) for unlimited",
+                ConfigManager.RestartRequirement.GAME);
+        mainConfigManager.register(
+                "experimental.experimentalContent",
+                false,
+                "Enable experimental content",
                 ConfigManager.RestartRequirement.GAME);
 
         reloadConfig(ConfigManager.RestartRequirement.GAME);
@@ -774,6 +780,7 @@ public class BuildCraftCore extends BuildCraftMod {
             updateFactor = mainConfigManager.get("network.updateFactor").getInt();
             longUpdateFactor = mainConfigManager.get("network.longUpdateFactor").getInt();
             colorBlindMode = mainConfigManager.get("display.colorBlindMode").getBoolean();
+            experimentalContent = mainConfigManager.get("experimental.experimentalContent").getBoolean();
 
             reloadConfig(ConfigManager.RestartRequirement.WORLD);
         } else if (restartType == ConfigManager.RestartRequirement.WORLD) {
