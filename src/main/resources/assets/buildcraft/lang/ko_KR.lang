@@ -468,6 +468,7 @@ tip.PipeFluidsSandstone=다른 모든 파이프에 연결
 tip.PipeFluidsStone=기본 파이프\n조약돌에 연결되지 않음
 tip.PipeFluidsVoid=유체 소멸
 tip.PipeFluidsWood=추출 파이프
+tip.PipeFluidsObsidian=액체를 흡수하다
 tip.PipeItemsClay=Insertion pipe
 tip.PipeItemsCobblestone=기본 파이프, 큰 감속\n돌이나 석영에 연결되지 않음
 tip.PipeItemsDaizuli=색칠된 아이템 가는 길
