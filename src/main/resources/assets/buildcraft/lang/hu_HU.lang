@@ -387,6 +387,23 @@ tile.stampingTableBlock.name=Bélyegző asztal
 tile.tankBlock.name=Tartály
 tile.zonePlan.name=Zóna tervező
 
+gui.tile.autoWorkbenchBlock.name.title=Automatikus munkaasztal
+gui.tile.engineIron.name.title=Belsőégésű motor
+gui.tile.engineStone.name.title=Hőlégmotor
+gui.tile.fillerBlock.name.title=Feltöltő
+gui.tile.libraryBlock.name.title=Tervrajz könyvtár
+gui.tile.zonePlan.name.title=Zóna tervező
+gui.tile.builderBlock.name.title=Építő
+gui.tile.assemblyTableBlock.name.title=Összeszerelő asztal
+gui.tile.assemblyWorkbenchBlock.name.title=Fejlesztett összeszerelő asztal
+gui.tile.integrationTableBlock.name.title=Integráló asztal
+gui.tile.chargingTableBlock.name.title=Töltő asztal
+gui.tile.programmingTableBlock.name.title=Programozó asztal
+gui.tile.stampingTableBlock.name.title=Bélyegző asztal
+gui.tile.filteredBufferBlock.name.title=Szűrt buffer
+gui.tile.refineryBlock.name.title=Olajfinomító
+gui.tile.blockHopper.name.title=Adagoló
+
 tile.architect.rotate=Forgatás: bekapcsolva
 tile.architect.norotate=Forgatás: kikapcsolva
 tile.architect.allowCreative=Játékmód: Kreatív

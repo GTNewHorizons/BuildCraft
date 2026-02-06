@@ -197,6 +197,19 @@ tile.spring.oil.name=Oliebron
 tile.spring.water.name=Waterbron
 tile.tankBlock.name=Tank
 
+gui.tile.autoWorkbenchBlock.name.title=Automatische werkbank
+gui.tile.engineIron.name.title=Verbrandingsmotor
+gui.tile.engineStone.name.title=Stirlingmotor
+gui.tile.fillerBlock.name.title=Vuller
+gui.tile.libraryBlock.name.title=Blauwdrukkenbibliotheek
+gui.tile.builderBlock.name.title=Bouwer
+gui.tile.assemblyTableBlock.name.title=Assemblagetafel
+gui.tile.assemblyWorkbenchBlock.name.title=Assemblagewerkbank
+gui.tile.integrationTableBlock.name.title=Integratietafel
+gui.tile.filteredBufferBlock.name.title=Gefilterde buffer
+gui.tile.refineryBlock.name.title=Raffinaderij
+gui.tile.blockHopper.name.title=Trechter
+
 tip.gate.wires=§9§oCompatibele kabels:
 tip.gate.wires.redstone=Rood
 tip.gate.wires.iron=Rood, Blauw

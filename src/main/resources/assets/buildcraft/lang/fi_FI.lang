@@ -88,3 +88,14 @@ tile.refineryBlock.name=Jalostamo
 tile.spring.oil.name=Öljylähde
 tile.spring.water.name=Vesilähde
 tile.tankBlock.name=Tankki
+
+gui.tile.autoWorkbenchBlock.name.title=Automaattinen työpöytä
+gui.tile.engineIron.name.title=Polttomoottori
+gui.tile.engineStone.name.title=Höyrymoottori
+gui.tile.fillerBlock.name.title=Täyttäjä
+gui.tile.libraryBlock.name.title=Kaavakirjasto
+gui.tile.builderBlock.name.title=Rakentaja
+gui.tile.assemblyTableBlock.name.title=Asennuspöytä
+gui.tile.assemblyWorkbenchBlock.name.title=Edistynyt työpöytä
+gui.tile.refineryBlock.name.title=Jalostamo
+gui.tile.blockHopper.name.title=Kouru

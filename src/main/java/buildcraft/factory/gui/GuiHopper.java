@@ -12,6 +12,7 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
+import buildcraft.core.lib.utils.StringUtils;
 import buildcraft.factory.TileHopper;
 
 public class GuiHopper extends GuiContainer {
@@ -32,6 +33,9 @@ public class GuiHopper extends GuiContainer {
 
     @Override
     protected void drawGuiContainerForegroundLayer(int par1, int par2) {
+        String title = StringUtils.localize("gui.tile.blockHopper.name.title");
+        fontRendererObj.drawString(title, 8, 6, 0x404040);
+        fontRendererObj.drawString(StringUtils.localize("gui.inventory"), 8, ySize - 107, 0x404040);
         super.drawGuiContainerForegroundLayer(par1, par2);
     }
 }

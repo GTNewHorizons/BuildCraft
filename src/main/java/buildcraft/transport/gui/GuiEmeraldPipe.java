@@ -44,7 +44,7 @@ public class GuiEmeraldPipe extends GuiBuildCraft implements IButtonClickEventLi
 
         this.pipe = pipe;
 
-        xSize = 175;
+        xSize = 176;
         ySize = 161;
     }
 

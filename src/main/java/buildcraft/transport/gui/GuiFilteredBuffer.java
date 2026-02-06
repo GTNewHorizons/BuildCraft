@@ -28,7 +28,7 @@ public class GuiFilteredBuffer extends GuiContainer {
 
         this.playerInventory = playerInventory;
         this.filteredBuffer = filteredBuffer;
-        xSize = 175;
+        xSize = 176;
         ySize = 169;
     }
 
@@ -51,7 +51,7 @@ public class GuiFilteredBuffer extends GuiContainer {
 
     @Override
     protected void drawGuiContainerForegroundLayer(int par1, int par2) {
-        String title = StringUtils.localize("tile.filteredBufferBlock.name");
+        String title = StringUtils.localize("gui.tile.filteredBufferBlock.name.title");
         int xPos = (xSize - fontRendererObj.getStringWidth(title)) / 2;
         fontRendererObj.drawString(title, xPos, 10, 0x404040);
     }

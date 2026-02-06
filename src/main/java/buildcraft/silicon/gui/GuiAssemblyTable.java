@@ -112,7 +112,7 @@ public class GuiAssemblyTable extends GuiAdvancedInterface {
 
         this.table = assemblyTable;
         xSize = 176;
-        ySize = 207;
+        ySize = 205;
 
         for (int j = 0; j < 3; ++j) {
             for (int i = 0; i < 4; ++i) {
@@ -153,9 +153,9 @@ public class GuiAssemblyTable extends GuiAdvancedInterface {
     @Override
     protected void drawGuiContainerForegroundLayer(int par1, int par2) {
         super.drawGuiContainerForegroundLayer(par1, par2);
-        String title = StringUtils.localize("tile.assemblyTableBlock.name");
+        String title = StringUtils.localize("gui.tile.assemblyTableBlock.name.title");
         fontRendererObj.drawString(title, getCenteredOffset(title), 15, 0x404040);
-        fontRendererObj.drawString(StringUtils.localize("gui.inventory"), 8, ySize - 97, 0x404040);
+        fontRendererObj.drawString(StringUtils.localize("gui.inventory"), 8, ySize - 93, 0x404040);
         drawTooltipForSlotAt(par1, par2);
     }
 

@@ -77,3 +77,14 @@ tile.plainPipeBlock.name=Minerør
 tile.pumpBlock.name=Pumpe
 tile.refineryBlock.name=Raffenaderi
 tile.tankBlock.name=Tank
+
+gui.tile.autoWorkbenchBlock.name.title=Autoarbejdsbord
+gui.tile.engineIron.name.title=Forbrændings-Motor
+gui.tile.engineStone.name.title=Stirling-Motor
+gui.tile.fillerBlock.name.title=Fylder
+gui.tile.libraryBlock.name.title=Blueprint-bibliotek
+gui.tile.builderBlock.name.title=Bygger
+gui.tile.assemblyTableBlock.name.title=Samlebord
+gui.tile.assemblyWorkbenchBlock.name.title=Samle-arbejdsbord
+gui.tile.refineryBlock.name.title=Raffenaderi
+gui.tile.blockHopper.name.title=Tragt

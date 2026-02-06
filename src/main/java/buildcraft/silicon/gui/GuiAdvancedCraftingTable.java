@@ -11,6 +11,7 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
+import buildcraft.core.lib.utils.StringUtils;
 import buildcraft.silicon.TileAdvancedCraftingTable;
 
 public class GuiAdvancedCraftingTable extends GuiLaserTable {
@@ -27,7 +28,15 @@ public class GuiAdvancedCraftingTable extends GuiLaserTable {
                 TEXTURE);
         this.workbench = advancedWorkbench;
         xSize = 176;
-        ySize = 240;
+        ySize = 235;
+    }
+
+    @Override
+    protected void drawGuiContainerForegroundLayer(int par1, int par2) {
+        drawLedgers(par1, par2);
+        String title = StringUtils.localize("gui.tile.assemblyWorkbenchBlock.name.title");
+        fontRendererObj.drawString(title, getCenteredOffset(title), 6, 0x404040);
+        fontRendererObj.drawString(StringUtils.localize("gui.inventory"), 8, ySize - 93, 0x404040);
     }
 
     @Override
