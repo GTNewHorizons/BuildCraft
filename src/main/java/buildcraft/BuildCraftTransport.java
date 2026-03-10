@@ -96,6 +96,7 @@ import buildcraft.transport.pipes.PipeFluidsDiamond;
 import buildcraft.transport.pipes.PipeFluidsEmerald;
 import buildcraft.transport.pipes.PipeFluidsGold;
 import buildcraft.transport.pipes.PipeFluidsIron;
+import buildcraft.transport.pipes.PipeFluidsObsidian;
 import buildcraft.transport.pipes.PipeFluidsQuartz;
 import buildcraft.transport.pipes.PipeFluidsSandstone;
 import buildcraft.transport.pipes.PipeFluidsStone;
@@ -245,6 +246,7 @@ public class BuildCraftTransport extends BuildCraftMod {
     public static Item pipeFluidsSandstone;
     public static Item pipeFluidsEmerald;
     public static Item pipeFluidsDiamond;
+    public static Item pipeFluidsObsidian;
     public static Item pipeFluidsClay;
     public static Item pipePowerWood;
     public static Item pipePowerCobblestone;
@@ -419,6 +421,8 @@ public class BuildCraftTransport extends BuildCraftMod {
             pipeFluidsSandstone = buildPipe(PipeFluidsSandstone.class, pipeWaterproof, pipeItemsSandstone);
             pipeFluidsVoid = buildPipe(PipeFluidsVoid.class, pipeWaterproof, pipeItemsVoid);
             pipeFluidsClay = buildPipe(PipeFluidsClay.class, pipeWaterproof, pipeItemsClay);
+            if (BuildCraftCore.experimentalContent)
+                pipeFluidsObsidian = buildPipe(PipeFluidsObsidian.class, pipeWaterproof, pipeItemsObsidian);
 
             pipePowerWood = buildPipe(PipePowerWood.class, "dustRedstone", pipeItemsWood);
             pipePowerCobblestone = buildPipe(PipePowerCobblestone.class, "dustRedstone", pipeItemsCobblestone);
