@@ -105,7 +105,7 @@ public final class Utils {
             Position pos = new Position(x, y, z, orientation);
             pos.moveForwards(1.0);
 
-            TileEntity tileInventory = BlockUtils.getTileEntity(world, (int) pos.x, (int) pos.y, (int) pos.z);
+            TileEntity tileInventory = world.getTileEntity((int) pos.x, (int) pos.y, (int) pos.z);
             ITransactor transactor = Transactor.getTransactorFor(tileInventory);
             if (transactor != null && !(tileInventory instanceof IEngine)
                     && !(tileInventory instanceof ILaserTarget)
@@ -145,7 +145,7 @@ public final class Utils {
 
             pos.moveForwards(1.0);
 
-            TileEntity tile = BlockUtils.getTileEntity(world, (int) pos.x, (int) pos.y, (int) pos.z);
+            TileEntity tile = world.getTileEntity((int) pos.x, (int) pos.y, (int) pos.z);
 
             if (tile instanceof IInjectable) {
                 if (!((IInjectable) tile).canInjectItems(side.getOpposite())) {
@@ -194,7 +194,7 @@ public final class Utils {
     }
 
     public static void preDestroyBlock(World world, int i, int j, int k) {
-        TileEntity tile = BlockUtils.getTileEntity(world, i, j, k);
+        TileEntity tile = world.getTileEntity(i, j, k);
 
         if (tile instanceof IInventory && !world.isRemote) {
             if (!(tile instanceof IDropControlInventory) || ((IDropControlInventory) tile).doDrop()) {

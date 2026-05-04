@@ -12,7 +12,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
 import buildcraft.api.core.SafeTimeTracker;
-import buildcraft.core.lib.utils.BlockUtils;
 import buildcraft.core.lib.utils.Utils;
 
 public final class TileBuffer {
@@ -45,7 +44,7 @@ public final class TileBuffer {
 
         block = world.getBlock(x, y, z);
 
-        if (block != null && block.hasTileEntity(BlockUtils.getBlockMetadata(world, x, y, z))) {
+        if (block != null && block.hasTileEntity(world.getBlockMetadata(x, y, z))) {
             tile = world.getTileEntity(x, y, z);
         }
     }

@@ -1,11 +1,5 @@
 package buildcraft.core.lib.utils;
 
-import net.minecraft.world.ChunkCoordIntPair;
-import net.minecraft.world.World;
-import net.minecraft.world.chunk.Chunk;
-import net.minecraft.world.chunk.IChunkProvider;
-import net.minecraft.world.gen.ChunkProviderServer;
-
 import buildcraft.core.lib.network.ChannelHandler;
 import buildcraft.core.lib.network.Packet;
 import cpw.mods.fml.common.network.FMLEmbeddedChannel;
@@ -16,39 +10,7 @@ import io.netty.buffer.Unpooled;
 
 public final class ThreadSafeUtils {
 
-    private static final ThreadLocal<Chunk> lastChunk = new ThreadLocal<Chunk>();
-
     private ThreadSafeUtils() {}
-
-    public static Chunk getChunk(World world, int x, int z) {
-        Chunk chunk;
-        chunk = lastChunk.get();
-
-        if (chunk != null) {
-            if (chunk.isChunkLoaded) {
-                if (chunk.worldObj == world && chunk.xPosition == x && chunk.zPosition == z) {
-                    return chunk;
-                }
-            } else {
-                lastChunk.set(null);
-            }
-        }
-
-        IChunkProvider provider = world.getChunkProvider();
-        // These probably won't guarantee full thread safety, but it's our best bet.
-        if (!Utils.CAULDRON_DETECTED && provider instanceof ChunkProviderServer) {
-            // Slight optimization
-            chunk = (Chunk) ((ChunkProviderServer) provider).loadedChunkHashMap
-                    .getValueByKey(ChunkCoordIntPair.chunkXZ2Int(x, z));
-        } else {
-            chunk = provider.chunkExists(x, z) ? provider.provideChunk(x, z) : null;
-        }
-
-        if (chunk != null) {
-            lastChunk.set(chunk);
-        }
-        return chunk;
-    }
 
     /**
      * This function assumes that you're using BC's ChannelHandler system, which only has one channel handler. This

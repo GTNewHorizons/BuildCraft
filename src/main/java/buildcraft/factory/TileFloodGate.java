@@ -102,7 +102,7 @@ public class TileFloodGate extends TileBuildCraft implements IFluidHandler {
     }
 
     private boolean placeFluid(int x, int y, int z, Fluid fluid) {
-        Block block = BlockUtils.getBlock(worldObj, x, y, z);
+        Block block = worldObj.getBlock(x, y, z);
 
         if (canPlaceFluidAt(block, x, y, z)) {
             boolean placed;
@@ -205,7 +205,7 @@ public class TileFloodGate extends TileBuildCraft implements IFluidHandler {
                 return;
             }
 
-            Block block = BlockUtils.getBlock(worldObj, x, y, z);
+            Block block = worldObj.getBlock(x, y, z);
             if (BlockUtils.getFluid(block) == tank.getFluidType()) {
                 fluidsFound.add(index);
             }

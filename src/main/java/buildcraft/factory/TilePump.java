@@ -159,7 +159,7 @@ public class TilePump extends TileBuildCraft implements IHasWork, IFluidHandler,
     }
 
     private boolean isBlocked(int x, int y, int z) {
-        Material mat = BlockUtils.getBlock(worldObj, x, y, z).getMaterial();
+        Material mat = worldObj.getBlock(x, y, z).getMaterial();
 
         return mat.blocksMovement();
     }
@@ -251,7 +251,7 @@ public class TilePump extends TileBuildCraft implements IHasWork, IFluidHandler,
         int x = xCoord;
         int y = aimY;
         int z = zCoord;
-        Fluid pumpingFluid = BlockUtils.getFluid(BlockUtils.getBlock(worldObj, x, y, z));
+        Fluid pumpingFluid = BlockUtils.getFluid(worldObj.getBlock(x, y, z));
 
         if (pumpingFluid == null) {
             return;
@@ -298,7 +298,7 @@ public class TilePump extends TileBuildCraft implements IHasWork, IFluidHandler,
                 return;
             }
 
-            Block block = BlockUtils.getBlock(worldObj, x, y, z);
+            Block block = worldObj.getBlock(x, y, z);
 
             if (BlockUtils.getFluid(block) == pumpingFluid) {
                 fluidsFound.add(index);
@@ -312,7 +312,7 @@ public class TilePump extends TileBuildCraft implements IHasWork, IFluidHandler,
     }
 
     private boolean isPumpableFluid(int x, int y, int z) {
-        Fluid fluid = BlockUtils.getFluid(BlockUtils.getBlock(worldObj, x, y, z));
+        Fluid fluid = BlockUtils.getFluid(worldObj.getBlock(x, y, z));
 
         if (fluid == null) {
             return false;

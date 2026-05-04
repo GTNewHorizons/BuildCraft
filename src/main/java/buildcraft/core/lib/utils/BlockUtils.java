@@ -23,7 +23,6 @@ import net.minecraft.world.ChunkPosition;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
-import net.minecraft.world.chunk.Chunk;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.event.ForgeEventFactory;
@@ -326,57 +325,6 @@ public final class BlockUtils {
         return (int) Math.floor(
                 BuilderAPI.BREAK_ENERGY * BuildCraftCore.miningMultiplier
                         * ((world.getBlock(x, y, z).getBlockHardness(world, x, y, z) + 1) * 2));
-    }
-
-    /**
-     * The following functions let you avoid unnecessary chunk loads, which is nice.
-     */
-    public static TileEntity getTileEntity(World world, int x, int y, int z) {
-        return getTileEntity(world, x, y, z, false);
-    }
-
-    public static TileEntity getTileEntity(World world, int x, int y, int z, boolean force) {
-        if (!force) {
-            if (y < 0 || y > 255) {
-                return null;
-            }
-            Chunk chunk = ThreadSafeUtils.getChunk(world, x >> 4, z >> 4);
-            return chunk != null ? chunk.getTileEntityUnsafe(x & 15, y, z & 15) : null;
-        } else {
-            return world.getTileEntity(x, y, z);
-        }
-    }
-
-    public static Block getBlock(World world, int x, int y, int z) {
-        return getBlock(world, x, y, z, false);
-    }
-
-    public static Block getBlock(World world, int x, int y, int z, boolean force) {
-        if (!force) {
-            if (y < 0 || y > 255) {
-                return Blocks.air;
-            }
-            Chunk chunk = ThreadSafeUtils.getChunk(world, x >> 4, z >> 4);
-            return chunk != null ? chunk.getBlock(x & 15, y, z & 15) : Blocks.air;
-        } else {
-            return world.getBlock(x, y, z);
-        }
-    }
-
-    public static int getBlockMetadata(World world, int x, int y, int z) {
-        return getBlockMetadata(world, x, y, z, false);
-    }
-
-    public static int getBlockMetadata(World world, int x, int y, int z, boolean force) {
-        if (!force) {
-            if (y < 0 || y > 255) {
-                return 0;
-            }
-            Chunk chunk = ThreadSafeUtils.getChunk(world, x >> 4, z >> 4);
-            return chunk != null ? chunk.getBlockMetadata(x & 15, y, z & 15) : 0;
-        } else {
-            return world.getBlockMetadata(x, y, z);
-        }
     }
 
     public static boolean useItemOnBlock(World world, EntityPlayer player, ItemStack stack, int x, int y, int z,
