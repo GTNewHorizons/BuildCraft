@@ -131,7 +131,7 @@ public class EntityRobot extends EntityRobotBase
     private boolean needsUpdate = false;
     private final ItemStack[] inv = new ItemStack[TRANSFER_INV_SLOTS];
     private FluidStack tank;
-    private final int maxFluid = FluidContainerRegistry.BUCKET_VOLUME * 4;
+    private static final int maxFluid = FluidContainerRegistry.BUCKET_VOLUME * 4;
     private ResourceLocation texture;
 
     private final WeakHashMap<Entity, Long> unreachableEntities = new WeakHashMap<>();

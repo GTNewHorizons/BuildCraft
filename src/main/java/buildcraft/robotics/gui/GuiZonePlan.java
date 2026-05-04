@@ -70,7 +70,7 @@ public class GuiZonePlan extends GuiAdvancedInterface {
 
     private AreaSlot colorSelected = null;
 
-    private final float alpha = 0.8F;
+    private static final float alpha = 0.8F;
 
     private GuiBetterButton tool, fsButton;
 

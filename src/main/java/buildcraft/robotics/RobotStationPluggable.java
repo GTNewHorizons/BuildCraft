@@ -31,7 +31,7 @@ public class RobotStationPluggable extends PipePluggable
 
     public static class RobotStationPluggableRenderer implements IPipePluggableRenderer {
 
-        private final float zFightOffset = 1 / 4096.0F;
+        private static final float zFightOffset = 1 / 4096.0F;
 
         @Override
         public void renderPluggable(RenderBlocks renderblocks, IPipe pipe, ForgeDirection side,
