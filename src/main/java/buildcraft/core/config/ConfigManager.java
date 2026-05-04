@@ -12,7 +12,6 @@ import net.minecraftforge.common.config.Property;
 
 import cpw.mods.fml.client.IModGuiFactory;
 import cpw.mods.fml.client.config.GuiConfig;
-import cpw.mods.fml.client.config.IConfigElement;
 
 public class ConfigManager implements IModGuiFactory {
 

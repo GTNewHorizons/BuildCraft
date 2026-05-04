@@ -42,13 +42,7 @@ public final class RefineryRecipeManager implements IRefineryRecipeManager {
             BCLog.logger.warn("Rejected refinery recipe " + id + " due to a null FluidStack!");
         }
 
-        FlexibleRecipe<FluidStack> recipe = new FlexibleRecipe<>(
-                id,
-                result,
-                energy,
-                delay,
-                ingredient1,
-                ingredient2);
+        FlexibleRecipe<FluidStack> recipe = new FlexibleRecipe<>(id, result, energy, delay, ingredient1, ingredient2);
         recipes.put(id, recipe);
         validFluids1.add(ingredient1);
         validFluids2.add(ingredient2);
