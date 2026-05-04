@@ -26,7 +26,7 @@ public class PowerAdapterPluggable extends PipePluggable implements IEnergyHandl
 
     protected static final class PowerAdapterPluggableRenderer implements IPipePluggableRenderer {
 
-        private float zFightOffset = 1 / 4096.0F;
+        private final float zFightOffset = 1 / 4096.0F;
 
         @Override
         public void renderPluggable(RenderBlocks renderblocks, IPipe pipe, ForgeDirection side,

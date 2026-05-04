@@ -71,7 +71,7 @@ public class PipeTransportPower extends PipeTransport implements IDebuggable {
     private long currentDate;
     private double[] internalPower = new double[6];
 
-    private SafeTimeTracker tracker = new SafeTimeTracker(2 * BuildCraftCore.updateFactor);
+    private final SafeTimeTracker tracker = new SafeTimeTracker(2 * BuildCraftCore.updateFactor);
 
     public PipeTransportPower() {
         for (int i = 0; i < 6; ++i) {

@@ -58,7 +58,7 @@ public class TileArchitect extends TileBuildCraft implements IInventory, IBoxPro
     public ArrayList<LaserData> subLasers = new ArrayList<LaserData>();
     public ArrayList<BlockIndex> subBlueprints = new ArrayList<BlockIndex>();
 
-    private SimpleInventory inv = new SimpleInventory(2, "Architect", 1);
+    private final SimpleInventory inv = new SimpleInventory(2, "Architect", 1);
     private RecursiveBlueprintReader reader;
     private boolean clientIsWorking, initialized;
 

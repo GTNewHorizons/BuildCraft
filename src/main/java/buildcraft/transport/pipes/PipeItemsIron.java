@@ -29,9 +29,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class PipeItemsIron extends Pipe<PipeTransportItems> {
 
-    private int standardIconIndex = PipeIconProvider.TYPE.PipeItemsIron_Standard.ordinal();
-    private int solidIconIndex = PipeIconProvider.TYPE.PipeAllIron_Solid.ordinal();
-    private PipeLogicIron logic = new PipeLogicIron(this) {
+    private final int standardIconIndex = PipeIconProvider.TYPE.PipeItemsIron_Standard.ordinal();
+    private final int solidIconIndex = PipeIconProvider.TYPE.PipeAllIron_Solid.ordinal();
+    private final PipeLogicIron logic = new PipeLogicIron(this) {
 
         @Override
         protected boolean isValidConnectingTile(TileEntity tile) {

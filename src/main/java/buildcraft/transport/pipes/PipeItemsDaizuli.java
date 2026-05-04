@@ -38,10 +38,10 @@ import io.netty.buffer.ByteBuf;
 
 public class PipeItemsDaizuli extends Pipe<PipeTransportItems> implements ISerializable {
 
-    private int standardIconIndex = PipeIconProvider.TYPE.PipeItemsDaizuli_Black.ordinal();
-    private int solidIconIndex = PipeIconProvider.TYPE.PipeAllDaizuli_Solid.ordinal();
+    private final int standardIconIndex = PipeIconProvider.TYPE.PipeItemsDaizuli_Black.ordinal();
+    private final int solidIconIndex = PipeIconProvider.TYPE.PipeAllDaizuli_Solid.ordinal();
     private int color = EnumColor.BLACK.ordinal();
-    private PipeLogicIron logic = new PipeLogicIron(this) {
+    private final PipeLogicIron logic = new PipeLogicIron(this) {
 
         @Override
         protected boolean isValidConnectingTile(TileEntity tile) {

@@ -43,7 +43,7 @@ public class TileFloodGate extends TileBuildCraft implements IFluidHandler {
     private int rebuildDelay;
     private int tick = Utils.RANDOM.nextInt();
     private boolean powered = false;
-    private boolean[] blockedSides = new boolean[6];
+    private final boolean[] blockedSides = new boolean[6];
 
     static {
         REBUILD_DELAY[0] = 128;

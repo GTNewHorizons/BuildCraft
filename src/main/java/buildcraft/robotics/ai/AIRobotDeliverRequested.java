@@ -20,7 +20,7 @@ import buildcraft.robotics.StackRequest;
 public class AIRobotDeliverRequested extends AIRobot {
 
     private StackRequest requested;
-    private boolean delivered = false;
+    private final boolean delivered = false;
 
     public AIRobotDeliverRequested(EntityRobotBase iRobot) {
         super(iRobot);

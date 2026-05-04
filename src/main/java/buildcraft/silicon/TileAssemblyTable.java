@@ -39,7 +39,7 @@ public class TileAssemblyTable extends TileLaserTableBase implements IInventory,
     public String currentRecipeId = "";
     public IFlexibleRecipe<ItemStack> currentRecipe;
     public HashMap<String, CraftingResult<ItemStack>> plannedOutputIcons = new HashMap<String, CraftingResult<ItemStack>>();
-    private HashSet<String> plannedOutput = new HashSet<String>();
+    private final HashSet<String> plannedOutput = new HashSet<String>();
     private boolean queuedNetworkUpdate = false;
 
     public List<CraftingResult<ItemStack>> getPotentialOutputs() {

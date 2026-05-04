@@ -27,8 +27,8 @@ public class TileRequester extends TileBuildCraft implements IInventory, IReques
 
     public static final int NB_ITEMS = 20;
 
-    private SimpleInventory inv = new SimpleInventory(NB_ITEMS, "items", 64);
-    private SimpleInventory requests = new SimpleInventory(NB_ITEMS, "requests", 64);
+    private final SimpleInventory inv = new SimpleInventory(NB_ITEMS, "items", 64);
+    private final SimpleInventory requests = new SimpleInventory(NB_ITEMS, "requests", 64);
 
     public TileRequester() {}
 

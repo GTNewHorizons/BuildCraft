@@ -24,7 +24,7 @@ public class GuiBlueprintLibrary extends GuiBuildCraft {
     private static final ResourceLocation TEXTURE = new ResourceLocation(
             "buildcraftbuilders:textures/gui/library_rw.png");
     private GuiButton deleteButton;
-    private TileBlueprintLibrary library;
+    private final TileBlueprintLibrary library;
 
     public GuiBlueprintLibrary(EntityPlayer player, TileBlueprintLibrary library) {
         super(new ContainerBlueprintLibrary(player, library), library, TEXTURE);

@@ -66,7 +66,7 @@ import io.netty.buffer.ByteBuf;
 public class TileBuilder extends TileAbstractBuilder
         implements IHasWork, IFluidHandler, IRequestProvider, IControllable {
 
-    private static int POWER_ACTIVATION = 500;
+    private static final int POWER_ACTIVATION = 500;
 
     public Box box = new Box();
     public PathIterator currentPathIterator;
@@ -76,10 +76,10 @@ public class TileBuilder extends TileAbstractBuilder
             new Tank("fluid4", FluidContainerRegistry.BUCKET_VOLUME * 8, this) };
     public TankManager<Tank> fluidTank = new TankManager<Tank>(fluidTanks);
 
-    private SafeTimeTracker networkUpdateTracker = new SafeTimeTracker(BuildCraftCore.updateFactor / 2);
+    private final SafeTimeTracker networkUpdateTracker = new SafeTimeTracker(BuildCraftCore.updateFactor / 2);
     private boolean shouldUpdateRequirements;
 
-    private SimpleInventory inv = new SimpleInventory(28, "Builder", 64);
+    private final SimpleInventory inv = new SimpleInventory(28, "Builder", 64);
     private BptBuilderBase currentBuilder;
     private RecursiveBlueprintBuilder recursiveBuilder;
     private List<BlockIndex> path;

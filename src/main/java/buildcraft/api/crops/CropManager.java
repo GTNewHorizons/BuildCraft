@@ -11,7 +11,7 @@ import net.minecraft.world.World;
 
 public final class CropManager {
 
-    private static List<ICropHandler> handlers = new ArrayList<ICropHandler>();
+    private static final List<ICropHandler> handlers = new ArrayList<ICropHandler>();
     private static ICropHandler defaultHandler;
 
     private CropManager() {}

@@ -37,7 +37,7 @@ public class GuiEmeraldPipe extends GuiBuildCraft implements IButtonClickEventLi
     private GuiImageButton blackListButton;
     private GuiImageButton roundRobinButton;
 
-    private PipeItemsEmerald pipe;
+    private final PipeItemsEmerald pipe;
 
     public GuiEmeraldPipe(IInventory playerInventory, PipeItemsEmerald pipe) {
         super(new ContainerEmeraldPipe(playerInventory, pipe), pipe.getFilters(), TEXTURE);

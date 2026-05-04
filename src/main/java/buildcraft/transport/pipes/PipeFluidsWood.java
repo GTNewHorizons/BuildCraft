@@ -33,7 +33,7 @@ public class PipeFluidsWood extends Pipe<PipeTransportFluids> implements IEnergy
     protected int standardIconIndex = PipeIconProvider.TYPE.PipeFluidsWood_Standard.ordinal();
     protected int solidIconIndex = PipeIconProvider.TYPE.PipeAllWood_Solid.ordinal();
 
-    private PipeLogicWood logic = new PipeLogicWood(this) {
+    private final PipeLogicWood logic = new PipeLogicWood(this) {
 
         @Override
         protected boolean isValidConnectingTile(TileEntity tile) {

@@ -24,8 +24,8 @@ public final class StatementManager {
 
     public static Map<String, IStatement> statements = new HashMap<String, IStatement>();
     public static Map<String, Class<? extends IStatementParameter>> parameters = new HashMap<String, Class<? extends IStatementParameter>>();
-    private static List<ITriggerProvider> triggerProviders = new LinkedList<ITriggerProvider>();
-    private static List<IActionProvider> actionProviders = new LinkedList<IActionProvider>();
+    private static final List<ITriggerProvider> triggerProviders = new LinkedList<ITriggerProvider>();
+    private static final List<IActionProvider> actionProviders = new LinkedList<IActionProvider>();
 
     /**
      * Deactivate constructor

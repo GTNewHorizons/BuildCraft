@@ -19,7 +19,7 @@ import buildcraft.silicon.TileAdvancedCraftingTable;
 
 public class ContainerAdvancedCraftingTable extends BuildCraftContainer {
 
-    private TileAdvancedCraftingTable workbench;
+    private final TileAdvancedCraftingTable workbench;
 
     public ContainerAdvancedCraftingTable(InventoryPlayer playerInventory, TileAdvancedCraftingTable table) {
         super(table.getSizeInventory());

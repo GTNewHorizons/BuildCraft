@@ -357,7 +357,7 @@ public abstract class GuiBuildCraft extends GuiContainer {
     protected class LedgerManager {
 
         protected ArrayList<Ledger> ledgers = new ArrayList<Ledger>();
-        private GuiBuildCraft gui;
+        private final GuiBuildCraft gui;
 
         public LedgerManager(GuiBuildCraft gui) {
             this.gui = gui;

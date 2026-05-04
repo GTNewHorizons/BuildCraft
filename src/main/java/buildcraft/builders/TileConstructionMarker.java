@@ -51,7 +51,7 @@ public class TileConstructionMarker extends TileBuildCraft
     public BptBuilderBase bluePrintBuilder;
     public BptContext bptContext;
 
-    private ArrayList<BuildingItem> buildersInAction = new ArrayList<BuildingItem>();
+    private final ArrayList<BuildingItem> buildersInAction = new ArrayList<BuildingItem>();
     private NBTTagCompound initNBT;
 
     @Override

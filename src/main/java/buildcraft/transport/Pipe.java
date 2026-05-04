@@ -54,7 +54,7 @@ public abstract class Pipe<T extends PipeTransport> implements IDropControlInven
     private boolean initialized = false;
     private boolean scheduleWireUpdate;
 
-    private ArrayList<ActionState> actionStates = new ArrayList<ActionState>();
+    private final ArrayList<ActionState> actionStates = new ArrayList<ActionState>();
 
     public Pipe(T transport, Item item) {
         this.transport = transport;

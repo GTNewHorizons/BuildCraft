@@ -21,7 +21,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public abstract class RedstoneBoardNBT<T> {
 
-    private static Random rand = new Random();
+    private static final Random rand = new Random();
 
     public abstract String getID();
 

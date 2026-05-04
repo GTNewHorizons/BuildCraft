@@ -14,8 +14,8 @@ import net.minecraft.item.ItemStack;
  */
 public class IInventorySlot extends AdvancedSlot {
 
-    private IInventory tile;
-    private int slot;
+    private final IInventory tile;
+    private final int slot;
 
     public IInventorySlot(GuiAdvancedInterface gui, int x, int y, IInventory tile, int slot) {
         super(gui, x, y);

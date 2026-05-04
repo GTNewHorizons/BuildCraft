@@ -25,7 +25,7 @@ public class TilePathMarker extends TileMarker implements IPathProvider {
 
     // A list with the pathMarkers that aren't fully connected
     // It only contains markers within the loaded chunks
-    private static ArrayList<TilePathMarker> availableMarkers = new ArrayList<TilePathMarker>();
+    private static final ArrayList<TilePathMarker> availableMarkers = new ArrayList<TilePathMarker>();
 
     public int x0, y0, z0, x1, y1, z1;
     public boolean loadLink0 = false;

@@ -47,9 +47,9 @@ public final class ChannelHandler extends MessageToMessageCodec<FMLProxyPacket, 
     public static final Marker SUSPICIOUS_PACKETS = MarkerManager.getMarker("SuspiciousPackets");
     public static final AttributeKey<ThreadLocal<WeakReference<FMLProxyPacket>>> INBOUNDPACKETTRACKER = new AttributeKey<ThreadLocal<WeakReference<FMLProxyPacket>>>(
             "bc:inboundpacket");
-    private TByteObjectHashMap<Class<? extends Packet>> discriminators = new TByteObjectHashMap<Class<? extends Packet>>();
-    private TObjectByteHashMap<Class<? extends Packet>> types = new TObjectByteHashMap<Class<? extends Packet>>();
-    private TByteIntMap sides = new TByteIntHashMap();
+    private final TByteObjectHashMap<Class<? extends Packet>> discriminators = new TByteObjectHashMap<Class<? extends Packet>>();
+    private final TObjectByteHashMap<Class<? extends Packet>> types = new TObjectByteHashMap<Class<? extends Packet>>();
+    private final TByteIntMap sides = new TByteIntHashMap();
     private int maxDiscriminator;
 
     public ChannelHandler() {

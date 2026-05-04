@@ -55,12 +55,14 @@ public class RenderRobot extends Render implements IItemRenderer {
     private final EntityItem dummyEntityItem = new EntityItem(null);
     private final RenderItem customRenderItem;
 
-    private ModelBase model = new ModelBase() {};
-    private ModelBase modelHelmet = new ModelBase() {};
-    private ModelBase modelSkullOverlay = new ModelBase() {};
-    private ModelRenderer box, helmetBox, skullOverlayBox;
+    private final ModelBase model = new ModelBase() {};
+    private final ModelBase modelHelmet = new ModelBase() {};
+    private final ModelBase modelSkullOverlay = new ModelBase() {};
+    private final ModelRenderer box;
+    private final ModelRenderer helmetBox;
+    private final ModelRenderer skullOverlayBox;
 
-    private Map<String, GameProfile> gameProfileCache = new HashMap<String, GameProfile>();
+    private final Map<String, GameProfile> gameProfileCache = new HashMap<String, GameProfile>();
 
     public RenderRobot() {
         customRenderItem = new RenderItem() {

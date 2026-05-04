@@ -31,16 +31,16 @@ public abstract class RobotManager {
         registerResourceId(ResourceIdRequest.class, "resourceIdRequest", "buildcraft.core.robots.ResourceIdRequest");
     }
 
-    private static Map<Class<? extends AIRobot>, String> aiRobotsNames;
-    private static Map<String, Class<? extends AIRobot>> aiRobotsByNames;
-    private static Map<String, Class<? extends AIRobot>> aiRobotsByLegacyClassNames;
+    private static final Map<Class<? extends AIRobot>, String> aiRobotsNames;
+    private static final Map<String, Class<? extends AIRobot>> aiRobotsByNames;
+    private static final Map<String, Class<? extends AIRobot>> aiRobotsByLegacyClassNames;
 
-    private static Map<Class<? extends ResourceId>, String> resourceIdNames;
-    private static Map<String, Class<? extends ResourceId>> resourceIdByNames;
-    private static Map<String, Class<? extends ResourceId>> resourceIdLegacyClassNames;
+    private static final Map<Class<? extends ResourceId>, String> resourceIdNames;
+    private static final Map<String, Class<? extends ResourceId>> resourceIdByNames;
+    private static final Map<String, Class<? extends ResourceId>> resourceIdLegacyClassNames;
 
-    private static Map<Class<? extends DockingStation>, String> dockingStationNames;
-    private static Map<String, Class<? extends DockingStation>> dockingStationByNames;
+    private static final Map<Class<? extends DockingStation>, String> dockingStationNames;
+    private static final Map<String, Class<? extends DockingStation>> dockingStationByNames;
 
     public static void registerAIRobot(Class<? extends AIRobot> aiRobot, String name) {
         registerAIRobot(aiRobot, name, null);

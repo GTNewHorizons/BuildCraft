@@ -49,11 +49,11 @@ public class TilePump extends TileBuildCraft implements IHasWork, IFluidHandler,
     public SingleUseTank tank = new SingleUseTank("tank", MAX_LIQUID, this);
 
     private EntityBlock tube;
-    private TreeMap<Integer, Deque<BlockIndex>> pumpLayerQueues = new TreeMap<Integer, Deque<BlockIndex>>();
+    private final TreeMap<Integer, Deque<BlockIndex>> pumpLayerQueues = new TreeMap<Integer, Deque<BlockIndex>>();
     private double tubeY = Double.NaN;
     private int aimY = 0;
 
-    private SafeTimeTracker timer = new SafeTimeTracker(REBUID_DELAY);
+    private final SafeTimeTracker timer = new SafeTimeTracker(REBUID_DELAY);
     private int tick = Utils.RANDOM.nextInt(32);
     private int tickPumped = tick - 20;
     private int numFluidBlocksFound = 0;
@@ -61,7 +61,7 @@ public class TilePump extends TileBuildCraft implements IHasWork, IFluidHandler,
 
     private int ledState;
     // tick % 16 => min. 16 ticks per network update
-    private SafeTimeTracker updateTracker = new SafeTimeTracker(Math.max(16, BuildCraftCore.updateFactor));
+    private final SafeTimeTracker updateTracker = new SafeTimeTracker(Math.max(16, BuildCraftCore.updateFactor));
 
     public TilePump() {
         super();

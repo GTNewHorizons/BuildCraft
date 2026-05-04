@@ -21,7 +21,7 @@ public class PlugPluggable extends PipePluggable {
     protected static final class PlugPluggableRenderer implements IPipePluggableRenderer {
 
         public static final IPipePluggableRenderer INSTANCE = new PlugPluggableRenderer();
-        private float zFightOffset = 1 / 4096.0F;
+        private final float zFightOffset = 1 / 4096.0F;
 
         @Override
         public void renderPluggable(RenderBlocks renderblocks, IPipe pipe, ForgeDirection side,

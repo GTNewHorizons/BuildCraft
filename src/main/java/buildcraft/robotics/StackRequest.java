@@ -23,9 +23,9 @@ public class StackRequest {
 
     private IRequestProvider requester;
 
-    private int slot;
+    private final int slot;
 
-    private ItemStack stack;
+    private final ItemStack stack;
 
     private DockingStation station;
     private BlockIndex stationIndex;

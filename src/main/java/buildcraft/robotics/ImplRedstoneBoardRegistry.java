@@ -26,7 +26,7 @@ public class ImplRedstoneBoardRegistry extends RedstoneBoardRegistry {
         public int energyCost;
     }
 
-    private HashMap<String, BoardFactory> boards = new HashMap<String, BoardFactory>();
+    private final HashMap<String, BoardFactory> boards = new HashMap<String, BoardFactory>();
     private RedstoneBoardRobotNBT emptyRobotBoardNBT;
 
     @Override

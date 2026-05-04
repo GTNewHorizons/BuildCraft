@@ -11,7 +11,8 @@ import buildcraft.api.recipes.IFlexibleCrafter;
 public class FakeFlexibleCrafter implements IFlexibleCrafter {
 
     private final IFlexibleCrafter original;
-    private int[] usedItems, usedFluids;
+    private final int[] usedItems;
+    private final int[] usedFluids;
 
     public FakeFlexibleCrafter(IFlexibleCrafter original) {
         this.original = original;

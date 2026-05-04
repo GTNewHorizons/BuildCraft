@@ -64,7 +64,7 @@ public class TileAdvancedCraftingTable extends TileLaserTableBase implements IIn
     private boolean craftable;
     private boolean justCrafted;
     private IRecipe currentRecipe;
-    private InventoryCraftResult craftResult;
+    private final InventoryCraftResult craftResult;
     private InternalInventoryCrafting internalInventoryCrafting;
 
     private static final class InternalInventoryCraftingContainer extends Container {
@@ -105,7 +105,7 @@ public class TileAdvancedCraftingTable extends TileLaserTableBase implements IIn
     private final class InternalInventoryCrafting extends InventoryCrafting {
 
         public int[] hitCount;
-        private int[] bindings = new int[9];
+        private final int[] bindings = new int[9];
         private ItemStack[] tempStacks;
         private boolean useRecipeStack;
 

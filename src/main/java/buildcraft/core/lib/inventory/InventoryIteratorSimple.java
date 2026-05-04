@@ -46,7 +46,7 @@ class InventoryIteratorSimple implements Iterable<IInvSlot> {
 
     private class InvSlot implements IInvSlot {
 
-        private int slot;
+        private final int slot;
 
         public InvSlot(int slot) {
             this.slot = slot;

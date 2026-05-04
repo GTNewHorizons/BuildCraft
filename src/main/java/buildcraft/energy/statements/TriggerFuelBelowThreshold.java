@@ -21,7 +21,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class TriggerFuelBelowThreshold extends BCStatement implements ITriggerExternal {
 
-    private float threshold;
+    private final float threshold;
 
     public TriggerFuelBelowThreshold(float threshold) {
         super("buildcraft:trigger.fuelLevelBelow." + (int) (threshold * 100));

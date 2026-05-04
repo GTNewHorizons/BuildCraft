@@ -32,8 +32,8 @@ import cpw.mods.fml.relauncher.Side;
 
 public class BuildCraftMod {
 
-    private static PacketSender sender = new PacketSender();
-    private static Thread senderThread = new Thread(sender);
+    private static final PacketSender sender = new PacketSender();
+    private static final Thread senderThread = new Thread(sender);
 
     public EnumMap<Side, FMLEmbeddedChannel> channels;
 
@@ -122,7 +122,7 @@ public class BuildCraftMod {
 
     static class PacketSender implements Runnable {
 
-        private BlockingQueue<SendRequest> packets = new LinkedBlockingQueue<>();
+        private final BlockingQueue<SendRequest> packets = new LinkedBlockingQueue<>();
 
         @Override
         public void run() {

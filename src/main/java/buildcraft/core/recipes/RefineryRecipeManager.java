@@ -20,9 +20,9 @@ import buildcraft.api.recipes.IRefineryRecipeManager;
 public final class RefineryRecipeManager implements IRefineryRecipeManager {
 
     public static final RefineryRecipeManager INSTANCE = new RefineryRecipeManager();
-    private HashMap<String, IFlexibleRecipe<FluidStack>> recipes = new HashMap<String, IFlexibleRecipe<FluidStack>>();
-    private ArrayList<FluidStack> validFluids1 = new ArrayList<FluidStack>();
-    private ArrayList<FluidStack> validFluids2 = new ArrayList<FluidStack>();
+    private final HashMap<String, IFlexibleRecipe<FluidStack>> recipes = new HashMap<String, IFlexibleRecipe<FluidStack>>();
+    private final ArrayList<FluidStack> validFluids1 = new ArrayList<FluidStack>();
+    private final ArrayList<FluidStack> validFluids2 = new ArrayList<FluidStack>();
 
     private RefineryRecipeManager() {}
 

@@ -41,7 +41,7 @@ public class BlockBuildCraftFluid extends BlockFluidClassic {
     protected boolean flammable;
     protected boolean dense = false;
     protected int flammability = 0;
-    private MapColor mapColor;
+    private final MapColor mapColor;
 
     public BlockBuildCraftFluid(Fluid fluid, Material material, MapColor iMapColor) {
         super(fluid, material);

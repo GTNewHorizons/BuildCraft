@@ -17,7 +17,7 @@ public class BoardProgrammingRecipe implements IProgrammingRecipe {
 
     private static class BoardSorter implements Comparator<ItemStack> {
 
-        private BoardProgrammingRecipe recipe;
+        private final BoardProgrammingRecipe recipe;
 
         public BoardSorter(BoardProgrammingRecipe recipe) {
             this.recipe = recipe;

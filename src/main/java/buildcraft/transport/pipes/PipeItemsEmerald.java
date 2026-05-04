@@ -61,7 +61,7 @@ public class PipeItemsEmerald extends PipeItemsWood implements ISerializable, IG
         }
     }
 
-    private EmeraldPipeSettings settings = new EmeraldPipeSettings();
+    private final EmeraldPipeSettings settings = new EmeraldPipeSettings();
 
     private final SimpleInventory filters = new SimpleInventory(9, "gui.pipes.emerald.title", 1);
 

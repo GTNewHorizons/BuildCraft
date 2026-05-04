@@ -34,10 +34,10 @@ public class ModelFrustum {
     /**
      * The (x,y,z) vertex positions and (u,v) texture coordinates for each of the 8 points on a cube
      */
-    private PositionTextureVertex[] vertexPositions;
+    private final PositionTextureVertex[] vertexPositions;
 
     /** An array of 6 TexturedQuads, one for each face of a cube */
-    private TexturedQuad[] quadList;
+    private final TexturedQuad[] quadList;
 
     public ModelFrustum(ModelRenderer par1ModelRenderer, int textureOffsetX, int textureOffsetY, float originXI,
             float originYI, float originZI, int bottomWidth, int bottomDepth, int topWidth, int topDepth, int height,

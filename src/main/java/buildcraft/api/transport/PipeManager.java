@@ -21,9 +21,9 @@ public abstract class PipeManager {
 
     public static List<IStripesHandler> stripesHandlers = new ArrayList<IStripesHandler>();
     public static ArrayList<Class<? extends PipePluggable>> pipePluggables = new ArrayList<Class<? extends PipePluggable>>();
-    private static Map<String, Class<? extends PipePluggable>> pipePluggableNames = new HashMap<String, Class<? extends PipePluggable>>();
-    private static Map<Class<? extends PipePluggable>, String> pipePluggableByNames = new HashMap<Class<? extends PipePluggable>, String>();
-    private static Map<IStripesHandler, Integer> stripesHandlerPriorities = new HashMap<IStripesHandler, Integer>();
+    private static final Map<String, Class<? extends PipePluggable>> pipePluggableNames = new HashMap<String, Class<? extends PipePluggable>>();
+    private static final Map<Class<? extends PipePluggable>, String> pipePluggableByNames = new HashMap<Class<? extends PipePluggable>, String>();
+    private static final Map<IStripesHandler, Integer> stripesHandlerPriorities = new HashMap<IStripesHandler, Integer>();
 
     @Deprecated
     public static boolean canExtractItems(Object extractor, World world, int i, int j, int k) {

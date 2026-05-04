@@ -42,7 +42,7 @@ public class TriggerPipeContents extends BCStatement implements ITriggerInternal
         public ITriggerInternal trigger;
     }
 
-    private PipeContents kind;
+    private final PipeContents kind;
 
     public TriggerPipeContents(PipeContents kind) {
         super(

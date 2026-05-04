@@ -78,8 +78,8 @@ public final class Gate implements IGate, ISidedStatementContainer, IRedstoneSta
 
     private ForgeDirection direction;
 
-    private HashMultiset<IStatement> statementCounts = HashMultiset.create();
-    private int[] actionGroups = new int[] { 0, 1, 2, 3, 4, 5, 6, 7 };
+    private final HashMultiset<IStatement> statementCounts = HashMultiset.create();
+    private final int[] actionGroups = new int[] { 0, 1, 2, 3, 4, 5, 6, 7 };
 
     // / CONSTRUCTOR
     public Gate(Pipe<?> pipe, GateMaterial material, GateLogic logic, ForgeDirection direction) {

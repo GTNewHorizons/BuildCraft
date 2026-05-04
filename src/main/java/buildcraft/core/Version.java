@@ -41,7 +41,7 @@ public class Version implements Runnable {
     private static String recommendedVersion;
     private static String[] cachedChangelog;
 
-    private static Version instance = new Version();
+    private static final Version instance = new Version();
 
     private static boolean sentIMCOutdatedMessage = false;
 

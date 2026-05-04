@@ -11,8 +11,8 @@ import net.minecraft.inventory.Slot;
 
 public class SlotHidden extends Slot {
 
-    private int saveX;
-    private int saveY;
+    private final int saveX;
+    private final int saveY;
 
     public SlotHidden(IInventory inv, int index, int x, int y) {
         super(inv, index, x, y);

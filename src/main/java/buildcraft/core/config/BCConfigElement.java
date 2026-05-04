@@ -13,7 +13,7 @@ import cpw.mods.fml.client.config.IConfigElement;
 public class BCConfigElement<T> extends ConfigElement<T> {
 
     private ConfigCategory cat;
-    private boolean isProp;
+    private final boolean isProp;
 
     public BCConfigElement(ConfigCategory ctgy) {
         super(ctgy);

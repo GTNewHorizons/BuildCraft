@@ -24,14 +24,14 @@ public class PathFinding implements IIterableAlgorithm {
 
     public static int PATH_ITERATIONS = 1000;
 
-    private World world;
-    private BlockIndex start;
-    private BlockIndex end;
+    private final World world;
+    private final BlockIndex start;
+    private final BlockIndex end;
     private double maxDistanceToEndSq = 0;
     private float maxTotalDistanceSq = 0;
 
-    private HashMap<BlockIndex, Node> openList = new HashMap<BlockIndex, PathFinding.Node>();
-    private HashMap<BlockIndex, Node> closedList = new HashMap<BlockIndex, PathFinding.Node>();
+    private final HashMap<BlockIndex, Node> openList = new HashMap<BlockIndex, PathFinding.Node>();
+    private final HashMap<BlockIndex, Node> closedList = new HashMap<BlockIndex, PathFinding.Node>();
 
     private Node nextIteration;
 

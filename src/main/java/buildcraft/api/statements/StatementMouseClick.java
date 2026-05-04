@@ -8,8 +8,8 @@ package buildcraft.api.statements;
 
 public final class StatementMouseClick {
 
-    private int button;
-    private boolean shift;
+    private final int button;
+    private final boolean shift;
 
     public StatementMouseClick(int button, boolean shift) {
         this.button = button;

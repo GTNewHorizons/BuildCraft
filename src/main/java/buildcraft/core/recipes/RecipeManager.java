@@ -17,7 +17,7 @@ import buildcraft.api.recipes.IRecipeManager;
 
 public class RecipeManager<T> implements IRecipeManager<T> {
 
-    private BiMap<String, IFlexibleRecipe<T>> recipes = HashBiMap.create();
+    private final BiMap<String, IFlexibleRecipe<T>> recipes = HashBiMap.create();
 
     @Override
     public void addRecipe(String id, int energyCost, T output, Object... input) {

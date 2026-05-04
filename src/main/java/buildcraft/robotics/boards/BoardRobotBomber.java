@@ -31,7 +31,7 @@ public class BoardRobotBomber extends RedstoneBoardRobot {
 
     private static final IStackFilter TNT_FILTER = new ArrayStackFilter(new ItemStack(Blocks.tnt));
 
-    private int flyingHeight = 20;
+    private final int flyingHeight = 20;
 
     public BoardRobotBomber(EntityRobotBase iRobot) {
         super(iRobot);

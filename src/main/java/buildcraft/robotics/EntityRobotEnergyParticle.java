@@ -16,7 +16,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class EntityRobotEnergyParticle extends EntityFX {
 
-    private float smokeParticleScale;
+    private final float smokeParticleScale;
 
     public EntityRobotEnergyParticle(World world, double x, double y, double z, double vx, double vy, double vz) {
         this(world, x, y, z, vx, vy, vz, 1.0F);

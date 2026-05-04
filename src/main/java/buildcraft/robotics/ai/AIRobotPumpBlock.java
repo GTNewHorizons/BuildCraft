@@ -18,7 +18,7 @@ public class AIRobotPumpBlock extends AIRobot {
 
     private BlockIndex blockToPump;
     private long waited = 0;
-    private int pumped = 0;
+    private final int pumped = 0;
 
     public AIRobotPumpBlock(EntityRobotBase iRobot) {
         super(iRobot);

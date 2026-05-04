@@ -12,10 +12,11 @@ import net.minecraft.world.IBlockAccess;
 
 public class ChunkProperty {
 
-    private BitSet property;
-    private int worldHeight;
-    private int xPosition, zPosition;
-    private IBlockAccess blockAccess;
+    private final BitSet property;
+    private final int worldHeight;
+    private final int xPosition;
+    private final int zPosition;
+    private final IBlockAccess blockAccess;
 
     public ChunkProperty(IBlockAccess iBlockAccess, int iWorldHeight, int iXPosition, int iZPosition) {
         worldHeight = iWorldHeight;

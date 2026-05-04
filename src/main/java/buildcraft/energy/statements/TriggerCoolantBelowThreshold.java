@@ -21,7 +21,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class TriggerCoolantBelowThreshold extends BCStatement implements ITriggerExternal {
 
-    private float threshold;
+    private final float threshold;
 
     public TriggerCoolantBelowThreshold(float threshold) {
         super("buildcraft:trigger.coolantLevelBelow." + (int) (threshold * 100));

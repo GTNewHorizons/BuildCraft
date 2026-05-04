@@ -13,7 +13,7 @@ public class TabletManagerServer {
 
     public static final TabletManagerServer INSTANCE = new TabletManagerServer();
 
-    private HashMap<EntityPlayer, TabletThread> threads = new HashMap<EntityPlayer, TabletThread>();
+    private final HashMap<EntityPlayer, TabletThread> threads = new HashMap<EntityPlayer, TabletThread>();
 
     public TabletServer get(EntityPlayer player) {
         if (!threads.containsKey(player)) {

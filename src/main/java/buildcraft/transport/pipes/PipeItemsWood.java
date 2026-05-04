@@ -40,7 +40,7 @@ public class PipeItemsWood extends Pipe<PipeTransportItems> implements IEnergyHa
 
     private int ticksSincePull = 0;
 
-    private PipeLogicWood logic = new PipeLogicWood(this) {
+    private final PipeLogicWood logic = new PipeLogicWood(this) {
 
         @Override
         protected boolean isValidConnectingTile(TileEntity tile) {

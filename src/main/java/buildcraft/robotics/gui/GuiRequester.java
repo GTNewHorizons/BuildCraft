@@ -19,11 +19,11 @@ public class GuiRequester extends GuiAdvancedInterface {
     private static final ResourceLocation TEXTURE = new ResourceLocation(
             "buildcraftrobotics:textures/gui/requester_gui.png");
 
-    private TileRequester requester;
+    private final TileRequester requester;
 
     private static class RequestSlot extends AdvancedSlot {
 
-        private int index;
+        private final int index;
 
         public RequestSlot(GuiAdvancedInterface gui, int iIndex, int x, int y) {
             super(gui, x, y);

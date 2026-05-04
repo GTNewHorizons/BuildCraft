@@ -28,9 +28,9 @@ public final class ListHandlerOld {
         public boolean subitemsWildcard = false;
         public boolean isOre;
 
-        private ItemStack[] stacks = new ItemStack[7];
-        private ArrayList<ItemStack> ores = new ArrayList<ItemStack>();
-        private ArrayList<ItemStack> relatedItems = new ArrayList<ItemStack>();
+        private final ItemStack[] stacks = new ItemStack[7];
+        private final ArrayList<ItemStack> ores = new ArrayList<ItemStack>();
+        private final ArrayList<ItemStack> relatedItems = new ArrayList<ItemStack>();
 
         public ItemStack getStack(int index) {
             if (index == 0 || (!oreWildcard && !subitemsWildcard)) {

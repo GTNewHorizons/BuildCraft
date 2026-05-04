@@ -72,7 +72,7 @@ public class TilePackager extends TileBuildCraft implements ISidedInventory {
     public SimpleInventory inventoryPublic = new SimpleInventory(12, "Packager", 64);
     public SimpleInventory inventoryPattern = new SimpleInventory(9, "Packager", 64);
 
-    private Requirement[] requirements = new Requirement[9];
+    private final Requirement[] requirements = new Requirement[9];
     private int patternsSet;
     private int updateTime = BuildCraftCore.random.nextInt(5);
 

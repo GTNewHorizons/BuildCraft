@@ -49,9 +49,9 @@ public class GuiZonePlan extends GuiAdvancedInterface {
     private int mapWidth = WINDOWED_MAP_WIDTH;
     private int mapHeight = WINDOWED_MAP_HEIGHT;
 
-    private TileZonePlan zonePlan;
+    private final TileZonePlan zonePlan;
 
-    private DynamicTextureBC newSelection;
+    private final DynamicTextureBC newSelection;
     private int selX1 = 0;
     private int selX2 = 0;
     private int selY1 = 0;
@@ -70,7 +70,7 @@ public class GuiZonePlan extends GuiAdvancedInterface {
 
     private AreaSlot colorSelected = null;
 
-    private float alpha = 0.8F;
+    private final float alpha = 0.8F;
 
     private GuiBetterButton tool, fsButton;
 

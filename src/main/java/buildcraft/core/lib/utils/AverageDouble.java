@@ -8,8 +8,9 @@ package buildcraft.core.lib.utils;
 
 public class AverageDouble {
 
-    private double[] data;
-    private int pos, precise;
+    private final double[] data;
+    private int pos;
+    private final int precise;
     private double averageRaw, tickValue;
 
     public AverageDouble(int precise) {

@@ -34,7 +34,7 @@ public class ContainerZonePlan extends BuildCraftContainer implements ICommandRe
     public ZonePlan currentAreaSelection;
     public GuiZonePlan gui;
 
-    private TileZonePlan map;
+    private final TileZonePlan map;
 
     public ContainerZonePlan(IInventory playerInventory, TileZonePlan iZonePlan) {
         super(0);

@@ -12,7 +12,7 @@ import buildcraft.api.robots.EntityRobotBase;
 
 public class AIRobotGotoStationAndUnload extends AIRobot {
 
-    private DockingStation station;
+    private final DockingStation station;
 
     public AIRobotGotoStationAndUnload(EntityRobotBase iRobot) {
         super(iRobot);

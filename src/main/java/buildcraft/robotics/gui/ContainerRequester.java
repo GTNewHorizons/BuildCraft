@@ -27,7 +27,7 @@ public class ContainerRequester extends BuildCraftContainer implements ICommandR
 
     public ItemStack[] requests = new ItemStack[TileRequester.NB_ITEMS];
 
-    private TileRequester requester;
+    private final TileRequester requester;
 
     public ContainerRequester(IInventory playerInventory, TileRequester iRequester) {
         super(iRequester.getSizeInventory());

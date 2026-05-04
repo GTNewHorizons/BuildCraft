@@ -36,7 +36,7 @@ public class GuiListNew extends GuiAdvancedInterface implements IButtonClickEven
 
     private final Map<Integer, Map<ListMatchHandler.Type, List<ItemStack>>> exampleCache = new HashMap<Integer, Map<ListMatchHandler.Type, List<ItemStack>>>();
     private GuiTextField textField;
-    private EntityPlayer player;
+    private final EntityPlayer player;
 
     private static class ListSlot extends AdvancedSlot {
 

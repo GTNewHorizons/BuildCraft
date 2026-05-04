@@ -24,15 +24,15 @@ public class PathFindingSearch implements IIterableAlgorithm {
     public static final int PATH_ITERATIONS = 1000;
     private static final HashMap<Integer, HashSet<BlockIndex>> reservations = new HashMap<Integer, HashSet<BlockIndex>>();
 
-    private World world;
-    private BlockIndex start;
-    private List<PathFinding> pathFinders;
-    private IBlockFilter pathFound;
-    private IZone zone;
-    private float maxDistance;
-    private Iterator<BlockIndex> blockIter;
+    private final World world;
+    private final BlockIndex start;
+    private final List<PathFinding> pathFinders;
+    private final IBlockFilter pathFound;
+    private final IZone zone;
+    private final float maxDistance;
+    private final Iterator<BlockIndex> blockIter;
 
-    private double maxDistanceToEnd;
+    private final double maxDistanceToEnd;
 
     public PathFindingSearch(World iWorld, BlockIndex iStart, Iterator<BlockIndex> iBlockIter, IBlockFilter iPathFound,
             double iMaxDistanceToEnd, float iMaxDistance, IZone iZone) {

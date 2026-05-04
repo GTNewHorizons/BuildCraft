@@ -10,10 +10,10 @@ import java.util.Date;
 
 public class IterableAlgorithmRunner extends Thread {
 
-    private IIterableAlgorithm pathFinding;
+    private final IIterableAlgorithm pathFinding;
 
     private boolean stop = false;
-    private int maxIterations;
+    private final int maxIterations;
 
     private boolean done = false;
 

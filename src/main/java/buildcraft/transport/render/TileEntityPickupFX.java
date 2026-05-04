@@ -29,13 +29,13 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class TileEntityPickupFX extends EntityFX {
 
-    private Entity entityToPickUp;
-    private TileEntity entityPickingUp;
+    private final Entity entityToPickUp;
+    private final TileEntity entityPickingUp;
     private int age = 0;
     private int maxAge = 0;
 
     /** renamed from yOffset to fix shadowing Entity.yOffset */
-    private double yOffs;
+    private final double yOffs;
 
     public TileEntityPickupFX(World par1World, EntityItem par2Entity, TileEntity par3Entity) {
         super(

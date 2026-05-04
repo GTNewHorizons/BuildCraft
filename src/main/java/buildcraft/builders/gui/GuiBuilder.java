@@ -35,7 +35,7 @@ public class GuiBuilder extends GuiAdvancedInterface {
             "buildcraftbuilders:textures/gui/builder.png");
     private static final ResourceLocation BLUEPRINT_TEXTURE = new ResourceLocation(
             "buildcraftbuilders:textures/gui/builder_blueprint.png");
-    private TileBuilder builder;
+    private final TileBuilder builder;
     private GuiButton selectedButton;
 
     public GuiBuilder(IInventory playerInventory, TileBuilder builder) {

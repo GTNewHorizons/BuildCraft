@@ -30,8 +30,8 @@ import io.netty.buffer.ByteBufInputStream;
 
 public abstract class BuildCraftContainer extends Container {
 
-    private List<Widget> widgets = new ArrayList<Widget>();
-    private int inventorySize;
+    private final List<Widget> widgets = new ArrayList<Widget>();
+    private final int inventorySize;
 
     public BuildCraftContainer(int inventorySize) {
         this.inventorySize = inventorySize;

@@ -49,9 +49,9 @@ public class TileRefinery extends TileBuildCraft
     public TankManager<SingleUseTank> tankManager = new TankManager<SingleUseTank>(tanks[0], tanks[1], result);
     public float animationSpeed = 1;
     private short animationStage = 0;
-    private SafeTimeTracker time = new SafeTimeTracker();
+    private final SafeTimeTracker time = new SafeTimeTracker();
 
-    private SafeTimeTracker updateNetworkTime = new SafeTimeTracker(BuildCraftCore.updateFactor);
+    private final SafeTimeTracker updateNetworkTime = new SafeTimeTracker(BuildCraftCore.updateFactor);
     private boolean isActive;
 
     private String currentRecipeId = "";

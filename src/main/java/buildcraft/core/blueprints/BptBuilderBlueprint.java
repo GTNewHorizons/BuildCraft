@@ -57,12 +57,12 @@ public class BptBuilderBlueprint extends BptBuilderBase {
     protected HashMap<BuilderItemMetaPair, List<BuildingSlotBlock>> buildList = new HashMap<BuilderItemMetaPair, List<BuildingSlotBlock>>();
     protected int[] buildStageOccurences;
 
-    private ArrayList<RequirementItemStack> neededItems = new ArrayList<RequirementItemStack>();
+    private final ArrayList<RequirementItemStack> neededItems = new ArrayList<RequirementItemStack>();
 
-    private LinkedList<BuildingSlotEntity> entityList = new LinkedList<BuildingSlotEntity>();
-    private LinkedList<BuildingSlot> postProcessing = new LinkedList<BuildingSlot>();
+    private final LinkedList<BuildingSlotEntity> entityList = new LinkedList<BuildingSlotEntity>();
+    private final LinkedList<BuildingSlot> postProcessing = new LinkedList<BuildingSlot>();
     private BuildingSlotMapIterator iterator;
-    private IndexRequirementMap requirementMap = new IndexRequirementMap();
+    private final IndexRequirementMap requirementMap = new IndexRequirementMap();
 
     public BptBuilderBlueprint(Blueprint bluePrint, World world, int x, int y, int z) {
         super(bluePrint, world, x, y, z);

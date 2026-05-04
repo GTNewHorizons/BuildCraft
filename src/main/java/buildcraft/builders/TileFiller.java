@@ -39,7 +39,7 @@ import io.netty.buffer.ByteBuf;
 public class TileFiller extends TileAbstractBuilder
         implements IHasWork, IControllable, ICommandReceiver, IStatementContainer, ILEDProvider {
 
-    private static int POWER_ACTIVATION = 500;
+    private static final int POWER_ACTIVATION = 500;
 
     public FillerPattern currentPattern = PatternFill.INSTANCE;
     public IStatementParameter[] patternParameters;
@@ -49,7 +49,7 @@ public class TileFiller extends TileAbstractBuilder
     private final Box box = new Box();
     private boolean done = false;
     private boolean excavate = true;
-    private SimpleInventory inv = new SimpleInventory(27, "Filler", 64);
+    private final SimpleInventory inv = new SimpleInventory(27, "Filler", 64);
 
     private NBTTagCompound initNBT = null;
 

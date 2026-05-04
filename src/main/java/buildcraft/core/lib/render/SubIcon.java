@@ -5,10 +5,13 @@ import net.minecraft.util.IIcon;
 public class SubIcon implements IIcon {
 
     private final IIcon icon;
-    private float u, v;
+    private final float u;
+    private final float v;
     private final int w, h;
-    private float uScale, vScale;
-    private int iw, ih;
+    private final float uScale;
+    private final float vScale;
+    private final int iw;
+    private final int ih;
 
     public SubIcon(IIcon icon, int u, int v, int size) {
         this(icon, u, v, 16, 16, size);

@@ -38,7 +38,7 @@ public class GuiArchitect extends GuiBuildCraft {
     private static final ResourceLocation TEXTURE = new ResourceLocation(
             "buildcraftbuilders:textures/gui/architect_gui.png");
 
-    private TileArchitect architect;
+    private final TileArchitect architect;
 
     private GuiBetterButton optionRotate;
     private GuiBetterButton optionExcavate;
