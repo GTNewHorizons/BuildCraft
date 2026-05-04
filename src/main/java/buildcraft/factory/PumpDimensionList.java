@@ -62,7 +62,7 @@ public class PumpDimensionList {
         entries = new ArrayList<Entry>(entries);
     }
 
-    private class Entry {
+    private static class Entry {
 
         boolean isWhitelist;
         String fluidName;

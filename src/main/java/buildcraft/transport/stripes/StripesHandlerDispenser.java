@@ -21,7 +21,7 @@ public class StripesHandlerDispenser implements IStripesHandler {
 
     public static final List<Object> items = new ArrayList<Object>();
 
-    public class Source implements IBlockSource {
+    public static class Source implements IBlockSource {
 
         private final World world;
         private final int x, y, z;

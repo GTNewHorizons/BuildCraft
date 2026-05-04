@@ -15,7 +15,7 @@ import buildcraft.core.lib.utils.NBTUtils;
 
 public class BoardProgrammingRecipe implements IProgrammingRecipe {
 
-    private class BoardSorter implements Comparator<ItemStack> {
+    private static class BoardSorter implements Comparator<ItemStack> {
 
         private BoardProgrammingRecipe recipe;
 

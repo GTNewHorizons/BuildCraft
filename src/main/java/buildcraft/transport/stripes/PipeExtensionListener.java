@@ -27,7 +27,7 @@ import cpw.mods.fml.common.gameevent.TickEvent;
 
 public class PipeExtensionListener {
 
-    private class PipeExtensionRequest {
+    private static class PipeExtensionRequest {
 
         public ItemStack stack;
         public int x, y, z;

@@ -12,7 +12,7 @@ import gnu.trove.map.hash.TIntObjectHashMap;
 
 public final class TabletFont {
 
-    public final class Glyph {
+    public static final class Glyph {
 
         public byte[] glyphData;
         private final int loadOffset;

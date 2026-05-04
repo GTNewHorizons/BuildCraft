@@ -14,7 +14,7 @@ import buildcraft.transport.pipes.events.PipeEventPriority;
 
 public class PipeEventBus {
 
-    private class EventHandler {
+    private static class EventHandler {
 
         public Method method;
         public Object owner;

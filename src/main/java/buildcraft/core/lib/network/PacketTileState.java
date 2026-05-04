@@ -19,7 +19,7 @@ public class PacketTileState extends PacketCoordinates {
 
     private ByteBuf state;
 
-    private class StateWithId {
+    private static class StateWithId {
 
         public byte stateId;
         public ISerializable state;

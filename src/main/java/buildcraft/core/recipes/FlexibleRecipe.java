@@ -28,7 +28,7 @@ import buildcraft.core.lib.inventory.filters.IStackFilter;
 
 public class FlexibleRecipe<T> implements IFlexibleRecipe<T>, IFlexibleRecipeViewable {
 
-    private class PreviewCrafter implements IFlexibleCrafter {
+    private static class PreviewCrafter implements IFlexibleCrafter {
 
         private final SimpleInventory inventory;
         private final IFlexibleCrafter crafter;

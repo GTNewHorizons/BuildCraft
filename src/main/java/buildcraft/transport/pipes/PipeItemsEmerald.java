@@ -36,7 +36,7 @@ public class PipeItemsEmerald extends PipeItemsWood implements ISerializable, IG
         ROUND_ROBIN
     }
 
-    public class EmeraldPipeSettings {
+    public static class EmeraldPipeSettings {
 
         private FilterMode filterMode;
 
