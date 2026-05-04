@@ -137,7 +137,7 @@ public class TilePackager extends TileBuildCraft implements ISidedInventory {
             }
         }
 
-        TObjectIntHashMap<Requirement> reqCounts = new TObjectIntHashMap<Requirement>(9);
+        TObjectIntHashMap<Requirement> reqCounts = new TObjectIntHashMap<>(9);
         int missingCount = 0;
 
         int filteredReqsToFulfill = 0;
@@ -230,7 +230,7 @@ public class TilePackager extends TileBuildCraft implements ISidedInventory {
         }
 
         // STEP 3b: Remote
-        Map<ForgeDirection, IInventory> invs = new EnumMap<ForgeDirection, IInventory>(ForgeDirection.class);
+        Map<ForgeDirection, IInventory> invs = new EnumMap<>(ForgeDirection.class);
         if (filteredReqsToFulfill > 0 || missingCount > 0) {
             for (int i = 2; i < 6; i++) {
                 TileEntity neighbor = getTile(ForgeDirection.getOrientation(i));

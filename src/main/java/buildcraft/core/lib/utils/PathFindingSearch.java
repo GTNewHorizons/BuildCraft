@@ -22,7 +22,7 @@ import buildcraft.api.core.IZone;
 public class PathFindingSearch implements IIterableAlgorithm {
 
     public static final int PATH_ITERATIONS = 1000;
-    private static final HashMap<Integer, HashSet<BlockIndex>> reservations = new HashMap<Integer, HashSet<BlockIndex>>();
+    private static final HashMap<Integer, HashSet<BlockIndex>> reservations = new HashMap<>();
 
     private final World world;
     private final BlockIndex start;
@@ -45,7 +45,7 @@ public class PathFindingSearch implements IIterableAlgorithm {
         zone = iZone;
         blockIter = iBlockIter;
 
-        pathFinders = new LinkedList<PathFinding>();
+        pathFinders = new LinkedList<>();
     }
 
     @Override
@@ -110,7 +110,7 @@ public class PathFindingSearch implements IIterableAlgorithm {
     }
 
     public void iteratePathFind(int itNumber) {
-        for (PathFinding pathFinding : new ArrayList<PathFinding>(pathFinders)) {
+        for (PathFinding pathFinding : new ArrayList<>(pathFinders)) {
             pathFinding.iterate(itNumber / pathFinders.size());
             if (pathFinding.isDone()) {
                 LinkedList<BlockIndex> path = pathFinding.getResult();
@@ -140,7 +140,7 @@ public class PathFindingSearch implements IIterableAlgorithm {
                 return pathFinding.getResult();
             }
         }
-        return new LinkedList<BlockIndex>();
+        return new LinkedList<>();
     }
 
     public BlockIndex getResultTarget() {
@@ -155,7 +155,7 @@ public class PathFindingSearch implements IIterableAlgorithm {
     private boolean reserve(BlockIndex block) {
         synchronized (reservations) {
             if (!reservations.containsKey(world.provider.dimensionId)) {
-                reservations.put(world.provider.dimensionId, new HashSet<BlockIndex>());
+                reservations.put(world.provider.dimensionId, new HashSet<>());
             }
             HashSet<BlockIndex> dimReservations = reservations.get(world.provider.dimensionId);
             if (dimReservations.contains(block)) {

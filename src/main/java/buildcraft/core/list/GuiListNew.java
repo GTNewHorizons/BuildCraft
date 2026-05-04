@@ -34,7 +34,7 @@ public class GuiListNew extends GuiAdvancedInterface implements IButtonClickEven
             "buildcraftcore:textures/gui/list_new.png");
     private static final int BUTTON_COUNT = 3;
 
-    private final Map<Integer, Map<ListMatchHandler.Type, List<ItemStack>>> exampleCache = new HashMap<Integer, Map<ListMatchHandler.Type, List<ItemStack>>>();
+    private final Map<Integer, Map<ListMatchHandler.Type, List<ItemStack>>> exampleCache = new HashMap<>();
     private GuiTextField textField;
     private final EntityPlayer player;
 
@@ -102,7 +102,7 @@ public class GuiListNew extends GuiAdvancedInterface implements IButtonClickEven
     private List<ItemStack> getExamplesList(int lineId, ListMatchHandler.Type type) {
         Map<ListMatchHandler.Type, List<ItemStack>> exampleList = exampleCache.get(lineId);
         if (exampleList == null) {
-            exampleList = new EnumMap<ListMatchHandler.Type, List<ItemStack>>(ListMatchHandler.Type.class);
+            exampleList = new EnumMap<>(ListMatchHandler.Type.class);
             exampleCache.put(lineId, exampleList);
         }
 
@@ -112,7 +112,7 @@ public class GuiListNew extends GuiAdvancedInterface implements IButtonClickEven
             List<ItemStack> examples = container.lines[lineId].getExamples();
             ItemStack input = container.lines[lineId].stacks[0];
             if (input != null) {
-                List<ItemStack> repetitions = new ArrayList<ItemStack>();
+                List<ItemStack> repetitions = new ArrayList<>();
                 for (ItemStack is : examples) {
                     if (StackHelper.isMatchingItem(input, is, true, false)) {
                         repetitions.add(is);

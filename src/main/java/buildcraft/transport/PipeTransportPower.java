@@ -44,8 +44,8 @@ import cofh.api.energy.IEnergyReceiver;
 
 public class PipeTransportPower extends PipeTransport implements IDebuggable {
 
-    public static final Map<Class<? extends Pipe<?>>, Integer> powerCapacities = new HashMap<Class<? extends Pipe<?>>, Integer>();
-    public static final Map<Class<? extends Pipe<?>>, Float> powerResistances = new HashMap<Class<? extends Pipe<?>>, Float>();
+    public static final Map<Class<? extends Pipe<?>>, Integer> powerCapacities = new HashMap<>();
+    public static final Map<Class<? extends Pipe<?>>, Float> powerResistances = new HashMap<>();
 
     private static final int OVERLOAD_TICKS = 60;
 

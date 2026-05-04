@@ -30,7 +30,7 @@ public class PacketTileState extends PacketCoordinates {
         }
     }
 
-    private final List<StateWithId> stateList = new LinkedList<StateWithId>();
+    private final List<StateWithId> stateList = new LinkedList<>();
 
     /**
      * Default constructor for incoming packets

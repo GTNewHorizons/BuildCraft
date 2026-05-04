@@ -26,7 +26,7 @@ import buildcraft.core.lib.utils.BlockUtils;
 
 public class CropHandlerPlantable implements ICropHandler {
 
-    private static final Set<Block> FORBIDDEN_BLOCKS = new HashSet<Block>();
+    private static final Set<Block> FORBIDDEN_BLOCKS = new HashSet<>();
 
     public static void forbidBlock(Block b) {
         FORBIDDEN_BLOCKS.add(b);

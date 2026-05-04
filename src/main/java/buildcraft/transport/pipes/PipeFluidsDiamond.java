@@ -135,7 +135,7 @@ public class PipeFluidsDiamond extends Pipe<PipeTransportFluids> implements IDia
 
     public void eventHandler(PipeEventFluid.FindDest event) {
         Fluid fluidInTank = event.fluidStack.getFluid();
-        Set<ForgeDirection> originalDestinations = new HashSet<ForgeDirection>();
+        Set<ForgeDirection> originalDestinations = new HashSet<>();
         originalDestinations.addAll(event.destinations.elementSet());
         boolean isFiltered = false;
         int[] filterCount = new int[6];

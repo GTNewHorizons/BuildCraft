@@ -10,7 +10,7 @@ import buildcraft.api.robots.IRobotRegistryProvider;
 
 public class RobotRegistryProvider implements IRobotRegistryProvider {
 
-    private static final HashMap<Integer, RobotRegistry> registries = new HashMap<Integer, RobotRegistry>();
+    private static final HashMap<Integer, RobotRegistry> registries = new HashMap<>();
 
     @Override
     public synchronized RobotRegistry getRegistry(World world) {

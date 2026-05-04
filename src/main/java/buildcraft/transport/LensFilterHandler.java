@@ -16,8 +16,8 @@ public class LensFilterHandler {
     @PipeEventPriority(priority = -100)
     public void eventHandler(PipeEventItem.FindDest event) {
         IPipeTile container = event.pipe.getTile();
-        LinkedList<ForgeDirection> correctColored = new LinkedList<ForgeDirection>();
-        LinkedList<ForgeDirection> notColored = new LinkedList<ForgeDirection>();
+        LinkedList<ForgeDirection> correctColored = new LinkedList<>();
+        LinkedList<ForgeDirection> notColored = new LinkedList<>();
         boolean encounteredColor = false;
         int myColor = event.item.color == null ? -1 : event.item.color.ordinal();
 

@@ -44,8 +44,8 @@ public class PipeItemsClay extends Pipe<PipeTransportItems> {
 
     @PipeEventPriority(priority = -200)
     public void eventHandler(PipeEventItem.FindDest event) {
-        LinkedList<ForgeDirection> nonPipesList = new LinkedList<ForgeDirection>();
-        LinkedList<ForgeDirection> pipesList = new LinkedList<ForgeDirection>();
+        LinkedList<ForgeDirection> nonPipesList = new LinkedList<>();
+        LinkedList<ForgeDirection> pipesList = new LinkedList<>();
 
         for (ForgeDirection o : event.destinations) {
             if (!event.item.blacklist.contains(o) && container.pipe.outputOpen(o)) {

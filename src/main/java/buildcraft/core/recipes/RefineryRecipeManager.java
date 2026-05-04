@@ -20,15 +20,15 @@ import buildcraft.api.recipes.IRefineryRecipeManager;
 public final class RefineryRecipeManager implements IRefineryRecipeManager {
 
     public static final RefineryRecipeManager INSTANCE = new RefineryRecipeManager();
-    private final HashMap<String, IFlexibleRecipe<FluidStack>> recipes = new HashMap<String, IFlexibleRecipe<FluidStack>>();
-    private final ArrayList<FluidStack> validFluids1 = new ArrayList<FluidStack>();
-    private final ArrayList<FluidStack> validFluids2 = new ArrayList<FluidStack>();
+    private final HashMap<String, IFlexibleRecipe<FluidStack>> recipes = new HashMap<>();
+    private final ArrayList<FluidStack> validFluids1 = new ArrayList<>();
+    private final ArrayList<FluidStack> validFluids2 = new ArrayList<>();
 
     private RefineryRecipeManager() {}
 
     @Override
     public void addRecipe(String id, FluidStack ingredient, FluidStack result, int energy, int delay) {
-        FlexibleRecipe<FluidStack> recipe = new FlexibleRecipe<FluidStack>(id, result, energy, delay, ingredient);
+        FlexibleRecipe<FluidStack> recipe = new FlexibleRecipe<>(id, result, energy, delay, ingredient);
         recipes.put(id, recipe);
         validFluids1.add(ingredient);
         validFluids2.add(ingredient);
@@ -42,7 +42,7 @@ public final class RefineryRecipeManager implements IRefineryRecipeManager {
             BCLog.logger.warn("Rejected refinery recipe " + id + " due to a null FluidStack!");
         }
 
-        FlexibleRecipe<FluidStack> recipe = new FlexibleRecipe<FluidStack>(
+        FlexibleRecipe<FluidStack> recipe = new FlexibleRecipe<>(
                 id,
                 result,
                 energy,

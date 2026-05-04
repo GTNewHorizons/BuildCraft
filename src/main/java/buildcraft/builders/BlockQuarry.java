@@ -52,7 +52,7 @@ public class BlockQuarry extends BlockHatched {
     @Override
     public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune) {
         if (BuildCraftBuilders.quarryOneTimeUse) {
-            return new ArrayList<ItemStack>();
+            return new ArrayList<>();
         }
         return super.getDrops(world, x, y, z, metadata, fortune);
     }

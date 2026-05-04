@@ -18,11 +18,11 @@ import buildcraft.api.recipes.IFlexibleRecipe;
 public class AssemblyRecipeManager implements IAssemblyRecipeManager {
 
     public static final AssemblyRecipeManager INSTANCE = new AssemblyRecipeManager();
-    private final Map<String, IFlexibleRecipe<ItemStack>> assemblyRecipes = new HashMap<String, IFlexibleRecipe<ItemStack>>();
+    private final Map<String, IFlexibleRecipe<ItemStack>> assemblyRecipes = new HashMap<>();
 
     @Override
     public void addRecipe(String id, int energyCost, ItemStack output, Object... input) {
-        addRecipe(id, new FlexibleRecipe<ItemStack>(id, output, energyCost, 0, input));
+        addRecipe(id, new FlexibleRecipe<>(id, output, energyCost, 0, input));
     }
 
     @Override

@@ -33,13 +33,13 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 public class RobotRegistry extends WorldSavedData implements IRobotRegistry {
 
     protected World world;
-    protected final HashMap<StationIndex, DockingStation> stations = new HashMap<StationIndex, DockingStation>();
+    protected final HashMap<StationIndex, DockingStation> stations = new HashMap<>();
 
     private long nextRobotID = Long.MIN_VALUE;
 
     private final LongHashMap robotsLoaded = new LongHashMap();
-    private final HashSet<EntityRobot> robotsLoadedSet = new HashSet<EntityRobot>();
-    private final HashMap<ResourceId, Long> resourcesTaken = new HashMap<ResourceId, Long>();
+    private final HashSet<EntityRobot> robotsLoadedSet = new HashSet<>();
+    private final HashMap<ResourceId, Long> resourcesTaken = new HashMap<>();
     private final LongHashMap resourcesTakenByRobot = new LongHashMap();
     private final LongHashMap stationsTakenByRobot = new LongHashMap();
 
@@ -389,12 +389,12 @@ public class RobotRegistry extends WorldSavedData implements IRobotRegistry {
     @SubscribeEvent
     public void onChunkUnload(ChunkEvent.Unload e) {
         if (e.world == this.world) {
-            for (EntityRobot robot : new ArrayList<EntityRobot>(robotsLoadedSet)) {
+            for (EntityRobot robot : new ArrayList<>(robotsLoadedSet)) {
                 if (!e.world.loadedEntityList.contains(robot)) {
                     robot.onChunkUnload();
                 }
             }
-            for (DockingStation station : new ArrayList<DockingStation>(stations.values())) {
+            for (DockingStation station : new ArrayList<>(stations.values())) {
                 if (!world.blockExists(station.x(), station.y(), station.z())) {
                     station.onChunkUnload();
                 }

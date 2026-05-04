@@ -34,9 +34,9 @@ import io.netty.buffer.ByteBuf;
 public abstract class TileAbstractBuilder extends TileBuildCraft
         implements ITileBuilder, IInventory, IBoxProvider, IBuildingItemsProvider, ICommandReceiver {
 
-    public LinkedList<LaserData> pathLasers = new LinkedList<LaserData>();
+    public LinkedList<LaserData> pathLasers = new LinkedList<>();
 
-    public HashSet<BuildingItem> buildersInAction = new HashSet<BuildingItem>();
+    public HashSet<BuildingItem> buildersInAction = new HashSet<>();
 
     private int rfPrev = 0;
     private int rfUnchangedCycles = 0;

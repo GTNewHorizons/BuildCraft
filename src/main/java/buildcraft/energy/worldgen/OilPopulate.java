@@ -39,9 +39,9 @@ public final class OilPopulate {
             .addEnum(EventType.class, "BUILDCRAFT_OIL", new Class[0], new Object[0]);
     private static final byte LARGE_WELL_HEIGHT = 16;
     private static final byte MEDIUM_WELL_HEIGHT = 6;
-    public final Set<Integer> excessiveBiomes = new HashSet<Integer>();
-    public final Set<Integer> surfaceDepositBiomes = new HashSet<Integer>();
-    public final Set<Integer> excludedBiomes = new HashSet<Integer>();
+    public final Set<Integer> excessiveBiomes = new HashSet<>();
+    public final Set<Integer> surfaceDepositBiomes = new HashSet<>();
+    public final Set<Integer> excludedBiomes = new HashSet<>();
 
     private enum GenType {
         LARGE,

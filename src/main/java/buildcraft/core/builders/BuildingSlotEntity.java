@@ -49,7 +49,7 @@ public class BuildingSlotEntity extends BuildingSlot {
 
     @Override
     public LinkedList<ItemStack> getRequirements(IBuilderContext context) {
-        LinkedList<ItemStack> results = new LinkedList<ItemStack>();
+        LinkedList<ItemStack> results = new LinkedList<>();
 
         Collections.addAll(results, schematic.storedRequirements);
 

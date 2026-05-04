@@ -26,7 +26,7 @@ import io.netty.buffer.ByteBuf;
 
 public class TankManager<T extends Tank> extends ForwardingList<T> implements IFluidHandler, List<T> {
 
-    private final List<T> tanks = new ArrayList<T>();
+    private final List<T> tanks = new ArrayList<>();
 
     public TankManager() {}
 

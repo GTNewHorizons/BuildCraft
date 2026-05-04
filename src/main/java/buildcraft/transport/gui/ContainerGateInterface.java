@@ -45,7 +45,7 @@ public class ContainerGateInterface extends BuildCraftContainer implements IComm
     IInventory playerIInventory;
     private final IPipe pipe;
     private Gate gate;
-    private final NavigableSet<IStatement> potentialTriggers = new TreeSet<IStatement>(new Comparator<IStatement>() {
+    private final NavigableSet<IStatement> potentialTriggers = new TreeSet<>(new Comparator<>() {
 
         @Override
         public int compare(IStatement o1, IStatement o2) {
@@ -53,7 +53,7 @@ public class ContainerGateInterface extends BuildCraftContainer implements IComm
         }
     });
 
-    private final NavigableSet<IStatement> potentialActions = new TreeSet<IStatement>(new Comparator<IStatement>() {
+    private final NavigableSet<IStatement> potentialActions = new TreeSet<>(new Comparator<>() {
 
         @Override
         public int compare(IStatement o1, IStatement o2) {

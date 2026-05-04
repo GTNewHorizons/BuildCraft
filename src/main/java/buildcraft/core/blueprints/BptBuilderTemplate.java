@@ -26,8 +26,8 @@ import buildcraft.core.lib.utils.BlockUtils;
 
 public class BptBuilderTemplate extends BptBuilderBase {
 
-    private final LinkedList<BuildingSlotBlock> clearList = new LinkedList<BuildingSlotBlock>();
-    private final LinkedList<BuildingSlotBlock> buildList = new LinkedList<BuildingSlotBlock>();
+    private final LinkedList<BuildingSlotBlock> clearList = new LinkedList<>();
+    private final LinkedList<BuildingSlotBlock> buildList = new LinkedList<>();
     private BuildingSlotIterator iteratorBuild, iteratorClear;
 
     public BptBuilderTemplate(BlueprintBase bluePrint, World world, int x, int y, int z) {

@@ -254,14 +254,14 @@ public class ItemMapLocation extends ItemBuildCraft implements IMapLocation {
         NBTTagCompound cpt = NBTUtils.getItemData(item);
 
         if (cpt.hasKey("kind") && cpt.getByte("kind") == 2) {
-            List<BlockIndex> indexList = new ArrayList<BlockIndex>();
+            List<BlockIndex> indexList = new ArrayList<>();
             NBTTagList pathNBT = cpt.getTagList("path", Constants.NBT.TAG_COMPOUND);
             for (int i = 0; i < pathNBT.tagCount(); i++) {
                 indexList.add(new BlockIndex(pathNBT.getCompoundTagAt(i)));
             }
             return indexList;
         } else if (cpt.hasKey("kind") && cpt.getByte("kind") == 0) {
-            List<BlockIndex> indexList = new ArrayList<BlockIndex>();
+            List<BlockIndex> indexList = new ArrayList<>();
             indexList.add(new BlockIndex(cpt.getInteger("x"), cpt.getInteger("y"), cpt.getInteger("z")));
             return indexList;
         } else {

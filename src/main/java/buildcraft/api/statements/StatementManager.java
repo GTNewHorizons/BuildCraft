@@ -22,10 +22,10 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public final class StatementManager {
 
-    public static Map<String, IStatement> statements = new HashMap<String, IStatement>();
-    public static Map<String, Class<? extends IStatementParameter>> parameters = new HashMap<String, Class<? extends IStatementParameter>>();
-    private static final List<ITriggerProvider> triggerProviders = new LinkedList<ITriggerProvider>();
-    private static final List<IActionProvider> actionProviders = new LinkedList<IActionProvider>();
+    public static Map<String, IStatement> statements = new HashMap<>();
+    public static Map<String, Class<? extends IStatementParameter>> parameters = new HashMap<>();
+    private static final List<ITriggerProvider> triggerProviders = new LinkedList<>();
+    private static final List<IActionProvider> actionProviders = new LinkedList<>();
 
     /**
      * Deactivate constructor
@@ -67,7 +67,7 @@ public final class StatementManager {
             }
         }
 
-        result = new LinkedList<ITriggerExternal>();
+        result = new LinkedList<>();
 
         for (ITriggerProvider provider : triggerProviders) {
             Collection<ITriggerExternal> toAdd = provider.getExternalTriggers(side, entity);
@@ -94,7 +94,7 @@ public final class StatementManager {
             }
         }
 
-        result = new LinkedList<IActionExternal>();
+        result = new LinkedList<>();
 
         for (IActionProvider provider : actionProviders) {
             Collection<IActionExternal> toAdd = provider.getExternalActions(side, entity);
@@ -112,7 +112,7 @@ public final class StatementManager {
     }
 
     public static List<ITriggerInternal> getInternalTriggers(IStatementContainer container) {
-        List<ITriggerInternal> result = new LinkedList<ITriggerInternal>();
+        List<ITriggerInternal> result = new LinkedList<>();
 
         for (ITriggerProvider provider : triggerProviders) {
             Collection<ITriggerInternal> toAdd = provider.getInternalTriggers(container);
@@ -130,7 +130,7 @@ public final class StatementManager {
     }
 
     public static List<IActionInternal> getInternalActions(IStatementContainer container) {
-        List<IActionInternal> result = new LinkedList<IActionInternal>();
+        List<IActionInternal> result = new LinkedList<>();
 
         for (IActionProvider provider : actionProviders) {
             Collection<IActionInternal> toAdd = provider.getInternalActions(container);

@@ -29,7 +29,7 @@ import buildcraft.core.Version;
 
 public abstract class BlueprintBase {
 
-    public ArrayList<NBTTagCompound> subBlueprintsNBT = new ArrayList<NBTTagCompound>();
+    public ArrayList<NBTTagCompound> subBlueprintsNBT = new ArrayList<>();
 
     public int anchorX, anchorY, anchorZ;
     public int sizeX, sizeY, sizeZ;

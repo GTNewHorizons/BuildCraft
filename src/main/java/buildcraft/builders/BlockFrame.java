@@ -34,7 +34,7 @@ import buildcraft.core.lib.utils.Utils;
 
 public class BlockFrame extends Block implements IFramePipeConnection {
 
-    private static final ThreadLocal<Boolean> isRemovingFrames = new ThreadLocal<Boolean>();
+    private static final ThreadLocal<Boolean> isRemovingFrames = new ThreadLocal<>();
 
     public BlockFrame() {
         super(Material.glass);
@@ -55,7 +55,7 @@ public class BlockFrame extends Block implements IFramePipeConnection {
     public void removeNeighboringFrames(World world, int x, int y, int z) {
         isRemovingFrames.set(true);
 
-        Set<BlockIndex> frameCoords = new ConcurrentSkipListSet<BlockIndex>();
+        Set<BlockIndex> frameCoords = new ConcurrentSkipListSet<>();
         frameCoords.add(new BlockIndex(x, y, z));
 
         while (frameCoords.size() > 0) {
@@ -93,7 +93,7 @@ public class BlockFrame extends Block implements IFramePipeConnection {
 
     @Override
     public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune) {
-        return new ArrayList<ItemStack>();
+        return new ArrayList<>();
     }
 
     @Override

@@ -62,7 +62,7 @@ public class RenderRobot extends Render implements IItemRenderer {
     private final ModelRenderer helmetBox;
     private final ModelRenderer skullOverlayBox;
 
-    private final Map<String, GameProfile> gameProfileCache = new HashMap<String, GameProfile>();
+    private final Map<String, GameProfile> gameProfileCache = new HashMap<>();
 
     public RenderRobot() {
         customRenderItem = new RenderItem() {

@@ -45,10 +45,10 @@ public final class ChannelHandler extends MessageToMessageCodec<FMLProxyPacket, 
     public static final int BOTH_SIDES = SERVER_ONLY | CLIENT_ONLY;
 
     public static final Marker SUSPICIOUS_PACKETS = MarkerManager.getMarker("SuspiciousPackets");
-    public static final AttributeKey<ThreadLocal<WeakReference<FMLProxyPacket>>> INBOUNDPACKETTRACKER = new AttributeKey<ThreadLocal<WeakReference<FMLProxyPacket>>>(
+    public static final AttributeKey<ThreadLocal<WeakReference<FMLProxyPacket>>> INBOUNDPACKETTRACKER = new AttributeKey<>(
             "bc:inboundpacket");
-    private final TByteObjectHashMap<Class<? extends Packet>> discriminators = new TByteObjectHashMap<Class<? extends Packet>>();
-    private final TObjectByteHashMap<Class<? extends Packet>> types = new TObjectByteHashMap<Class<? extends Packet>>();
+    private final TByteObjectHashMap<Class<? extends Packet>> discriminators = new TByteObjectHashMap<>();
+    private final TObjectByteHashMap<Class<? extends Packet>> types = new TObjectByteHashMap<>();
     private final TByteIntMap sides = new TByteIntHashMap();
     private int maxDiscriminator;
 
@@ -83,7 +83,7 @@ public final class ChannelHandler extends MessageToMessageCodec<FMLProxyPacket, 
     @Override
     public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
         super.handlerAdded(ctx);
-        ctx.attr(INBOUNDPACKETTRACKER).set(new ThreadLocal<WeakReference<FMLProxyPacket>>());
+        ctx.attr(INBOUNDPACKETTRACKER).set(new ThreadLocal<>());
     }
 
     public ChannelHandler addDiscriminator(int discriminator, Class<? extends Packet> type) {

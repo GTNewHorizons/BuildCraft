@@ -23,7 +23,7 @@ class InventoryIteratorSimple implements Iterable<IInvSlot> {
 
     @Override
     public Iterator<IInvSlot> iterator() {
-        return new Iterator<IInvSlot>() {
+        return new Iterator<>() {
 
             int slot = 0;
 

@@ -26,7 +26,7 @@ public class ImplRedstoneBoardRegistry extends RedstoneBoardRegistry {
         public int energyCost;
     }
 
-    private final HashMap<String, BoardFactory> boards = new HashMap<String, BoardFactory>();
+    private final HashMap<String, BoardFactory> boards = new HashMap<>();
     private RedstoneBoardRobotNBT emptyRobotBoardNBT;
 
     @Override
@@ -83,7 +83,7 @@ public class ImplRedstoneBoardRegistry extends RedstoneBoardRegistry {
 
     @Override
     public Collection<RedstoneBoardNBT<?>> getAllBoardNBTs() {
-        ArrayList<RedstoneBoardNBT<?>> result = new ArrayList<RedstoneBoardNBT<?>>();
+        ArrayList<RedstoneBoardNBT<?>> result = new ArrayList<>();
 
         for (BoardFactory f : boards.values()) {
             result.add(f.boardNBT);

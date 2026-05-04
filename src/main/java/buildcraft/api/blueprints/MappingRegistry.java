@@ -32,14 +32,14 @@ import cpw.mods.fml.common.event.FMLMissingMappingsEvent;
 
 public class MappingRegistry {
 
-    public HashMap<Block, Integer> blockToId = new HashMap<Block, Integer>();
-    public ArrayList<Block> idToBlock = new ArrayList<Block>();
+    public HashMap<Block, Integer> blockToId = new HashMap<>();
+    public ArrayList<Block> idToBlock = new ArrayList<>();
 
-    public HashMap<Item, Integer> itemToId = new HashMap<Item, Integer>();
-    public ArrayList<Item> idToItem = new ArrayList<Item>();
+    public HashMap<Item, Integer> itemToId = new HashMap<>();
+    public ArrayList<Item> idToItem = new ArrayList<>();
 
-    public HashMap<Class<? extends Entity>, Integer> entityToId = new HashMap<Class<? extends Entity>, Integer>();
-    public ArrayList<Class<? extends Entity>> idToEntity = new ArrayList<Class<? extends Entity>>();
+    public HashMap<Class<? extends Entity>, Integer> entityToId = new HashMap<>();
+    public ArrayList<Class<? extends Entity>> idToEntity = new ArrayList<>();
 
     private void registerItem(Item item) {
         if (!itemToId.containsKey(item)) {

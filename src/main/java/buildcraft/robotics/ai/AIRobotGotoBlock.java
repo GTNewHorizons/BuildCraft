@@ -197,7 +197,7 @@ public class AIRobotGotoBlock extends AIRobotGoto {
         if (nbt.hasKey("path")) {
             NBTTagList pathList = nbt.getTagList("path", Constants.NBT.TAG_COMPOUND);
 
-            path = new LinkedList<BlockIndex>();
+            path = new LinkedList<>();
 
             for (int i = 0; i < pathList.tagCount(); ++i) {
                 path.add(new BlockIndex(pathList.getCompoundTagAt(i)));

@@ -22,7 +22,7 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 public final class BucketHandler {
 
     public static BucketHandler INSTANCE = new BucketHandler();
-    public Map<Block, Item> buckets = new HashMap<Block, Item>();
+    public Map<Block, Item> buckets = new HashMap<>();
 
     private BucketHandler() {}
 

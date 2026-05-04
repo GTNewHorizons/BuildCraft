@@ -50,7 +50,7 @@ public final class Utils {
 
     public static final boolean CAULDRON_DETECTED;
     public static final XorShift128Random RANDOM = new XorShift128Random();
-    private static final List<ForgeDirection> directions = new ArrayList<ForgeDirection>(
+    private static final List<ForgeDirection> directions = new ArrayList<>(
             Arrays.asList(ForgeDirection.VALID_DIRECTIONS));
 
     static {
@@ -133,8 +133,8 @@ public final class Utils {
      */
     public static int addToRandomInjectableAround(World world, int x, int y, int z, ForgeDirection from,
             ItemStack stack) {
-        List<IInjectable> possiblePipes = new ArrayList<IInjectable>();
-        List<ForgeDirection> pipeDirections = new ArrayList<ForgeDirection>();
+        List<IInjectable> possiblePipes = new ArrayList<>();
+        List<ForgeDirection> pipeDirections = new ArrayList<>();
 
         for (ForgeDirection side : ForgeDirection.VALID_DIRECTIONS) {
             if (from.getOpposite() == side) {

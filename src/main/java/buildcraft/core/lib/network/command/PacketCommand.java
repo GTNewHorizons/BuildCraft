@@ -26,7 +26,7 @@ public class PacketCommand extends Packet {
     private CommandWriter writer;
 
     static {
-        targets = new ArrayList<CommandTarget>();
+        targets = new ArrayList<>();
         targets.add(new CommandTargetTile());
         targets.add(new CommandTargetEntity());
         targets.add(new CommandTargetContainer());

@@ -19,7 +19,7 @@ import buildcraft.api.transport.IStripesHandler;
 
 public class StripesHandlerDispenser implements IStripesHandler {
 
-    public static final List<Object> items = new ArrayList<Object>();
+    public static final List<Object> items = new ArrayList<>();
 
     public static class Source implements IBlockSource {
 

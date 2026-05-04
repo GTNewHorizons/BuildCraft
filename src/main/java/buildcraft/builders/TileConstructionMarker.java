@@ -40,7 +40,7 @@ import io.netty.buffer.ByteBuf;
 public class TileConstructionMarker extends TileBuildCraft
         implements IBuildingItemsProvider, IBoxProvider, ICommandReceiver {
 
-    public static HashSet<TileConstructionMarker> currentMarkers = new HashSet<TileConstructionMarker>();
+    public static HashSet<TileConstructionMarker> currentMarkers = new HashSet<>();
 
     public ForgeDirection direction = ForgeDirection.UNKNOWN;
 
@@ -51,7 +51,7 @@ public class TileConstructionMarker extends TileBuildCraft
     public BptBuilderBase bluePrintBuilder;
     public BptContext bptContext;
 
-    private final ArrayList<BuildingItem> buildersInAction = new ArrayList<BuildingItem>();
+    private final ArrayList<BuildingItem> buildersInAction = new ArrayList<>();
     private NBTTagCompound initNBT;
 
     @Override

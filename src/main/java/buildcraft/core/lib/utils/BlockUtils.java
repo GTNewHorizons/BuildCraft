@@ -68,7 +68,7 @@ public final class BlockUtils {
                 false,
                 CoreProxy.proxy.getBuildCraftPlayer(world).get());
 
-        ArrayList<ItemStack> returnList = new ArrayList<ItemStack>();
+        ArrayList<ItemStack> returnList = new ArrayList<>();
         for (ItemStack s : dropsList) {
             if (world.rand.nextFloat() <= dropChance) {
                 returnList.add(s);
@@ -83,7 +83,7 @@ public final class BlockUtils {
     }
 
     public static boolean breakBlock(WorldServer world, int x, int y, int z, int forcedLifespan) {
-        List<ItemStack> items = new ArrayList<ItemStack>();
+        List<ItemStack> items = new ArrayList<>();
 
         if (breakBlock(world, x, y, z, items)) {
             for (ItemStack item : items) {

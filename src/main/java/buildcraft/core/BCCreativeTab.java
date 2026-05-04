@@ -19,7 +19,7 @@ import buildcraft.core.lib.utils.Utils;
 
 public class BCCreativeTab extends CreativeTabs {
 
-    private static final Map<String, BCCreativeTab> tabs = new HashMap<String, BCCreativeTab>();
+    private static final Map<String, BCCreativeTab> tabs = new HashMap<>();
 
     private ItemStack icon;
 

@@ -176,7 +176,7 @@ public class TileLaser extends TileBuildCraft implements IHasWork, IControllable
                 break;
         }
 
-        List<ILaserTarget> targets = new LinkedList<ILaserTarget>();
+        List<ILaserTarget> targets = new LinkedList<>();
 
         if (minY < 0) {
             minY = 0;

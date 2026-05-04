@@ -110,7 +110,7 @@ public class Version implements Runnable {
             BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 
             String line;
-            ArrayList<String> changelog = new ArrayList<String>();
+            ArrayList<String> changelog = new ArrayList<>();
             while ((line = reader.readLine()) != null) {
                 if (line.isEmpty()) {
                     continue;

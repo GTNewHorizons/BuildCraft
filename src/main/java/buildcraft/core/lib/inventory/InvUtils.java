@@ -236,11 +236,11 @@ public final class InvUtils {
     }
 
     public static Iterable<IInvSlot> getItems(final IInventory inv, final IStackFilter filter) {
-        return new Iterable<IInvSlot>() {
+        return new Iterable<>() {
 
             @Override
             public Iterator<IInvSlot> iterator() {
-                return new Iterator<IInvSlot>() {
+                return new Iterator<>() {
 
                     private final Iterator<IInvSlot> parent = InventoryIterator.getIterable(inv).iterator();
                     private boolean searched = false;

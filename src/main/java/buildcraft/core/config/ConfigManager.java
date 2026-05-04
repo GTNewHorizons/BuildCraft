@@ -23,7 +23,7 @@ public class ConfigManager implements IModGuiFactory {
         public GuiConfigManager(GuiScreen parentScreen) {
             super(
                     parentScreen,
-                    new ArrayList<IConfigElement>(),
+                    new ArrayList<>(),
                     "BuildCraft|Core",
                     "config",
                     false,
@@ -32,7 +32,7 @@ public class ConfigManager implements IModGuiFactory {
 
             for (String s : config.getCategoryNames()) {
                 if (!s.contains(".")) {
-                    configElements.add(new BCConfigElement<Object>(config.getCategory(s)));
+                    configElements.add(new BCConfigElement<>(config.getCategory(s)));
                 }
             }
         }

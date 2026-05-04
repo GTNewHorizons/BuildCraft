@@ -21,7 +21,7 @@ import net.minecraftforge.oredict.OreDictionary;
 
 public class WorldPropertyIsOre extends WorldProperty {
 
-    private final HashSet<Integer> ores = new HashSet<Integer>();
+    private final HashSet<Integer> ores = new HashSet<>();
 
     public WorldPropertyIsOre(int harvestLevel) {
         initBlockHarvestTools();
@@ -55,7 +55,7 @@ public class WorldPropertyIsOre extends WorldProperty {
         if (block == null) {
             return false;
         } else {
-            List<ItemStack> toCheck = new ArrayList<ItemStack>();
+            List<ItemStack> toCheck = new ArrayList<>();
             toCheck.add(new ItemStack(block, 1, meta));
 
             if (block.hasTileEntity(meta) && blockAccess instanceof World) {

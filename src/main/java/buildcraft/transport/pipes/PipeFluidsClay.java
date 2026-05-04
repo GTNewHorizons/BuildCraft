@@ -44,8 +44,8 @@ public class PipeFluidsClay extends Pipe<PipeTransportFluids> {
     }
 
     public void eventHandler(PipeEventFluid.FindDest event) {
-        Set<ForgeDirection> machineDirs = new HashSet<ForgeDirection>();
-        Set<ForgeDirection> pipeDirs = new HashSet<ForgeDirection>();
+        Set<ForgeDirection> machineDirs = new HashSet<>();
+        Set<ForgeDirection> pipeDirs = new HashSet<>();
 
         for (ForgeDirection dir : event.destinations) {
             if (container.isPipeConnected(dir)) {

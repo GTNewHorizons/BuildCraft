@@ -36,9 +36,9 @@ public class TileFloodGate extends TileBuildCraft implements IFluidHandler {
 
     public static final int[] REBUILD_DELAY = new int[8];
     public static final int MAX_LIQUID = FluidContainerRegistry.BUCKET_VOLUME * 2;
-    private final TreeMap<Integer, Deque<BlockIndex>> pumpLayerQueues = new TreeMap<Integer, Deque<BlockIndex>>();
-    private final Set<BlockIndex> visitedBlocks = new HashSet<BlockIndex>();
-    private Deque<BlockIndex> fluidsFound = new LinkedList<BlockIndex>();
+    private final TreeMap<Integer, Deque<BlockIndex>> pumpLayerQueues = new TreeMap<>();
+    private final Set<BlockIndex> visitedBlocks = new HashSet<>();
+    private Deque<BlockIndex> fluidsFound = new LinkedList<>();
     private final Tank tank = new Tank("tank", MAX_LIQUID, this);
     private int rebuildDelay;
     private int tick = Utils.RANDOM.nextInt();
@@ -150,7 +150,7 @@ public class TileFloodGate extends TileBuildCraft implements IFluidHandler {
     private Deque<BlockIndex> getLayerQueue(int layer) {
         Deque<BlockIndex> pumpQueue = pumpLayerQueues.get(layer);
         if (pumpQueue == null) {
-            pumpQueue = new LinkedList<BlockIndex>();
+            pumpQueue = new LinkedList<>();
             pumpLayerQueues.put(layer, pumpQueue);
         }
         return pumpQueue;
@@ -175,7 +175,7 @@ public class TileFloodGate extends TileBuildCraft implements IFluidHandler {
         }
         while (!fluidsFound.isEmpty()) {
             Deque<BlockIndex> fluidsToExpand = fluidsFound;
-            fluidsFound = new LinkedList<BlockIndex>();
+            fluidsFound = new LinkedList<>();
 
             for (BlockIndex index : fluidsToExpand) {
                 queueAdjacent(index.x, index.y, index.z);

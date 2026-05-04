@@ -31,7 +31,7 @@ public class CoreProxy implements ICoreProxy {
     public static CoreProxy proxy;
 
     /* BUILDCRAFT PLAYER */
-    protected static WeakReference<EntityPlayer> buildCraftPlayer = new WeakReference<EntityPlayer>(null);
+    protected static WeakReference<EntityPlayer> buildCraftPlayer = new WeakReference<>(null);
 
     public String getMinecraftVersion() {
         return Loader.instance().getMinecraftModContainer().getVersion();
@@ -71,7 +71,7 @@ public class CoreProxy implements ICoreProxy {
     private WeakReference<EntityPlayer> createNewPlayer(WorldServer world) {
         EntityPlayer player = FakePlayerFactory.get(world, BuildCraftCore.gameProfile);
 
-        return new WeakReference<EntityPlayer>(player);
+        return new WeakReference<>(player);
     }
 
     private WeakReference<EntityPlayer> createNewPlayer(WorldServer world, int x, int y, int z) {
@@ -79,7 +79,7 @@ public class CoreProxy implements ICoreProxy {
         player.posX = x;
         player.posY = y;
         player.posZ = z;
-        return new WeakReference<EntityPlayer>(player);
+        return new WeakReference<>(player);
     }
 
     @Override

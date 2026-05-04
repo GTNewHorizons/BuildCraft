@@ -18,8 +18,8 @@ import com.google.common.collect.HashBiMap;
 
 public final class GateExpansions {
 
-    private static final Map<String, IGateExpansion> expansions = new HashMap<String, IGateExpansion>();
-    private static final ArrayList<IGateExpansion> expansionIDs = new ArrayList<IGateExpansion>();
+    private static final Map<String, IGateExpansion> expansions = new HashMap<>();
+    private static final ArrayList<IGateExpansion> expansionIDs = new ArrayList<>();
     private static final Map<IGateExpansion, ItemStack> recipes = HashBiMap.create();
 
     private GateExpansions() {}
@@ -43,7 +43,7 @@ public final class GateExpansions {
     }
 
     public static Set<IGateExpansion> getExpansions() {
-        Set<IGateExpansion> set = new HashSet<IGateExpansion>();
+        Set<IGateExpansion> set = new HashSet<>();
         set.addAll(expansionIDs);
         return set;
     }
