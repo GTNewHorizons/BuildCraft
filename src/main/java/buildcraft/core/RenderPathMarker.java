@@ -18,11 +18,9 @@ import buildcraft.core.render.RenderLaser;
 
 public class RenderPathMarker extends TileEntitySpecialRenderer {
 
-    private ModelBase model = new ModelBase() {};
-    private ModelRenderer box;
-
     public RenderPathMarker() {
-        box = new ModelRenderer(model, 0, 1);
+        ModelBase model = new ModelBase() {};
+        ModelRenderer box = new ModelRenderer(model, 0, 1);
         box.addBox(-8F, -8F, -8F, 16, 4, 16);
         box.rotationPointX = 8;
         box.rotationPointY = 8;
