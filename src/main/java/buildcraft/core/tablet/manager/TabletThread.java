@@ -9,9 +9,9 @@ public class TabletThread implements Runnable {
     private final TabletBase tablet;
 
     private long begunTickDate;
-    private long lastTickReceivedDate;
-    private float ticksLeft = 0.0F;
-    private boolean isRunning = false;
+    private volatile long lastTickReceivedDate;
+    private volatile float ticksLeft = 0.0F;
+    private volatile boolean isRunning = false;
 
     public TabletThread(TabletBase tablet) {
         this.tablet = tablet;
@@ -26,12 +26,13 @@ public class TabletThread implements Runnable {
     public void run() {
         isRunning = true;
         while (isRunning) {
-            if (ticksLeft > 0.0F) {
+            final float ticks = ticksLeft;
+            if (ticks > 0.0F) {
                 begunTickDate = (new Date()).getTime();
-                tablet.tick(ticksLeft);
+                tablet.tick(ticks);
                 float timeElapsed = (float) (lastTickReceivedDate - begunTickDate) / 1000.0F;
                 if (timeElapsed > 0) {
-                    ticksLeft -= timeElapsed;
+                    ticksLeft = ticks - timeElapsed;
                 }
             } else {
                 try {
@@ -46,7 +47,8 @@ public class TabletThread implements Runnable {
     }
 
     public void tick(float time) {
-        ticksLeft += time;
+        final float ticks = ticksLeft;
+        ticksLeft = ticks + time;
         lastTickReceivedDate = (new Date()).getTime();
     }
 }

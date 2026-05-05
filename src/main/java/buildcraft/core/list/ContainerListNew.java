@@ -23,7 +23,7 @@ import io.netty.buffer.ByteBuf;
 public class ContainerListNew extends BuildCraftContainer implements ICommandReceiver {
 
     public ListHandlerNew.Line[] lines;
-    private EntityPlayer player;
+    private final EntityPlayer player;
 
     public ContainerListNew(EntityPlayer iPlayer) {
         super(iPlayer.inventory.getSizeInventory());

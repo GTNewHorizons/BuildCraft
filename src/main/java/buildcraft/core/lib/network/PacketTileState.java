@@ -19,7 +19,7 @@ public class PacketTileState extends PacketCoordinates {
 
     private ByteBuf state;
 
-    private class StateWithId {
+    private static class StateWithId {
 
         public byte stateId;
         public ISerializable state;
@@ -30,7 +30,7 @@ public class PacketTileState extends PacketCoordinates {
         }
     }
 
-    private List<StateWithId> stateList = new LinkedList<StateWithId>();
+    private final List<StateWithId> stateList = new LinkedList<>();
 
     /**
      * Default constructor for incoming packets

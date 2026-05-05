@@ -125,7 +125,7 @@ public class Box implements IBox, ISerializable {
     }
 
     public List<BlockIndex> getBlocksInArea() {
-        List<BlockIndex> blocks = new ArrayList<BlockIndex>();
+        List<BlockIndex> blocks = new ArrayList<>();
 
         for (float x = xMin; x <= xMax; x++) {
             for (float y = yMin; y <= yMax; y++) {

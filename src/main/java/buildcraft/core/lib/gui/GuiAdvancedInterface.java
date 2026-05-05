@@ -21,7 +21,7 @@ import org.lwjgl.opengl.GL12;
 
 public abstract class GuiAdvancedInterface extends GuiBuildCraft {
 
-    public ArrayList<AdvancedSlot> slots = new ArrayList<AdvancedSlot>();
+    public ArrayList<AdvancedSlot> slots = new ArrayList<>();
 
     public GuiAdvancedInterface(BuildCraftContainer container, IInventory inventory, ResourceLocation texture) {
         super(container, inventory, texture);

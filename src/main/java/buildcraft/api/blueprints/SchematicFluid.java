@@ -64,7 +64,7 @@ public class SchematicFluid extends SchematicBlock {
 
     @Override
     public LinkedList<ItemStack> getStacksToDisplay(LinkedList<ItemStack> stackConsumed) {
-        LinkedList<ItemStack> result = new LinkedList<ItemStack>();
+        LinkedList<ItemStack> result = new LinkedList<>();
         result.add(fluidItem);
         return result;
     }

@@ -16,7 +16,7 @@ import buildcraft.api.core.IWorldProperty;
 
 public abstract class WorldProperty implements IWorldProperty {
 
-    public HashMap<Integer, DimensionProperty> properties = new HashMap<Integer, DimensionProperty>();
+    public HashMap<Integer, DimensionProperty> properties = new HashMap<>();
 
     @Override
     public synchronized boolean get(World world, int x, int y, int z) {

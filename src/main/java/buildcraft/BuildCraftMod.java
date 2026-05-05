@@ -32,8 +32,8 @@ import cpw.mods.fml.relauncher.Side;
 
 public class BuildCraftMod {
 
-    private static PacketSender sender = new PacketSender();
-    private static Thread senderThread = new Thread(sender);
+    private static final PacketSender sender = new PacketSender();
+    private static final Thread senderThread = new Thread(sender);
 
     public EnumMap<Side, FMLEmbeddedChannel> channels;
 
@@ -50,7 +50,7 @@ public class BuildCraftMod {
         abstract boolean isValid(EntityPlayer player);
     }
 
-    class PlayerSendRequest extends SendRequest {
+    static class PlayerSendRequest extends SendRequest {
 
         EntityPlayer player;
 
@@ -64,7 +64,7 @@ public class BuildCraftMod {
         }
     }
 
-    class EntitySendRequest extends SendRequest {
+    static class EntitySendRequest extends SendRequest {
 
         Entity entity;
 
@@ -87,7 +87,7 @@ public class BuildCraftMod {
         }
     }
 
-    class WorldSendRequest extends SendRequest {
+    static class WorldSendRequest extends SendRequest {
 
         final int dimensionId;
 
@@ -101,7 +101,7 @@ public class BuildCraftMod {
         }
     }
 
-    class LocationSendRequest extends SendRequest {
+    static class LocationSendRequest extends SendRequest {
 
         final int dimensionId;
         final int x, y, z, md;
@@ -122,7 +122,7 @@ public class BuildCraftMod {
 
     static class PacketSender implements Runnable {
 
-        private BlockingQueue<SendRequest> packets = new LinkedBlockingQueue<>();
+        private final BlockingQueue<SendRequest> packets = new LinkedBlockingQueue<>();
 
         @Override
         public void run() {

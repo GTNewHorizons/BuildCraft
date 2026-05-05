@@ -22,17 +22,17 @@ import buildcraft.api.core.IZone;
 public class PathFindingSearch implements IIterableAlgorithm {
 
     public static final int PATH_ITERATIONS = 1000;
-    private static final HashMap<Integer, HashSet<BlockIndex>> reservations = new HashMap<Integer, HashSet<BlockIndex>>();
+    private static final HashMap<Integer, HashSet<BlockIndex>> reservations = new HashMap<>();
 
-    private World world;
-    private BlockIndex start;
-    private List<PathFinding> pathFinders;
-    private IBlockFilter pathFound;
-    private IZone zone;
-    private float maxDistance;
-    private Iterator<BlockIndex> blockIter;
+    private final World world;
+    private final BlockIndex start;
+    private final List<PathFinding> pathFinders;
+    private final IBlockFilter pathFound;
+    private final IZone zone;
+    private final float maxDistance;
+    private final Iterator<BlockIndex> blockIter;
 
-    private double maxDistanceToEnd;
+    private final double maxDistanceToEnd;
 
     public PathFindingSearch(World iWorld, BlockIndex iStart, Iterator<BlockIndex> iBlockIter, IBlockFilter iPathFound,
             double iMaxDistanceToEnd, float iMaxDistance, IZone iZone) {
@@ -45,7 +45,7 @@ public class PathFindingSearch implements IIterableAlgorithm {
         zone = iZone;
         blockIter = iBlockIter;
 
-        pathFinders = new LinkedList<PathFinding>();
+        pathFinders = new LinkedList<>();
     }
 
     @Override
@@ -110,7 +110,7 @@ public class PathFindingSearch implements IIterableAlgorithm {
     }
 
     public void iteratePathFind(int itNumber) {
-        for (PathFinding pathFinding : new ArrayList<PathFinding>(pathFinders)) {
+        for (PathFinding pathFinding : new ArrayList<>(pathFinders)) {
             pathFinding.iterate(itNumber / pathFinders.size());
             if (pathFinding.isDone()) {
                 LinkedList<BlockIndex> path = pathFinding.getResult();
@@ -140,7 +140,7 @@ public class PathFindingSearch implements IIterableAlgorithm {
                 return pathFinding.getResult();
             }
         }
-        return new LinkedList<BlockIndex>();
+        return new LinkedList<>();
     }
 
     public BlockIndex getResultTarget() {
@@ -155,7 +155,7 @@ public class PathFindingSearch implements IIterableAlgorithm {
     private boolean reserve(BlockIndex block) {
         synchronized (reservations) {
             if (!reservations.containsKey(world.provider.dimensionId)) {
-                reservations.put(world.provider.dimensionId, new HashSet<BlockIndex>());
+                reservations.put(world.provider.dimensionId, new HashSet<>());
             }
             HashSet<BlockIndex> dimReservations = reservations.get(world.provider.dimensionId);
             if (dimReservations.contains(block)) {

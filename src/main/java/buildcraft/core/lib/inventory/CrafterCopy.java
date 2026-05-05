@@ -13,8 +13,8 @@ import buildcraft.api.recipes.IFlexibleCrafter;
 
 public class CrafterCopy implements IFlexibleCrafter {
 
-    private ItemStack[] items;
-    private FluidStack[] fluids;
+    private final ItemStack[] items;
+    private final FluidStack[] fluids;
 
     public CrafterCopy(IFlexibleCrafter origin) {
         items = new ItemStack[origin.getCraftingItemStackSize()];

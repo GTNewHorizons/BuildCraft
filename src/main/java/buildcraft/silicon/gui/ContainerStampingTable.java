@@ -18,7 +18,7 @@ import buildcraft.silicon.TileStampingTable;
 
 public class ContainerStampingTable extends BuildCraftContainer {
 
-    private TileStampingTable table;
+    private final TileStampingTable table;
 
     public ContainerStampingTable(InventoryPlayer playerInventory, TileStampingTable table) {
         super(table.getSizeInventory());

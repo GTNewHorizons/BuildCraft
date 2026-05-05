@@ -5,6 +5,7 @@ import java.util.HashMap;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
 
 import org.lwjgl.opengl.GL11;
 
@@ -17,7 +18,7 @@ import buildcraft.robotics.TileZonePlan;
 public class RenderZonePlan extends TileEntitySpecialRenderer {
 
     private static final float Z_OFFSET = 2049 / 2048.0F;
-    private static final HashMap<TileZonePlan, DynamicTextureBC> TEXTURES = new HashMap<TileZonePlan, DynamicTextureBC>();
+    private static final HashMap<TileZonePlan, DynamicTextureBC> TEXTURES = new HashMap<>();
 
     @Override
     public void renderTileEntityAt(TileEntity tile, double tx, double ty, double tz, float partialTicks) {
@@ -69,5 +70,10 @@ public class RenderZonePlan extends TileEntitySpecialRenderer {
 
         GL11.glPopAttrib();
         GL11.glPopMatrix();
+    }
+
+    @Override
+    public void func_147496_a(World world) {
+        TEXTURES.clear();
     }
 }

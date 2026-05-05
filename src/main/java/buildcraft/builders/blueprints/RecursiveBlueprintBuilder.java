@@ -26,11 +26,13 @@ public class RecursiveBlueprintBuilder {
     private BlueprintBase blueprint;
     private RecursiveBlueprintBuilder current;
     private int nextSubBlueprint = 0;
-    private ArrayList<NBTTagCompound> subBlueprints = new ArrayList<NBTTagCompound>();
-    private int x, y, z;
-    private ForgeDirection dir;
-    private World world;
-    private Box box = new Box();
+    private ArrayList<NBTTagCompound> subBlueprints = new ArrayList<>();
+    private final int x;
+    private final int y;
+    private final int z;
+    private final ForgeDirection dir;
+    private final World world;
+    private final Box box = new Box();
 
     public RecursiveBlueprintBuilder(BlueprintBase iBlueprint, World iWorld, int iX, int iY, int iZ,
             ForgeDirection iDir) {

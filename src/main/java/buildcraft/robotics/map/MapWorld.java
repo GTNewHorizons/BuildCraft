@@ -21,7 +21,7 @@ import gnu.trove.set.hash.TLongHashSet;
 public class MapWorld {
 
     private final LongHashMap regionMap;
-    private final HashMap<Chunk, Integer> timeToUpdate = new HashMap<Chunk, Integer>();
+    private final HashMap<Chunk, Integer> timeToUpdate = new HashMap<>();
     private final TLongLongHashMap regionUpdateTime;
     private final TLongHashSet updatedChunks;
     private final File location;
@@ -118,7 +118,7 @@ public class MapWorld {
     public void tick() {
         if (timeToUpdate.size() > 0) {
             synchronized (timeToUpdate) {
-                Set<Chunk> chunks = new HashSet<Chunk>();
+                Set<Chunk> chunks = new HashSet<>();
                 chunks.addAll(timeToUpdate.keySet());
                 for (Chunk c : chunks) {
                     int v = timeToUpdate.get(c);

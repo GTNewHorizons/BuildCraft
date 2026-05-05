@@ -46,7 +46,7 @@ public class GuiCombustionEngine extends GuiEngine {
         }
 
         if (stack != null && stack.amount > 0) {
-            List<String> fluidTip = new ArrayList<String>();
+            List<String> fluidTip = new ArrayList<>();
             fluidTip.add(stack.getLocalizedName());
 
             drawHoveringText(fluidTip, par1 - guiLeft, par2 - guiTop, fontRendererObj);

@@ -14,9 +14,9 @@ import buildcraft.core.lib.gui.slots.SlotBase;
 
 public class SlotArchitect extends SlotBase {
 
-    private TileArchitect architect;
-    private EntityPlayer player;
-    private int slot;
+    private final TileArchitect architect;
+    private final EntityPlayer player;
+    private final int slot;
 
     public SlotArchitect(IInventory iinventory, EntityPlayer player, int slotIndex, int posX, int posY) {
         super(iinventory, slotIndex, posX, posY);

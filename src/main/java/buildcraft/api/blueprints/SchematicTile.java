@@ -83,7 +83,7 @@ public class SchematicTile extends SchematicBlock {
             if (tile instanceof IInventory) {
                 IInventory inv = (IInventory) tile;
 
-                ArrayList<ItemStack> rqs = new ArrayList<ItemStack>();
+                ArrayList<ItemStack> rqs = new ArrayList<>();
 
                 for (int i = 0; i < inv.getSizeInventory(); ++i) {
                     if (inv.getStackInSlot(i) != null) {

@@ -12,9 +12,9 @@ import net.minecraft.nbt.NBTTagCompound;
 
 public abstract class SchematicFactory<S extends Schematic> {
 
-    private static final HashMap<String, SchematicFactory<?>> factories = new HashMap<String, SchematicFactory<?>>();
+    private static final HashMap<String, SchematicFactory<?>> factories = new HashMap<>();
 
-    private static final HashMap<Class<? extends Schematic>, SchematicFactory<?>> schematicToFactory = new HashMap<Class<? extends Schematic>, SchematicFactory<?>>();
+    private static final HashMap<Class<? extends Schematic>, SchematicFactory<?>> schematicToFactory = new HashMap<>();
 
     protected abstract S loadSchematicFromWorldNBT(NBTTagCompound nbt, MappingRegistry registry)
             throws MappingNotFoundException;

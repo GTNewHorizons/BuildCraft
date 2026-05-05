@@ -35,7 +35,7 @@ import io.netty.buffer.ByteBuf;
 
 public class PipeItemsDiamond extends Pipe<PipeTransportItems> implements IDiamondPipe {
 
-    private class SimpleFilterInventory extends SimpleInventory {
+    private static class SimpleFilterInventory extends SimpleInventory {
 
         protected int[] filterCounts = new int[6];
 
@@ -58,7 +58,7 @@ public class PipeItemsDiamond extends Pipe<PipeTransportItems> implements IDiamo
         }
     }
 
-    private SimpleFilterInventory filters = new SimpleFilterInventory(54, "gui.pipes.emerald.title", 1);
+    private final SimpleFilterInventory filters = new SimpleFilterInventory(54, "gui.pipes.emerald.title", 1);
     private long usedFilters;
 
     public PipeItemsDiamond(Item item) {

@@ -45,7 +45,7 @@ import buildcraft.transport.utils.FluidRenderData;
 
 public class PipeTransportFluids extends PipeTransport implements IFluidHandler, IDebuggable {
 
-    public static final Map<Class<? extends Pipe<?>>, Integer> fluidCapacities = new HashMap<Class<? extends Pipe<?>>, Integer>();
+    public static final Map<Class<? extends Pipe<?>>, Integer> fluidCapacities = new HashMap<>();
 
     /**
      * The amount of liquid contained by a pipe section. For simplicity, all pipe sections are assumed to be of the same
@@ -57,7 +57,7 @@ public class PipeTransportFluids extends PipeTransport implements IFluidHandler,
     public static short OUTPUT_TTL = 80; // 80
     public static short OUTPUT_COOLDOWN = 30; // 30
 
-    private static int NETWORK_SYNC_TICKS = BuildCraftCore.updateFactor / 2;
+    private static final int NETWORK_SYNC_TICKS = BuildCraftCore.updateFactor / 2;
     private static final ForgeDirection[] directions = ForgeDirection.VALID_DIRECTIONS;
     private static final ForgeDirection[] orientations = ForgeDirection.values();
 

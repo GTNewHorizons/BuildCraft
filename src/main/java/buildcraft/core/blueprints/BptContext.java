@@ -19,7 +19,7 @@ public class BptContext implements IBuilderContext {
     public BlueprintReadConfiguration readConfiguration;
     public Box box;
     public World world;
-    private MappingRegistry mappingRegistry;
+    private final MappingRegistry mappingRegistry;
 
     BptContext(World world, Box box, MappingRegistry registry) {
         this.world = world;

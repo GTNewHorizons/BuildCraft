@@ -11,8 +11,8 @@ public final class ListOreDictionaryCache {
 
     public static final ListOreDictionaryCache INSTANCE = new ListOreDictionaryCache();
     private static final String[] TYPE_KEYWORDS = { "Tiny", "Dense", "Small" };
-    private final Map<String, Set<Integer>> namingCache = new HashMap<String, Set<Integer>>();
-    private final Set<String> registeredNames = new HashSet<String>();
+    private final Map<String, Set<Integer>> namingCache = new HashMap<>();
+    private final Set<String> registeredNames = new HashSet<>();
 
     private ListOreDictionaryCache() {}
 
@@ -28,7 +28,7 @@ public final class ListOreDictionaryCache {
         Set<Integer> ll = namingCache.get(s);
 
         if (ll == null) {
-            ll = new HashSet<Integer>();
+            ll = new HashSet<>();
             ll.add(id);
             namingCache.put(s, ll);
         } else {

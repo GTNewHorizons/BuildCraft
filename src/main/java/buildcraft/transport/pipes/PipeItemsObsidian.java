@@ -42,7 +42,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class PipeItemsObsidian extends Pipe<PipeTransportItems> implements IEnergyHandler {
 
     private final RFBattery battery = new RFBattery(2560, 640, 0);
-    private final WeakHashMap<Entity, Long> entityDropTime = new WeakHashMap<Entity, Long>();
+    private final WeakHashMap<Entity, Long> entityDropTime = new WeakHashMap<>();
 
     public PipeItemsObsidian(Item item) {
         super(new PipeTransportItems(), item);

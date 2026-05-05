@@ -103,7 +103,7 @@ public class EntityRobot extends EntityRobotBase
     public static final int MAX_WEARABLES = 8;
     public static final int TRANSFER_INV_SLOTS = 4;
 
-    private static Set<Integer> blacklistedItemsForUpdate = Sets.newHashSet();
+    private static final Set<Integer> blacklistedItemsForUpdate = Sets.newHashSet();
 
     public LaserData laser = new LaserData();
     public DockingStation linkedDockingStation;
@@ -126,19 +126,19 @@ public class EntityRobot extends EntityRobotBase
     public long lastUpdateTime = 0;
 
     private DockingStation currentDockingStation;
-    private List<ItemStack> wearables = new ArrayList<ItemStack>();
+    private final List<ItemStack> wearables = new ArrayList<>();
 
     private boolean needsUpdate = false;
-    private ItemStack[] inv = new ItemStack[TRANSFER_INV_SLOTS];
+    private final ItemStack[] inv = new ItemStack[TRANSFER_INV_SLOTS];
     private FluidStack tank;
-    private int maxFluid = FluidContainerRegistry.BUCKET_VOLUME * 4;
+    private static final int maxFluid = FluidContainerRegistry.BUCKET_VOLUME * 4;
     private ResourceLocation texture;
 
-    private WeakHashMap<Entity, Long> unreachableEntities = new WeakHashMap<Entity, Long>();
+    private final WeakHashMap<Entity, Long> unreachableEntities = new WeakHashMap<>();
 
     private NBTTagList stackRequestNBT;
 
-    private RFBattery battery = new RFBattery(MAX_ENERGY, MAX_ENERGY, 100);
+    private final RFBattery battery = new RFBattery(MAX_ENERGY, MAX_ENERGY, 100);
 
     private boolean firstUpdateDone = false;
 
@@ -1330,7 +1330,7 @@ public class EntityRobot extends EntityRobotBase
     }
 
     private List<ItemStack> getDrops() {
-        List<ItemStack> drops = new ArrayList<ItemStack>();
+        List<ItemStack> drops = new ArrayList<>();
         drops.add(ItemRobot.createRobotStack(board.getNBTHandler(), battery.getEnergyStored()));
         if (itemInUse != null) {
             drops.add(itemInUse);

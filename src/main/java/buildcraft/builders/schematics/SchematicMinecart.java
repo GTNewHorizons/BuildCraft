@@ -19,7 +19,7 @@ import buildcraft.api.core.Position;
 
 public class SchematicMinecart extends SchematicEntity {
 
-    private Item baseItem;
+    private final Item baseItem;
 
     public SchematicMinecart(Item baseItem) {
         this.baseItem = baseItem;

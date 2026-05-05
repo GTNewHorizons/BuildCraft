@@ -30,7 +30,7 @@ import cpw.mods.fml.common.Loader;
 
 public abstract class FillerPattern implements IFillerPattern {
 
-    public static final Map<String, FillerPattern> patterns = new TreeMap<String, FillerPattern>();
+    public static final Map<String, FillerPattern> patterns = new TreeMap<>();
     private final String tag;
     private IIcon icon, blockIcon;
 

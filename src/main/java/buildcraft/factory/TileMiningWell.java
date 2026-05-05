@@ -31,7 +31,7 @@ public class TileMiningWell extends TileBuildCraft implements IHasWork, IPipeCon
     private int ledState;
     private int ticksSinceAction = 9001;
 
-    private SafeTimeTracker updateTracker = new SafeTimeTracker(BuildCraftCore.updateFactor);
+    private final SafeTimeTracker updateTracker = new SafeTimeTracker(BuildCraftCore.updateFactor);
 
     public TileMiningWell() {
         super();

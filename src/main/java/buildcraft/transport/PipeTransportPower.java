@@ -44,8 +44,8 @@ import cofh.api.energy.IEnergyReceiver;
 
 public class PipeTransportPower extends PipeTransport implements IDebuggable {
 
-    public static final Map<Class<? extends Pipe<?>>, Integer> powerCapacities = new HashMap<Class<? extends Pipe<?>>, Integer>();
-    public static final Map<Class<? extends Pipe<?>>, Float> powerResistances = new HashMap<Class<? extends Pipe<?>>, Float>();
+    public static final Map<Class<? extends Pipe<?>>, Integer> powerCapacities = new HashMap<>();
+    public static final Map<Class<? extends Pipe<?>>, Float> powerResistances = new HashMap<>();
 
     private static final int OVERLOAD_TICKS = 60;
 
@@ -71,7 +71,7 @@ public class PipeTransportPower extends PipeTransport implements IDebuggable {
     private long currentDate;
     private double[] internalPower = new double[6];
 
-    private SafeTimeTracker tracker = new SafeTimeTracker(2 * BuildCraftCore.updateFactor);
+    private final SafeTimeTracker tracker = new SafeTimeTracker(2 * BuildCraftCore.updateFactor);
 
     public PipeTransportPower() {
         for (int i = 0; i < 6; ++i) {

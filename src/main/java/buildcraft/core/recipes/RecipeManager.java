@@ -17,7 +17,7 @@ import buildcraft.api.recipes.IRecipeManager;
 
 public class RecipeManager<T> implements IRecipeManager<T> {
 
-    private BiMap<String, IFlexibleRecipe<T>> recipes = HashBiMap.create();
+    private final BiMap<String, IFlexibleRecipe<T>> recipes = HashBiMap.create();
 
     @Override
     public void addRecipe(String id, int energyCost, T output, Object... input) {
@@ -26,7 +26,7 @@ public class RecipeManager<T> implements IRecipeManager<T> {
 
     @Override
     public void addRecipe(String id, int energyCost, int craftingDelay, T output, Object... input) {
-        recipes.put(id, new FlexibleRecipe<T>(id, output, energyCost, craftingDelay, input));
+        recipes.put(id, new FlexibleRecipe<>(id, output, energyCost, craftingDelay, input));
     }
 
     @Override

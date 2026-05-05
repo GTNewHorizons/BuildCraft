@@ -18,7 +18,7 @@ import buildcraft.silicon.TilePackager;
 public class GuiPackager extends GuiBuildCraft {
 
     public static final ResourceLocation TEXTURE = new ResourceLocation("buildcraftsilicon:textures/gui/packager.png");
-    private TilePackager bench;
+    private final TilePackager bench;
 
     public GuiPackager(InventoryPlayer inventoryplayer, TilePackager tile) {
         super(new ContainerPackager(inventoryplayer, tile), tile, TEXTURE);

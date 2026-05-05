@@ -33,12 +33,12 @@ public class RenderEngine extends TileEntitySpecialRenderer implements IInventor
         angleMap[ForgeDirection.NORTH.ordinal()] = (float) -Math.PI / 2;
     }
 
-    private ModelBase model = new ModelBase() {};
+    private final ModelBase model = new ModelBase() {};
 
-    private ModelRenderer box;
-    private ModelRenderer trunk;
-    private ModelRenderer movingBox;
-    private ModelRenderer chamber;
+    private final ModelRenderer box;
+    private final ModelRenderer trunk;
+    private final ModelRenderer movingBox;
+    private final ModelRenderer chamber;
 
     private ResourceLocation baseTexture;
     private ResourceLocation chamberTexture;

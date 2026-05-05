@@ -17,7 +17,7 @@ import buildcraft.silicon.TileChargingTable;
 
 public class ContainerChargingTable extends BuildCraftContainer {
 
-    private TileChargingTable table;
+    private final TileChargingTable table;
 
     public ContainerChargingTable(InventoryPlayer playerInventory, TileChargingTable table) {
         super(table.getSizeInventory());

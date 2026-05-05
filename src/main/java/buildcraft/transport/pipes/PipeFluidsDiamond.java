@@ -36,7 +36,7 @@ import io.netty.buffer.ByteBuf;
 
 public class PipeFluidsDiamond extends Pipe<PipeTransportFluids> implements IDiamondPipe {
 
-    private class FilterInventory extends SimpleInventory {
+    private static class FilterInventory extends SimpleInventory {
 
         public boolean[] filteredDirections = new boolean[6];
         public Fluid[] fluids = new Fluid[54];
@@ -66,7 +66,7 @@ public class PipeFluidsDiamond extends Pipe<PipeTransportFluids> implements IDia
         }
     }
 
-    private FilterInventory filters = new FilterInventory(54, "gui.pipes.emerald.title", 1);
+    private final FilterInventory filters = new FilterInventory(54, "gui.pipes.emerald.title", 1);
 
     public PipeFluidsDiamond(Item item) {
         super(new PipeTransportFluids(), item);
@@ -135,7 +135,7 @@ public class PipeFluidsDiamond extends Pipe<PipeTransportFluids> implements IDia
 
     public void eventHandler(PipeEventFluid.FindDest event) {
         Fluid fluidInTank = event.fluidStack.getFluid();
-        Set<ForgeDirection> originalDestinations = new HashSet<ForgeDirection>();
+        Set<ForgeDirection> originalDestinations = new HashSet<>();
         originalDestinations.addAll(event.destinations.elementSet());
         boolean isFiltered = false;
         int[] filterCount = new int[6];

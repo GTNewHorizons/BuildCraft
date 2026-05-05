@@ -20,7 +20,7 @@ import buildcraft.api.core.Position;
 
 public class SchematicHanging extends SchematicEntity {
 
-    private Item baseItem;
+    private final Item baseItem;
 
     public SchematicHanging(Item baseItem) {
         this.baseItem = baseItem;

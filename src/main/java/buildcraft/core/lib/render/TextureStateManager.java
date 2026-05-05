@@ -21,7 +21,7 @@ public final class TextureStateManager implements ITextureStateManager {
 
     private IIcon currentTexture;
     private IIcon[] textureArray;
-    private IIcon[] textureArrayCache;
+    private final IIcon[] textureArrayCache;
 
     public TextureStateManager(IIcon placeholder) {
         currentTexture = placeholder;

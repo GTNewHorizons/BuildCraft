@@ -9,8 +9,8 @@ import buildcraft.api.core.BlockIndex;
 
 public class BlockScannerRandom implements Iterable<BlockIndex> {
 
-    private Random rand;
-    private int maxDistance;
+    private final Random rand;
+    private final int maxDistance;
 
     class BlockIt implements Iterator<BlockIndex> {
 

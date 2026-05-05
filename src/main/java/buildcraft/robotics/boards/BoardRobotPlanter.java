@@ -30,7 +30,7 @@ import buildcraft.robotics.statements.ActionRobotFilter;
 public class BoardRobotPlanter extends RedstoneBoardRobot {
 
     private BlockIndex blockFound;
-    private IStackFilter filter = new IStackFilter() {
+    private final IStackFilter filter = new IStackFilter() {
 
         @Override
         public boolean matches(ItemStack stack) {

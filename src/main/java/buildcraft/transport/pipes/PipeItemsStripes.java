@@ -45,7 +45,7 @@ import cofh.api.energy.IEnergyHandler;
 
 public class PipeItemsStripes extends Pipe<PipeTransportItems> implements IEnergyHandler, IStripesPipe {
 
-    private RFBattery battery = new RFBattery(320 * 50, 640, 0);
+    private final RFBattery battery = new RFBattery(320 * 50, 640, 0);
     private ForgeDirection actionDir = ForgeDirection.UNKNOWN;
 
     public PipeItemsStripes(Item item) {

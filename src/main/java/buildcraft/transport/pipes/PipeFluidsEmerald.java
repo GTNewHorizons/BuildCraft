@@ -27,7 +27,7 @@ import io.netty.buffer.ByteBuf;
 
 public class PipeFluidsEmerald extends PipeFluidsWood implements ISerializable {
 
-    private SimpleInventory filters = new SimpleInventory(1, "gui.pipes.emerald.title", 1);
+    private final SimpleInventory filters = new SimpleInventory(1, "gui.pipes.emerald.title", 1);
 
     public PipeFluidsEmerald(Item item) {
         super(item);

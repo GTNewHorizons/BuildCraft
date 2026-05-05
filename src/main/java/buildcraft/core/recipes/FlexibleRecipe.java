@@ -28,7 +28,7 @@ import buildcraft.core.lib.inventory.filters.IStackFilter;
 
 public class FlexibleRecipe<T> implements IFlexibleRecipe<T>, IFlexibleRecipeViewable {
 
-    private class PreviewCrafter implements IFlexibleCrafter {
+    private static class PreviewCrafter implements IFlexibleCrafter {
 
         private final SimpleInventory inventory;
         private final IFlexibleCrafter crafter;
@@ -82,10 +82,10 @@ public class FlexibleRecipe<T> implements IFlexibleRecipe<T>, IFlexibleRecipeVie
 
     public T output = null;
 
-    public ArrayList<ItemStack> inputItems = new ArrayList<ItemStack>();
-    public ArrayList<List<ItemStack>> inputItemsWithAlternatives = new ArrayList<List<ItemStack>>();
+    public ArrayList<ItemStack> inputItems = new ArrayList<>();
+    public ArrayList<List<ItemStack>> inputItemsWithAlternatives = new ArrayList<>();
 
-    public ArrayList<FluidStack> inputFluids = new ArrayList<FluidStack>();
+    public ArrayList<FluidStack> inputFluids = new ArrayList<>();
 
     public FlexibleRecipe() {}
 
@@ -147,7 +147,7 @@ public class FlexibleRecipe<T> implements IFlexibleRecipe<T>, IFlexibleRecipeVie
                     inputItemsWithAlternatives.add(OreDictionary.getOres((String) i));
                 } else if (input[index + 1] instanceof Integer) {
                     index++;
-                    List<ItemStack> items = new ArrayList<ItemStack>();
+                    List<ItemStack> items = new ArrayList<>();
                     for (ItemStack stack : OreDictionary.getOres((String) i)) {
                         stack.stackSize = (Integer) input[index];
                         items.add(stack);
@@ -179,7 +179,7 @@ public class FlexibleRecipe<T> implements IFlexibleRecipe<T>, IFlexibleRecipeVie
             crafter = new FakeFlexibleCrafter(baseCrafter);
         }
 
-        CraftingResult<T> result = new CraftingResult<T>();
+        CraftingResult<T> result = new CraftingResult<>();
 
         result.recipe = this;
         result.energyCost = energyCost;
@@ -290,7 +290,7 @@ public class FlexibleRecipe<T> implements IFlexibleRecipe<T>, IFlexibleRecipeVie
     @Override
     public CraftingResult<T> canCraft(ItemStack expectedOutput) {
         if (output instanceof ItemStack && StackHelper.isMatchingItem(expectedOutput, (ItemStack) output)) {
-            CraftingResult<T> result = new CraftingResult<T>();
+            CraftingResult<T> result = new CraftingResult<>();
 
             result.recipe = this;
             result.usedFluids = inputFluids;
@@ -310,7 +310,7 @@ public class FlexibleRecipe<T> implements IFlexibleRecipe<T>, IFlexibleRecipeVie
 
     @Override
     public Collection<Object> getInputs() {
-        ArrayList<Object> inputs = new ArrayList<Object>();
+        ArrayList<Object> inputs = new ArrayList<>();
 
         inputs.addAll(inputItems);
         inputs.addAll(inputItemsWithAlternatives);

@@ -36,7 +36,7 @@ import io.netty.buffer.ByteBuf;
 public abstract class TileBuildCraft extends TileEntity implements IEnergyHandler, ISerializable {
 
     protected TileBuffer[] cache;
-    protected HashSet<EntityPlayer> guiWatchers = new HashSet<EntityPlayer>();
+    protected HashSet<EntityPlayer> guiWatchers = new HashSet<>();
     protected IControllable.Mode mode;
 
     private boolean init = false;

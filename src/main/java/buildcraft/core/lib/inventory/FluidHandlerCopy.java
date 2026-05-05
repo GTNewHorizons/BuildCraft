@@ -14,8 +14,8 @@ import net.minecraftforge.fluids.IFluidHandler;
 
 public class FluidHandlerCopy implements IFluidHandler {
 
-    private IFluidHandler orignal;
-    private FluidTankInfo[] contents;
+    private final IFluidHandler orignal;
+    private final FluidTankInfo[] contents;
 
     public FluidHandlerCopy(IFluidHandler orignal) {
         this.orignal = orignal;

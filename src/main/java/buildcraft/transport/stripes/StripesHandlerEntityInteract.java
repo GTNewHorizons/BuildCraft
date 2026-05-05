@@ -42,7 +42,7 @@ public class StripesHandlerEntityInteract implements IStripesHandler {
             return false;
         }
 
-        List<EntityLivingBase> livingEntities = new LinkedList<EntityLivingBase>();
+        List<EntityLivingBase> livingEntities = new LinkedList<>();
         for (Object entityObj : entities) {
             if (entityObj instanceof EntityLivingBase) {
                 livingEntities.add((EntityLivingBase) entityObj);

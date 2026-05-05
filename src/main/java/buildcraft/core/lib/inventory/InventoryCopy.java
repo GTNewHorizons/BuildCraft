@@ -18,8 +18,8 @@ import net.minecraft.item.ItemStack;
  */
 public class InventoryCopy implements IInventory {
 
-    private IInventory orignal;
-    private ItemStack[] contents;
+    private final IInventory orignal;
+    private final ItemStack[] contents;
 
     public InventoryCopy(IInventory orignal) {
         this.orignal = orignal;

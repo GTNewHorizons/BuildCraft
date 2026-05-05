@@ -18,8 +18,8 @@ public final class BuildCraftAPI {
 
     public static ICoreProxy proxy;
 
-    public static final Set<Block> softBlocks = new HashSet<Block>();
-    public static final HashMap<String, IWorldProperty> worldProperties = new HashMap<String, IWorldProperty>();
+    public static final Set<Block> softBlocks = new HashSet<>();
+    public static final HashMap<String, IWorldProperty> worldProperties = new HashMap<>();
 
     /**
      * Deactivate constructor

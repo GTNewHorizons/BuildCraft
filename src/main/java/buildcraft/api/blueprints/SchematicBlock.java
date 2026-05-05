@@ -102,7 +102,7 @@ public class SchematicBlock extends SchematicBlockBase {
      * Get a list of relative block coordinates which have to be built before this block can be placed.
      */
     public Set<BlockIndex> getPrerequisiteBlocks(IBuilderContext context) {
-        Set<BlockIndex> indexes = new HashSet<BlockIndex>();
+        Set<BlockIndex> indexes = new HashSet<>();
         if (block instanceof BlockFalling) {
             indexes.add(RELATIVE_INDEXES[ForgeDirection.DOWN.ordinal()]);
         }
@@ -147,7 +147,7 @@ public class SchematicBlock extends SchematicBlockBase {
         if (nbt.hasKey("rq")) {
             NBTTagList rq = nbt.getTagList("rq", Constants.NBT.TAG_COMPOUND);
 
-            ArrayList<ItemStack> rqs = new ArrayList<ItemStack>();
+            ArrayList<ItemStack> rqs = new ArrayList<>();
             for (int i = 0; i < rq.tagCount(); ++i) {
                 try {
                     NBTTagCompound sub = rq.getCompoundTagAt(i);

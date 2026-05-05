@@ -16,7 +16,7 @@ import buildcraft.core.builders.schematics.SchematicBlockFloored;
 
 public class SchematicRedstoneDiode extends SchematicBlockFloored {
 
-    private Item baseItem;
+    private final Item baseItem;
 
     public SchematicRedstoneDiode(Item baseItem) {
         this.baseItem = baseItem;

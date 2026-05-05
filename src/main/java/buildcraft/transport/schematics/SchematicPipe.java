@@ -30,7 +30,7 @@ import buildcraft.transport.TileGenericPipe.SideProperties;
 
 public class SchematicPipe extends SchematicTile {
 
-    private BuildingPermission permission = BuildingPermission.ALL;
+    private final BuildingPermission permission = BuildingPermission.ALL;
 
     @Override
     public boolean isAlreadyBuilt(IBuilderContext context, int x, int y, int z) {

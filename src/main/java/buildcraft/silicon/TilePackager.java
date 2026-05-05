@@ -26,7 +26,7 @@ import io.netty.buffer.ByteBuf;
 
 public class TilePackager extends TileBuildCraft implements ISidedInventory {
 
-    private class Requirement {
+    private static class Requirement {
 
         public final IInventory location;
         public final int slot;
@@ -72,7 +72,7 @@ public class TilePackager extends TileBuildCraft implements ISidedInventory {
     public SimpleInventory inventoryPublic = new SimpleInventory(12, "Packager", 64);
     public SimpleInventory inventoryPattern = new SimpleInventory(9, "Packager", 64);
 
-    private Requirement[] requirements = new Requirement[9];
+    private final Requirement[] requirements = new Requirement[9];
     private int patternsSet;
     private int updateTime = BuildCraftCore.random.nextInt(5);
 
@@ -137,7 +137,7 @@ public class TilePackager extends TileBuildCraft implements ISidedInventory {
             }
         }
 
-        TObjectIntHashMap<Requirement> reqCounts = new TObjectIntHashMap<Requirement>(9);
+        TObjectIntHashMap<Requirement> reqCounts = new TObjectIntHashMap<>(9);
         int missingCount = 0;
 
         int filteredReqsToFulfill = 0;
@@ -230,7 +230,7 @@ public class TilePackager extends TileBuildCraft implements ISidedInventory {
         }
 
         // STEP 3b: Remote
-        Map<ForgeDirection, IInventory> invs = new EnumMap<ForgeDirection, IInventory>(ForgeDirection.class);
+        Map<ForgeDirection, IInventory> invs = new EnumMap<>(ForgeDirection.class);
         if (filteredReqsToFulfill > 0 || missingCount > 0) {
             for (int i = 2; i < 6; i++) {
                 TileEntity neighbor = getTile(ForgeDirection.getOrientation(i));

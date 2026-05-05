@@ -29,7 +29,7 @@ import buildcraft.core.lib.utils.NBTUtils;
 
 public class Blueprint extends BlueprintBase {
 
-    public LinkedList<SchematicEntity> entities = new LinkedList<SchematicEntity>();
+    public LinkedList<SchematicEntity> entities = new LinkedList<>();
 
     public Blueprint() {
         super();

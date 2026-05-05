@@ -27,12 +27,12 @@ public class RenderHopper extends TileEntitySpecialRenderer implements IInventor
             "buildcraftfactory:textures/blocks/hopperBlock/top.png");
     private static final ResourceLocation HOPPER_MIDDLE_TEXTURE = new ResourceLocation(
             "buildcraftfactory:textures/blocks/hopperBlock/middle.png");
-    private ModelBase model = new ModelBase() {};
     private final ModelRenderer top;
     private final ModelFrustum middle;
     private final ModelRenderer bottom;
 
     public RenderHopper() {
+        ModelBase model = new ModelBase() {};
         top = new ModelRenderer(model, 0, 0);
         top.addBox(-8F, 1F, -8F, 16, 7, 16);
         top.rotationPointX = 8F;

@@ -24,14 +24,14 @@ public class PathFinding implements IIterableAlgorithm {
 
     public static int PATH_ITERATIONS = 1000;
 
-    private World world;
-    private BlockIndex start;
-    private BlockIndex end;
+    private final World world;
+    private final BlockIndex start;
+    private final BlockIndex end;
     private double maxDistanceToEndSq = 0;
     private float maxTotalDistanceSq = 0;
 
-    private HashMap<BlockIndex, Node> openList = new HashMap<BlockIndex, PathFinding.Node>();
-    private HashMap<BlockIndex, Node> closedList = new HashMap<BlockIndex, PathFinding.Node>();
+    private final HashMap<BlockIndex, Node> openList = new HashMap<>();
+    private final HashMap<BlockIndex, Node> closedList = new HashMap<>();
 
     private Node nextIteration;
 
@@ -79,7 +79,7 @@ public class PathFinding implements IIterableAlgorithm {
             }
 
             if (endReached) {
-                result = new LinkedList<BlockIndex>();
+                result = new LinkedList<>();
 
                 while (nextIteration != null) {
                     result.addFirst(nextIteration.index);
@@ -102,7 +102,7 @@ public class PathFinding implements IIterableAlgorithm {
         if (result != null) {
             return result;
         } else {
-            return new LinkedList<BlockIndex>();
+            return new LinkedList<>();
         }
     }
 
@@ -114,7 +114,7 @@ public class PathFinding implements IIterableAlgorithm {
         openList.remove(from.index);
         closedList.put(from.index, from);
 
-        ArrayList<Node> nodes = new ArrayList<Node>();
+        ArrayList<Node> nodes = new ArrayList<>();
         byte[][][] resultMoves = movements(from);
 
         for (int dx = -1; dx <= +1; ++dx) {

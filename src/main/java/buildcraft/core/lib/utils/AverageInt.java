@@ -9,7 +9,8 @@ package buildcraft.core.lib.utils;
 public class AverageInt {
 
     private int[] data;
-    private int pos, precise;
+    private int pos;
+    private final int precise;
     private int averageRaw, tickValue;
 
     public AverageInt(int precise) {

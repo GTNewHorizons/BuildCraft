@@ -14,7 +14,7 @@ import buildcraft.transport.pipes.events.PipeEventPriority;
 
 public class PipeEventBus {
 
-    private class EventHandler {
+    private static class EventHandler {
 
         public Method method;
         public Object owner;
@@ -51,11 +51,11 @@ public class PipeEventBus {
     }
 
     private static final EventHandlerCompare COMPARATOR = new EventHandlerCompare();
-    private static final HashSet<Object> globalHandlers = new HashSet<Object>();
+    private static final HashSet<Object> globalHandlers = new HashSet<>();
 
-    private final HashSet<Object> registeredHandlers = new HashSet<Object>();
-    private final HashMap<Object, Map<Method, Class<? extends PipeEvent>>> handlerMethods = new HashMap<Object, Map<Method, Class<? extends PipeEvent>>>();
-    private final HashMap<Class<? extends PipeEvent>, List<EventHandler>> eventHandlers = new HashMap<Class<? extends PipeEvent>, List<EventHandler>>();
+    private final HashSet<Object> registeredHandlers = new HashSet<>();
+    private final HashMap<Object, Map<Method, Class<? extends PipeEvent>>> handlerMethods = new HashMap<>();
+    private final HashMap<Class<? extends PipeEvent>, List<EventHandler>> eventHandlers = new HashMap<>();
 
     public PipeEventBus() {
         for (Object o : globalHandlers) {
@@ -69,7 +69,7 @@ public class PipeEventBus {
 
     private List<EventHandler> getHandlerList(Class<? extends PipeEvent> event) {
         if (!eventHandlers.containsKey(event)) {
-            eventHandlers.put(event, new ArrayList<EventHandler>());
+            eventHandlers.put(event, new ArrayList<>());
         }
         return eventHandlers.get(event);
     }
@@ -80,7 +80,7 @@ public class PipeEventBus {
         }
 
         registeredHandlers.add(handler);
-        Map<Method, Class<? extends PipeEvent>> methods = new HashMap<Method, Class<? extends PipeEvent>>();
+        Map<Method, Class<? extends PipeEvent>> methods = new HashMap<>();
 
         for (Method m : handler.getClass().getDeclaredMethods()) {
             if ("eventHandler".equals(m.getName())) {

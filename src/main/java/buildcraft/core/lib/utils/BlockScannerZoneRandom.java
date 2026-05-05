@@ -8,11 +8,11 @@ import buildcraft.api.core.IZone;
 
 public class BlockScannerZoneRandom implements Iterable<BlockIndex> {
 
-    private Random rand;
-    private IZone zone;
-    private int x;
-    private int y;
-    private int z;
+    private final Random rand;
+    private final IZone zone;
+    private final int x;
+    private final int y;
+    private final int z;
 
     class BlockIt implements Iterator<BlockIndex> {
 

@@ -36,7 +36,7 @@ public class TileZonePlan extends TileBuildCraft implements IInventory {
     public static final int RESOLUTION = 2048;
     public static final int CRAFT_TIME = 120;
     private static final int PREVIEW_BLOCKS_PER_PIXEL = 10;
-    private static int RESOLUTION_CHUNKS = RESOLUTION >> 4;
+    private static final int RESOLUTION_CHUNKS = RESOLUTION >> 4;
 
     public int chunkStartX, chunkStartZ;
     public short progress = 0;
@@ -47,7 +47,7 @@ public class TileZonePlan extends TileBuildCraft implements IInventory {
     private final SafeTimeTracker previewRecalcTimer = new SafeTimeTracker(100);
 
     private boolean previewColorsPushed = false;
-    private ZonePlan[] selectedAreas = new ZonePlan[16];
+    private final ZonePlan[] selectedAreas = new ZonePlan[16];
     private int currentSelectedArea = 0;
 
     public byte[] getPreviewTexture(boolean force) {

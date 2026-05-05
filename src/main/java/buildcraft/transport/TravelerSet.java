@@ -17,10 +17,10 @@ public class TravelerSet extends ForwardingSet<TravelingItem> {
 
     public boolean iterating;
 
-    private final Set<TravelingItem> items = new HashSet<TravelingItem>();
-    private final Set<TravelingItem> toLoad = new HashSet<TravelingItem>();
-    private final Set<TravelingItem> toAdd = new HashSet<TravelingItem>();
-    private final Set<TravelingItem> toRemove = new HashSet<TravelingItem>();
+    private final Set<TravelingItem> items = new HashSet<>();
+    private final Set<TravelingItem> toLoad = new HashSet<>();
+    private final Set<TravelingItem> toAdd = new HashSet<>();
+    private final Set<TravelingItem> toRemove = new HashSet<>();
     private int delay = 0;
     private final PipeTransportItems transport;
 

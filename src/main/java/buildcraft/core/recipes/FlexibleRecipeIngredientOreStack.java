@@ -27,7 +27,7 @@ public class FlexibleRecipeIngredientOreStack implements IFlexibleRecipeIngredie
     @Override
     public Object getIngredient() {
         List<ItemStack> stacks = OreDictionary.getOres(oreName);
-        List<ItemStack> result = new ArrayList<ItemStack>();
+        List<ItemStack> result = new ArrayList<>();
 
         if (stacks != null) {
             for (ItemStack stack : stacks) {

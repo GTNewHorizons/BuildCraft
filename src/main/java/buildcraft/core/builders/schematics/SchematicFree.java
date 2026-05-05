@@ -25,7 +25,7 @@ public class SchematicFree extends SchematicBlock {
 
     @Override
     public LinkedList<ItemStack> getStacksToDisplay(LinkedList<ItemStack> stackConsumed) {
-        LinkedList<ItemStack> displayStacks = new LinkedList<ItemStack>();
+        LinkedList<ItemStack> displayStacks = new LinkedList<>();
         displayStacks.add(new ItemStack(block, 1, meta));
         return displayStacks;
     }

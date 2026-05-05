@@ -50,8 +50,8 @@ public class TileAutoWorkbench extends TileBuildCraft
     public int progress = 0;
     public LocalInventoryCrafting craftMatrix = new LocalInventoryCrafting();
 
-    private SimpleInventory resultInv = new SimpleInventory(1, "Auto Workbench", 64);
-    private SimpleInventory inputInv = new SimpleInventory(9, "Auto Workbench", 64) {
+    private final SimpleInventory resultInv = new SimpleInventory(1, "Auto Workbench", 64);
+    private final SimpleInventory inputInv = new SimpleInventory(9, "Auto Workbench", 64) {
 
         @Override
         public void setInventorySlotContents(int slotId, ItemStack itemstack) {
@@ -68,13 +68,13 @@ public class TileAutoWorkbench extends TileBuildCraft
         }
     };
 
-    private IInventory inv = InventoryConcatenator.make().add(inputInv).add(resultInv).add(craftMatrix);
+    private final IInventory inv = InventoryConcatenator.make().add(inputInv).add(resultInv).add(craftMatrix);
 
     private SlotCrafting craftSlot;
-    private InventoryCraftResult craftResult = new InventoryCraftResult();
+    private final InventoryCraftResult craftResult = new InventoryCraftResult();
 
-    private int[] bindings = new int[9];
-    private int[] bindingCounts = new int[9];
+    private final int[] bindings = new int[9];
+    private final int[] bindingCounts = new int[9];
 
     private int update = Utils.RANDOM.nextInt();
 

@@ -22,7 +22,7 @@ import buildcraft.core.lib.utils.ResourceUtils;
 
 public class RenderLEDTile extends TileEntitySpecialRenderer {
 
-    private static final Map<Block, IIcon[]> iconMap = new HashMap<Block, IIcon[]>();
+    private static final Map<Block, IIcon[]> iconMap = new HashMap<>();
     private static final float Z_OFFSET = 2049 / 2048.0F;
     private final Block block;
 
@@ -35,7 +35,7 @@ public class RenderLEDTile extends TileEntitySpecialRenderer {
         for (Block b : iconMap.keySet().toArray(new Block[iconMap.keySet().size()])) {
             String base = ResourceUtils.getObjectPrefix(Block.blockRegistry.getNameForObject(b));
             if (base != null) {
-                List<IIcon> icons = new ArrayList<IIcon>();
+                List<IIcon> icons = new ArrayList<>();
                 if (b instanceof ICustomLEDBlock) {
                     for (String s : ((ICustomLEDBlock) b).getLEDSuffixes()) {
                         icons.add(register.registerIcon(base + "/" + s));

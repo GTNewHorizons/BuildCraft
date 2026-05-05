@@ -21,7 +21,7 @@ public class GuiListOld extends GuiAdvancedInterface {
     private static final ResourceLocation TEXTURE_BASE = new ResourceLocation("buildcraftcore:textures/gui/list.png");
 
     private GuiTextField textField;
-    private EntityPlayer player;
+    private final EntityPlayer player;
 
     private static class MainSlot extends AdvancedSlot {
 
@@ -69,7 +69,7 @@ public class GuiListOld extends GuiAdvancedInterface {
 
         public int line;
         public int kind;
-        private String desc;
+        private final String desc;
 
         public Button(GuiAdvancedInterface gui, int x, int y, int iLine, int iKind, String iDesc) {
             super(gui, x, y);

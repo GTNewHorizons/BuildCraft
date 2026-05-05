@@ -17,7 +17,7 @@ import buildcraft.core.lib.render.IInventoryRenderer;
 
 public class RenderingEntityBlocks extends BCSimpleBlockRenderingHandler {
 
-    public static HashMap<EntityRenderIndex, IInventoryRenderer> blockByEntityRenders = new HashMap<EntityRenderIndex, IInventoryRenderer>();
+    public static HashMap<EntityRenderIndex, IInventoryRenderer> blockByEntityRenders = new HashMap<>();
 
     public static class EntityRenderIndex {
 

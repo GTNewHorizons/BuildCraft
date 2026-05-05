@@ -31,7 +31,7 @@ import buildcraft.transport.pipes.PipeItemsWood;
 
 public class DockingStationPipe extends DockingStation implements IRequestProvider {
 
-    private IInjectable injectablePipe = new IInjectable() {
+    private final IInjectable injectablePipe = new IInjectable() {
 
         @Override
         public boolean canInjectItems(ForgeDirection from) {

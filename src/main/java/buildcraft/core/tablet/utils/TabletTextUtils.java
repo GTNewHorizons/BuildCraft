@@ -8,7 +8,7 @@ public final class TabletTextUtils {
     private TabletTextUtils() {}
 
     public static String[] split(String text, TabletFont font, int width, boolean justify) {
-        List<String> lines = new ArrayList<String>();
+        List<String> lines = new ArrayList<>();
 
         int x = 0;
         String line = "";

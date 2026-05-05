@@ -28,7 +28,7 @@ public final class FakeBlock extends Block implements ITextureStates {
     private int renderMask = 0;
     private int colorMultiplier = 0xFFFFFF;
 
-    private TextureStateManager textureState;
+    private final TextureStateManager textureState;
 
     private FakeBlock() {
         super(Material.glass);

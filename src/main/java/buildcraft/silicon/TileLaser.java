@@ -26,7 +26,6 @@ import buildcraft.core.EntityLaser;
 import buildcraft.core.LaserData;
 import buildcraft.core.lib.RFBattery;
 import buildcraft.core.lib.block.TileBuildCraft;
-import buildcraft.core.lib.utils.BlockUtils;
 import io.netty.buffer.ByteBuf;
 
 public class TileLaser extends TileBuildCraft implements IHasWork, IControllable {
@@ -177,7 +176,7 @@ public class TileLaser extends TileBuildCraft implements IHasWork, IControllable
                 break;
         }
 
-        List<ILaserTarget> targets = new LinkedList<ILaserTarget>();
+        List<ILaserTarget> targets = new LinkedList<>();
 
         if (minY < 0) {
             minY = 0;
@@ -189,8 +188,8 @@ public class TileLaser extends TileBuildCraft implements IHasWork, IControllable
         for (int y = minY; y <= maxY; ++y) {
             for (int x = minX; x <= maxX; ++x) {
                 for (int z = minZ; z <= maxZ; ++z) {
-                    if (BlockUtils.getBlock(worldObj, x, y, z) instanceof ILaserTargetBlock) {
-                        TileEntity tile = BlockUtils.getTileEntity(worldObj, x, y, z);
+                    if (worldObj.getBlock(x, y, z) instanceof ILaserTargetBlock) {
+                        TileEntity tile = worldObj.getTileEntity(x, y, z);
 
                         if (tile instanceof ILaserTarget) {
                             ILaserTarget table = (ILaserTarget) tile;

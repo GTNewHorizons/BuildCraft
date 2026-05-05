@@ -25,8 +25,8 @@ import buildcraft.core.lib.render.RenderEntityBlock.RenderInfo;
 public final class FluidRenderer {
 
     public static final int DISPLAY_STAGES = 100;
-    private static Map<Fluid, int[]> flowingRenderCache = new HashMap<Fluid, int[]>();
-    private static Map<Fluid, int[]> stillRenderCache = new HashMap<Fluid, int[]>();
+    private static final Map<Fluid, int[]> flowingRenderCache = new HashMap<>();
+    private static final Map<Fluid, int[]> stillRenderCache = new HashMap<>();
     private static final RenderInfo liquidBlock = new RenderInfo();
 
     /**

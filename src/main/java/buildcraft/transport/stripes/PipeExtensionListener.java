@@ -27,7 +27,7 @@ import cpw.mods.fml.common.gameevent.TickEvent;
 
 public class PipeExtensionListener {
 
-    private class PipeExtensionRequest {
+    private static class PipeExtensionRequest {
 
         public ItemStack stack;
         public int x, y, z;
@@ -35,7 +35,7 @@ public class PipeExtensionListener {
         public IStripesActivator h;
     }
 
-    private final Map<World, HashSet<PipeExtensionRequest>> requests = new HashMap<World, HashSet<PipeExtensionRequest>>();
+    private final Map<World, HashSet<PipeExtensionRequest>> requests = new HashMap<>();
 
     public void requestPipeExtension(ItemStack stack, World world, int x, int y, int z, ForgeDirection o,
             IStripesActivator h) {
@@ -44,7 +44,7 @@ public class PipeExtensionListener {
         }
 
         if (!requests.containsKey(world)) {
-            requests.put(world, new HashSet<PipeExtensionRequest>());
+            requests.put(world, new HashSet<>());
         }
         PipeExtensionRequest r = new PipeExtensionRequest();
         r.stack = stack;

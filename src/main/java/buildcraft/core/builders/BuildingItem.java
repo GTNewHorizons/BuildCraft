@@ -34,7 +34,7 @@ public class BuildingItem implements IBuildingItem, ISerializable {
     public static int ITEMS_SPACE = 2;
 
     public Position origin, destination;
-    public LinkedList<StackAtPosition> stacksToDisplay = new LinkedList<StackAtPosition>();
+    public LinkedList<StackAtPosition> stacksToDisplay = new LinkedList<>();
 
     public boolean isDone = false;
 

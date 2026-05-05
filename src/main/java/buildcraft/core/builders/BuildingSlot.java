@@ -35,14 +35,14 @@ public abstract class BuildingSlot {
     public void postProcessing(IBuilderContext context) {}
 
     public LinkedList<ItemStack> getRequirements(IBuilderContext context) {
-        return new LinkedList<ItemStack>();
+        return new LinkedList<>();
     }
 
     public abstract Position getDestination();
 
     public void addStackConsumed(ItemStack stack) {
         if (stackConsumed == null) {
-            stackConsumed = new LinkedList<ItemStack>();
+            stackConsumed = new LinkedList<>();
         }
 
         stackConsumed.add(stack);

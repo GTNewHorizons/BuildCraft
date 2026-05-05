@@ -65,8 +65,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockGenericPipe extends BlockBuildCraft implements IColorRemovable {
 
-    public static Map<Item, Class<? extends Pipe<?>>> pipes = new HashMap<Item, Class<? extends Pipe<?>>>();
-    public static Map<BlockIndex, Pipe<?>> pipeRemoved = new HashMap<BlockIndex, Pipe<?>>();
+    public static Map<Item, Class<? extends Pipe<?>>> pipes = new HashMap<>();
+    public static Map<BlockIndex, Pipe<?>> pipeRemoved = new HashMap<>();
 
     private static long lastRemovedDate = -1;
 
@@ -494,7 +494,7 @@ public class BlockGenericPipe extends BlockBuildCraft implements IColorRemovable
             return null;
         }
 
-        ArrayList<ItemStack> list = new ArrayList<ItemStack>();
+        ArrayList<ItemStack> list = new ArrayList<>();
         Pipe<?> pipe = getPipe(world, x, y, z);
 
         if (pipe == null) {

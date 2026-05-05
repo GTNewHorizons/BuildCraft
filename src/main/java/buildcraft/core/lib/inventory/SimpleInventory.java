@@ -23,7 +23,7 @@ public class SimpleInventory implements IInventory, INBTStoreable {
     private final ItemStack[] contents;
     private final String name;
     private final int stackLimit;
-    private final LinkedList<TileEntity> listener = new LinkedList<TileEntity>();
+    private final LinkedList<TileEntity> listener = new LinkedList<>();
 
     public SimpleInventory(int size, String invName, int invStackLimit) {
         contents = new ItemStack[size];

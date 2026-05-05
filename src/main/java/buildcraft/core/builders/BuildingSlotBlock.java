@@ -169,9 +169,9 @@ public class BuildingSlotBlock extends BuildingSlot {
     @Override
     public LinkedList<ItemStack> getRequirements(IBuilderContext context) {
         if (mode == Mode.ClearIfInvalid) {
-            return new LinkedList<ItemStack>();
+            return new LinkedList<>();
         } else {
-            LinkedList<ItemStack> req = new LinkedList<ItemStack>();
+            LinkedList<ItemStack> req = new LinkedList<>();
 
             getSchematic().getRequirementsForPlacement(context, req);
 
@@ -235,7 +235,7 @@ public class BuildingSlotBlock extends BuildingSlot {
                     .createSchematicFromWorldNBT(nbt.getCompoundTag("schematic"), registry);
         }
 
-        stackConsumed = new LinkedList<ItemStack>();
+        stackConsumed = new LinkedList<>();
 
         NBTTagList nbtStacks = nbt.getTagList("stackConsumed", Constants.NBT.TAG_COMPOUND);
 

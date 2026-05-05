@@ -85,7 +85,7 @@ public class TileQuarry extends TileAbstractBuilder
     private boolean movingVertically;
     private float headTrajectory;
 
-    private SafeTimeTracker updateTracker = new SafeTimeTracker(BuildCraftCore.updateFactor);
+    private final SafeTimeTracker updateTracker = new SafeTimeTracker(BuildCraftCore.updateFactor);
 
     private BptBuilderBase builder;
 

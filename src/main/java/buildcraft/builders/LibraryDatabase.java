@@ -46,7 +46,7 @@ public class LibraryDatabase {
             outputDir.mkdirs();
         }
 
-        inputDirs = new ArrayList<File>();
+        inputDirs = new ArrayList<>();
 
         for (int i = 0; i < inputPaths.length; ++i) {
             File inputDir = new File(inputPaths[i]);
@@ -59,7 +59,7 @@ public class LibraryDatabase {
     }
 
     public void refresh() {
-        blueprintIds = new TreeSet<LibraryId>();
+        blueprintIds = new TreeSet<>();
         for (File f : inputDirs) {
             loadIndex(f);
         }
@@ -208,6 +208,6 @@ public class LibraryDatabase {
     }
 
     public List<LibraryId> getBlueprintIds() {
-        return Collections.unmodifiableList(new ArrayList<LibraryId>(blueprintIds));
+        return Collections.unmodifiableList(new ArrayList<>(blueprintIds));
     }
 }

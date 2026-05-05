@@ -31,7 +31,7 @@ public class PipeFluidsIron extends Pipe<PipeTransportFluids> {
 
     protected int standardIconIndex = PipeIconProvider.TYPE.PipeFluidsIron_Standard.ordinal();
     protected int solidIconIndex = PipeIconProvider.TYPE.PipeAllIron_Solid.ordinal();
-    private PipeLogicIron logic = new PipeLogicIron(this) {
+    private final PipeLogicIron logic = new PipeLogicIron(this) {
 
         @Override
         protected boolean isValidConnectingTile(TileEntity tile) {

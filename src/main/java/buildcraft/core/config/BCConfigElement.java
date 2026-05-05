@@ -13,7 +13,7 @@ import cpw.mods.fml.client.config.IConfigElement;
 public class BCConfigElement<T> extends ConfigElement<T> {
 
     private ConfigCategory cat;
-    private boolean isProp;
+    private final boolean isProp;
 
     public BCConfigElement(ConfigCategory ctgy) {
         super(ctgy);
@@ -29,7 +29,7 @@ public class BCConfigElement<T> extends ConfigElement<T> {
     @Override
     public List<IConfigElement> getChildElements() {
         if (!isProp) {
-            List<IConfigElement> elements = new ArrayList<IConfigElement>();
+            List<IConfigElement> elements = new ArrayList<>();
             Iterator<ConfigCategory> ccI = cat.getChildren().iterator();
             Iterator<Property> pI = cat.getOrderedValues().iterator();
 
@@ -39,7 +39,7 @@ public class BCConfigElement<T> extends ConfigElement<T> {
                     continue;
                 }
 
-                ConfigElement<?> temp = new BCConfigElement<Object>(child);
+                ConfigElement<?> temp = new BCConfigElement<>(child);
                 if (temp.showInGui()) {
                     elements.add(temp);
                 }

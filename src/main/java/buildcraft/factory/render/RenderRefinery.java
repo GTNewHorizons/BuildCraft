@@ -31,11 +31,11 @@ public class RenderRefinery extends TileEntitySpecialRenderer implements IInvent
     private static final float pixel = (float) (1.0 / 16.0);
     private final ModelRenderer tank;
     private final ModelRenderer[] magnet = new ModelRenderer[4];
-    private final ModelBase model = new ModelBase() {};
 
     public RenderRefinery() {
 
         // constructor:
+        ModelBase model = new ModelBase() {};
         tank = new ModelRenderer(model, 0, 0);
         tank.addBox(-4F, -8F, -4F, 8, 16, 8);
         tank.rotationPointX = 8;

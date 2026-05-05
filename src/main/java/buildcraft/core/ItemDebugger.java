@@ -32,7 +32,7 @@ public class ItemDebugger extends ItemBuildCraft {
 
         TileEntity tile = world.getTileEntity(x, y, z);
         if (tile instanceof IDebuggable) {
-            ArrayList<String> info = new ArrayList<String>();
+            ArrayList<String> info = new ArrayList<>();
             ((IDebuggable) tile).getDebugInfo(info, ForgeDirection.getOrientation(side), stack, player);
             for (String s : info) {
                 player.addChatComponentMessage(new ChatComponentText(s));

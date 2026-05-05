@@ -29,9 +29,9 @@ import io.netty.buffer.ByteBuf;
 public class RobotStationPluggable extends PipePluggable
         implements IPipePluggableItem, IEnergyReceiver, IDebuggable, IDockingStationProvider {
 
-    public class RobotStationPluggableRenderer implements IPipePluggableRenderer {
+    public static class RobotStationPluggableRenderer implements IPipePluggableRenderer {
 
-        private float zFightOffset = 1 / 4096.0F;
+        private static final float zFightOffset = 1 / 4096.0F;
 
         @Override
         public void renderPluggable(RenderBlocks renderblocks, IPipe pipe, ForgeDirection side,

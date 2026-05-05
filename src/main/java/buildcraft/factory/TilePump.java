@@ -49,11 +49,11 @@ public class TilePump extends TileBuildCraft implements IHasWork, IFluidHandler,
     public SingleUseTank tank = new SingleUseTank("tank", MAX_LIQUID, this);
 
     private EntityBlock tube;
-    private TreeMap<Integer, Deque<BlockIndex>> pumpLayerQueues = new TreeMap<Integer, Deque<BlockIndex>>();
+    private final TreeMap<Integer, Deque<BlockIndex>> pumpLayerQueues = new TreeMap<>();
     private double tubeY = Double.NaN;
     private int aimY = 0;
 
-    private SafeTimeTracker timer = new SafeTimeTracker(REBUID_DELAY);
+    private final SafeTimeTracker timer = new SafeTimeTracker(REBUID_DELAY);
     private int tick = Utils.RANDOM.nextInt(32);
     private int tickPumped = tick - 20;
     private int numFluidBlocksFound = 0;
@@ -61,7 +61,7 @@ public class TilePump extends TileBuildCraft implements IHasWork, IFluidHandler,
 
     private int ledState;
     // tick % 16 => min. 16 ticks per network update
-    private SafeTimeTracker updateTracker = new SafeTimeTracker(Math.max(16, BuildCraftCore.updateFactor));
+    private final SafeTimeTracker updateTracker = new SafeTimeTracker(Math.max(16, BuildCraftCore.updateFactor));
 
     public TilePump() {
         super();
@@ -159,7 +159,7 @@ public class TilePump extends TileBuildCraft implements IHasWork, IFluidHandler,
     }
 
     private boolean isBlocked(int x, int y, int z) {
-        Material mat = BlockUtils.getBlock(worldObj, x, y, z).getMaterial();
+        Material mat = worldObj.getBlock(x, y, z).getMaterial();
 
         return mat.blocksMovement();
     }
@@ -238,7 +238,7 @@ public class TilePump extends TileBuildCraft implements IHasWork, IFluidHandler,
         Deque<BlockIndex> pumpQueue = pumpLayerQueues.get(layer);
 
         if (pumpQueue == null) {
-            pumpQueue = new LinkedList<BlockIndex>();
+            pumpQueue = new LinkedList<>();
             pumpLayerQueues.put(layer, pumpQueue);
         }
 
@@ -251,7 +251,7 @@ public class TilePump extends TileBuildCraft implements IHasWork, IFluidHandler,
         int x = xCoord;
         int y = aimY;
         int z = zCoord;
-        Fluid pumpingFluid = BlockUtils.getFluid(BlockUtils.getBlock(worldObj, x, y, z));
+        Fluid pumpingFluid = BlockUtils.getFluid(worldObj.getBlock(x, y, z));
 
         if (pumpingFluid == null) {
             return;
@@ -261,8 +261,8 @@ public class TilePump extends TileBuildCraft implements IHasWork, IFluidHandler,
             return;
         }
 
-        Set<BlockIndex> visitedBlocks = new HashSet<BlockIndex>();
-        Deque<BlockIndex> fluidsFound = new LinkedList<BlockIndex>();
+        Set<BlockIndex> visitedBlocks = new HashSet<>();
+        Deque<BlockIndex> fluidsFound = new LinkedList<>();
 
         queueForPumping(x, y, z, visitedBlocks, fluidsFound, pumpingFluid);
 
@@ -270,7 +270,7 @@ public class TilePump extends TileBuildCraft implements IHasWork, IFluidHandler,
 
         while (!fluidsFound.isEmpty()) {
             Deque<BlockIndex> fluidsToExpand = fluidsFound;
-            fluidsFound = new LinkedList<BlockIndex>();
+            fluidsFound = new LinkedList<>();
 
             for (BlockIndex index : fluidsToExpand) {
                 queueForPumping(index.x, index.y + 1, index.z, visitedBlocks, fluidsFound, pumpingFluid);
@@ -298,7 +298,7 @@ public class TilePump extends TileBuildCraft implements IHasWork, IFluidHandler,
                 return;
             }
 
-            Block block = BlockUtils.getBlock(worldObj, x, y, z);
+            Block block = worldObj.getBlock(x, y, z);
 
             if (BlockUtils.getFluid(block) == pumpingFluid) {
                 fluidsFound.add(index);
@@ -312,7 +312,7 @@ public class TilePump extends TileBuildCraft implements IHasWork, IFluidHandler,
     }
 
     private boolean isPumpableFluid(int x, int y, int z) {
-        Fluid fluid = BlockUtils.getFluid(BlockUtils.getBlock(worldObj, x, y, z));
+        Fluid fluid = BlockUtils.getFluid(worldObj.getBlock(x, y, z));
 
         if (fluid == null) {
             return false;

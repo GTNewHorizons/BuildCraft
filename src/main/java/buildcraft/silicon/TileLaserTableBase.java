@@ -29,7 +29,7 @@ public abstract class TileLaserTableBase extends TileBuildCraft implements ILase
     protected SimpleInventory inv = new SimpleInventory(getSizeInventory(), "inv", 64);
     private int energy = 0;
     private int recentEnergyAverage;
-    private AverageInt recentEnergyAverageUtil = new AverageInt(20);
+    private final AverageInt recentEnergyAverageUtil = new AverageInt(20);
 
     @Override
     public void updateEntity() {

@@ -22,7 +22,7 @@ public class ContainerIntegrationTable extends BuildCraftContainer {
     public static final int[] SLOT_X = { 44, 44, 69, 69, 69, 44, 19, 19, 19 };
     public static final int[] SLOT_Y = { 49, 24, 24, 49, 74, 74, 74, 49, 24 };
 
-    private TileIntegrationTable table;
+    private final TileIntegrationTable table;
 
     public ContainerIntegrationTable(InventoryPlayer playerInventory, TileIntegrationTable table) {
         super(table.getSizeInventory());

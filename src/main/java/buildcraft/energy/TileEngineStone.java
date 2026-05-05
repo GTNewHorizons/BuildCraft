@@ -26,8 +26,8 @@ public class TileEngineStone extends TileEngineWithInventory {
     static final float MAX_OUTPUT = 10;
     static final float MIN_OUTPUT = MAX_OUTPUT / 3;
     static final float TARGET_OUTPUT = .375f;
-    final float kp = 1f;
-    final float ki = 0.05f;
+    static final float kp = 1f;
+    static final float ki = 0.05f;
     final double eLimit = (MAX_OUTPUT - MIN_OUTPUT) / ki;
     int burnTime = 0;
     int totalBurnTime = 0;

@@ -22,7 +22,7 @@ import io.netty.buffer.ByteBuf;
 
 public class ZonePlan implements IZone, ISerializable {
 
-    private final HashMap<ChunkIndex, ZoneChunk> chunkMapping = new HashMap<ChunkIndex, ZoneChunk>();
+    private final HashMap<ChunkIndex, ZoneChunk> chunkMapping = new HashMap<>();
 
     public boolean get(int x, int z) {
         int xChunk = x >> 4;

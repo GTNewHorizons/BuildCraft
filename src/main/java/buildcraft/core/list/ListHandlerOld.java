@@ -20,7 +20,7 @@ import cpw.mods.fml.relauncher.Side;
 
 public final class ListHandlerOld {
 
-    private static final WeakHashMap<ItemStack, StackLine[]> LINE_CACHE = new WeakHashMap<ItemStack, StackLine[]>();
+    private static final WeakHashMap<ItemStack, StackLine[]> LINE_CACHE = new WeakHashMap<>();
 
     public static class StackLine {
 
@@ -28,9 +28,9 @@ public final class ListHandlerOld {
         public boolean subitemsWildcard = false;
         public boolean isOre;
 
-        private ItemStack[] stacks = new ItemStack[7];
-        private ArrayList<ItemStack> ores = new ArrayList<ItemStack>();
-        private ArrayList<ItemStack> relatedItems = new ArrayList<ItemStack>();
+        private final ItemStack[] stacks = new ItemStack[7];
+        private final ArrayList<ItemStack> ores = new ArrayList<>();
+        private final ArrayList<ItemStack> relatedItems = new ArrayList<>();
 
         public ItemStack getStack(int index) {
             if (index == 0 || (!oreWildcard && !subitemsWildcard)) {

@@ -19,7 +19,7 @@ public final class FuelManager implements IFuelManager {
 
     public static final FuelManager INSTANCE = new FuelManager();
 
-    private final List<IFuel> fuels = new LinkedList<IFuel>();
+    private final List<IFuel> fuels = new LinkedList<>();
 
     private FuelManager() {}
 
