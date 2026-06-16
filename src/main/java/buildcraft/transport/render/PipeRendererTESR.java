@@ -29,7 +29,6 @@ import buildcraft.core.CoreConstants;
 import buildcraft.core.lib.render.RenderEntityBlock;
 import buildcraft.core.lib.render.RenderEntityBlock.RenderInfo;
 import buildcraft.core.lib.utils.MatrixTranformations;
-import buildcraft.core.proxy.CoreProxy;
 import buildcraft.transport.Pipe;
 import buildcraft.transport.PipeRenderState;
 import buildcraft.transport.TileGenericPipe;
@@ -64,9 +63,7 @@ public class PipeRendererTESR extends TileEntitySpecialRenderer {
         PipeTransportRenderer renderer = PipeTransportRenderer.RENDERER_MAP.get(pipe.pipe.transport.getClass());
         if (renderer != null) {
             renderer.render(
-                    renderer.useServerTileIfPresent()
-                            ? (Pipe) (((IPipeTile) CoreProxy.proxy.getServerTile(pipe)).getPipe())
-                            : pipe.pipe,
+                    renderer.useServerTileIfPresent() ? (Pipe) (((IPipeTile) tileentity).getPipe()) : pipe.pipe,
                     x,
                     y,
                     z,

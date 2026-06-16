@@ -13,11 +13,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.INetHandler;
 import net.minecraft.network.NetHandlerPlayServer;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldServer;
-import net.minecraft.world.chunk.Chunk;
-import net.minecraftforge.common.DimensionManager;
 
 import buildcraft.BuildCraftCore;
 import buildcraft.core.LaserKind;
@@ -133,24 +129,6 @@ public class CoreProxyClient extends CoreProxy {
         } else {
             return Minecraft.getMinecraft().thePlayer;
         }
-    }
-
-    @Override
-    public TileEntity getServerTile(TileEntity source) {
-        if (BuildCraftCore.useServerDataOnClient && Minecraft.getMinecraft().isSingleplayer()
-                && source.getWorldObj().isRemote) {
-            WorldServer w = DimensionManager.getWorld(source.getWorldObj().provider.dimensionId);
-            if (w != null && w.getChunkProvider() != null) {
-                Chunk c = w.getChunkFromBlockCoords(source.xCoord, source.zCoord);
-                if (c != null) {
-                    TileEntity t = c.getTileEntityUnsafe(source.xCoord & 15, source.yCoord, source.zCoord & 15);
-                    if (t != null && t.getClass().equals(source.getClass())) {
-                        return t;
-                    }
-                }
-            }
-        }
-        return source;
     }
 
     public EntityPlayer getClientPlayer() {
