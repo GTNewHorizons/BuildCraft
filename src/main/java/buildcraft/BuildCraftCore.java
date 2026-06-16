@@ -201,7 +201,6 @@ public class BuildCraftCore extends BuildCraftMod {
     public static boolean hideFluidNumbers = false;
     public static boolean canEnginesExplode = false;
     public static boolean experimentalContent = false;
-    public static boolean useServerDataOnClient = true;
     public static boolean alphaPassBugPresent = true;
     public static int maxPaintedBlocks = -1;
     public static int itemLifespan = 1200;
@@ -327,11 +326,6 @@ public class BuildCraftCore extends BuildCraftMod {
         mainConfigManager.getCat("debug").setShowInGui(false);
         mainConfigManager.getCat("vars").setShowInGui(false);
 
-        mainConfigManager.register(
-                "general.useServerDataOnClient",
-                BuildCraftCore.useServerDataOnClient,
-                "Allows BuildCraft to use the integrated server's data on the client on singleplayer worlds. Disable if you're getting the odd crash caused by it.",
-                ConfigManager.RestartRequirement.NONE);
         mainConfigManager.register(
                 "general.builderMaxIterationsPerItemFactor",
                 BuildCraftCore.builderMaxPerItemFactor,
@@ -786,7 +780,6 @@ public class BuildCraftCore extends BuildCraftMod {
         } else if (restartType == ConfigManager.RestartRequirement.WORLD) {
             reloadConfig(ConfigManager.RestartRequirement.NONE);
         } else {
-            useServerDataOnClient = mainConfigManager.get("general.useServerDataOnClient").getBoolean(true);
             builderMaxPerItemFactor = mainConfigManager.get("general.builderMaxIterationsPerItemFactor").getInt();
             hideFluidNumbers = mainConfigManager.get("display.hideFluidValues").getBoolean();
             hidePowerNumbers = mainConfigManager.get("display.hidePowerValues").getBoolean();

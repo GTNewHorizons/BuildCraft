@@ -16,7 +16,6 @@ import org.lwjgl.opengl.GL11;
 import buildcraft.core.lib.render.FluidRenderer;
 import buildcraft.core.lib.render.RenderUtils;
 import buildcraft.core.lib.utils.MathUtils;
-import buildcraft.core.proxy.CoreProxy;
 import buildcraft.factory.TileTank;
 
 public class RenderTank extends TileEntitySpecialRenderer {
@@ -24,7 +23,7 @@ public class RenderTank extends TileEntitySpecialRenderer {
     @Override
     public void renderTileEntityAt(TileEntity tileentity, double x, double y, double z, float f) {
 
-        TileTank tank = (TileTank) CoreProxy.proxy.getServerTile(tileentity);
+        TileTank tank = (TileTank) tileentity;
 
         FluidStack liquid = tank.tank.getFluid();
         if (liquid == null || liquid.getFluid() == null || liquid.amount <= 0) {

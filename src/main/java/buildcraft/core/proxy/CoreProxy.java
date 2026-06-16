@@ -13,7 +13,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.INetHandler;
 import net.minecraft.network.NetHandlerPlayServer;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.common.util.FakePlayerFactory;
@@ -121,10 +120,6 @@ public class CoreProxy implements ICoreProxy {
         } else {
             return null;
         }
-    }
-
-    public TileEntity getServerTile(TileEntity source) {
-        return source;
     }
 
     public EntityPlayer getClientPlayer() {
