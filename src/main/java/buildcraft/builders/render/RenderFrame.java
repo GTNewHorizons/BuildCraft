@@ -6,13 +6,18 @@ import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.common.util.ForgeDirection;
 
+import com.gtnewhorizons.angelica.api.ThreadSafeISBRH;
+
 import buildcraft.builders.BuilderProxy;
 import buildcraft.core.CoreConstants;
 import buildcraft.core.lib.render.FakeBlock;
 import buildcraft.core.lib.render.RenderUtils;
 import buildcraft.core.render.BCSimpleBlockRenderingHandler;
 
+@ThreadSafeISBRH(perThread = true)
 public class RenderFrame extends BCSimpleBlockRenderingHandler {
+
+    private final FakeBlock fakeBlock = new FakeBlock();
 
     private void renderTwoWayBlock(RenderBlocks renderblocks, FakeBlock stateHost, int x, int y, int z, float[] dim,
             int mask) {
@@ -39,13 +44,13 @@ public class RenderFrame extends BCSimpleBlockRenderingHandler {
     @Override
     public void renderInventoryBlock(Block block, int metadata, int modelId, RenderBlocks renderer) {
         renderer.setRenderBounds(0.25F, 0.0F, 0.25F, 0.75F, 1.0F, 0.75F);
-        RenderUtils.drawBlockItem(renderer, Tessellator.instance, block, metadata);
+        Tessellator tess = Tessellator.instance;
+        RenderUtils.drawBlockItem(renderer, tess, block, metadata);
     }
 
     @Override
     public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelId,
             RenderBlocks renderer) {
-        FakeBlock fakeBlock = FakeBlock.INSTANCE;
         fakeBlock.getTextureState().set(block.getIcon(0, 0));
 
         int connectivity = 0;

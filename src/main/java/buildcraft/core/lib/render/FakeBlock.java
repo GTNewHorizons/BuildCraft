@@ -30,7 +30,7 @@ public final class FakeBlock extends Block implements ITextureStates {
 
     private final TextureStateManager textureState;
 
-    private FakeBlock() {
+    public FakeBlock() {
         super(Material.glass);
         textureState = new TextureStateManager(null); // Always Clientside
     }

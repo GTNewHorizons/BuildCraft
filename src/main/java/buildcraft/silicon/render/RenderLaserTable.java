@@ -5,8 +5,11 @@ import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
+import net.minecraftforge.client.ForgeHooksClient;
 
 import org.lwjgl.opengl.GL11;
+
+import com.gtnewhorizons.angelica.api.ThreadSafeISBRH;
 
 import buildcraft.core.lib.block.BlockBuildCraft;
 import buildcraft.core.lib.render.FakeBlock;
@@ -15,7 +18,10 @@ import buildcraft.core.lib.render.SubIcon;
 import buildcraft.core.render.BCSimpleBlockRenderingHandler;
 import buildcraft.silicon.SiliconProxy;
 
+@ThreadSafeISBRH(perThread = true)
 public class RenderLaserTable extends BCSimpleBlockRenderingHandler {
+
+    private final FakeBlock fakeBlock = new FakeBlock();
 
     @Override
     public void renderInventoryBlock(Block block, int metadata, int modelId, RenderBlocks renderer) {
@@ -24,22 +30,22 @@ public class RenderLaserTable extends BCSimpleBlockRenderingHandler {
         BlockBuildCraft bcBlock = (BlockBuildCraft) block;
         switch (metadata) {
             case 0:
-                renderAssemblyTable(renderer, true, 0, 0, 0, bcBlock);
+                renderAssemblyTable(renderer, true, 0, 0, 0, bcBlock, 0);
                 break;
             case 1:
-                renderAdvancedCraftingTable(renderer, true, 0, 0, 0, bcBlock);
+                renderAdvancedCraftingTable(renderer, true, 0, 0, 0, bcBlock, 0);
                 break;
             case 2:
-                renderIntegrationTable(renderer, true, 0, 0, 0, bcBlock);
+                renderIntegrationTable(renderer, true, 0, 0, 0, bcBlock, 0);
                 break;
             case 3:
-                renderChargingTable(renderer, true, 0, 0, 0, bcBlock);
+                renderChargingTable(renderer, true, 0, 0, 0, bcBlock, 0);
                 break;
             case 4:
-                renderProgrammingTable(renderer, true, 0, 0, 0, bcBlock);
+                renderProgrammingTable(renderer, true, 0, 0, 0, bcBlock, 0);
                 break;
             case 5:
-                renderStampingTable(renderer, true, 0, 0, 0, bcBlock);
+                renderStampingTable(renderer, true, 0, 0, 0, bcBlock, 0);
                 break;
         }
         GL11.glTranslatef(0.5F, 0.5F, 0.5F);
@@ -49,24 +55,25 @@ public class RenderLaserTable extends BCSimpleBlockRenderingHandler {
     public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelId,
             RenderBlocks renderer) {
         BlockBuildCraft bcBlock = (BlockBuildCraft) block;
+        int pass = Math.max(0, ForgeHooksClient.getWorldRenderPass());
         switch (world.getBlockMetadata(x, y, z)) {
             case 0:
-                renderAssemblyTable(renderer, false, x, y, z, bcBlock);
+                renderAssemblyTable(renderer, false, x, y, z, bcBlock, pass);
                 break;
             case 1:
-                renderAdvancedCraftingTable(renderer, false, x, y, z, bcBlock);
+                renderAdvancedCraftingTable(renderer, false, x, y, z, bcBlock, pass);
                 break;
             case 2:
-                renderIntegrationTable(renderer, false, x, y, z, bcBlock);
+                renderIntegrationTable(renderer, false, x, y, z, bcBlock, pass);
                 break;
             case 3:
-                renderChargingTable(renderer, false, x, y, z, bcBlock);
+                renderChargingTable(renderer, false, x, y, z, bcBlock, pass);
                 break;
             case 4:
-                renderProgrammingTable(renderer, false, x, y, z, bcBlock);
+                renderProgrammingTable(renderer, false, x, y, z, bcBlock, pass);
                 break;
             case 5:
-                renderStampingTable(renderer, false, x, y, z, bcBlock);
+                renderStampingTable(renderer, false, x, y, z, bcBlock, pass);
                 break;
             default:
                 fixEmptyAlphaPass(x, y, z);
@@ -81,7 +88,7 @@ public class RenderLaserTable extends BCSimpleBlockRenderingHandler {
         int yI = 16 - (int) (yB * 16.0F) - h;
         int zI = (int) (zB * 16.0F);
 
-        FakeBlock block = FakeBlock.INSTANCE;
+        FakeBlock block = fakeBlock;
         block.setRenderMask(mask);
         block.setColor(0xFFFFFF);
 
@@ -103,8 +110,9 @@ public class RenderLaserTable extends BCSimpleBlockRenderingHandler {
         block.setRenderMask(0x3F);
     }
 
-    private void renderAssemblyTable(RenderBlocks renderer, boolean isInv, int x, int y, int z, BlockBuildCraft block) {
-        if (!isInv && block.getCurrentRenderPass() != 0) {
+    private void renderAssemblyTable(RenderBlocks renderer, boolean isInv, int x, int y, int z, BlockBuildCraft block,
+            int pass) {
+        if (!isInv && pass != 0) {
             fixEmptyAlphaPass(x, y, z);
             return;
         }
@@ -116,8 +124,9 @@ public class RenderLaserTable extends BCSimpleBlockRenderingHandler {
         renderCube(renderer, isInv, x, y, z, 0, 0.1875F, 0, 16, 5, 16, 16, 0, base, 0x3f); // top
     }
 
-    private void renderChargingTable(RenderBlocks renderer, boolean isInv, int x, int y, int z, BlockBuildCraft block) {
-        if (!isInv && block.getCurrentRenderPass() != 0) {
+    private void renderChargingTable(RenderBlocks renderer, boolean isInv, int x, int y, int z, BlockBuildCraft block,
+            int pass) {
+        if (!isInv && pass != 0) {
             fixEmptyAlphaPass(x, y, z);
             return;
         }
@@ -134,9 +143,9 @@ public class RenderLaserTable extends BCSimpleBlockRenderingHandler {
     }
 
     private void renderProgrammingTable(RenderBlocks renderer, boolean isInv, int x, int y, int z,
-            BlockBuildCraft block) {
+            BlockBuildCraft block, int pass) {
         IIcon base = block.getIcon(0, 4);
-        if (block.getCurrentRenderPass() != 0) {
+        if (pass != 0) {
             renderCube(renderer, isInv, x, y, z, 0.25F, 0.375F, 0.25F, 8, 2, 8, 8, 48, base, 0x02); // semitransparent
                                                                                                     // view
             if (!isInv) {
@@ -162,9 +171,9 @@ public class RenderLaserTable extends BCSimpleBlockRenderingHandler {
     }
 
     private void renderIntegrationTable(RenderBlocks renderer, boolean isInv, int x, int y, int z,
-            BlockBuildCraft block) {
+            BlockBuildCraft block, int pass) {
         IIcon base = block.getIcon(0, 2);
-        if (!isInv && block.getCurrentRenderPass() != 0) {
+        if (!isInv && pass != 0) {
             fixEmptyAlphaPass(x, y, z);
             return;
         }
@@ -187,8 +196,8 @@ public class RenderLaserTable extends BCSimpleBlockRenderingHandler {
     }
 
     private void renderAdvancedCraftingTable(RenderBlocks renderer, boolean isInv, int x, int y, int z,
-            BlockBuildCraft block) {
-        if (!isInv && block.getCurrentRenderPass() != 0) {
+            BlockBuildCraft block, int pass) {
+        if (!isInv && pass != 0) {
             fixEmptyAlphaPass(x, y, z);
             return;
         }
@@ -204,8 +213,9 @@ public class RenderLaserTable extends BCSimpleBlockRenderingHandler {
         renderCube(renderer, isInv, x, y, z, 0, 0.1875F, 0, 16, 5, 16, 16, 0, base, 0x3f); // top
     }
 
-    private void renderStampingTable(RenderBlocks renderer, boolean isInv, int x, int y, int z, BlockBuildCraft block) {
-        if (!isInv && block.getCurrentRenderPass() != 0) {
+    private void renderStampingTable(RenderBlocks renderer, boolean isInv, int x, int y, int z, BlockBuildCraft block,
+            int pass) {
+        if (!isInv && pass != 0) {
             fixEmptyAlphaPass(x, y, z);
             return;
         }

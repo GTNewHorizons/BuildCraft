@@ -3,4 +3,6 @@
 dependencies {
     runtimeOnlyNonPublishable('com.github.GTNewHorizons:NotEnoughItems:2.8.58-GTNH:dev')
     api("curse.maven:cofh-lib-220333:2388748")
+
+    compileOnly("com.github.GTNewHorizons:Angelica:2.1.54:api") { transitive = false }
 }

@@ -90,8 +90,8 @@ public class BlockFloodGate extends BlockBuildCraft {
 
     @Override
     @SideOnly(Side.CLIENT)
-    public IIcon getIcon(IBlockAccess world, int x, int y, int z, int side) {
-        if (renderPass == 1) {
+    public IIcon getIconForPass(IBlockAccess world, int x, int y, int z, int side, int pass) {
+        if (pass == 1) {
             if (side != 1) {
                 TileEntity tile = world.getTileEntity(x, y, z);
                 if (tile instanceof TileFloodGate) {
@@ -99,21 +99,16 @@ public class BlockFloodGate extends BlockBuildCraft {
                 }
             }
             return transparent;
-        } else {
-            return super.getIcon(world, x, y, z, side);
         }
+        return super.getIconForPass(world, x, y, z, side, pass);
     }
 
     @Override
     @SideOnly(Side.CLIENT)
-    public IIcon getIcon(int side, int metadata) {
-        if (renderPass == 1) {
-            if (side == 1) {
-                return null;
-            }
-            return valve;
-        } else {
-            return super.getIcon(side, metadata);
+    public IIcon getIconForPass(int side, int meta, int pass) {
+        if (pass == 1) {
+            return side == 1 ? null : valve;
         }
+        return super.getIconForPass(side, meta, pass);
     }
 }
