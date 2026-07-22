@@ -58,7 +58,6 @@ import buildcraft.core.lib.utils.MatrixTranformations;
 import buildcraft.core.lib.utils.Utils;
 import buildcraft.core.proxy.CoreProxy;
 import buildcraft.transport.gates.GatePluggable;
-import buildcraft.transport.render.PipeRendererWorld;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -120,7 +119,6 @@ public class BlockGenericPipe extends BlockBuildCraft implements IColorRemovable
 
     @Override
     public boolean canRenderInPass(int pass) {
-        PipeRendererWorld.renderPass = pass;
         return true;
     }
 

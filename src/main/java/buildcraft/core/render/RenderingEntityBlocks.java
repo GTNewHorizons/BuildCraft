@@ -12,9 +12,12 @@ import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.world.IBlockAccess;
 
+import com.gtnewhorizons.angelica.api.ThreadSafeISBRH;
+
 import buildcraft.BuildCraftCore;
 import buildcraft.core.lib.render.IInventoryRenderer;
 
+@ThreadSafeISBRH(perThread = false)
 public class RenderingEntityBlocks extends BCSimpleBlockRenderingHandler {
 
     public static HashMap<EntityRenderIndex, IInventoryRenderer> blockByEntityRenders = new HashMap<>();

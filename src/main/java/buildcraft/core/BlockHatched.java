@@ -37,33 +37,22 @@ public abstract class BlockHatched extends BlockBuildCraft {
     }
 
     @Override
-    public IIcon getIcon(IBlockAccess access, int x, int y, int z, int side) {
+    public IIcon getIconForPass(IBlockAccess access, int x, int y, int z, int side, int pass) {
         // The quarry's pipe connection method has no idea about "sides".
-        if (renderPass == 1) {
+        if (pass == 1) {
             return Utils.isPipeConnected(access, x, y, z, ForgeDirection.getOrientation(side), IPipeTile.PipeType.ITEM)
                     ? itemHatch
                     : BuildCraftCore.transparentTexture;
-        } else {
-            return super.getIcon(access, x, y, z, side);
         }
+        return super.getIconForPass(access, x, y, z, side, pass);
     }
 
     @Override
-    public IIcon getIconAbsolute(IBlockAccess access, int x, int y, int z, int side, int meta) {
-        if (renderPass == 0) {
-            return super.getIconAbsolute(access, x, y, z, side, meta);
-        } else {
-            return null;
-        }
-    }
-
-    @Override
-    public IIcon getIconAbsolute(int side, int meta) {
-        if (renderPass == 0) {
-            return super.getIconAbsolute(side, meta);
-        } else {
+    public IIcon getIconForPass(int side, int meta, int pass) {
+        if (pass == 1) {
             return side == 1 ? itemHatch : null;
         }
+        return super.getIconForPass(side, meta, pass);
     }
 
     @Override

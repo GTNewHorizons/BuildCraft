@@ -12,8 +12,11 @@ import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 
+import com.gtnewhorizons.angelica.api.ThreadSafeISBRH;
+
 import buildcraft.BuildCraftCore;
 
+@ThreadSafeISBRH(perThread = false)
 public class RenderingMarkers extends BCSimpleBlockRenderingHandler {
 
     /* PATH MARKER RENDERING */
@@ -22,7 +25,7 @@ public class RenderingMarkers extends BCSimpleBlockRenderingHandler {
     public static final double[][][] frontY = new double[6][3][4];
     public static final int[] metaToOld = new int[6];
 
-    public RenderingMarkers() {
+    static {
         initializeMarkerMatrix();
     }
 

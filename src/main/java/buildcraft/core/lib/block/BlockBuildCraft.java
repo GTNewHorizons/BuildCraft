@@ -45,7 +45,6 @@ public abstract class BlockBuildCraft extends BlockContainer {
     public IIcon[][] icons;
 
     protected final XorShift128Random rand = new XorShift128Random();
-    protected int renderPass;
 
     protected int maxPasses = 1;
 
@@ -243,22 +242,23 @@ public abstract class BlockBuildCraft extends BlockContainer {
         }
     }
 
-    public boolean canRenderInPassBC(int pass) {
-        if (pass >= maxPasses) {
-            renderPass = 0;
-            return false;
-        } else {
-            renderPass = pass;
-            return true;
-        }
-    }
-
     @Override
     public boolean canRenderInPass(int pass) {
-        if (alphaPass) {
-            renderPass = pass;
-        }
         return pass == 0 || alphaPass;
+    }
+
+    public int getPassCount() {
+        return maxPasses;
+    }
+
+    @SideOnly(Side.CLIENT)
+    public IIcon getIconForPass(IBlockAccess access, int x, int y, int z, int side, int pass) {
+        return pass == 0 ? getIcon(access, x, y, z, side) : null;
+    }
+
+    @SideOnly(Side.CLIENT)
+    public IIcon getIconForPass(int side, int meta, int pass) {
+        return pass == 0 ? getIcon(side, meta) : null;
     }
 
     @SideOnly(Side.CLIENT)
@@ -269,10 +269,6 @@ public abstract class BlockBuildCraft extends BlockContainer {
     @Override
     public int getRenderType() {
         return (maxPasses > 1 || isRotatable()) ? BuildCraftCore.complexBlockModel : 0;
-    }
-
-    public int getCurrentRenderPass() {
-        return renderPass;
     }
 
     public int getFrontSide(int meta) {

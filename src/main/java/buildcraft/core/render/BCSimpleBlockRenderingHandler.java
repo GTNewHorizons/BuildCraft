@@ -9,10 +9,11 @@ public abstract class BCSimpleBlockRenderingHandler implements ISimpleBlockRende
 
     protected void fixEmptyAlphaPass(int x, int y, int z) {
         if (BuildCraftCore.alphaPassBugPresent) {
-            Tessellator.instance.addVertexWithUV(x, y, z, 0, 0);
-            Tessellator.instance.addVertexWithUV(x, y, z, 0, 0);
-            Tessellator.instance.addVertexWithUV(x, y, z, 0, 0);
-            Tessellator.instance.addVertexWithUV(x, y, z, 0, 0);
+            Tessellator tess = Tessellator.instance;
+            tess.addVertexWithUV(x, y, z, 0, 0);
+            tess.addVertexWithUV(x, y, z, 0, 0);
+            tess.addVertexWithUV(x, y, z, 0, 0);
+            tess.addVertexWithUV(x, y, z, 0, 0);
         }
     }
 }

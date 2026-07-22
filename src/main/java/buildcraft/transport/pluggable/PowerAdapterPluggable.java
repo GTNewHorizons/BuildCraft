@@ -13,7 +13,7 @@ import buildcraft.api.transport.IPipe;
 import buildcraft.api.transport.IPipeTile;
 import buildcraft.api.transport.pluggable.IPipePluggableRenderer;
 import buildcraft.api.transport.pluggable.PipePluggable;
-import buildcraft.core.lib.render.FakeBlock;
+import buildcraft.core.lib.render.TextureStateManager;
 import buildcraft.core.lib.utils.MatrixTranformations;
 import buildcraft.transport.PipeIconProvider;
 import cofh.api.energy.IEnergyHandler;
@@ -37,7 +37,7 @@ public class PowerAdapterPluggable extends PipePluggable implements IEnergyHandl
 
             float[][] zeroState = new float[3][2];
 
-            IIcon[] icons = FakeBlock.INSTANCE.getTextureState().popArray();
+            IIcon[] icons = ((TextureStateManager) blockStateMachine.getTextureState()).popArray();
             int bottom = side.ordinal();
 
             for (int i = 0; i < 6; i++) {
@@ -93,7 +93,7 @@ public class PowerAdapterPluggable extends PipePluggable implements IEnergyHandl
                     rotated[2][1]);
             renderblocks.renderStandardBlock(blockStateMachine.getBlock(), x, y, z);
 
-            FakeBlock.INSTANCE.getTextureState().pushArray();
+            ((TextureStateManager) blockStateMachine.getTextureState()).pushArray();
         }
     }
 

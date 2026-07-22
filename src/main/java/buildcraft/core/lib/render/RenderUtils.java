@@ -13,6 +13,8 @@ import net.minecraft.util.IIcon;
 
 import org.lwjgl.opengl.GL11;
 
+import buildcraft.core.lib.block.BlockBuildCraft;
+
 public final class RenderUtils {
 
     /**
@@ -75,6 +77,42 @@ public final class RenderUtils {
             render.renderFaceXNeg(block, 0.0D, 0.0D, 0.0D, icon);
         }
         icon = tryGetBlockIcon(block, 5, decodedMeta);
+        if (icon != null) {
+            tessellator.setNormal(1F, 0.0F, 0.0F);
+            render.renderFaceXPos(block, 0.0D, 0.0D, 0.0D, icon);
+        }
+        tessellator.draw();
+    }
+
+    public static void drawBlockItem(RenderBlocks render, Tessellator tessellator, BlockBuildCraft block,
+            int decodedMeta, int pass) {
+        tessellator.startDrawingQuads();
+        IIcon icon = block.getIconForPass(0, decodedMeta, pass);
+        if (icon != null) {
+            tessellator.setNormal(0.0F, -1F, 0.0F);
+            render.renderFaceYNeg(block, 0.0D, 0.0D, 0.0D, icon);
+        }
+        icon = block.getIconForPass(1, decodedMeta, pass);
+        if (icon != null) {
+            tessellator.setNormal(0.0F, 1F, 0.0F);
+            render.renderFaceYPos(block, 0.0D, 0.0D, 0.0D, icon);
+        }
+        icon = block.getIconForPass(2, decodedMeta, pass);
+        if (icon != null) {
+            tessellator.setNormal(0.0F, 0.0F, -1F);
+            render.renderFaceZNeg(block, 0.0D, 0.0D, 0.0D, icon);
+        }
+        icon = block.getIconForPass(3, decodedMeta, pass);
+        if (icon != null) {
+            tessellator.setNormal(0.0F, 0.0F, 1F);
+            render.renderFaceZPos(block, 0.0D, 0.0D, 0.0D, icon);
+        }
+        icon = block.getIconForPass(4, decodedMeta, pass);
+        if (icon != null) {
+            tessellator.setNormal(-1F, 0.0F, 0.0F);
+            render.renderFaceXNeg(block, 0.0D, 0.0D, 0.0D, icon);
+        }
+        icon = block.getIconForPass(5, decodedMeta, pass);
         if (icon != null) {
             tessellator.setNormal(1F, 0.0F, 0.0F);
             render.renderFaceXPos(block, 0.0D, 0.0D, 0.0D, icon);

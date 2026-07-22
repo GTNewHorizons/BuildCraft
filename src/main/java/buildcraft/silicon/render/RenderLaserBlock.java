@@ -14,10 +14,13 @@ import net.minecraftforge.common.util.ForgeDirection;
 
 import org.lwjgl.opengl.GL11;
 
+import com.gtnewhorizons.angelica.api.ThreadSafeISBRH;
+
 import buildcraft.core.lib.render.RenderUtils;
 import buildcraft.core.render.BCSimpleBlockRenderingHandler;
 import buildcraft.silicon.SiliconProxy;
 
+@ThreadSafeISBRH(perThread = false)
 public class RenderLaserBlock extends BCSimpleBlockRenderingHandler {
 
     @Override
@@ -110,11 +113,12 @@ public class RenderLaserBlock extends BCSimpleBlockRenderingHandler {
     public void renderInventoryBlock(Block block, int i, int j, RenderBlocks renderblocks) {
         GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
 
+        Tessellator tess = Tessellator.instance;
         renderblocks.setRenderBounds(0.0F, 0.0F, 0.0F, 1, 4F / 16F, 1);
-        RenderUtils.drawBlockItem(renderblocks, Tessellator.instance, block, 1);
+        RenderUtils.drawBlockItem(renderblocks, tess, block, 1);
 
         renderblocks.setRenderBounds(5F / 16F, 4F / 16F, 5F / 16F, 11F / 16F, 13F / 16F, 11F / 16F);
-        RenderUtils.drawBlockItem(renderblocks, Tessellator.instance, block, 1);
+        RenderUtils.drawBlockItem(renderblocks, tess, block, 1);
 
         GL11.glTranslatef(0.5F, 0.5F, 0.5F);
     }

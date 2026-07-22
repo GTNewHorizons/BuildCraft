@@ -3,27 +3,33 @@ package buildcraft.core.lib.render;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
+import net.minecraftforge.client.ForgeHooksClient;
+import net.minecraftforge.common.util.ForgeDirection;
 
 import org.lwjgl.opengl.GL11;
+
+import com.gtnewhorizons.angelica.api.ThreadSafeISBRH;
 
 import buildcraft.BuildCraftCore;
 import buildcraft.core.lib.block.BlockBuildCraft;
 import buildcraft.core.render.BCSimpleBlockRenderingHandler;
 
+@ThreadSafeISBRH(perThread = true)
 public class RenderBlockComplex extends BCSimpleBlockRenderingHandler {
 
     private static final int[] Y_ROTATE = { 3, 0, 1, 2 };
+
+    private final FakeBlock fakeBlock = new FakeBlock();
 
     @Override
     public void renderInventoryBlock(Block block, int meta, int modelId, RenderBlocks renderer) {
         GL11.glRotatef(90.0F, 0.0F, 1.0F, 0.0F);
         GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
         BlockBuildCraft bcBlock = (BlockBuildCraft) block;
-        int pass = 0;
-        while (bcBlock.canRenderInPassBC(pass)) {
+        for (int pass = 0; pass < bcBlock.getPassCount(); pass++) {
             renderPassInventory(pass, bcBlock, meta, renderer);
-            pass++;
         }
         GL11.glTranslatef(0.5F, 0.5F, 0.5F);
     }
@@ -34,7 +40,8 @@ public class RenderBlockComplex extends BCSimpleBlockRenderingHandler {
             renderer.uvRotateBottom = Y_ROTATE[block.getFrontSide(meta) - 2];
         }
 
-        RenderUtils.drawBlockItem(renderer, Tessellator.instance, block, meta);
+        Tessellator tess = Tessellator.instance;
+        RenderUtils.drawBlockItem(renderer, tess, block, meta, pass);
 
         renderer.uvRotateTop = 0;
         renderer.uvRotateBottom = 0;
@@ -56,10 +63,37 @@ public class RenderBlockComplex extends BCSimpleBlockRenderingHandler {
                 block.getBlockBoundsMaxY() + pDouble,
                 block.getBlockBoundsMaxZ() + pDouble);
 
-        renderer.renderStandardBlock(block, x, y, z);
+        if (pass == 0) {
+            renderer.renderStandardBlock(block, x, y, z);
+        } else {
+            renderOverlayPass(pass, block, renderer, world, x, y, z);
+        }
 
         renderer.uvRotateTop = 0;
         renderer.uvRotateBottom = 0;
+    }
+
+    private void renderOverlayPass(int pass, BlockBuildCraft block, RenderBlocks renderer, IBlockAccess world, int x,
+            int y, int z) {
+        IIcon[] icons = fakeBlock.getTextureState().popArray();
+        int mask = 0;
+        for (int side = 0; side < 6; side++) {
+            IIcon icon = block.getIconForPass(world, x, y, z, side, pass);
+            icons[side] = icon;
+            ForgeDirection dir = ForgeDirection.getOrientation(side);
+            if (icon != null
+                    && block.shouldSideBeRendered(world, x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ, side)) {
+                mask |= 1 << side;
+            }
+        }
+
+        if (mask != 0) {
+            fakeBlock.setRenderMask(mask);
+            renderer.renderStandardBlock(fakeBlock, x, y, z);
+        }
+
+        fakeBlock.getTextureState().pushArray();
+        fakeBlock.setRenderAllSides();
     }
 
     @Override
@@ -68,10 +102,9 @@ public class RenderBlockComplex extends BCSimpleBlockRenderingHandler {
         BlockBuildCraft bcBlock = (BlockBuildCraft) block;
         int meta = world.getBlockMetadata(x, y, z);
 
-        int pass = bcBlock.getCurrentRenderPass();
-        while (bcBlock.canRenderInPassBC(pass)) {
+        int startPass = Math.max(0, ForgeHooksClient.getWorldRenderPass());
+        for (int pass = startPass; pass < bcBlock.getPassCount(); pass++) {
             renderPassWorld(pass, bcBlock, meta, renderer, world, x, y, z);
-            pass++;
         }
         return true;
     }
