@@ -104,6 +104,7 @@ public class BlockGenericPipe extends BlockBuildCraft implements IColorRemovable
     public BlockGenericPipe() {
         super(Material.glass);
         setCreativeTab(null);
+        setAlphaPass(true);
     }
 
     @Override
@@ -115,16 +116,6 @@ public class BlockGenericPipe extends BlockBuildCraft implements IColorRemovable
     @Override
     public int getRenderType() {
         return TransportProxy.pipeModel;
-    }
-
-    @Override
-    public boolean canRenderInPass(int pass) {
-        return true;
-    }
-
-    @Override
-    public int getRenderBlockPass() {
-        return 1;
     }
 
     @Override
