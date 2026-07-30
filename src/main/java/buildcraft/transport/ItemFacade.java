@@ -7,7 +7,9 @@
 package buildcraft.transport;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -144,6 +146,8 @@ public class ItemFacade extends ItemBuildCraft implements IFacadeItem, IPipePlug
     public static final ArrayList<String> allFacadeIDs = new ArrayList<>();
     public static final ArrayList<String> blacklistedFacades = new ArrayList<>();
 
+    private static final Set<String> facadeIDLookup = new HashSet<>();
+
     private static final Block NULL_BLOCK = null;
     private static final ItemStack NO_MATCH = new ItemStack(NULL_BLOCK, 0, 0);
 
@@ -257,6 +261,8 @@ public class ItemFacade extends ItemBuildCraft implements IFacadeItem, IPipePlug
     }
 
     public void initialize() {
+        facadeIDLookup.addAll(allFacadeIDs);
+
         for (Object o : Block.blockRegistry) {
             Block b = (Block) o;
 
@@ -477,7 +483,7 @@ public class ItemFacade extends ItemBuildCraft implements IFacadeItem, IPipePlug
 
         ItemStack facade = getFacadeForBlock(block, itemStack.getItemDamage());
 
-        if (!allFacadeIDs.contains(recipeId)) {
+        if (facadeIDLookup.add(recipeId)) {
             allFacadeIDs.add(recipeId);
             allFacades.add(facade);
 
