@@ -7,7 +7,6 @@
 package buildcraft.transport;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -48,6 +47,7 @@ import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import gnu.trove.set.hash.THashSet;
 
 public class ItemFacade extends ItemBuildCraft implements IFacadeItem, IPipePluggableItem {
 
@@ -146,7 +146,7 @@ public class ItemFacade extends ItemBuildCraft implements IFacadeItem, IPipePlug
     public static final ArrayList<String> allFacadeIDs = new ArrayList<>();
     public static final ArrayList<String> blacklistedFacades = new ArrayList<>();
 
-    private static final Set<String> facadeIDLookup = new HashSet<>();
+    private static final Set<String> facadeIDLookup = new THashSet<>(16, 0.75f);
 
     private static final Block NULL_BLOCK = null;
     private static final ItemStack NO_MATCH = new ItemStack(NULL_BLOCK, 0, 0);
