@@ -7,18 +7,17 @@
 package buildcraft.core.recipes;
 
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 
 import net.minecraft.item.ItemStack;
 
 import buildcraft.api.recipes.IAssemblyRecipeManager;
 import buildcraft.api.recipes.IFlexibleRecipe;
+import gnu.trove.map.hash.THashMap;
 
 public class AssemblyRecipeManager implements IAssemblyRecipeManager {
 
     public static final AssemblyRecipeManager INSTANCE = new AssemblyRecipeManager();
-    private final Map<String, IFlexibleRecipe<ItemStack>> assemblyRecipes = new HashMap<>();
+    private final THashMap<String, IFlexibleRecipe<ItemStack>> assemblyRecipes = new THashMap<>(16, 0.75f);
 
     @Override
     public void addRecipe(String id, int energyCost, ItemStack output, Object... input) {
