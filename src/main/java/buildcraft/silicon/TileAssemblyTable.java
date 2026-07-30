@@ -43,6 +43,11 @@ public class TileAssemblyTable extends TileLaserTableBase implements IInventory,
     private boolean queuedNetworkUpdate = false;
 
     public List<CraftingResult<ItemStack>> getPotentialOutputs() {
+        return getPotentialOutputs(Integer.MAX_VALUE);
+    }
+
+    /** @param limit stop once this many matches were found; callers only ever display a handful. */
+    public List<CraftingResult<ItemStack>> getPotentialOutputs(int limit) {
         List<CraftingResult<ItemStack>> result = new LinkedList<>();
 
         for (IFlexibleRecipe<ItemStack> recipe : AssemblyRecipeManager.INSTANCE.getRecipes()) {
@@ -50,6 +55,10 @@ public class TileAssemblyTable extends TileLaserTableBase implements IInventory,
 
             if (r != null) {
                 result.add(r);
+
+                if (result.size() >= limit) {
+                    break;
+                }
             }
         }
 

@@ -87,6 +87,8 @@ public class GuiAssemblyTable extends GuiAdvancedInterface {
     }
 
     private final TileAssemblyTable table;
+    private final ItemStack[] lastInput;
+    private List<CraftingResult<ItemStack>> potentialRecipes;
 
     class RecipeSlot extends AdvancedSlot {
 
@@ -111,6 +113,7 @@ public class GuiAssemblyTable extends GuiAdvancedInterface {
         super(new ContainerAssemblyTable(playerInventory, assemblyTable), assemblyTable, TEXTURE);
 
         this.table = assemblyTable;
+        this.lastInput = new ItemStack[assemblyTable.getSizeInventory()];
         xSize = 176;
         ySize = 205;
 
@@ -123,9 +126,31 @@ public class GuiAssemblyTable extends GuiAdvancedInterface {
         updateRecipes();
     }
 
+    /**
+     * The recipe scan walks every registered assembly recipe (over 100k once facades are registered), so only redo it
+     * when the table's contents actually changed.
+     */
+    private boolean inputChanged() {
+        boolean changed = potentialRecipes == null;
+
+        for (int i = 0; i < lastInput.length; i++) {
+            ItemStack stack = table.getStackInSlot(i);
+
+            if (!ItemStack.areItemStacksEqual(lastInput[i], stack)) {
+                lastInput[i] = stack == null ? null : stack.copy();
+                changed = true;
+            }
+        }
+
+        return changed;
+    }
+
     public void updateRecipes() {
+        if (inputChanged()) {
+            potentialRecipes = table.getPotentialOutputs(slots.size());
+        }
+
         Set<String> addedRecipes = new HashSet<>();
-        List<CraftingResult<ItemStack>> potentialRecipes = table.getPotentialOutputs();
         Iterator<CraftingResult<ItemStack>> cur = potentialRecipes.iterator();
         Collection<String> plannedIcons = table.plannedOutputIcons.keySet();
         Iterator<String> cur2 = plannedIcons.iterator();
