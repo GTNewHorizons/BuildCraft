@@ -481,16 +481,13 @@ public class ItemFacade extends ItemBuildCraft implements IFacadeItem, IPipePlug
             allFacadeIDs.add(recipeId);
             allFacades.add(facade);
 
-            ItemStack facade6 = facade.copy();
-            facade6.stackSize = 6;
-
-            FacadeState state = getFacadeStates(facade6)[0];
+            FacadeState state = getFacadeStates(facade)[0];
             ItemStack facadeHollow = getFacade(new FacadeState(state.block, state.metadata, state.wire, true));
 
             allHollowFacades.add(facadeHollow);
 
-            ItemStack facade6Hollow = facadeHollow.copy();
-            facade6Hollow.stackSize = 6;
+            ItemStack facade6 = stackWithSize(facade, 6);
+            ItemStack facade6Hollow = stackWithSize(facadeHollow, 6);
 
             // 3 Structurepipes + this block makes 6 facades
             if (Loader.isModLoaded("BuildCraft|Silicon") && !BuildCraftTransport.facadeForceNonLaserRecipe) {
@@ -498,8 +495,7 @@ public class ItemFacade extends ItemBuildCraft implements IFacadeItem, IPipePlug
                     structurePipe3 = new ItemStack(BuildCraftTransport.pipeStructureCobblestone, 3);
                 }
 
-                BuildcraftRecipeRegistry.assemblyTable
-                        .addRecipe(recipeId, 8000, facade6, structurePipe3, itemStack);
+                BuildcraftRecipeRegistry.assemblyTable.addRecipe(recipeId, 8000, facade6, structurePipe3, itemStack);
 
                 BuildcraftRecipeRegistry.assemblyTable
                         .addRecipe(recipeId + ":hollow", 8000, facade6Hollow, structurePipe3, itemStack);
@@ -527,6 +523,13 @@ public class ItemFacade extends ItemBuildCraft implements IFacadeItem, IPipePlug
                         BuildCraftTransport.pipeStructureCobblestone);
             }
         }
+    }
+
+    private static ItemStack stackWithSize(ItemStack stack, int size) {
+        ItemStack result = new ItemStack(stack.getItem(), size, stack.getItemDamage());
+        // Facade recipe outputs are read-only; crafting copies them before use.
+        result.setTagCompound(stack.getTagCompound());
+        return result;
     }
 
     public static void blacklistFacade(String blockName) {
