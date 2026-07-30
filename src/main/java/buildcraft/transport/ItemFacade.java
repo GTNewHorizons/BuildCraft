@@ -8,6 +8,7 @@ package buildcraft.transport;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -46,6 +47,7 @@ import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import gnu.trove.set.hash.THashSet;
 
 public class ItemFacade extends ItemBuildCraft implements IFacadeItem, IPipePluggableItem {
 
@@ -144,11 +146,16 @@ public class ItemFacade extends ItemBuildCraft implements IFacadeItem, IPipePlug
     public static final ArrayList<String> allFacadeIDs = new ArrayList<>();
     public static final ArrayList<String> blacklistedFacades = new ArrayList<>();
 
+    private static final Set<String> facadeIDLookup = new THashSet<>(16, 0.75f);
+
     private static final Block NULL_BLOCK = null;
     private static final ItemStack NO_MATCH = new ItemStack(NULL_BLOCK, 0, 0);
 
     private static final Block[] PREVIEW_FACADES = new Block[] { Blocks.planks, Blocks.stonebrick, Blocks.glass };
     private static int RANDOM_FACADE_ID = -1;
+
+    /** Shared read-only recipe input; one per facade recipe would be tens of thousands of identical stacks. */
+    private static ItemStack structurePipe3;
 
     public ItemFacade() {
         super(BCCreativeTab.isPresent("facades") ? BCCreativeTab.get("facades") : BCCreativeTab.get("main"));
@@ -254,6 +261,8 @@ public class ItemFacade extends ItemBuildCraft implements IFacadeItem, IPipePlug
     }
 
     public void initialize() {
+        facadeIDLookup.addAll(allFacadeIDs);
+
         for (Object o : Block.blockRegistry) {
             Block b = (Block) o;
 
@@ -474,36 +483,28 @@ public class ItemFacade extends ItemBuildCraft implements IFacadeItem, IPipePlug
 
         ItemStack facade = getFacadeForBlock(block, itemStack.getItemDamage());
 
-        if (!allFacadeIDs.contains(recipeId)) {
+        if (facadeIDLookup.add(recipeId)) {
             allFacadeIDs.add(recipeId);
             allFacades.add(facade);
 
-            ItemStack facade6 = facade.copy();
-            facade6.stackSize = 6;
-
-            FacadeState state = getFacadeStates(facade6)[0];
+            FacadeState state = getFacadeStates(facade)[0];
             ItemStack facadeHollow = getFacade(new FacadeState(state.block, state.metadata, state.wire, true));
 
             allHollowFacades.add(facadeHollow);
 
-            ItemStack facade6Hollow = facadeHollow.copy();
-            facade6Hollow.stackSize = 6;
+            ItemStack facade6 = stackWithSize(facade, 6);
+            ItemStack facade6Hollow = stackWithSize(facadeHollow, 6);
 
             // 3 Structurepipes + this block makes 6 facades
             if (Loader.isModLoaded("BuildCraft|Silicon") && !BuildCraftTransport.facadeForceNonLaserRecipe) {
-                BuildcraftRecipeRegistry.assemblyTable.addRecipe(
-                        recipeId,
-                        8000,
-                        facade6,
-                        new ItemStack(BuildCraftTransport.pipeStructureCobblestone, 3),
-                        itemStack);
+                if (structurePipe3 == null) {
+                    structurePipe3 = new ItemStack(BuildCraftTransport.pipeStructureCobblestone, 3);
+                }
 
-                BuildcraftRecipeRegistry.assemblyTable.addRecipe(
-                        recipeId + ":hollow",
-                        8000,
-                        facade6Hollow,
-                        new ItemStack(BuildCraftTransport.pipeStructureCobblestone, 3),
-                        itemStack);
+                BuildcraftRecipeRegistry.assemblyTable.addRecipe(recipeId, 8000, facade6, structurePipe3, itemStack);
+
+                BuildcraftRecipeRegistry.assemblyTable
+                        .addRecipe(recipeId + ":hollow", 8000, facade6Hollow, structurePipe3, itemStack);
 
                 BuildcraftRecipeRegistry.assemblyTable.addRecipe(recipeId + ":toHollow", 160, facadeHollow, facade);
                 BuildcraftRecipeRegistry.assemblyTable.addRecipe(recipeId + ":fromHollow", 160, facade, facadeHollow);
@@ -528,6 +529,13 @@ public class ItemFacade extends ItemBuildCraft implements IFacadeItem, IPipePlug
                         BuildCraftTransport.pipeStructureCobblestone);
             }
         }
+    }
+
+    private static ItemStack stackWithSize(ItemStack stack, int size) {
+        ItemStack result = new ItemStack(stack.getItem(), size, stack.getItemDamage());
+        // Facade recipe outputs are read-only; crafting copies them before use.
+        result.setTagCompound(stack.getTagCompound());
+        return result;
     }
 
     public static void blacklistFacade(String blockName) {

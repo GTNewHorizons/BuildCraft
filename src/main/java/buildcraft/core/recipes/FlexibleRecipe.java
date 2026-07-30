@@ -161,6 +161,12 @@ public class FlexibleRecipe<T> implements IFlexibleRecipe<T>, IFlexibleRecipeVie
                         "An unknown object passed to recipe " + iid + " as input! (" + i.getClass() + ")");
             }
         }
+
+        // Recipes are immutable once registered and there can be thousands of them, so don't keep the
+        // ArrayList default spare capacity around.
+        inputItems.trimToSize();
+        inputItemsWithAlternatives.trimToSize();
+        inputFluids.trimToSize();
     }
 
     @Override
