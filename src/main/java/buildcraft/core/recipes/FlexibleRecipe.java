@@ -162,7 +162,7 @@ public class FlexibleRecipe<T> implements IFlexibleRecipe<T>, IFlexibleRecipeVie
             }
         }
 
-        // Recipes are immutable once registered and there can be > 100k of them, so don't keep the
+        // Recipes are immutable once registered and there can be thousands of them, so don't keep the
         // ArrayList default spare capacity around.
         inputItems.trimToSize();
         inputItemsWithAlternatives.trimToSize();

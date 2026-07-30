@@ -127,7 +127,7 @@ public class GuiAssemblyTable extends GuiAdvancedInterface {
     }
 
     /**
-     * The recipe scan walks every registered assembly recipe (over 100k once facades are registered), so only redo it
+     * The recipe scan walks every registered assembly recipe (thousands once facades are registered), so only redo it
      * when the table's contents actually changed.
      */
     private boolean inputChanged() {
