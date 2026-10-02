@@ -478,7 +478,7 @@ public class TileGenericPipe extends TileEntity
     /**
      * PRECONDITION: worldObj must not be null
      */
-    protected void refreshRenderState() {
+    public void refreshRenderState() {
         renderState.setGlassColor((byte) glassColor);
 
         // Pipe connections;
@@ -818,13 +818,13 @@ public class TileGenericPipe extends TileEntity
         return pluggable.isBlocking(this, side);
     }
 
-    protected void computeConnections() {
+    public void computeConnections() {
         for (ForgeDirection side : ForgeDirection.VALID_DIRECTIONS) {
             computeConnection(side);
         }
     }
 
-    protected void computeConnection(ForgeDirection side) {
+    public void computeConnection(ForgeDirection side) {
         TileBuffer[] cache = getTileCache();
         if (cache == null) {
             return;
