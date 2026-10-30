@@ -5,7 +5,5 @@ dependencies {
     api("curse.maven:cofh-lib-220333:2388748")
 
     compileOnly("com.github.GTNewHorizons:Angelica:2.1.54:api") { transitive = false }
-
-    compileOnly("com.github.GTNewHorizons:Jabba:99.99.99:dev") { transitive = false }
-    runtimeOnly("com.github.GTNewHorizons:Jabba:99.99.99:dev") { transitive = false }
+    compileOnly("com.github.GTNewHorizons:Jabba:1.5.24:api") { transitive = false }
 }
