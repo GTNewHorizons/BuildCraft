@@ -6,6 +6,6 @@ dependencies {
 
     compileOnly("com.github.GTNewHorizons:Angelica:2.1.54:api") { transitive = false }
 
-    compileOnly(files("libs/JABBA-1.5.23-master.3+99de4fd72c-dev.jar"))
-    runtimeOnly(files("libs/JABBA-1.5.23-master.3+99de4fd72c-dev.jar"))
+    compileOnly("com.github.GTNewHorizons:Jabba:99.99.99:dev") { transitive = false }
+    runtimeOnly("com.github.GTNewHorizons:Jabba:99.99.99:dev") { transitive = false }
 }
