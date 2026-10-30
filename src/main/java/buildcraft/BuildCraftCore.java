@@ -48,6 +48,7 @@ import buildcraft.api.statements.StatementManager;
 import buildcraft.api.statements.StatementParameterItemStack;
 import buildcraft.api.tablet.TabletAPI;
 import buildcraft.api.tiles.IControllable;
+import buildcraft.compatibility.DollyPlacementHandler;
 import buildcraft.core.AchievementManager;
 import buildcraft.core.BCCreativeTab;
 import buildcraft.core.BCRegistry;
@@ -156,6 +157,7 @@ import buildcraft.core.tablet.PacketTabletMessage;
 import buildcraft.core.tablet.TabletProgramMenuFactory;
 import buildcraft.core.tablet.manager.TabletManagerClient;
 import buildcraft.core.tablet.manager.TabletManagerServer;
+import buildcraft.factory.BlockTankPlacementHandler;
 import cpw.mods.fml.client.event.ConfigChangedEvent;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Loader;
@@ -692,6 +694,12 @@ public class BuildCraftCore extends BuildCraftMod {
         }
 
         ListRegistry.registerHandler(new ListMatchHandlerOreDictionary());
+
+        if (Loader.isModLoaded("JABBA")) {
+            MinecraftForge.EVENT_BUS.register(new DollyPlacementHandler());
+        }
+
+        MinecraftForge.EVENT_BUS.register(new BlockTankPlacementHandler());
     }
 
     @Mod.EventHandler
