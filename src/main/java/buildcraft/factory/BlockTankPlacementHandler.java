@@ -12,6 +12,8 @@ public class BlockTankPlacementHandler {
 
     @SubscribeEvent
     public void onTankPlace(BlockEvent.PlaceEvent event) {
+        if (!(event.block instanceof BlockTank)) return;
+
         TileEntity aboveTarget = event.world.getTileEntity(event.x, event.y + 1, event.z);
         TileEntity bellowTarget = event.world.getTileEntity(event.x, event.y - 1, event.z);
 
