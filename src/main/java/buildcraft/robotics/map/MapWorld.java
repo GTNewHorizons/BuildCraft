@@ -23,13 +23,13 @@ public class MapWorld {
     private final LongHashMap regionMap;
     private final HashMap<Chunk, Integer> timeToUpdate = new HashMap<>();
     private final TLongLongHashMap regionUpdateTime;
-    private final TLongHashSet updatedChunks;
+    private final TLongHashSet updatedRegions;
     private final File location;
 
     public MapWorld(World world, File location) {
         regionMap = new LongHashMap();
         regionUpdateTime = new TLongLongHashMap();
-        updatedChunks = new TLongHashSet();
+        updatedRegions = new TLongHashSet();
 
         String saveFolder = world.provider.getSaveFolder();
         if (saveFolder == null) {
@@ -83,13 +83,13 @@ public class MapWorld {
     }
 
     public void save() {
-        long[] chunkList;
-        synchronized (updatedChunks) {
-            chunkList = updatedChunks.toArray();
-            updatedChunks.clear();
+        long[] regionList;
+        synchronized (updatedRegions) {
+            regionList = updatedRegions.toArray();
+            updatedRegions.clear();
         }
 
-        for (long id : chunkList) {
+        for (long id : regionList) {
             MapRegion region = (MapRegion) regionMap.getValueByKey(id);
             if (region == null) {
                 continue;
@@ -98,12 +98,10 @@ public class MapWorld {
             NBTTagCompound output = new NBTTagCompound();
             region.writeToNBT(output);
             byte[] data = NBTUtils.save(output);
-            File file = new File(location, "r" + MapUtils.getXFromID(id) + "," + MapUtils.getZFromID(id) + ".nbt");
+            File file = new File(location, "r" + region.getX() + "," + region.getZ() + ".nbt");
 
-            try {
-                FileOutputStream f = new FileOutputStream(file);
+            try (FileOutputStream f = new FileOutputStream(file)) {
                 f.write(data);
-                f.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -140,8 +138,8 @@ public class MapWorld {
         long id = MapUtils.getIDFromCoords(rchunk.xPosition, rchunk.zPosition);
         MapChunk chunk = getChunk(rchunk.xPosition, rchunk.zPosition);
         chunk.update(rchunk);
-        synchronized (updatedChunks) {
-            updatedChunks.add(id);
+        synchronized (updatedRegions) {
+            updatedRegions.add(MapUtils.getIDFromCoords(rchunk.xPosition >> 4, rchunk.zPosition >> 4));
         }
         synchronized (timeToUpdate) {
             timeToUpdate.remove(rchunk);
