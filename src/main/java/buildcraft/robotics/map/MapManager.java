@@ -20,20 +20,17 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent;
 import cpw.mods.fml.relauncher.Side;
 
-public class MapManager implements Runnable {
+public class MapManager {
 
     private static final int UPDATE_DELAY = 60000;
     private final HashBiMap<World, MapWorld> worldMap = HashBiMap.create();
     private final File location;
-    private boolean stop = false;
-    private long lastSaveTime;
 
     public MapManager(File location) {
         this.location = location;
     }
 
     public void stop() {
-        stop = true;
         saveAllWorlds();
         synchronized (worldMap) {
             worldMap.clear();
@@ -81,6 +78,15 @@ public class MapManager implements Runnable {
             if (w != null) {
                 w.tick();
             }
+        }
+    }
+
+    // Saved with the world rather than on a timer, so the files only change when the rest of the save does.
+    @SubscribeEvent
+    public void worldSaved(WorldEvent.Save event) {
+        MapWorld w = worldMap.get(event.world);
+        if (w != null) {
+            w.save();
         }
     }
 
@@ -132,26 +138,6 @@ public class MapManager implements Runnable {
         synchronized (worldMap) {
             for (MapWorld world : worldMap.values()) {
                 world.save();
-            }
-        }
-    }
-
-    @Override
-    public void run() {
-        lastSaveTime = (new Date()).getTime();
-
-        while (!stop) {
-            long now = (new Date()).getTime();
-
-            if (now - lastSaveTime > 120000) {
-                saveAllWorlds();
-                lastSaveTime = now;
-            }
-
-            try {
-                Thread.sleep(4000);
-            } catch (Exception e) {
-
             }
         }
     }
