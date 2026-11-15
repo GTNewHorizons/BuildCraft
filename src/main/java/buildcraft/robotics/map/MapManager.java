@@ -8,6 +8,7 @@ import net.minecraft.world.WorldServer;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.ChunkProviderServer;
+import net.minecraft.world.storage.ThreadedFileIOBase;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.event.world.ChunkEvent;
@@ -32,6 +33,12 @@ public class MapManager {
 
     public void stop() {
         saveAllWorlds();
+        try {
+            // Nothing flushes the file IO thread after this point, so wait for the writes just queued.
+            ThreadedFileIOBase.threadedIOInstance.waitForFinish();
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
         synchronized (worldMap) {
             worldMap.clear();
         }
