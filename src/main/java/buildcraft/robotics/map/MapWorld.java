@@ -7,11 +7,11 @@ import java.io.IOException;
 import java.nio.file.AtomicMoveNotSupportedException;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.Set;
 
 import net.minecraft.nbt.NBTTagCompound;
@@ -33,6 +33,12 @@ public class MapWorld {
     private final TLongLongHashMap regionUpdateTime;
     private final TLongHashSet updatedRegions;
     private final File location;
+    /**
+     * Region snapshots waiting to be written, newest per region. One writer drains it at a time: Minecraft's IO thread
+     * interleaves queued tasks, so separate batches could write an older snapshot after a newer one.
+     */
+    private final LinkedHashMap<Long, PendingSave> pendingSaves = new LinkedHashMap<>();
+    private boolean writerQueued;
 
     public MapWorld(World world, File location) {
         regionMap = new LongHashMap();
@@ -101,7 +107,7 @@ public class MapWorld {
             updatedRegions.clear();
         }
 
-        List<PendingSave> pending = new ArrayList<>();
+        boolean queueWriter = false;
         for (long id : regionList) {
             MapRegion region = (MapRegion) regionMap.getValueByKey(id);
             if (region == null) {
@@ -112,11 +118,19 @@ public class MapWorld {
             region.writeToNBT(output);
             File file = new File(location, "r" + region.getX() + "," + region.getZ() + ".nbt");
             // Copied, as the chunks keep updating the arrays they wrote into the tag.
-            pending.add(new PendingSave(id, file, (NBTTagCompound) output.copy()));
+            PendingSave save = new PendingSave(id, file, (NBTTagCompound) output.copy());
+            synchronized (pendingSaves) {
+                pendingSaves.put(id, save);
+                if (!writerQueued) {
+                    writerQueued = true;
+                    queueWriter = true;
+                }
+            }
         }
 
-        if (!pending.isEmpty()) {
-            ThreadedFileIOBase.threadedIOInstance.queueIO(new SaveBatch(pending));
+        if (queueWriter) {
+            // A new instance each time: the IO thread skips a task it still holds, even one that just finished.
+            ThreadedFileIOBase.threadedIOInstance.queueIO(new SaveWriter());
         }
     }
 
@@ -149,18 +163,20 @@ public class MapWorld {
         }
     }
 
-    private final class SaveBatch implements IThreadedFileIO {
-
-        private final List<PendingSave> pending;
-        private int next;
-
-        private SaveBatch(List<PendingSave> pending) {
-            this.pending = pending;
-        }
+    private final class SaveWriter implements IThreadedFileIO {
 
         @Override
         public boolean writeNextIO() {
-            PendingSave save = pending.get(next++);
+            PendingSave save;
+            synchronized (pendingSaves) {
+                Iterator<PendingSave> it = pendingSaves.values().iterator();
+                if (!it.hasNext()) {
+                    writerQueued = false;
+                    return false;
+                }
+                save = it.next();
+                it.remove();
+            }
             try {
                 write(save);
             } catch (IOException | RuntimeException e) {
@@ -170,7 +186,7 @@ public class MapWorld {
                     updatedRegions.add(save.id);
                 }
             }
-            return next < pending.size();
+            return true;
         }
     }
 
