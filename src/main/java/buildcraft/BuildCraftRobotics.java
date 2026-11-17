@@ -192,7 +192,6 @@ public class BuildCraftRobotics extends BuildCraftMod {
     public static List<String> blacklistedRobots;
 
     public static MapManager manager;
-    private static Thread managerThread;
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent evt) {
@@ -600,11 +599,6 @@ public class BuildCraftRobotics extends BuildCraftMod {
             FMLCommonHandler.instance().bus().unregister(manager);
         }
 
-        if (managerThread != null) {
-            managerThread.interrupt();
-        }
-
-        managerThread = null;
         manager = null;
     }
 
@@ -626,8 +620,6 @@ public class BuildCraftRobotics extends BuildCraftMod {
         stopMapManager();
 
         manager = new MapManager(f);
-        managerThread = new Thread(manager);
-        managerThread.start();
 
         BoardRobotPicker.onServerStart();
 
