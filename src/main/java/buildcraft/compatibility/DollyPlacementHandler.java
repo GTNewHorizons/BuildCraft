@@ -7,6 +7,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraftforge.common.MinecraftForge;
 
+import buildcraft.factory.BlockTank;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import mcp.mobius.betterbarrels.api.events.DollyPlaceEvent;
 
@@ -23,6 +24,8 @@ public class DollyPlacementHandler {
 
     @SubscribeEvent
     public void onDollyPlace(DollyPlaceEvent event) {
+        if (!(event.block instanceof BlockTank)) return;
+
         TileEntity aboveTarget = event.world.getTileEntity(event.targX, event.targY + 1, event.targZ);
         TileEntity bellowTarget = event.world.getTileEntity(event.targX, event.targY - 1, event.targZ);
 
