@@ -4,16 +4,24 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.AtomicMoveNotSupportedException;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.Set;
 
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.LongHashMap;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.Chunk;
+import net.minecraft.world.storage.IThreadedFileIO;
+import net.minecraft.world.storage.ThreadedFileIOBase;
 
+import buildcraft.api.core.BCLog;
 import buildcraft.core.lib.utils.NBTUtils;
 import gnu.trove.map.hash.TLongLongHashMap;
 import gnu.trove.set.hash.TLongHashSet;
@@ -23,13 +31,19 @@ public class MapWorld {
     private final LongHashMap regionMap;
     private final HashMap<Chunk, Integer> timeToUpdate = new HashMap<>();
     private final TLongLongHashMap regionUpdateTime;
-    private final TLongHashSet updatedChunks;
+    private final TLongHashSet updatedRegions;
     private final File location;
+    /**
+     * Region snapshots waiting to be written, newest per region. One writer drains it at a time: Minecraft's IO thread
+     * interleaves queued tasks, so separate batches could write an older snapshot after a newer one.
+     */
+    private final LinkedHashMap<Long, PendingSave> pendingSaves = new LinkedHashMap<>();
+    private boolean writerQueued;
 
     public MapWorld(World world, File location) {
         regionMap = new LongHashMap();
         regionUpdateTime = new TLongLongHashMap();
-        updatedChunks = new TLongHashSet();
+        updatedRegions = new TLongHashSet();
 
         String saveFolder = world.provider.getSaveFolder();
         if (saveFolder == null) {
@@ -82,14 +96,19 @@ public class MapWorld {
         return region.hasChunk(x & 15, z & 15);
     }
 
+    /**
+     * Copies the changed regions and queues them on Minecraft's file IO thread, so the disk writes stay off the server
+     * thread and are flushed together with the world's own saves.
+     */
     public void save() {
-        long[] chunkList;
-        synchronized (updatedChunks) {
-            chunkList = updatedChunks.toArray();
-            updatedChunks.clear();
+        long[] regionList;
+        synchronized (updatedRegions) {
+            regionList = updatedRegions.toArray();
+            updatedRegions.clear();
         }
 
-        for (long id : chunkList) {
+        boolean queueWriter = false;
+        for (long id : regionList) {
             MapRegion region = (MapRegion) regionMap.getValueByKey(id);
             if (region == null) {
                 continue;
@@ -97,16 +116,77 @@ public class MapWorld {
 
             NBTTagCompound output = new NBTTagCompound();
             region.writeToNBT(output);
-            byte[] data = NBTUtils.save(output);
-            File file = new File(location, "r" + MapUtils.getXFromID(id) + "," + MapUtils.getZFromID(id) + ".nbt");
-
-            try {
-                FileOutputStream f = new FileOutputStream(file);
-                f.write(data);
-                f.close();
-            } catch (IOException e) {
-                e.printStackTrace();
+            File file = new File(location, "r" + region.getX() + "," + region.getZ() + ".nbt");
+            // Copied, as the chunks keep updating the arrays they wrote into the tag.
+            PendingSave save = new PendingSave(id, file, (NBTTagCompound) output.copy());
+            synchronized (pendingSaves) {
+                pendingSaves.put(id, save);
+                if (!writerQueued) {
+                    writerQueued = true;
+                    queueWriter = true;
+                }
             }
+        }
+
+        if (queueWriter) {
+            // A new instance each time: the IO thread skips a task it still holds, even one that just finished.
+            ThreadedFileIOBase.threadedIOInstance.queueIO(new SaveWriter());
+        }
+    }
+
+    private void write(PendingSave save) throws IOException {
+        File temp = new File(save.file.getParentFile(), save.file.getName() + ".tmp");
+        try (FileOutputStream f = new FileOutputStream(temp)) {
+            f.write(NBTUtils.save(save.data));
+        }
+        try {
+            Files.move(
+                    temp.toPath(),
+                    save.file.toPath(),
+                    StandardCopyOption.REPLACE_EXISTING,
+                    StandardCopyOption.ATOMIC_MOVE);
+        } catch (AtomicMoveNotSupportedException e) {
+            Files.move(temp.toPath(), save.file.toPath(), StandardCopyOption.REPLACE_EXISTING);
+        }
+    }
+
+    private static final class PendingSave {
+
+        private final long id;
+        private final File file;
+        private final NBTTagCompound data;
+
+        private PendingSave(long id, File file, NBTTagCompound data) {
+            this.id = id;
+            this.file = file;
+            this.data = data;
+        }
+    }
+
+    private final class SaveWriter implements IThreadedFileIO {
+
+        @Override
+        public boolean writeNextIO() {
+            PendingSave save;
+            synchronized (pendingSaves) {
+                Iterator<PendingSave> it = pendingSaves.values().iterator();
+                if (!it.hasNext()) {
+                    writerQueued = false;
+                    return false;
+                }
+                save = it.next();
+                it.remove();
+            }
+            try {
+                write(save);
+            } catch (IOException | RuntimeException e) {
+                // Never let a failed map write kill the shared file IO thread; try again on the next save.
+                BCLog.logger.warn("Could not save zone map region " + save.file, e);
+                synchronized (updatedRegions) {
+                    updatedRegions.add(save.id);
+                }
+            }
+            return true;
         }
     }
 
@@ -140,8 +220,8 @@ public class MapWorld {
         long id = MapUtils.getIDFromCoords(rchunk.xPosition, rchunk.zPosition);
         MapChunk chunk = getChunk(rchunk.xPosition, rchunk.zPosition);
         chunk.update(rchunk);
-        synchronized (updatedChunks) {
-            updatedChunks.add(id);
+        synchronized (updatedRegions) {
+            updatedRegions.add(MapUtils.getIDFromCoords(rchunk.xPosition >> 4, rchunk.zPosition >> 4));
         }
         synchronized (timeToUpdate) {
             timeToUpdate.remove(rchunk);
